@@ -14,7 +14,7 @@ import com.graphs.engine.data.Vertex;
 public class PhisicEngine {
 	private final int DELAY = 80;
 	
-	private double GRAVITY_MULTIPLAYER = 2000;
+	private double GRAVITY_MULTIPLAYER = 5000;
 	private double HOOKE_K = 0.3;
 	private double DUMPING = 0.8;
 	

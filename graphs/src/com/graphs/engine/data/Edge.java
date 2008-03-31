@@ -12,6 +12,14 @@ public class Edge {
 		this.b = b;
 	}
 
+	public void setA(Vertex a) {
+		this.a = a;
+	}
+	
+	public void setB(Vertex b) {
+		this.b = b;
+	}
+	
 	public Vertex getA() {
 		return a;
 	}

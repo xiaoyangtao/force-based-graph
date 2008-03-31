@@ -34,6 +34,15 @@ public class GraphContener {
 	}
 	
 	public void addEdge(Vertex a, Vertex b) throws GraphException{
+		for(Iterator<Edge> iter = getAllEdges().iterator(); iter.hasNext();){
+			Edge e = (Edge)iter.next();
+			if((e.getA() == a && e.getB() == b) || (e.getA() == b && e.getB() == a)){
+				throw new GraphException("Edge already exists !");
+			}
+		}
+		if(a == b) {
+			throw new GraphException("Start and end are the same!");
+		}
 		Edge e = new Edge(a, b);
 		a.addEdge(e);
 		b.addEdge(e);
