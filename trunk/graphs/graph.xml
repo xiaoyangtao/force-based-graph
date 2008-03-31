@@ -1,0 +1,23 @@
+<graph name = "test">
+<v id="1"/>
+<v id="2"/>
+<v id="3"/>
+<v id="4"/>
+<v id="5"/>
+<v id="6"/>
+	
+<e from="1" to="2"/>
+<e from="3" to="2"/>
+<e from="4" to="1"/>
+<e from="5" to="1"/>
+<e from="6" to="4"/>
+
+
+<coord id="1" x="200" y="200"/>
+<coord id="2" x="300" y="300"/>
+<coord id="3" x="400" y="300"/>
+<coord id="4" x="240" y="350"/>
+<coord id="5" x="230" y="150"/>
+<coord id="6" x="400" y="150"/>
+
+</graph>
