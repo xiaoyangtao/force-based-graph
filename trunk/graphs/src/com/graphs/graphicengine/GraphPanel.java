@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +28,7 @@ import javax.swing.Timer;
 import com.graphs.engine.algorithm.PhisicEngine;
 import com.graphs.engine.data.Edge;
 import com.graphs.engine.data.GraphContener;
+import com.graphs.engine.data.GraphException;
 import com.graphs.engine.data.Vertex;
 
 public class GraphPanel extends JPanel{
@@ -44,14 +46,23 @@ public class GraphPanel extends JPanel{
 	
 	PhisicEngine engine;
 
+	// dummy edge
+	Edge newEdge = null;
+	
+	int newEdgeX;
+	int newEdgeY;	
 	
 	public GraphPanel(GraphContener data) {
 		setBackground(Color.white);
 		addMouseMotionListener(new MouseAdapter(){
 			public void mouseDragged(MouseEvent e) {
-				if(graphContener.getSelectedVertex()!= null){
+				if(graphContener.getSelectedVertex()!= null && newEdge == null){
 					graphContener.getSelectedVertex().setX(e.getX() - graphContener.getTranslationX());
 					graphContener.getSelectedVertex().setY(e.getY() - graphContener.getTranslationY());					
+				}
+				if(newEdge != null){
+					newEdgeX = e.getX() - graphContener.getTranslationX();
+					newEdgeY = e.getY() - graphContener.getTranslationY();
 				}
 			}
 		});
@@ -62,12 +73,45 @@ public class GraphPanel extends JPanel{
 					Vertex v = (Vertex)iter.next();
 					if(v.contains(e.getX()-graphContener.getTranslationX(), e.getY()-graphContener.getTranslationY())){
 						graphContener.setSelectedVertex(v);
-						return;
 					}
 				}
+				// left button
+				if(e.getButton() == MouseEvent.BUTTON1){
+					return;
+				}
+				// right button
+				if(e.getButton() == MouseEvent.BUTTON3){
+					try {
+						//dummy edge
+						newEdge = new Edge(graphContener.getSelectedVertex(),graphContener.getSelectedVertex());
+						newEdgeX = (int)graphContener.getSelectedVertex().getX();
+						newEdgeY = (int)graphContener.getSelectedVertex().getY();
+					} catch (GraphException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+
 			}
 			public void mouseReleased(MouseEvent e) {
+				if(newEdge!= null){
+					Vertex endVertex = null;
+					for(Iterator<Vertex> iter = graphContener.getVertexes().iterator(); iter.hasNext();){
+						Vertex v = (Vertex)iter.next();
+						if(v.contains(e.getX()-graphContener.getTranslationX(), e.getY()-graphContener.getTranslationY())){
+							endVertex = v;
+						}
+					}
+					if(endVertex != null){
+						try {
+							graphContener.addEdge(newEdge.getA(), endVertex);
+						} catch (GraphException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}
 				graphContener.setSelectedVertex(null);
+				newEdge = null;
 			}
 			public void mouseClicked(MouseEvent e) {
 				if(e.getClickCount() == 2){
@@ -173,7 +217,13 @@ public class GraphPanel extends JPanel{
 				g.drawString(v.getId(), (int)(v.getX()-3), (int)(v.getY() + Vertex.VERTEX_SIZE/2-6));
 			else
 				g.drawString(v.getId().substring(0,1) + "..", (int)(v.getX()-7), (int)(v.getY() + Vertex.VERTEX_SIZE/2-6));
-		}	
+		}
+		
+		// new edge
+		g.setColor(Color.black);
+		if(newEdge != null){
+			g.drawLine((int)newEdge.getA().getX(), (int)newEdge.getA().getY(), newEdgeX, newEdgeY);
+		}
 		
 		//restore transformation
 		
