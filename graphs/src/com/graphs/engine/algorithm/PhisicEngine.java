@@ -37,6 +37,8 @@ public class PhisicEngine {
 		// Gravity
 		for(Iterator<Vertex> iter = graphContener.getVertexes().iterator(); iter.hasNext();){
 			Vertex base = (Vertex)iter.next();
+			if(base == graphContener.getSelectedVertex())
+				continue;
 			double sumGravityFx = 0;
 			double sumGravityFy = 0;
 			
