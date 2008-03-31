@@ -32,8 +32,6 @@ import com.graphs.engine.data.Vertex;
 public class GraphPanel extends JPanel{
 	private final int FRAMES_PER_SECOND = 50; 	
 	
-	private final int VERTEX_SIZE = 22;
-	
 	private final String SCREENSHOOT_FILENAME = "scr.jpg";
 	
 	private final int SCROLL_SPEED = 15;
@@ -45,12 +43,32 @@ public class GraphPanel extends JPanel{
 	GraphContener graphContener;
 	
 	PhisicEngine engine;
-	
+
 	
 	public GraphPanel(GraphContener data) {
 		setBackground(Color.white);
+		addMouseMotionListener(new MouseAdapter(){
+			public void mouseDragged(MouseEvent e) {
+				if(graphContener.getSelectedVertex()!= null){
+					graphContener.getSelectedVertex().setX(e.getX() - graphContener.getTranslationX());
+					graphContener.getSelectedVertex().setY(e.getY() - graphContener.getTranslationY());					
+				}
+			}
+		});
+		
 		addMouseListener(new MouseAdapter(){
-			
+			public void mousePressed(MouseEvent e) {
+				for(Iterator<Vertex> iter = graphContener.getVertexes().iterator(); iter.hasNext();){
+					Vertex v = (Vertex)iter.next();
+					if(v.contains(e.getX()-graphContener.getTranslationX(), e.getY()-graphContener.getTranslationY())){
+						graphContener.setSelectedVertex(v);
+						return;
+					}
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				graphContener.setSelectedVertex(null);
+			}
 			public void mouseClicked(MouseEvent e) {
 				if(e.getClickCount() == 2){
 					saveScreenshot();
@@ -142,19 +160,23 @@ public class GraphPanel extends JPanel{
 
 		for(Iterator<Vertex> iter = graphContener.getVertexes().iterator();iter.hasNext();){
 			Vertex v = (Vertex)iter.next();
-			g.setColor(Color.green);
-			g.fillOval((int)(v.getX() - VERTEX_SIZE/2), (int)(v.getY() - VERTEX_SIZE/2), VERTEX_SIZE, VERTEX_SIZE);
-			g.setColor(Color.black);
-			g.drawOval((int)(v.getX() - VERTEX_SIZE/2), (int)(v.getY() - VERTEX_SIZE/2), VERTEX_SIZE, VERTEX_SIZE);
-			if(v.getId().length() == 2)
-				g.drawString(v.getId(), (int)(v.getX()-7), (int)(v.getY() + VERTEX_SIZE/2-6));
-			else if (v.getId().length() == 1)
-				g.drawString(v.getId(), (int)(v.getX()-3), (int)(v.getY() + VERTEX_SIZE/2-6));
+			if(v == graphContener.getSelectedVertex())
+				g.setColor(Color.red);
 			else
-				g.drawString(v.getId().substring(0,1) + "..", (int)(v.getX()-7), (int)(v.getY() + VERTEX_SIZE/2-6));
+				g.setColor(Color.green);
+			g.fillOval((int)(v.getX() - Vertex.VERTEX_SIZE/2), (int)(v.getY() - Vertex.VERTEX_SIZE/2), Vertex.VERTEX_SIZE, Vertex.VERTEX_SIZE);
+			g.setColor(Color.black);
+			g.drawOval((int)(v.getX() - Vertex.VERTEX_SIZE/2), (int)(v.getY() - Vertex.VERTEX_SIZE/2), Vertex.VERTEX_SIZE, Vertex.VERTEX_SIZE);
+			if(v.getId().length() == 2)
+				g.drawString(v.getId(), (int)(v.getX()-7), (int)(v.getY() + Vertex.VERTEX_SIZE/2-6));
+			else if (v.getId().length() == 1)
+				g.drawString(v.getId(), (int)(v.getX()-3), (int)(v.getY() + Vertex.VERTEX_SIZE/2-6));
+			else
+				g.drawString(v.getId().substring(0,1) + "..", (int)(v.getX()-7), (int)(v.getY() + Vertex.VERTEX_SIZE/2-6));
 		}	
 		
 		//restore transformation
+		
 		g.setTransform(saveAT);
 	}
 	

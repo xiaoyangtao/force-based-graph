@@ -12,6 +12,7 @@ public class GraphContener {
 	private int translationX = 0;
 	private int translationY = 0;
 	
+	Vertex selectedVertex = null;
 	
 	public GraphContener(String name) {
 		this.name = name;
@@ -73,6 +74,16 @@ public class GraphContener {
 	
 	public void adjustTranslationY(int dy) {
 		this.translationY += dy;
+	}
+
+	public Vertex getSelectedVertex() {
+		return selectedVertex;
+	}
+
+	public void setSelectedVertex(Vertex selectedVertex) {
+		this.selectedVertex = selectedVertex;
+		if(selectedVertex != null)
+			selectedVertex.resetForce();
 	}
 
 

@@ -1,8 +1,10 @@
 package com.graphs.engine.data;
 
+import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 
 public class Vertex {
+	
 	private String id;
 	
 	private double x;
@@ -11,7 +13,9 @@ public class Vertex {
 	private double dx;
 	private double dy;
 	
-	private ArrayList<Edge> edges = new ArrayList<Edge>();  
+	private ArrayList<Edge> edges = new ArrayList<Edge>();
+
+	public final static int VERTEX_SIZE = 22;  
 	
 	public Vertex(String id) throws GraphException{
 		if(id == null){
@@ -28,6 +32,10 @@ public class Vertex {
 		return id;
 	}
 	
+	public void resetForce(){
+		setDx(0);
+		setDy(0);
+	}
 	
 	public void setX(double x) {
 		this.x = x;
@@ -63,6 +71,14 @@ public class Vertex {
 
 	public ArrayList<Edge> getEdges() {
 		return edges;
+	}
+	
+	public boolean contains(int px, int py){
+		Ellipse2D circle = new Ellipse2D.Double(x-VERTEX_SIZE/2,y-VERTEX_SIZE/2,VERTEX_SIZE,VERTEX_SIZE);
+		if(circle.contains(px, py)){
+			return true;
+		}
+		return false;
 	}
 	
 }
