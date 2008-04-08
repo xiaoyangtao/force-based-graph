@@ -15,7 +15,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 
 public class GraphLoader extends DefaultHandler{
-	static String XMLFileName = "graph.xml";
+
 	
 	static GraphContener graphContener;
 	
@@ -60,12 +60,12 @@ public class GraphLoader extends DefaultHandler{
 	
 	public static GraphContener load(){
 		try {
-			System.out.println("XML File exists : " + (new File(XMLFileName).exists()));
+			System.out.println("XML File exists : " + (new File(Settings.XMLFileName).exists()));
 			SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
 			
-			parser.parse(new File(XMLFileName), new GraphLoader());
+			parser.parse(new File(Settings.XMLFileName), new GraphLoader());
 			
-		} catch (FileNotFoundException e1) {	
+		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (SAXException e) {
 			e.printStackTrace();
