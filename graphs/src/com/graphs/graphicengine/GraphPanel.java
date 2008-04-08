@@ -38,7 +38,8 @@ public class GraphPanel extends JPanel{
 	
 	private final int SCROLL_SPEED = 15;
 	
-	JButton start = new JButton("Start");
+	JButton startAnimated = new JButton("Start Animated");
+	JButton startNormal = new JButton("Start Normal");
 	
 	Timer repainter;
 	
@@ -120,6 +121,7 @@ public class GraphPanel extends JPanel{
 			}
 		});
 		
+		setLayout(new BorderLayout());
 		
 		graphContener = data;
 		engine = new PhisicEngine(data);
@@ -127,24 +129,45 @@ public class GraphPanel extends JPanel{
 		repainter.start();
 		
 		
-		start.addActionListener(new ActionListener(){
+		startAnimated.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				if(start.getText().equals("Start")){
-					start.setText("Stop");
-					engine.start();
+				if(startAnimated.getText().equals("Start Animated")){
+					startAnimated.setText("Stop Animated");
+					engine.startAnimation();
+					startNormal.setEnabled(false);
 				}
 				else{
-					start.setText("Start");
-					engine.stop();
+					startAnimated.setText("Start Animated");
+					engine.stopAnimation();
+					startNormal.setEnabled(true);
 				}
 			}
 		});
 		
-		setLayout(new BorderLayout());
+		startNormal.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				if(startNormal.getText().equals("Start Normal")){
+					startNormal.setText("Stop Normal");
+					engine.startNormal();
+					startAnimated.setEnabled(false);
+				}
+				else{
+					startNormal.setText("Start Normal");
+					engine.stopNormal();
+					startAnimated.setEnabled(true);
+				}
+			}
+		});
 		
-		add(start, BorderLayout.SOUTH);
 		
-		start.addKeyListener(new KeyAdapter(){
+		JPanel buttonContener = new JPanel();
+		buttonContener.add(startAnimated);
+		buttonContener.add(startNormal);
+		
+		add(buttonContener, BorderLayout.SOUTH);
+
+		
+		KeyAdapter adapter = new KeyAdapter(){
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyCode() == KeyEvent.VK_RIGHT){
 					getGraphContener().adjustTranslationX(-SCROLL_SPEED);
@@ -159,7 +182,12 @@ public class GraphPanel extends JPanel{
 					getGraphContener().adjustTranslationY(-SCROLL_SPEED);
 				}
 			}
-		});
+		};
+		
+		startNormal.addKeyListener(adapter);
+		startAnimated.addKeyListener(adapter);
+		
+		
 	}
 
 	private void saveScreenshot(){

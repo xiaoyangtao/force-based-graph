@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 
 import com.graphs.engine.data.GraphContener;
+import com.graphs.engine.data.Settings;
 
 public class GraphFrame extends JFrame {
 	private int FRAME_WIDTH = 800;
@@ -23,8 +24,6 @@ public class GraphFrame extends JFrame {
 					Toolkit.getDefaultToolkit().getScreenSize().height / 2 - getSize().height / 2
 					);
 		setTitle(APP_TITLE);
-		
-
 	}
 	
 	private void addSubComponents(GraphContener data){

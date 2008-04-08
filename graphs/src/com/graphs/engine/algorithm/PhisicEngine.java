@@ -3,6 +3,8 @@ package com.graphs.engine.algorithm;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.DataInputStream;
+import java.util.Date;
 import java.util.Iterator;
 
 import javax.swing.Timer;
@@ -10,19 +12,27 @@ import javax.swing.Timer;
 import com.graphs.engine.data.Edge;
 import com.graphs.engine.data.GraphContener;
 import com.graphs.engine.data.Vertex;
+import com.graphs.graphicengine.StatsFrame;
 
 public class PhisicEngine {
 	private final int DELAY = 80;
 	
-	private double GRAVITY_MULTIPLAYER = 5000;
+	private double GRAVITY_MULTIPLAYER = 8000;
 	private double HOOKE_K = 0.3;
 	private double DUMPING = 0.8;
 	
 	private double SPRING_MINIMAL_LENGTH = 80; 
 	
-	GraphContener graphContener;
+	private GraphContener graphContener;
 	
-	Timer runner;
+	private Timer animationRunner;
+	
+	private Thread normalRunner;
+	private boolean stopNormalRunner = false;
+	
+	private double kinetic = 0;
+	
+	
 	
 	private void initCoords(){
 		for(Iterator<Vertex> iter = graphContener.getVertexes().iterator(); iter.hasNext();){
@@ -33,7 +43,7 @@ public class PhisicEngine {
 	}
 	
 	private void recalcVectors(){
-		
+		kinetic = 0;
 		// Gravity
 		for(Iterator<Vertex> iter = graphContener.getVertexes().iterator(); iter.hasNext();){
 			Vertex base = (Vertex)iter.next();
@@ -53,6 +63,8 @@ public class PhisicEngine {
 				}
 				//System.out.println("Distance between " + base.getId() + " and " + other.getId() + " is " + dist);
 				double gravityF = (double)1/Math.pow(dist, 2) * GRAVITY_MULTIPLAYER;
+				
+				kinetic += Math.abs(gravityF);
 				
 				double gravityFx = gravityF * (-other.getX() + base.getX()) / dist;
 				double gravityFy = gravityF * (-other.getY() + base.getY()) / dist;
@@ -96,6 +108,8 @@ public class PhisicEngine {
 				
 				double hookeF = -(double)HOOKE_K * (dist - SPRING_MINIMAL_LENGTH);
 				
+				kinetic += Math.abs(hookeF);
+				
 				double hookeFx = hookeF * (-other.getX() + base.getX()) / dist;
 				double hookeFy = hookeF * (-other.getY() + base.getY()) / dist;
 				
@@ -116,7 +130,8 @@ public class PhisicEngine {
 			//base.setDy(sumHookeFy);
 
 		}
-			
+		
+		StatsFrame.getInstance().updateStat("Energy", String.valueOf(kinetic));
 	}
 	
 	private void recalcCoords(){
@@ -129,22 +144,78 @@ public class PhisicEngine {
 	}
 	
 	private void initRunner(){
-		runner = new Timer(DELAY,
+		System.out.println("Initiating runners");
+		animationRunner = new Timer(DELAY,
 				new ActionListener(){
 					public void actionPerformed(ActionEvent e) {
-						recalcVectors();
-						recalcCoords();
+						runAlgorithmStep();
 					}
 				}
 				);
+		normalRunner = new Thread(){
+			public void run() {
+				runAlgorithm();
+			}
+		};
 	}
 	
-	public void start(){
-		runner.start();
+	private void runAlgorithmStep(){
+		recalcVectors();
+		recalcCoords();
 	}
 	
-	public void stop(){
-		runner.stop();
+	private void runAlgorithm(){
+		//StatsFrame.setLogsOn(false);
+		
+		double minChange = 0.0001; 
+		
+		kinetic = 0;
+		double oldKinetic = 0;
+
+		Date start = new Date();
+		while(kinetic == 0  || Math.abs((double)(oldKinetic - kinetic))/(double)kinetic > minChange){
+			StatsFrame.getInstance().updateStat("En. delta",String.valueOf(Math.abs((double)(oldKinetic - kinetic))/(double)kinetic));
+			StatsFrame.getInstance().updateStat("Energy", String.valueOf(kinetic));
+			long runTime = (new Date()).getTime() - start.getTime();
+			StatsFrame.getInstance().updateStat("Timer", String.valueOf(runTime));
+
+			if(kinetic != 0){
+				oldKinetic = kinetic;
+			}
+			else
+				oldKinetic = Integer.MAX_VALUE;
+			
+			if(stopNormalRunner){
+				System.out.println("Phisic thread ended");
+				return;
+			}
+			
+			runAlgorithmStep();
+		}
+		StatsFrame.setLogsOn(true);
+		long runTime = (new Date()).getTime() - start.getTime();
+
+		StatsFrame.getInstance().updateStat("Last run", String.valueOf(runTime));
+	}
+	
+	
+	public void startAnimation(){
+		animationRunner.start();
+	}
+	
+	public void startNormal(){
+		stopNormalRunner = false;
+		normalRunner.start();
+	}
+	
+	public void stopAnimation(){
+		animationRunner.stop();
+	}
+	
+	
+	public void stopNormal(){
+		stopNormalRunner = true;
+		initRunner();
 	}
 	
 	public PhisicEngine(GraphContener graphContener) {
