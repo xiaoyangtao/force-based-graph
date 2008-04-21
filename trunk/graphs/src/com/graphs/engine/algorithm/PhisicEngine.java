@@ -19,7 +19,7 @@ public class PhisicEngine {
 	
 	private double GRAVITY_MULTIPLAYER = 8000;
 	private double HOOKE_K = 0.3;
-	private double DUMPING = 0.8;
+	private double DAMPING = 0.8;
 	
 	private double SPRING_MINIMAL_LENGTH = 80; 
 	
@@ -118,9 +118,16 @@ public class PhisicEngine {
 			}
 			
 			// alltogether
-			base.setDx(sumGravityFx + sumHookeFx);
-			base.setDy(sumGravityFy + sumHookeFy);
+			base.setDx((sumGravityFx + sumHookeFx) * DAMPING);
+			base.setDy((sumGravityFy + sumHookeFy) * DAMPING);
 			
+	         // without damping, it moves forever
+			/*
+			 * TODO Trzeba poprawic - zle rozumiane wielkosci fizyczne i brak wytlumiania
+	         this_node.velocity := (this_node.velocity + timestep * net-force) * damping
+	         this_node.position := this_node.position + timestep * this_node.velocity
+	         total_kinetic_energy := total_kinetic_energy + this_node.mass * (this_node.velocity)^2
+			*/
 			// only gravity force
 			//base.setDx(sumGravityFx);
 			//base.setDy(sumGravityFy);
@@ -222,6 +229,10 @@ public class PhisicEngine {
 		this.graphContener = graphContener;
 		initCoords();
 		initRunner();
+	}
+
+	public void setGraphContener(GraphContener graphContener) {
+		this.graphContener = graphContener;
 	}
 	
 

@@ -21,6 +21,7 @@ import java.util.Iterator;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -29,6 +30,7 @@ import com.graphs.engine.algorithm.PhisicEngine;
 import com.graphs.engine.data.Edge;
 import com.graphs.engine.data.GraphContener;
 import com.graphs.engine.data.GraphException;
+import com.graphs.engine.data.GraphLoader;
 import com.graphs.engine.data.Vertex;
 
 public class GraphPanel extends JPanel{
@@ -40,6 +42,8 @@ public class GraphPanel extends JPanel{
 	
 	JButton startAnimated = new JButton("Start Animated");
 	JButton startNormal = new JButton("Start Normal");
+	JButton loadGraph = new JButton("Load Graph");
+	
 	
 	Timer repainter;
 	
@@ -128,6 +132,20 @@ public class GraphPanel extends JPanel{
 		prepareRepainter();
 		repainter.start();
 		
+		loadGraph.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				final JFileChooser fc = new JFileChooser(new File ("."));
+			    int returnVal = fc.showOpenDialog(getParent());
+
+		        if (returnVal == JFileChooser.APPROVE_OPTION) {
+		            File file = fc.getSelectedFile();
+					engine.stopNormal();
+					engine.stopAnimation();
+					graphContener = GraphLoader.load(file);
+					engine.setGraphContener(graphContener);
+		        }
+			}
+		});
 		
 		startAnimated.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
@@ -163,6 +181,7 @@ public class GraphPanel extends JPanel{
 		JPanel buttonContener = new JPanel();
 		buttonContener.add(startAnimated);
 		buttonContener.add(startNormal);
+		buttonContener.add(loadGraph);
 		
 		add(buttonContener, BorderLayout.SOUTH);
 

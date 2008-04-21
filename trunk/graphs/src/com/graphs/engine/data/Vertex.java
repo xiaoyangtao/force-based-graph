@@ -81,4 +81,12 @@ public class Vertex {
 		return false;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Vertex){
+			return ((Vertex)obj).getId().equals(id);
+		}
+		return false;
+	}
+	
 }
