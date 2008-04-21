@@ -36,17 +36,45 @@ public class GraphContener {
 	public void addEdge(Vertex a, Vertex b) throws GraphException{
 		for(Iterator<Edge> iter = getAllEdges().iterator(); iter.hasNext();){
 			Edge e = (Edge)iter.next();
-			if((e.getA() == a && e.getB() == b) || (e.getA() == b && e.getB() == a)){
+			if((e.getA().equals(a) && e.getB().equals(b)) || 
+					(e.getA().equals(b) && e.getB().equals(a))){
 				throw new GraphException("Edge already exists !");
 			}
 		}
-		if(a == b) {
+		if(a.equals(b)) {
 			throw new GraphException("Start and end are the same!");
 		}
 		Edge e = new Edge(a, b);
 		a.addEdge(e);
 		b.addEdge(e);
 		allEdges.add(e);
+	}
+	
+	public String toXML(){
+		StringBuilder xml = new StringBuilder();
+		// <graph name = "test">
+		xml.append("<graph name = \"");
+		xml.append(getName());
+		xml.append("\">");
+		for (Iterator iter = vertexes.iterator(); iter.hasNext();) {
+			Vertex v = (Vertex) iter.next();
+			// <v id="1"/>
+			xml.append("<v id=\"");
+		    xml.append(v.getId());
+		    xml.append("\"/>");
+		}
+		for (Iterator iter = allEdges.iterator(); iter.hasNext();) {
+			Edge e = (Edge) iter.next();
+			// <e from="1" to="2"/>
+			xml.append("<e from=\"");
+		    xml.append(e.getA().getId());
+		    xml.append("\" to=\"");
+		    xml.append(e.getB().getId());
+		    xml.append("\"/>");
+		}
+		// </graph>
+		xml.append("</graph>");
+		return xml.toString();
 	}
 	
 	public ArrayList<Edge> getAllEdges() {
@@ -93,6 +121,10 @@ public class GraphContener {
 		this.selectedVertex = selectedVertex;
 		if(selectedVertex != null)
 			selectedVertex.resetForce();
+	}
+
+	public void setAllEdges(ArrayList<Edge> allEdges) {
+		this.allEdges = allEdges;
 	}
 
 

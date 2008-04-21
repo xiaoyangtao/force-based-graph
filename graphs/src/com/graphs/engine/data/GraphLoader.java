@@ -58,6 +58,27 @@ public class GraphLoader extends DefaultHandler{
 		
 	}
 	
+	public static GraphContener load(File file){
+		try {
+			System.out.println("XML File exists : " + (new File(Settings.XMLFileName).exists()));
+			SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+			
+			parser.parse(file, new GraphLoader());
+			
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return graphContener;
+	}
+	
 	public static GraphContener load(){
 		try {
 			System.out.println("XML File exists : " + (new File(Settings.XMLFileName).exists()));
