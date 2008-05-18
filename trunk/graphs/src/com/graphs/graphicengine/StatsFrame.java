@@ -17,8 +17,6 @@ public class StatsFrame extends JFrame{
 	
 	private Hashtable stats = new Hashtable();
 	
-	private Object mutex = new Object();
-	
 	private static boolean logsOn = true;
 	
 	private static StatsFrame instance =  new StatsFrame();

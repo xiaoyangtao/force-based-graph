@@ -1,5 +1,6 @@
 package com.graphs.engine.data;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -11,9 +12,9 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 public class GraphGenerator {
-	public static GraphContener generate(int vertexNum, int edgesNum){
+	public static GraphContener generate(int vertexNum, int edgesNum, int trialNum){
 		System.out.println("Generating graph v = " +  vertexNum + " e = " + edgesNum);
-		GraphContener graph = new GraphContener("Generated_on_" + (new Date()).getTime());
+		GraphContener graph = new GraphContener("Generated_on_" + (new Date()).getTime()+"_trial_" + trialNum);
 		for(int v = 0; v < vertexNum;v++){
 			try {
 				graph.addVertex(String.valueOf(v));
@@ -68,11 +69,23 @@ public class GraphGenerator {
 		return graph;
 	}
 	
+	public static void prepareCatalog(){
+		File dir = new File("graphs\\");
+		if(!dir.exists()) 
+			dir.mkdir();
+		
+		File [] graphFiles = dir.listFiles();
+		for(int i = 0; i < graphFiles.length;i++){
+			graphFiles[i].delete();
+		}
+	}
+	
 	public static void saveGraph(GraphContener graph){
 		System.out.println("Saving graph ...");
 		OutputStreamWriter out = null;
 		try {
-			out = new OutputStreamWriter(new FileOutputStream(graph.getName() + ".xml"));
+
+			out = new OutputStreamWriter(new FileOutputStream("graphs\\" + graph.getName() + ".xml"));
 			try {
 				out.write(graph.toXML());
 			} catch (IOException e1) {
@@ -90,6 +103,6 @@ public class GraphGenerator {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("Graph saved");
+		System.out.println("Graph saved - " + graph.getName());
 	}
 }
