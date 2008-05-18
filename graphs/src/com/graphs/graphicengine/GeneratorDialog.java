@@ -19,6 +19,7 @@ import com.graphs.engine.data.GraphGenerator;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 
 public class GeneratorDialog extends JDialog {
 
@@ -185,8 +186,11 @@ public class GeneratorDialog extends JDialog {
 			Generate.setText("Generate");
 			Generate.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("actionPerformed()"); // TODO Auto-generated Event stub actionPerformed()
-					GraphGenerator.saveGraph(GraphGenerator.generate(Integer.parseInt(numVertex.getText()), Integer.parseInt(numEdges.getText())) );
+					System.out.println("actionPerformed() - generating"); 
+					GraphGenerator.prepareCatalog();
+					for(int i = 0; i < Integer.parseInt(numGraphs.getText()); i++){
+						GraphGenerator.saveGraph(GraphGenerator.generate(Integer.parseInt(numVertex.getText()), Integer.parseInt(numEdges.getText()), i) );
+					}
 				}
 			});
 		}

@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.MenuItem;
+import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -22,8 +24,10 @@ import java.util.Iterator;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.Timer;
 
 import com.graphs.engine.algorithm.PhisicEngine;
@@ -44,6 +48,7 @@ public class GraphPanel extends JPanel{
 	JButton startNormal = new JButton("Start Normal");
 	JButton loadGraph = new JButton("Load Graph");
 	
+	private GraphPanel me = this;
 	
 	Timer repainter;
 	
@@ -74,10 +79,12 @@ public class GraphPanel extends JPanel{
 		
 		addMouseListener(new MouseAdapter(){
 			public void mousePressed(MouseEvent e) {
+				boolean wasSelected = false;
 				for(Iterator<Vertex> iter = graphContener.getVertexes().iterator(); iter.hasNext();){
 					Vertex v = (Vertex)iter.next();
 					if(v.contains(e.getX()-graphContener.getTranslationX(), e.getY()-graphContener.getTranslationY())){
 						graphContener.setSelectedVertex(v);
+						wasSelected = true;
 					}
 				}
 				// left button
@@ -86,14 +93,36 @@ public class GraphPanel extends JPanel{
 				}
 				// right button
 				if(e.getButton() == MouseEvent.BUTTON3){
+					if(!wasSelected){
+						final int wx = e.getX();
+						final int wy = e.getY();
+						JPopupMenu menu = new JPopupMenu();
+						JMenuItem itm = new JMenuItem("New Vertex");
+						itm.addActionListener(new ActionListener(){
+							public void actionPerformed(ActionEvent ae) {
+								try {
+									graphContener.addVertex(String.valueOf(graphContener.getVertexes().size() + 1));
+									Vertex v = graphContener.getVertex(String.valueOf(graphContener.getVertexes().size()));
+									v.setX(wx);
+									v.setY(wy);
+
+								} catch (GraphException e1) {
+									e1.printStackTrace();
+								}
+							}
+						});
+						menu.add(itm);
+
+						menu.show(e.getComponent(), e.getX(), e.getY());
+						return;
+					}
 					try {
 						//dummy edge
 						newEdge = new Edge(graphContener.getSelectedVertex(),graphContener.getSelectedVertex());
 						newEdgeX = (int)graphContener.getSelectedVertex().getX();
 						newEdgeY = (int)graphContener.getSelectedVertex().getY();
 					} catch (GraphException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						//e1.printStackTrace();
 					}
 				}
 

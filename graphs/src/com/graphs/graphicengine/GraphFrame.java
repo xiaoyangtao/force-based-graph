@@ -11,7 +11,7 @@ import com.graphs.engine.data.GraphContener;
 import com.graphs.engine.data.Settings;
 
 public class GraphFrame extends JFrame {
-	private int FRAME_WIDTH = 800;
+	private int FRAME_WIDTH = 600;
 	private int FRAME_HEIGHT = 600;
 	private final String APP_TITLE = "Graphs";
 	
@@ -29,6 +29,7 @@ public class GraphFrame extends JFrame {
 	private void addSubComponents(GraphContener data){
 		graphPanel = new GraphPanel(data);
 		add(graphPanel);
+		SettingsDialog.getInstance();
 	}
 	
 	public GraphFrame(GraphContener data) {

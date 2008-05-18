@@ -12,14 +12,15 @@ import javax.swing.Timer;
 import com.graphs.engine.data.Edge;
 import com.graphs.engine.data.GraphContener;
 import com.graphs.engine.data.Vertex;
+import com.graphs.graphicengine.SettingsDialog;
 import com.graphs.graphicengine.StatsFrame;
 
 public class PhisicEngine {
 	private final int DELAY = 80;
 	
-	private double GRAVITY_MULTIPLAYER = 8000;
+	private double GRAVITY_MULTIPLAYER = 800;
 	private double HOOKE_K = 0.3;
-	private double DAMPING = 0.8;
+	private double DAMPING = 0.7;
 	
 	private double SPRING_MINIMAL_LENGTH = 80; 
 	
@@ -32,7 +33,21 @@ public class PhisicEngine {
 	
 	private double kinetic = 0;
 	
+	private double getGravityMultiplayer(){
+		return SettingsDialog.getGravityConst();
+	}
 	
+	private double getHookConst(){
+		return SettingsDialog.getHookConst();
+	}
+	
+	private double getDamping(){
+		return SettingsDialog.getDampingConst();
+	}
+	
+	private double getSpringMinimalLen(){
+		return SPRING_MINIMAL_LENGTH;
+	}
 	
 	private void initCoords(){
 		for(Iterator<Vertex> iter = graphContener.getVertexes().iterator(); iter.hasNext();){
@@ -62,7 +77,7 @@ public class PhisicEngine {
 					continue;
 				}
 				//System.out.println("Distance between " + base.getId() + " and " + other.getId() + " is " + dist);
-				double gravityF = (double)1/Math.pow(dist, 2) * GRAVITY_MULTIPLAYER;
+				double gravityF = (double)1/Math.pow(dist, 2) * getGravityMultiplayer();
 				
 				kinetic += Math.abs(gravityF);
 				
@@ -106,7 +121,7 @@ public class PhisicEngine {
 					continue;
 				}
 				
-				double hookeF = -(double)HOOKE_K * (dist - SPRING_MINIMAL_LENGTH);
+				double hookeF = -(double)getHookConst() * (dist - getSpringMinimalLen());
 				
 				kinetic += Math.abs(hookeF);
 				
@@ -118,24 +133,9 @@ public class PhisicEngine {
 			}
 			
 			// alltogether
-			base.setDx((sumGravityFx + sumHookeFx) * DAMPING);
-			base.setDy((sumGravityFy + sumHookeFy) * DAMPING);
+			base.setDx((base.getDx() + sumGravityFx + sumHookeFx) * getDamping());
+			base.setDy((base.getDy() + sumGravityFy + sumHookeFy) * getDamping());
 			
-	         // without damping, it moves forever
-			/*
-			 * TODO Trzeba poprawic - zle rozumiane wielkosci fizyczne i brak wytlumiania
-	         this_node.velocity := (this_node.velocity + timestep * net-force) * damping
-	         this_node.position := this_node.position + timestep * this_node.velocity
-	         total_kinetic_energy := total_kinetic_energy + this_node.mass * (this_node.velocity)^2
-			*/
-			// only gravity force
-			//base.setDx(sumGravityFx);
-			//base.setDy(sumGravityFy);
-			
-			// only hooke force
-			//base.setDx(sumHookeFx);
-			//base.setDy(sumHookeFy);
-
 		}
 		
 		StatsFrame.getInstance().updateStat("Energy", String.valueOf(kinetic));
