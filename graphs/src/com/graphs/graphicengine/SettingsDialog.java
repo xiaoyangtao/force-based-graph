@@ -160,7 +160,7 @@ public class SettingsDialog extends JFrame {
 	 */
 	private JSlider getGravity() {
 		if (gravity == null) {
-			gravity = new JSlider(1, 2000);
+			gravity = new JSlider(1, 10000);
 			gravity.setPaintLabels(true);
 			gravity.setPaintTicks(false);
 			gravity.setName("Gravity");
@@ -183,7 +183,7 @@ public class SettingsDialog extends JFrame {
 	 */
 	private JSlider getHook() {
 		if (hook == null) {
-			hook = new JSlider(1,3000);
+			hook = new JSlider(1,1500);
 			hook.addChangeListener(new javax.swing.event.ChangeListener() {
 				public void stateChanged(javax.swing.event.ChangeEvent e) {
 					HOOKE_K_const = hook.getValue()/1000.0;
