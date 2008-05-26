@@ -6,11 +6,19 @@ import java.util.Iterator;
 public class GraphContener {
 	private String name;
 	
+	private String filePath;
+	
 	private ArrayList<Vertex> vertexes = new ArrayList<Vertex>();
 	private ArrayList<Edge> allEdges = new ArrayList<Edge>();
 	
 	private int translationX = 0;
 	private int translationY = 0;
+	
+	/**
+	 * If true then this graph coordinates were loaded from xml otherwise
+	 * they needs to be generated before running algorithm.
+	 */
+	private boolean hasCoordinates = false;
 	
 	Vertex selectedVertex = null;
 	
@@ -125,6 +133,22 @@ public class GraphContener {
 
 	public void setAllEdges(ArrayList<Edge> allEdges) {
 		this.allEdges = allEdges;
+	}
+
+	public boolean isHasCoordinates() {
+		return hasCoordinates;
+	}
+
+	public void setHasCoordinates(boolean hasCoordinates) {
+		this.hasCoordinates = hasCoordinates;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 
 

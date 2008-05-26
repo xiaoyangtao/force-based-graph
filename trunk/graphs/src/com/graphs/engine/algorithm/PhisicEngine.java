@@ -18,9 +18,9 @@ import com.graphs.graphicengine.StatsFrame;
 public class PhisicEngine {
 	private final int DELAY = 80;
 	
-	private double GRAVITY_MULTIPLAYER = 800;
-	private double HOOKE_K = 0.3;
-	private double DAMPING = 0.7;
+	//private double GRAVITY_MULTIPLAYER = 800;
+	//private double HOOKE_K = 0.3;
+	//private double DAMPING = 0.7;
 	
 	private double SPRING_MINIMAL_LENGTH = 80; 
 	
@@ -49,11 +49,24 @@ public class PhisicEngine {
 		return SPRING_MINIMAL_LENGTH;
 	}
 	
-	private void initCoords(){
-		for(Iterator<Vertex> iter = graphContener.getVertexes().iterator(); iter.hasNext();){
-			Vertex v = (Vertex)iter.next();
-			//v.setX(200);
-			//v.setY(200);
+	public void initCoords(){
+		if(!graphContener.isHasCoordinates()){
+			int vCount = graphContener.getVertexes().size();
+			int R = 200;
+			double alfa = 0;
+			int num = 0;
+			for(Iterator<Vertex> iter = graphContener.getVertexes().iterator(); iter.hasNext();){
+				Vertex v = (Vertex)iter.next();
+				alfa = (2*Math.PI/vCount) * num;
+				int sgnX = 1;
+				int sgnY = -1;
+				double x = sgnX * R * Math.cos(alfa);
+				double y = sgnY * R * Math.sin(alfa);
+				
+				v.setX((int)x);
+				v.setY((int)y);
+				num++;
+			}
 		}
 	}
 	

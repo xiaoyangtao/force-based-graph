@@ -47,6 +47,7 @@ public class GraphPanel extends JPanel{
 	JButton startAnimated = new JButton("Start Animated");
 	JButton startNormal = new JButton("Start Normal");
 	JButton loadGraph = new JButton("Load Graph");
+	JButton restartGraph = new JButton("Restart");
 	
 	private GraphPanel me = this;
 	
@@ -172,6 +173,7 @@ public class GraphPanel extends JPanel{
 					engine.stopAnimation();
 					graphContener = GraphLoader.load(file);
 					engine.setGraphContener(graphContener);
+					engine.initCoords();
 		        }
 			}
 		});
@@ -206,11 +208,26 @@ public class GraphPanel extends JPanel{
 			}
 		});
 		
+		restartGraph.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				if(graphContener != null && graphContener.getFilePath() != null){
+					System.out.println("Restarting engine");
+					engine.stopNormal();
+					engine.stopAnimation();
+					graphContener = GraphLoader.load(new File(graphContener.getFilePath()));
+					engine.setGraphContener(graphContener);
+					engine.initCoords();
+				}
+			}
+		});
+
+		
 		
 		JPanel buttonContener = new JPanel();
 		buttonContener.add(startAnimated);
 		buttonContener.add(startNormal);
 		buttonContener.add(loadGraph);
+		buttonContener.add(restartGraph);
 		
 		add(buttonContener, BorderLayout.SOUTH);
 
@@ -234,8 +251,8 @@ public class GraphPanel extends JPanel{
 		
 		startNormal.addKeyListener(adapter);
 		startAnimated.addKeyListener(adapter);
-		
-		
+		loadGraph.addKeyListener(adapter);
+		restartGraph.addKeyListener(adapter);
 	}
 
 	private void saveScreenshot(){
