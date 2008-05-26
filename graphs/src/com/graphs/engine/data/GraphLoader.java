@@ -18,7 +18,7 @@ public class GraphLoader extends DefaultHandler{
 
 	
 	static GraphContener graphContener;
-	
+	static String filePath;
 	
 	public void startElement(String uri, String localName, String name,
 			Attributes attributes) throws SAXException {
@@ -26,6 +26,7 @@ public class GraphLoader extends DefaultHandler{
 		if(name.equals("graph")){
 			System.out.println("Creating graph " + attributes.getValue("name"));
 			graphContener = new GraphContener(attributes.getValue("name"));
+			graphContener.setFilePath(filePath);
 		}
 		else if(name.equals("v")){
 			try {
@@ -45,6 +46,7 @@ public class GraphLoader extends DefaultHandler{
 		}
 		else if(name.equals("coord")){
 			try {
+				graphContener.setHasCoordinates(true);
 				graphContener.getVertex(attributes.getValue("id")).setX(Integer.parseInt(attributes.getValue("x")));
 				graphContener.getVertex(attributes.getValue("id")).setY(Integer.parseInt(attributes.getValue("y")));
 			}
@@ -61,6 +63,7 @@ public class GraphLoader extends DefaultHandler{
 	public static GraphContener load(File file){
 		try {
 			System.out.println("XML File exists : " + (new File(Settings.XMLFileName).exists()));
+			filePath = file.getAbsolutePath();
 			SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
 			
 			parser.parse(file, new GraphLoader());
@@ -83,7 +86,7 @@ public class GraphLoader extends DefaultHandler{
 		try {
 			System.out.println("XML File exists : " + (new File(Settings.XMLFileName).exists()));
 			SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-			
+			filePath = Settings.XMLFileName;
 			parser.parse(new File(Settings.XMLFileName), new GraphLoader());
 			
 		} catch (FileNotFoundException e1) {
