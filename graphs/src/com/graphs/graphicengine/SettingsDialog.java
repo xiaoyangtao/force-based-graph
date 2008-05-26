@@ -17,6 +17,11 @@ public class SettingsDialog extends JFrame {
 	private static double HOOKE_K_const = 300;
 	private static double DAMPING_const = 700;
 	
+	private static int MAX_GRAVITY = 100000;
+	private static int MAX_HOOKE_K = 1500;
+	private static int MAX_DAMPING = 1000;
+	
+	
 	private static final long serialVersionUID = 1L;
 
 	private JPanel jContentPane = null;
@@ -160,7 +165,7 @@ public class SettingsDialog extends JFrame {
 	 */
 	private JSlider getGravity() {
 		if (gravity == null) {
-			gravity = new JSlider(1, 10000);
+			gravity = new JSlider(1, MAX_GRAVITY);
 			gravity.setPaintLabels(true);
 			gravity.setPaintTicks(false);
 			gravity.setName("Gravity");
@@ -183,7 +188,7 @@ public class SettingsDialog extends JFrame {
 	 */
 	private JSlider getHook() {
 		if (hook == null) {
-			hook = new JSlider(1,1500);
+			hook = new JSlider(1,MAX_HOOKE_K);
 			hook.addChangeListener(new javax.swing.event.ChangeListener() {
 				public void stateChanged(javax.swing.event.ChangeEvent e) {
 					HOOKE_K_const = hook.getValue()/1000.0;
@@ -201,7 +206,7 @@ public class SettingsDialog extends JFrame {
 	 */
 	private JSlider getDamping() {
 		if (damping == null) {
-			damping = new JSlider(0,1000);
+			damping = new JSlider(0,MAX_DAMPING);
 			damping.addChangeListener(new javax.swing.event.ChangeListener() {
 				public void stateChanged(javax.swing.event.ChangeEvent e) {
 					DAMPING_const = damping.getValue()/1000.0;

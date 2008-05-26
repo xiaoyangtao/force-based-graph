@@ -11,7 +11,7 @@ import com.graphs.engine.data.GraphContener;
 import com.graphs.engine.data.Settings;
 
 public class GraphFrame extends JFrame {
-	private int FRAME_WIDTH = 600;
+	private int FRAME_WIDTH = 650;
 	private int FRAME_HEIGHT = 600;
 	private final String APP_TITLE = "Graphs";
 	

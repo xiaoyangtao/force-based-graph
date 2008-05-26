@@ -53,12 +53,14 @@ public class GraphGenerator {
 		
 		ArrayList<Edge> randomEdges = new ArrayList<Edge>();
 		
+		System.out.println("Possible edges count = " + allPossibleEdges.size());
+		
 		if(edgesNum > allPossibleEdges.size()){
 			JOptionPane.showMessageDialog(null, "To many edges !", "Error", JOptionPane.WARNING_MESSAGE);
 		}
 		
 		for(int i = 0;i < edgesNum;i++){
-			int sel = (int)((edgesNum-1) * Math.random());
+			int sel = (int)((allPossibleEdges.size()-1) * Math.random());
 			Edge e = allPossibleEdges.get(sel);
 			allPossibleEdges.remove(sel);
 			randomEdges.add(e);

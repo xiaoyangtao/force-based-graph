@@ -32,6 +32,7 @@ import javax.swing.Timer;
 
 import com.graphs.engine.algorithm.PhisicEngine;
 import com.graphs.engine.data.Edge;
+import com.graphs.engine.data.EngineTest;
 import com.graphs.engine.data.GraphContener;
 import com.graphs.engine.data.GraphException;
 import com.graphs.engine.data.GraphLoader;
@@ -48,6 +49,8 @@ public class GraphPanel extends JPanel{
 	JButton startNormal = new JButton("Start Normal");
 	JButton loadGraph = new JButton("Load Graph");
 	JButton restartGraph = new JButton("Restart");
+	JButton graphGenerator = new JButton("Generator");
+	JButton engineTest = new JButton("Engine Test");
 	
 	private GraphPanel me = this;
 	
@@ -221,13 +224,26 @@ public class GraphPanel extends JPanel{
 			}
 		});
 
-		
+		graphGenerator.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				GeneratorDialog.showGeneratorDialog();
+			}
+		});
+
+		engineTest.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				EngineTest.testEngine();
+			}
+		});
+
 		
 		JPanel buttonContener = new JPanel();
 		buttonContener.add(startAnimated);
 		buttonContener.add(startNormal);
 		buttonContener.add(loadGraph);
 		buttonContener.add(restartGraph);
+		buttonContener.add(graphGenerator);
+		buttonContener.add(engineTest);
 		
 		add(buttonContener, BorderLayout.SOUTH);
 
@@ -253,12 +269,38 @@ public class GraphPanel extends JPanel{
 		startAnimated.addKeyListener(adapter);
 		loadGraph.addKeyListener(adapter);
 		restartGraph.addKeyListener(adapter);
+		engineTest.addKeyListener(adapter);
+		graphGenerator.addKeyListener(adapter);
 	}
 
+	private int getMaxHeight(){
+		int maxH = 0;
+		for(Iterator<Vertex> iter = graphContener.getVertexes().iterator();iter.hasNext();){
+			Vertex v = (Vertex)iter.next();
+			if(v.getY() > maxH){
+				maxH = (int)v.getY();
+			}
+		}
+		return maxH;
+	}
+	
+	private int getMaxWidth(){
+		int maxW = 0;
+		for(Iterator<Vertex> iter = graphContener.getVertexes().iterator();iter.hasNext();){
+			Vertex v = (Vertex)iter.next();
+			if(v.getX() > maxW){
+				maxW = (int)v.getX();
+			}
+		}
+		return maxW;
+	}
+
+	
 	private void saveScreenshot(){
-		BufferedImage buff = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+		
+		BufferedImage buff = new BufferedImage(getMaxWidth() + Vertex.VERTEX_SIZE, getMaxHeight() + Vertex.VERTEX_SIZE, BufferedImage.TYPE_INT_RGB);
 		buff.getGraphics().setColor(Color.white);
-		buff.getGraphics().fillRect(0, 0, getWidth(), getHeight());
+		buff.getGraphics().fillRect(0, 0, getMaxWidth() + Vertex.VERTEX_SIZE, getMaxHeight() + Vertex.VERTEX_SIZE);
 		drawGraph((Graphics2D)buff.getGraphics());
 		try {
 			ImageIO.write(buff, "jpg", new File(SCREENSHOOT_FILENAME));

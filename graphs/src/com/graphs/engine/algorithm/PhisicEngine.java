@@ -52,16 +52,16 @@ public class PhisicEngine {
 	public void initCoords(){
 		if(!graphContener.isHasCoordinates()){
 			int vCount = graphContener.getVertexes().size();
-			int R = 200;
+			double R = (3.0 * vCount * Vertex.VERTEX_SIZE)/ (2.0 * Math.PI);
 			double alfa = 0;
 			int num = 0;
 			for(Iterator<Vertex> iter = graphContener.getVertexes().iterator(); iter.hasNext();){
 				Vertex v = (Vertex)iter.next();
-				alfa = (2*Math.PI/vCount) * num;
+				alfa = (2.0*Math.PI/vCount) * (double)num;
 				int sgnX = 1;
 				int sgnY = -1;
-				double x = sgnX * R * Math.cos(alfa);
-				double y = sgnY * R * Math.sin(alfa);
+				double x = sgnX * R * Math.cos(alfa) + R + Vertex.VERTEX_SIZE;
+				double y = sgnY * R * Math.sin(alfa) + R + Vertex.VERTEX_SIZE;
 				
 				v.setX((int)x);
 				v.setY((int)y);

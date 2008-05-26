@@ -11,8 +11,11 @@ import javax.swing.JTextField;
 import java.awt.Insets;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import com.graphs.engine.data.GraphGenerator;
 
@@ -67,6 +70,7 @@ public class GeneratorDialog extends JDialog {
 	 */
 	private void initialize() {
 		this.setSize(300, 200);
+		this.setLocation(400, 300);
 		this.setContentPane(getJContentPane());
 	}
 
@@ -157,8 +161,45 @@ public class GeneratorDialog extends JDialog {
 			numVertex.setPreferredSize(new Dimension(100, 20));
 			numVertex.setToolTipText("");
 			numVertex.setText("10");
+			this.setTitle("Max edges : " + getMaxEdgesCount(10));
+			numVertex.getDocument().addDocumentListener(new DocumentListener(){
+				public void changedUpdate(DocumentEvent e) {
+					try{
+						int vCount = Integer.parseInt(numVertex.getText());
+						GeneratorDialog.this.setTitle("Max edges : " + getMaxEdgesCount(vCount));
+					}
+					catch(Exception ne){
+						GeneratorDialog.this.setTitle("Max edges : number format is wrong");
+					}
+					
+				}
+				
+				public void insertUpdate(DocumentEvent e) {
+					try{
+						int vCount = Integer.parseInt(numVertex.getText());
+						GeneratorDialog.this.setTitle("Max edges : " + getMaxEdgesCount(vCount));
+					}
+					catch(Exception ne){
+						GeneratorDialog.this.setTitle("Max edges : number format is wrong");
+					}
+				}
+				
+				public void removeUpdate(DocumentEvent e) {
+					try{
+						int vCount = Integer.parseInt(numVertex.getText());
+						GeneratorDialog.this.setTitle("Max edges : " + getMaxEdgesCount(vCount));
+					}
+					catch(Exception ne){
+						GeneratorDialog.this.setTitle("Max edges : number format is wrong");
+					}
+				}
+			});
 		}
 		return numVertex;
+	}
+	
+	private int getMaxEdgesCount(int vertexNum){
+		return (vertexNum * (vertexNum-1))/2;
 	}
 
 	/**
@@ -169,8 +210,7 @@ public class GeneratorDialog extends JDialog {
 	private JTextField getNumEdges() {
 		if (numEdges == null) {
 			numEdges = new JTextField();
-			numEdges.setPreferredSize(new Dimension(100, 20));
-			numEdges.setText("5");
+			numEdges.setPreferredSize(new Dimension(100, 20));			numEdges.setText("5");
 		}
 		return numEdges;
 	}
@@ -186,7 +226,21 @@ public class GeneratorDialog extends JDialog {
 			Generate.setText("Generate");
 			Generate.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("actionPerformed() - generating"); 
+					System.out.println("actionPerformed() - generating");
+					try{
+						int vCount = Integer.parseInt(numVertex.getText());
+						int eCount = Integer.parseInt(numEdges.getText());
+						int gCount = Integer.parseInt(numGraphs.getText());
+						if (eCount > getMaxEdgesCount(vCount)){
+							JOptionPane.showMessageDialog(GeneratorDialog.this, "Too many edges", "", 0);
+							return;
+						}
+					}
+					catch(Exception ne){
+						JOptionPane.showMessageDialog(GeneratorDialog.this, "Wrong number fomat", "", 0);
+						return;
+					}
+
 					GraphGenerator.prepareCatalog();
 					for(int i = 0; i < Integer.parseInt(numGraphs.getText()); i++){
 						GraphGenerator.saveGraph(GraphGenerator.generate(Integer.parseInt(numVertex.getText()), Integer.parseInt(numEdges.getText()), i) );
@@ -211,11 +265,14 @@ public class GeneratorDialog extends JDialog {
 		return numGraphs;
 	}
 
-	public static void main(String[] args) {
+	public static void showGeneratorDialog(){
 		GeneratorDialog generator = new GeneratorDialog(null);
-		generator.addWindowListener(onClose);
+		//generator.addWindowListener(onClose);
 		generator.setVisible(true);
-		
+	}
+	
+	public static void main(String[] args) {
+		showGeneratorDialog();
 	}
 
 }
