@@ -66,8 +66,11 @@ public class GraphLoader extends DefaultHandler{
 			filePath = file.getAbsolutePath();
 			SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
 			
+			System.out.println("Starting parsing ...");
+			
 			parser.parse(file, new GraphLoader());
 			
+			System.out.println("Parsing ended");
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (SAXException e) {
