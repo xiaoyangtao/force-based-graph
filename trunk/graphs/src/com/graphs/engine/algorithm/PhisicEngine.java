@@ -3,6 +3,7 @@ package com.graphs.engine.algorithm;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.DataInputStream;
 import java.util.Date;
 import java.util.Iterator;
@@ -11,7 +12,9 @@ import javax.swing.Timer;
 
 import com.graphs.engine.data.Edge;
 import com.graphs.engine.data.GraphContener;
+import com.graphs.engine.data.RunResult;
 import com.graphs.engine.data.Vertex;
+import com.graphs.graphicengine.GraphDrawer;
 import com.graphs.graphicengine.SettingsDialog;
 import com.graphs.graphicengine.StatsFrame;
 
@@ -184,6 +187,27 @@ public class PhisicEngine {
 		recalcCoords();
 	}
 	
+	private long runPureAlgorithm(){
+		double minChange = 0.0001; 
+		
+		kinetic = 0;
+		double oldKinetic = 0;
+
+		Date start = new Date();
+		while(kinetic == 0  || Math.abs((double)(oldKinetic - kinetic))/(double)kinetic > minChange){
+			if(kinetic != 0){
+				oldKinetic = kinetic;
+			}
+			else
+				oldKinetic = Integer.MAX_VALUE;
+						
+			runAlgorithmStep();
+		}
+		long runTime = (new Date()).getTime() - start.getTime();
+		
+		return runTime;
+	}
+	
 	private void runAlgorithm(){
 		//StatsFrame.setLogsOn(false);
 		
@@ -236,6 +260,24 @@ public class PhisicEngine {
 	public void stopNormal(){
 		stopNormalRunner = true;
 		initRunner();
+	}
+	
+	
+	public RunResult processGraph(GraphContener graphContener){
+		RunResult result = new RunResult();
+		this.graphContener = graphContener;
+		initCoords();
+		long time = runPureAlgorithm();
+		result.setTime(time);
+		
+		BufferedImage img = GraphDrawer.generateImage(graphContener);
+		result.setImage(img);
+		return result;
+	}
+	
+	
+	public PhisicEngine() {
+		
 	}
 	
 	public PhisicEngine(GraphContener graphContener) {

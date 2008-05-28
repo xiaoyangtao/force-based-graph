@@ -62,7 +62,7 @@ public class GraphLoader extends DefaultHandler{
 	
 	public static GraphContener load(File file){
 		try {
-			System.out.println("XML File exists : " + (new File(Settings.XMLFileName).exists()));
+			//System.out.println("XML File exists : " + (new File(Settings.XMLFileName).exists()));
 			filePath = file.getAbsolutePath();
 			SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
 			
@@ -80,7 +80,6 @@ public class GraphLoader extends DefaultHandler{
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		}
-		
 		
 		return graphContener;
 	}

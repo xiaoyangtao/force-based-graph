@@ -273,35 +273,9 @@ public class GraphPanel extends JPanel{
 		graphGenerator.addKeyListener(adapter);
 	}
 
-	private int getMaxHeight(){
-		int maxH = 0;
-		for(Iterator<Vertex> iter = graphContener.getVertexes().iterator();iter.hasNext();){
-			Vertex v = (Vertex)iter.next();
-			if(v.getY() > maxH){
-				maxH = (int)v.getY();
-			}
-		}
-		return maxH;
-	}
-	
-	private int getMaxWidth(){
-		int maxW = 0;
-		for(Iterator<Vertex> iter = graphContener.getVertexes().iterator();iter.hasNext();){
-			Vertex v = (Vertex)iter.next();
-			if(v.getX() > maxW){
-				maxW = (int)v.getX();
-			}
-		}
-		return maxW;
-	}
-
 	
 	private void saveScreenshot(){
-		
-		BufferedImage buff = new BufferedImage(getMaxWidth() + Vertex.VERTEX_SIZE, getMaxHeight() + Vertex.VERTEX_SIZE, BufferedImage.TYPE_INT_RGB);
-		buff.getGraphics().setColor(Color.white);
-		buff.getGraphics().fillRect(0, 0, getMaxWidth() + Vertex.VERTEX_SIZE, getMaxHeight() + Vertex.VERTEX_SIZE);
-		drawGraph((Graphics2D)buff.getGraphics());
+		BufferedImage buff = GraphDrawer.generateImage(graphContener);
 		try {
 			ImageIO.write(buff, "jpg", new File(SCREENSHOOT_FILENAME));
 		} catch (IOException e1) {
@@ -325,34 +299,21 @@ public class GraphPanel extends JPanel{
 		g.drawString(DateFormat.getTimeInstance().format(now), 20, 20);
 	}
 	
-	private void drawGraph(Graphics2D g){
+
+	
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		drawTime((Graphics2D)g);
+		GraphDrawer.drawGraph((Graphics2D)g, graphContener);
+		drawNewEdge((Graphics2D)g);
+	}
+	
+	private void drawNewEdge(Graphics2D g){
 		// save old ransformation
 		AffineTransform saveAT = g.getTransform();
 		
 		g.translate(graphContener.getTranslationX(), graphContener.getTranslationY());
-		for(Iterator<Edge> iter = graphContener.getAllEdges().iterator();iter.hasNext();){
-			Edge v = (Edge)iter.next();
-			g.setColor(Color.black);
-			g.drawLine((int)v.getA().getX(), (int)v.getA().getY(), 
-					(int)v.getB().getX(), (int)v.getB().getY());
-		}
 
-		for(Iterator<Vertex> iter = graphContener.getVertexes().iterator();iter.hasNext();){
-			Vertex v = (Vertex)iter.next();
-			if(v == graphContener.getSelectedVertex())
-				g.setColor(Color.red);
-			else
-				g.setColor(Color.green);
-			g.fillOval((int)(v.getX() - Vertex.VERTEX_SIZE/2), (int)(v.getY() - Vertex.VERTEX_SIZE/2), Vertex.VERTEX_SIZE, Vertex.VERTEX_SIZE);
-			g.setColor(Color.black);
-			g.drawOval((int)(v.getX() - Vertex.VERTEX_SIZE/2), (int)(v.getY() - Vertex.VERTEX_SIZE/2), Vertex.VERTEX_SIZE, Vertex.VERTEX_SIZE);
-			if(v.getId().length() == 2)
-				g.drawString(v.getId(), (int)(v.getX()-7), (int)(v.getY() + Vertex.VERTEX_SIZE/2-6));
-			else if (v.getId().length() == 1)
-				g.drawString(v.getId(), (int)(v.getX()-3), (int)(v.getY() + Vertex.VERTEX_SIZE/2-6));
-			else
-				g.drawString(v.getId().substring(0,1) + "..", (int)(v.getX()-7), (int)(v.getY() + Vertex.VERTEX_SIZE/2-6));
-		}
 		
 		// new edge
 		g.setColor(Color.black);
@@ -363,12 +324,6 @@ public class GraphPanel extends JPanel{
 		//restore transformation
 		
 		g.setTransform(saveAT);
-	}
-	
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		drawTime((Graphics2D)g);
-		drawGraph((Graphics2D)g);
 	}
 	
 	public GraphContener getGraphContener() {
