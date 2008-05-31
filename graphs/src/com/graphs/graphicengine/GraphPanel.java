@@ -304,7 +304,7 @@ public class GraphPanel extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		drawTime((Graphics2D)g);
-		GraphDrawer.drawGraph((Graphics2D)g, graphContener);
+		GraphDrawer.drawGraph((Graphics2D)g, graphContener,0 ,0, false);
 		drawNewEdge((Graphics2D)g);
 	}
 	
