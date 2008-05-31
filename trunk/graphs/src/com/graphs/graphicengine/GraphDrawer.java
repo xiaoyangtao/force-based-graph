@@ -34,19 +34,61 @@ public class GraphDrawer {
 		return maxW;
 	}
 	
+	private static int getMinHeight(GraphContener graphContener){
+		int minH = Integer.MAX_VALUE;
+		for(Iterator<Vertex> iter = graphContener.getVertexes().iterator();iter.hasNext();){
+			Vertex v = (Vertex)iter.next();
+			if(v.getY() < minH){
+				minH = (int)v.getY();
+			}
+		}
+		return minH;
+	}
+	
+	private static int getMinWidth(GraphContener graphContener){
+		int minW = Integer.MAX_VALUE;
+		for(Iterator<Vertex> iter = graphContener.getVertexes().iterator();iter.hasNext();){
+			Vertex v = (Vertex)iter.next();
+			if(v.getX() < minW){
+				minW = (int)v.getX();
+			}
+		}
+		return minW;
+	}
+	
 	public static BufferedImage generateImage(GraphContener graphContener){
-		BufferedImage buff = new BufferedImage(getMaxWidth(graphContener) + Vertex.VERTEX_SIZE, getMaxHeight(graphContener) + Vertex.VERTEX_SIZE, BufferedImage.TYPE_INT_RGB);
+		int minWidth = getMinWidth(graphContener);
+		int minHeight = getMinHeight(graphContener);
+		if(minWidth > 0){
+			minWidth = 0;
+		}
+		if(minHeight > 0){
+			minHeight = 0;
+		}
+		System.out.println("Preparing to draw image of size : " + getMaxWidth(graphContener) + (-minWidth)+ 2 * Vertex.VERTEX_SIZE+ 
+				", " + getMaxHeight(graphContener) + (-minHeight) + 2 * Vertex.VERTEX_SIZE);
+		BufferedImage buff = new BufferedImage(getMaxWidth(graphContener) + (-minWidth)+ 2 * Vertex.VERTEX_SIZE,
+				getMaxHeight(graphContener) + (-minHeight) + 2 * Vertex.VERTEX_SIZE, 
+				BufferedImage.TYPE_INT_RGB);
 		buff.getGraphics().setColor(Color.white);
-		buff.getGraphics().fillRect(0, 0, getMaxWidth(graphContener) + Vertex.VERTEX_SIZE, getMaxHeight(graphContener) + Vertex.VERTEX_SIZE);
-		drawGraph((Graphics2D)buff.getGraphics(), graphContener);
+		buff.getGraphics().fillRect(0, 0, getMaxWidth(graphContener) + (-minWidth)+ 2 * Vertex.VERTEX_SIZE,
+				getMaxHeight(graphContener) + (-minHeight) + 2 * Vertex.VERTEX_SIZE);
+		drawGraph((Graphics2D)buff.getGraphics(), graphContener, minWidth, minHeight, true);
 		return buff;
 	}
 	
-	public static void drawGraph(Graphics2D g, GraphContener graphContener){
+
+	public static void drawGraph(Graphics2D g, GraphContener graphContener, int transX, int transY, boolean translate){
 		// save old ransformation
 		AffineTransform saveAT = g.getTransform();
 		
-		g.translate(graphContener.getTranslationX(), graphContener.getTranslationY());
+		if(!translate){
+			g.translate(graphContener.getTranslationX(), graphContener.getTranslationY());
+		}
+		else{
+			System.out.println("Translating image to draw : " + transX + ", " + transY);
+			g.translate(-transX + Vertex.VERTEX_SIZE, -transY + Vertex.VERTEX_SIZE);
+		}
 		for(Iterator<Edge> iter = graphContener.getAllEdges().iterator();iter.hasNext();){
 			Edge v = (Edge)iter.next();
 			g.setColor(Color.black);
