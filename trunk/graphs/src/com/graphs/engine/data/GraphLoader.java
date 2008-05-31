@@ -79,7 +79,7 @@ public class GraphLoader extends DefaultHandler{
 			e.printStackTrace();
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
-		}
+		}		
 		
 		return graphContener;
 	}

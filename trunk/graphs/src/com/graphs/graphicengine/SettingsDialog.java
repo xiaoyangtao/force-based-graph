@@ -40,11 +40,11 @@ public class SettingsDialog extends JFrame {
 
 	private static JSlider damping = null;
 
-	private JTextField gravityValue = null;
+	private static JTextField gravityValue = null;
 
-	private JTextField hookValue = null;
+	private static JTextField hookValue = null;
 
-	private JTextField dampingValue = null;
+	private static JTextField dampingValue = null;
 
 	/**
 	 * This is the default constructor
@@ -255,6 +255,30 @@ public class SettingsDialog extends JFrame {
 	public static double getDampingConst(){
 		return DAMPING_const;
 	}
+	
+	public static void setGravityConst(double val){
+		GRAVITY_const = val;
+		if(gravity!= null){
+			gravity.setValue((int)val);
+			gravityValue.setText(String.valueOf((int)val));
+		}
+	}
+	
+	public static void setHookConst(double val){
+		HOOKE_K_const = val;
+		if(hook != null){
+			hook.setValue((int)(val * 1000));
+			hookValue.setText(String.valueOf((int)(val * 1000)));
+		}
+	}
+	
+	public static void setDampingConst(double val){
+		DAMPING_const = val;
+		if(damping != null){
+			damping.setValue((int)(val * 1000));
+			dampingValue.setText(String.valueOf((int)(val * 1000)));
+		}
+	}	
 	
 	/**
 	 * This method initializes dampingValue	
