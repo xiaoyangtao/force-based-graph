@@ -25,6 +25,14 @@ public class PhisicEngine {
 	//private double HOOKE_K = 0.3;
 	//private double DAMPING = 0.7;
 	
+	private int minFrontierX = -200;
+	private int minFrontierY = -200;
+	private int maxFrontierX = 1200;
+	private int maxFrontierY = 1200;
+	
+	// Jesli zmiana energi kinetycznej bedzie ponizej minChange to algorytm zostaje zatrzymany
+	private double minChange = 0.000001; 
+	
 	private double SPRING_MINIMAL_LENGTH = 80; 
 	
 	private GraphContener graphContener;
@@ -50,6 +58,16 @@ public class PhisicEngine {
 	
 	private double getSpringMinimalLen(){
 		return SPRING_MINIMAL_LENGTH;
+	}
+	
+	public void estimateEngineParameters(){
+		int egesCount = graphContener.getAllEdges().size();
+		int vertexCount = graphContener.getVertexes().size();
+		int maxEdges = (vertexCount * (vertexCount-1))/2;
+		
+		double saturation = (double)egesCount/(double)maxEdges;
+		
+		SettingsDialog.setGravityConst(10000);
 	}
 	
 	public void initCoords(){
@@ -148,9 +166,24 @@ public class PhisicEngine {
 				sumHookeFy += hookeFy;
 			}
 			
-			// alltogether
-			base.setDx((base.getDx() + sumGravityFx + sumHookeFx) * getDamping());
-			base.setDy((base.getDy() + sumGravityFy + sumHookeFy) * getDamping());
+			if((base.getX() < minFrontierX || base.getX() > maxFrontierX) &&
+					(base.getY() < minFrontierY || base.getY() > maxFrontierY)){
+				base.setDx((base.getDx() + sumGravityFx + sumHookeFx) * Math.pow(getDamping(), 12));
+				base.setDy((base.getDy() + sumGravityFy + sumHookeFy) * Math.pow(getDamping(), 12));
+			}
+			else if(base.getX() < minFrontierX || base.getX() > maxFrontierX){
+				base.setDx((base.getDx() + sumGravityFx + sumHookeFx) * Math.pow(getDamping(), 12));
+				base.setDy((base.getDy() + sumGravityFy + sumHookeFy) * getDamping());				
+			}
+			else if(base.getY() < minFrontierY || base.getY() > maxFrontierY){
+				base.setDx((base.getDx() + sumGravityFx + sumHookeFx) * getDamping());
+				base.setDy((base.getDy() + sumGravityFy + sumHookeFy) * Math.pow(getDamping(), 12));
+			}
+			else{
+				// alltogether
+				base.setDx((base.getDx() + sumGravityFx + sumHookeFx) * getDamping());
+				base.setDy((base.getDy() + sumGravityFy + sumHookeFy) * getDamping());
+			}
 			
 		}
 		
@@ -188,7 +221,6 @@ public class PhisicEngine {
 	}
 	
 	private long runPureAlgorithm(){
-		double minChange = 0.0001; 
 		
 		kinetic = 0;
 		double oldKinetic = 0;
@@ -267,6 +299,9 @@ public class PhisicEngine {
 		RunResult result = new RunResult();
 		this.graphContener = graphContener;
 		initCoords();
+		
+		estimateEngineParameters();
+		
 		long time = runPureAlgorithm();
 		result.setTime(time);
 		

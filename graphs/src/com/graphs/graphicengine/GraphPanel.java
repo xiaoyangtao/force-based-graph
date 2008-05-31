@@ -162,6 +162,7 @@ public class GraphPanel extends JPanel{
 		
 		graphContener = data;
 		engine = new PhisicEngine(data);
+		engine.estimateEngineParameters();
 		prepareRepainter();
 		repainter.start();
 		
