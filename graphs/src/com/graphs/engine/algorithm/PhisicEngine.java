@@ -67,8 +67,8 @@ public class PhisicEngine {
 	
 	public void estimateEngineParameters(){
 		double gravity = 10000;
-		double hook = 200;
-		double damping = 100; 
+		double hook = 0.2;
+		double damping = 0.1; 
 		int egesCount = graphContener.getAllEdges().size();
 		int vertexCount = graphContener.getVertexes().size();
 		int maxEdges = (vertexCount * (vertexCount-1))/2;
