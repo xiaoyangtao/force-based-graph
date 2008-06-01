@@ -10,6 +10,7 @@ import javax.swing.JSlider;
 import java.awt.GridBagConstraints;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JCheckBox;
 
 public class SettingsDialog extends JFrame {
 
@@ -45,7 +46,8 @@ public class SettingsDialog extends JFrame {
 	private static JTextField hookValue = null;
 
 	private static JTextField dampingValue = null;
-
+	private JLabel jLabel = null;
+	private static JCheckBox resolveCrossed = null;
 	/**
 	 * This is the default constructor
 	 */
@@ -60,7 +62,7 @@ public class SettingsDialog extends JFrame {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(300, 162);
+		this.setSize(300, 186);
 		this.setLocation(new Point(0, 70));
 		this.setContentPane(getJContentPane());
 		this.setTitle("Engine Parameters");
@@ -96,6 +98,14 @@ public class SettingsDialog extends JFrame {
 	 */
 	private JPanel getCenterPanel() {
 		if (centerPanel == null) {
+			GridBagConstraints gridBagConstraints51 = new GridBagConstraints();
+			gridBagConstraints51.gridx = 1;
+			gridBagConstraints51.gridy = 6;
+			GridBagConstraints gridBagConstraints32 = new GridBagConstraints();
+			gridBagConstraints32.gridx = 0;
+			gridBagConstraints32.gridy = 6;
+			jLabel = new JLabel();
+			jLabel.setText("Resolve crossed edges");
 			GridBagConstraints gridBagConstraints41 = new GridBagConstraints();
 			gridBagConstraints41.fill = GridBagConstraints.VERTICAL;
 			gridBagConstraints41.gridy = 5;
@@ -153,6 +163,8 @@ public class SettingsDialog extends JFrame {
 			centerPanel.add(getGravityValue(), gridBagConstraints11);
 			centerPanel.add(getHookValue(), gridBagConstraints31);
 			centerPanel.add(getDampingValue(), gridBagConstraints41);
+			centerPanel.add(jLabel, gridBagConstraints32);
+			centerPanel.add(getResolveCrossed(), gridBagConstraints51);
 		}
 
 		return centerPanel;
@@ -286,6 +298,14 @@ public class SettingsDialog extends JFrame {
 		}
 	}	
 	
+	public static boolean getResolveCrossedEdges(){
+		return resolveCrossed.isSelected();
+	}
+	
+	public static void setResolveCrossedEdges(boolean resolve){
+		resolveCrossed.setSelected(resolve);
+	}
+	
 	/**
 	 * This method initializes dampingValue	
 	 * 	
@@ -298,6 +318,18 @@ public class SettingsDialog extends JFrame {
 
 		}
 		return dampingValue;
+	}
+
+	/**
+	 * This method initializes resolveCrossed	
+	 * 	
+	 * @return javax.swing.JCheckBox	
+	 */
+	private JCheckBox getResolveCrossed() {
+		if (resolveCrossed == null) {
+			resolveCrossed = new JCheckBox();
+		}
+		return resolveCrossed;
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="16,10"
