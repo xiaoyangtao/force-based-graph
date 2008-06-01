@@ -265,18 +265,18 @@ public class SettingsDialog extends JFrame {
 	}
 	
 	public static void setHookConst(double val){
-		HOOKE_K_const = val;
+		HOOKE_K_const = val * 1000;
 		if(hook != null){
-			hook.setValue((int)(val));
-			hookValue.setText(String.valueOf((int)(val)));
+			hook.setValue((int)(val * 1000));
+			hookValue.setText(String.valueOf((val)));
 		}
 	}
 	
 	public static void setDampingConst(double val){
-		DAMPING_const = val;
+		DAMPING_const = val * 1000;
 		if(damping != null){
-			damping.setValue((int)(val));
-			dampingValue.setText(String.valueOf((int)(val)));
+			damping.setValue((int)(val * 1000));
+			dampingValue.setText(String.valueOf((val)));
 		}
 	}	
 	
