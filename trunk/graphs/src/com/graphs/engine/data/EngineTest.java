@@ -1,5 +1,6 @@
 package com.graphs.engine.data;
 
+import java.awt.Component;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -14,7 +15,7 @@ import com.graphs.graphicengine.SettingsDialog;
 
 
 public class EngineTest {
-	public static void testEngine(){
+	public static void testEngine(Component frame/*component neccesary for JOptionPane - yes/no dialog*/){
 		System.out.println("Starting engine test");
 		File dir = new File("graphs\\"); 
 		
@@ -49,11 +50,18 @@ public class EngineTest {
 		}
 
 		
+		boolean estimate = false;
+		int resp = JOptionPane.showInternalConfirmDialog(frame, "Estimate engine parameters automatically ?", "Test engine", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+		if(resp == JOptionPane.YES_OPTION){
+			estimate = true;
+		}
+
+		
 		for(int i = 0; i < fileList.length;i++){
 			GraphContener graph = GraphLoader.load(fileList[i]);
 			PhisicEngine p = new PhisicEngine();
 			
-			RunResult res = p.processGraph(graph);
+			RunResult res = p.processGraph(graph, estimate);
 			try {
 				out.write(fileList[i].getName() + "\t" + String.valueOf(res.getTime()) + "\n");
 				out.write("Engine params: gravity = " + SettingsDialog.getGravityConst() + ", " +
@@ -76,7 +84,6 @@ public class EngineTest {
 		try {
 			out.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

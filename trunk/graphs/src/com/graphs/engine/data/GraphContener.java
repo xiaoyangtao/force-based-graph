@@ -1,5 +1,7 @@
 package com.graphs.engine.data;
 
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -40,6 +42,39 @@ public class GraphContener {
 		}
 		return null;
 	}
+	
+	public int getCrossedEdgesCount(){
+		int crossedEdgesCount = 0;
+		for(Iterator iter = getAllEdges().iterator(); iter.hasNext();){
+			Edge basic = (Edge)iter.next();
+			for(Iterator iter2 = getAllEdges().iterator(); iter2.hasNext();){
+				Edge guest = (Edge)iter2.next();
+				if(basic != guest){
+					if(Line2D.linesIntersect(basic.getA().getX(), basic.getA().getY(), 
+											basic.getB().getX(), basic.getB().getY(), 
+											guest.getA().getX(), guest.getA().getY(), 
+											guest.getB().getX(), guest.getB().getY())){
+						if(Point2D.distance(basic.getA().getX(), basic.getA().getY(), 
+											guest.getA().getX(), guest.getA().getY()) != 0){
+							if(Point2D.distance(basic.getA().getX(), basic.getA().getY(), 
+									guest.getB().getX(), guest.getB().getY()) != 0){
+										if(Point2D.distance(basic.getB().getX(), basic.getB().getY(), 
+												guest.getB().getX(), guest.getB().getY()) != 0){
+											if(Point2D.distance(basic.getB().getX(), basic.getB().getY(), 
+													guest.getA().getX(), guest.getA().getY()) != 0){
+
+														crossedEdgesCount++;
+											}
+										}
+							}
+						}
+					}
+				}
+			}
+		}
+		return crossedEdgesCount / 2;
+	}
+
 	
 	public void addEdge(Vertex a, Vertex b) throws GraphException{
 		for(Iterator<Edge> iter = getAllEdges().iterator(); iter.hasNext();){

@@ -20,6 +20,7 @@ public class GraphDrawer {
 				maxH = (int)v.getY();
 			}
 		}
+		System.out.println("max y = " + maxH);
 		return maxH;
 	}
 	
@@ -31,6 +32,7 @@ public class GraphDrawer {
 				maxW = (int)v.getX();
 			}
 		}
+		System.out.println("max x = " + maxW);
 		return maxW;
 	}
 	
@@ -42,6 +44,7 @@ public class GraphDrawer {
 				minH = (int)v.getY();
 			}
 		}
+		System.out.println("min y = " + minH);
 		return minH;
 	}
 	
@@ -53,26 +56,32 @@ public class GraphDrawer {
 				minW = (int)v.getX();
 			}
 		}
+		System.out.println("min x = " + minW);
 		return minW;
 	}
 	
 	public static BufferedImage generateImage(GraphContener graphContener){
 		int minWidth = getMinWidth(graphContener);
 		int minHeight = getMinHeight(graphContener);
+		int maxWidth = getMaxWidth(graphContener);
+		int maxHeight = getMaxHeight(graphContener);
+/*
 		if(minWidth > 0){
 			minWidth = 0;
 		}
 		if(minHeight > 0){
 			minHeight = 0;
 		}
-		System.out.println("Preparing to draw image of size : " + getMaxWidth(graphContener) + (-minWidth)+ 2 * Vertex.VERTEX_SIZE+ 
-				", " + getMaxHeight(graphContener) + (-minHeight) + 2 * Vertex.VERTEX_SIZE);
-		BufferedImage buff = new BufferedImage(getMaxWidth(graphContener) + (-minWidth)+ 2 * Vertex.VERTEX_SIZE,
-				getMaxHeight(graphContener) + (-minHeight) + 2 * Vertex.VERTEX_SIZE, 
+		*/
+		System.out.println("Preparing to draw image of size : " + 
+				(maxWidth + (-minWidth)+ 2 * Vertex.VERTEX_SIZE) + ", " + 
+				(maxHeight + (-minHeight) + 2 * Vertex.VERTEX_SIZE));
+		BufferedImage buff = new BufferedImage(maxWidth + (-minWidth)+ 2 * Vertex.VERTEX_SIZE,
+				maxHeight + (-minHeight) + 2 * Vertex.VERTEX_SIZE, 
 				BufferedImage.TYPE_INT_RGB);
 		buff.getGraphics().setColor(Color.white);
-		buff.getGraphics().fillRect(0, 0, getMaxWidth(graphContener) + (-minWidth)+ 2 * Vertex.VERTEX_SIZE,
-				getMaxHeight(graphContener) + (-minHeight) + 2 * Vertex.VERTEX_SIZE);
+		buff.getGraphics().fillRect(0, 0, maxWidth + (-minWidth)+ 2 * Vertex.VERTEX_SIZE,
+				maxHeight + (-minHeight) + 2 * Vertex.VERTEX_SIZE);
 		drawGraph((Graphics2D)buff.getGraphics(), graphContener, minWidth, minHeight, true);
 		return buff;
 	}

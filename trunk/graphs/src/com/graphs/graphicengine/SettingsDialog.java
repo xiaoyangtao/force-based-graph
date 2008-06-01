@@ -17,7 +17,7 @@ public class SettingsDialog extends JFrame {
 	private static double HOOKE_K_const = 300;
 	private static double DAMPING_const = 700;
 	
-	private static int MAX_GRAVITY = 100000;
+	private static int MAX_GRAVITY = 300000;
 	private static int MAX_HOOKE_K = 1500;
 	private static int MAX_DAMPING = 1000;
 	
@@ -267,16 +267,16 @@ public class SettingsDialog extends JFrame {
 	public static void setHookConst(double val){
 		HOOKE_K_const = val;
 		if(hook != null){
-			hook.setValue((int)(val * 1000));
-			hookValue.setText(String.valueOf((int)(val * 1000)));
+			hook.setValue((int)(val));
+			hookValue.setText(String.valueOf((int)(val)));
 		}
 	}
 	
 	public static void setDampingConst(double val){
 		DAMPING_const = val;
 		if(damping != null){
-			damping.setValue((int)(val * 1000));
-			dampingValue.setText(String.valueOf((int)(val * 1000)));
+			damping.setValue((int)(val));
+			dampingValue.setText(String.valueOf((int)(val)));
 		}
 	}	
 	
