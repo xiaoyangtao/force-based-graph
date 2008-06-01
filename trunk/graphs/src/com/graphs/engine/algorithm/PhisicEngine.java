@@ -122,6 +122,9 @@ public class PhisicEngine {
 				if(other == base)
 					continue;
 				double dist = Math.sqrt(Math.pow(base.getX() - other.getX(),2) + Math.pow(base.getY() -other.getY(),2));
+				if(dist < 2 * Vertex.VERTEX_SIZE){
+					dist = 2 * Vertex.VERTEX_SIZE;
+				}
 				if (dist == 0){
 					System.out.println("Distance is 0 !!!");
 					continue;
