@@ -116,7 +116,17 @@ public class GraphPanel extends JPanel{
 							}
 						});
 						menu.add(itm);
+						
+						itm = new JMenuItem("Calc crossed edges count");
+						itm.addActionListener(new ActionListener(){
+							public void actionPerformed(ActionEvent ae) {
+								int c = graphContener.getCrossedEdgesCount();
+								JOptionPane.showMessageDialog(getParent(), "Crossed edges = " + c);
+							}
+						});
+						menu.add(itm);
 
+						
 						menu.show(e.getComponent(), e.getX(), e.getY());
 						return;
 					}
@@ -233,7 +243,7 @@ public class GraphPanel extends JPanel{
 
 		engineTest.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				EngineTest.testEngine();
+				EngineTest.testEngine(GraphPanel.this.getParent());
 			}
 		});
 

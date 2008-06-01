@@ -1,13 +1,17 @@
 package com.graphs.engine.algorithm;
 
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.io.DataInputStream;
 import java.util.Date;
 import java.util.Iterator;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 import com.graphs.engine.data.Edge;
@@ -60,14 +64,26 @@ public class PhisicEngine {
 		return SPRING_MINIMAL_LENGTH;
 	}
 	
+	
 	public void estimateEngineParameters(){
+		double gravity = 10000;
+		double hook = 200;
+		double damping = 100; 
 		int egesCount = graphContener.getAllEdges().size();
 		int vertexCount = graphContener.getVertexes().size();
 		int maxEdges = (vertexCount * (vertexCount-1))/2;
 		
 		double saturation = (double)egesCount/(double)maxEdges;
 		
-		SettingsDialog.setGravityConst(10000);
+		System.out.println("Saturation = " + saturation);
+		
+		int crossedEdgesCount = graphContener.getCrossedEdgesCount();
+		
+		System.out.println("Crossed edges = " + crossedEdgesCount);
+		
+		SettingsDialog.setGravityConst(gravity);
+		SettingsDialog.setHookConst(hook);
+		SettingsDialog.setDampingConst(damping);
 	}
 	
 	public void initCoords(){
@@ -243,7 +259,7 @@ public class PhisicEngine {
 	private void runAlgorithm(){
 		//StatsFrame.setLogsOn(false);
 		
-		double minChange = 0.0001; 
+		//double minChange = 0.0001; 
 		
 		kinetic = 0;
 		double oldKinetic = 0;
@@ -295,18 +311,26 @@ public class PhisicEngine {
 	}
 	
 	
-	public RunResult processGraph(GraphContener graphContener){
+	public RunResult processGraph(GraphContener graphContener, boolean estimate){
+		System.out.println("Starting graph processing ...");
 		RunResult result = new RunResult();
 		this.graphContener = graphContener;
 		initCoords();
 		
-		estimateEngineParameters();
+		//JOptionPane.showMessageDialog(null, "fds");
+		//JOptionPane.show
+		if(estimate){
+			estimateEngineParameters();
+		}
+				
 		
 		long time = runPureAlgorithm();
 		result.setTime(time);
 		
 		BufferedImage img = GraphDrawer.generateImage(graphContener);
 		result.setImage(img);
+		
+		System.out.println("Graph processing ended");
 		return result;
 	}
 	
@@ -320,7 +344,6 @@ public class PhisicEngine {
 		initCoords();
 		initRunner();
 	}
-
 	public void setGraphContener(GraphContener graphContener) {
 		this.graphContener = graphContener;
 	}
