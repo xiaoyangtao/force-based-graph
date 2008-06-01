@@ -9,6 +9,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import java.io.FilenameFilter;
+import java.text.DecimalFormat;
 
 import com.graphs.engine.algorithm.PhisicEngine;
 import com.graphs.graphicengine.SettingsDialog;
@@ -56,7 +57,7 @@ public class EngineTest {
 			estimate = true;
 		}
 
-		
+		DecimalFormat df = new DecimalFormat("0.000");
 		for(int i = 0; i < fileList.length;i++){
 			GraphContener graph = GraphLoader.load(fileList[i]);
 			PhisicEngine p = new PhisicEngine();
@@ -66,6 +67,9 @@ public class EngineTest {
 				out.write(fileList[i].getName() + "\t" + String.valueOf(res.getTime()) + "\n");
 				out.write("Engine params: gravity = " + SettingsDialog.getGravityConst() + ", " +
 						"hook = " + SettingsDialog.getHookConst() + ", damping = " + SettingsDialog.getDampingConst() + "\n");
+				out.write("Crossed edges:"+graph.getCrossedEdgesCount());
+				out.write("\nCrossed edges to edges ratio:"+df.format(((double)graph.getCrossedEdgesCount()/(double)graph.getAllEdges().size())));
+				out.write("\n===================\n");
 			} catch (IOException e1) {				
 				e1.printStackTrace();
 			}
