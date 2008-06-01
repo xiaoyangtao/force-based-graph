@@ -24,11 +24,17 @@ import com.graphs.graphicengine.StatsFrame;
 
 public class PhisicEngine {
 	private final int DELAY = 80;
-	
+	private final boolean gravityRising = false;
+	private int crossedEdges = -1;
+	private boolean crossEdgeResolved = false;
+	private boolean firstStep = true;
+	private double orgGravity = 0;
+	private double orgHook = 0;
+	private double lastEnergyChange = 0;
 	//private double GRAVITY_MULTIPLAYER = 800;
 	//private double HOOKE_K = 0.3;
 	//private double DAMPING = 0.7;
-	
+	private int step=0;
 	private int minFrontierX = -200;
 	private int minFrontierY = -200;
 	private int maxFrontierX = 1200;
@@ -81,8 +87,8 @@ public class PhisicEngine {
 		
 		System.out.println("Crossed edges = " + crossedEdgesCount);
 		
-		SettingsDialog.setGravityConst(gravity);
-		SettingsDialog.setHookConst(hook);
+	////	SettingsDialog.setGravityConst(gravity);
+	//	SettingsDialog.setHookConst(hook);
 		SettingsDialog.setDampingConst(damping);
 	}
 	
@@ -222,8 +228,16 @@ public class PhisicEngine {
 		System.out.println("Initiating runners");
 		animationRunner = new Timer(DELAY,
 				new ActionListener(){
+					double oldKinetic = 0;
 					public void actionPerformed(ActionEvent e) {
+						if(kinetic != 0){
+							oldKinetic = kinetic;
+						}
+						else
+							oldKinetic = Integer.MAX_VALUE;
+									
 						runAlgorithmStep();
+						lastEnergyChange=Math.abs((double)(oldKinetic - kinetic))/(double)kinetic;;
 					}
 				}
 				);
@@ -237,6 +251,31 @@ public class PhisicEngine {
 	private void runAlgorithmStep(){
 		recalcVectors();
 		recalcCoords();
+		if(step>0 && firstStep && lastEnergyChange<minChange*3)
+		{
+			orgGravity = SettingsDialog.getGravityConst();
+			orgHook = SettingsDialog.getHookConst();
+			firstStep=false;
+		}
+		
+		if(!firstStep && !crossEdgeResolved && step%30==0)
+		{
+			int c = graphContener.getCrossedEdgesCount();
+			System.out.println("Crossed edges:"+c);
+			double gravity=SettingsDialog.getGravityConst();
+			if(c>0 && (crossedEdges==c || crossedEdges==1))
+			{
+				gravity+=orgGravity*0.3;
+				SettingsDialog.setGravityConst(gravity);
+			}
+			if(crossedEdges>c || gravity==SettingsDialog.MAX_GRAVITY)
+			{
+				crossEdgeResolved=true;
+				SettingsDialog.setGravityConst(orgGravity);
+			}
+			crossedEdges=c;
+		}
+		step=step+1;
 	}
 	
 	private long runPureAlgorithm(){
@@ -245,7 +284,7 @@ public class PhisicEngine {
 		double oldKinetic = 0;
 
 		Date start = new Date();
-		while(kinetic == 0  || Math.abs((double)(oldKinetic - kinetic))/(double)kinetic > minChange){
+		while(kinetic == 0  || lastEnergyChange > minChange){
 			if(kinetic != 0){
 				oldKinetic = kinetic;
 			}
@@ -253,6 +292,7 @@ public class PhisicEngine {
 				oldKinetic = Integer.MAX_VALUE;
 						
 			runAlgorithmStep();
+			lastEnergyChange=Math.abs((double)(oldKinetic - kinetic))/(double)kinetic;
 		}
 		long runTime = (new Date()).getTime() - start.getTime();
 		
@@ -268,7 +308,7 @@ public class PhisicEngine {
 		double oldKinetic = 0;
 
 		Date start = new Date();
-		while(kinetic == 0  || Math.abs((double)(oldKinetic - kinetic))/(double)kinetic > minChange){
+		while(kinetic == 0  || lastEnergyChange > minChange ){
 			StatsFrame.getInstance().updateStat("En. delta",String.valueOf(Math.abs((double)(oldKinetic - kinetic))/(double)kinetic));
 			StatsFrame.getInstance().updateStat("Energy", String.valueOf(kinetic));
 			long runTime = (new Date()).getTime() - start.getTime();
@@ -286,6 +326,7 @@ public class PhisicEngine {
 			}
 			
 			runAlgorithmStep();
+			lastEnergyChange=Math.abs((double)(oldKinetic - kinetic))/(double)kinetic;
 		}
 		StatsFrame.setLogsOn(true);
 		long runTime = (new Date()).getTime() - start.getTime();
@@ -325,7 +366,7 @@ public class PhisicEngine {
 		if(estimate){
 			estimateEngineParameters();
 		}
-				
+			
 		
 		long time = runPureAlgorithm();
 		result.setTime(time);
