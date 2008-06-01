@@ -13,13 +13,13 @@ import javax.swing.JTextField;
 
 public class SettingsDialog extends JFrame {
 
-	private static double GRAVITY_const = 800;
-	private static double HOOKE_K_const = 300;
-	private static double DAMPING_const = 700;
+	private static double GRAVITY_const = 200000.0;
+	private static double HOOKE_K_const = 700.0;
+	private static double DAMPING_const = 100.0;
 	
-	private static int MAX_GRAVITY = 300000;
-	private static int MAX_HOOKE_K = 1500;
-	private static int MAX_DAMPING = 1000;
+	public static int MAX_GRAVITY = 1000000;
+	public static int MAX_HOOKE_K = 1500;
+	public static int MAX_DAMPING = 1000;
 	
 	
 	private static final long serialVersionUID = 1L;
@@ -257,22 +257,27 @@ public class SettingsDialog extends JFrame {
 	}
 	
 	public static void setGravityConst(double val){
+		val = Math.min(val,MAX_GRAVITY);
 		GRAVITY_const = val;
 		if(gravity!= null){
 			gravity.setValue((int)val);
 			gravityValue.setText(String.valueOf((int)val));
+			gravity.getParent().repaint();
 		}
 	}
 	
 	public static void setHookConst(double val){
+		val = Math.min(val,MAX_HOOKE_K);
 		HOOKE_K_const = val;
 		if(hook != null){
 			hook.setValue((int)(val * 1000.0));
 			hookValue.setText(String.valueOf(val));
+			hook.getParent().repaint();
 		}
 	}
 	
 	public static void setDampingConst(double val){
+		val = Math.min(val,MAX_DAMPING);
 		DAMPING_const = val;
 		if(damping != null){
 			damping.setValue((int)(val * 1000.0));

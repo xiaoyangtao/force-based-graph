@@ -243,8 +243,20 @@ public class GraphPanel extends JPanel{
 
 		engineTest.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				EngineTest.testEngine(GraphPanel.this.getParent());
+				for(double gravity=10000.0;gravity<300000.0;gravity+=25000.0)
+					for(double hookConst=0.1;hookConst<1.5;hookConst+=0.1)
+					{
+						System.out.println("TESTING FOR:"+gravity+","+hookConst);
+						EngineTest.testEngine(GraphPanel.this.getParent(),gravity,hookConst);
+					}
+				
 			}
+			
+		//	public void actionPerformed(ActionEvent e) {
+		//	EngineTest.testEngine(GraphPanel.this.getParent(),10000,0.2);
+		//	EngineTest.testEngine(GraphPanel.this.getParent(),10000,300);
+
+		//	}
 		});
 
 		
