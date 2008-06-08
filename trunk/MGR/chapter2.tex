@@ -84,17 +84,60 @@ istniej¹ dziesi¹tki darmowych implementacji protoko³ów wy¿szego poziomu, które
 przy zerowym niemal koszcie, mog¹ zostaæ zaadoptowane do naszych potrzeb. Poni¿ej
 przedstawimy krótki przegl¹d rozwi¹zañ wysokiego poziomu, które pozwalaj¹ na
 wygodn¹ i ³atw¹ do przeœledzenia komunikacjê z systemami zewnêtrznymi.
+Istniej¹ cztery podstawowe sposoby, na które mo¿na zorganizowaæ wysokopoziomow¹
+komunikacjê pomiêdzy urz¹dzeniem mobilnym a Ÿród³em danych :
+\begin{itemize}
+  \item {Protokó³ binarny - najbardziej skomplikowana forma komunikacji, wymaga
+  zaprojektowania w³asnego protoko³u, a wiêc jest to metoda najbardziej podatna
+  na b³edy programisty/projektanta.}
+  \item {RPC - wykorzystanie narzêdzi do tworzenia standardowej komunikacji
+  opartej o zdalne wywo³ywanie procedur, du¿o prostsze i odporniejsze na b³edy
+  ni¿ poprzednia metoda, jednak wymaga bardzo bliskiego zwi¹zania serwera z
+  klientem, co zmniejsza interoperacyjnoœæ rozwi¹zania.}
+  \item {Web Services - bardzo popularna metoda pozwalaj¹ca na zbudowanie
+  komunikacji pomiêdzy dowolnymi systemami w oparciu o standaryzowane,
+  niezale¿ne od koñcowych systemów komunikaty XML. Budowa aplikacji w oparciu o
+  Web Servces jest bardzo prosta i czêœciowo zautomatyzowana, jeœli zastosujemy
+  odpowiednie frameworki. Najwiêksza zalet¹ jest tu ca³kowita
+  interoperacyjnoœæ. Rozwi¹zanie to posiada niestety równie¿ wady w postaci
+  zwiêkszonego ruchu w sieci oraz zwiêkszenia wymagañ wobec sprzêtu, na którym
+  je wykorzystujemy.}
+  \item {JMS - wprowadzenie elementu poœrednicz¹cego pomiêdzy urz¹dzeniem a
+  Ÿród³em danych. Komunikacja polega na przesy³aniu wiadomoœci, które w razie
+awarii jednego z sytemów mog¹ zostaæ przechowane na kolejce komunikatów, która
+znajduje siê na systemie poœrednicz¹cym w komunikacji.}
+\end{itemize}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{schemes.png}
+{Metody komunikacji}
+\end{figure}
+Z powy¿szego zestawinia mo¿na wyró¿niæ dwie technologie - Web Services oraz
+JMS. Obie pozwalaj¹ na wysok¹ interoperacyjnoœæ rozwi¹zania, co w sytuacji gdy
+mamy przed sob¹ perspektywê implementacji naszego rozwi¹zania na dziesi¹tkach
+typów urz¹dzeñ jest kluczowym zagadnieniem do rozpatrzenia. Wybór pomiêdzy nimi
+sprowadza siê do ustalenia czy niezbêdna dla naszego projektu jest obecnoœæ
+systemu poœrednicz¹cego, który jest w stanie zwiêkszyæ niezawodnoœæ
+komunikacji. Czynnikiem decyducj¹cym tu jest iloœæ Ÿróde³ danych oraz sposób
+ich wykorzystywania przez u¿ytkowników. Jeœli okaza³oby siê, ¿e przez system
+bêdzie przechodzi³o du¿o komunikatów, które bêda mog³y doprowadziæ do
+przeci¹¿enia systemów Ÿród³owych, element poœrednicz¹cy buforuj¹cy komunikaty
+mo¿e okazaæ siê niezbêdny. Jednak w wypadku gdy ka¿dy u¿ytkownik bêdzie
+korzysta³ z danych, które dostêpne s¹ przez niezale¿ne kana³y - czyli systemy
+Ÿród³owe nie bêd¹ posiada³y w¹skiego gard³a, nale¿a³oby rozwa¿yæ skorzystanie z
+web services, które s¹ znacznie tañszym rozwi¹zaniem ni¿ JMS. Wynika to z tego,
+¿e wiêkszoœæ implementacji WS dostêpna jest za darmo w postaci Open Source lub
+jest ju¿ wbudowana w systemy Ÿród³owe, a co wiêcej nie wymaga dodatkowego
+serwera buforuj¹cego komunikaty.
 
-- JMS - Java Messaging System - 
+%%\section{JORAN}
 
-\section{JORAN}
+%%\section{JXTA4J2ME}
 
-\section{JXTA4J2ME}
+%%\section{IBM MQ Everyplace}
 
-\section{IBM MQ Everyplace}
-
-\section{AshnaMQ 2.0}
+%%\section{AshnaMQ 2.0}
 
 
-\section{Webservices}
-http://developers.sun.com/mobility/apis/articles/wsa/
+%%\section{Webservices}
+%%http://developers.sun.com/mobility/apis/articles/wsa/
