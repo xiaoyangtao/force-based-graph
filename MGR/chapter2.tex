@@ -2,7 +2,7 @@
 \section{Szybka droga do mobilnoœci ?}
 
 Na wstêpie dyskusji o mobilnej czêœci platformy integracyjnej zwrócimy uwagê na
-dostêpne na rynku urz¹dzenia, które posiadaj¹ preistalowane systemy operacyjne
+dostêpne na rynku urz¹dzenia, które posiadaj¹ preinstalowane systemy operacyjne
 pozwalaj¹ce na dodawanie nie przewidzianych przez twórców, zewnêtrznych
 rozwi¹zañ. Tego typu systemy operacyjne musz¹ siê charakteryzowaæ udostêpnieniem
 na zewn¹trz, do instalowanych przez nas aplikacji pewnego API pozwalaj¹cego na
@@ -16,20 +16,20 @@ opracowany przez firmê Microsoft}
 smartfonach oferowanych przez firmy takie jak Nokia czy Samsung}
 \item{Blackberry - marka wypromowana prze firmê Research in Motion, oferuje
 urz¹dzenia z preistalowanym systemem operacyjnym opartym na wirtualnej maszynie Java}
-\item{Android - system operacyjny oparty na linuxie, mo¿liwy do rozbudowywania
+\item{Android - system operacyjny oparty na Linuxie, mo¿liwy do rozbudowywania
 g³ównie przez aplikacje J2ME (w obecnej chwili system jest w fazie testów) }
 \item{pozosta³e autorskie systemy operacyjne, udostepniaj¹ce standardow¹
 maszynê wirtualn¹ Java}
 \end{itemize}
 
-Po dok³adnym przyj¿eniu siê powy¿szym platformom nasuwa siê jeden stanowczy
-wniosek - poza platformamy opartymi na J2ME, wykonianie jednej, spójnej aplikacji
-spe³niaj¹cej za³o¿enia interoperacyjnoœci jest praktycznie niemo¿liwe. Jedynym
+Po dok³adnym przyjrzeniu siê powy¿szym platformom nasuwa siê jeden stanowczy
+wniosek - poza platformami opartymi na J2ME, wykonanie jednej, spójnej
+aplikacji spe³niaj¹cej za³o¿enia interoperacyjnoœci jest praktycznie niemo¿liwe. Jedynym
 rozwi¹zaniem jest przygotowanie kilku instancji tej samej aplikacji, które
 niestety nie bêd¹ mia³y ze sob¹ niczego wspólnego poza przyjêtymi za³o¿eniami o
-podstawowej funkcjonalnoœci. Wynika to miêdzy innymi z tego, ¿e ka¿da plaforma
+podstawowej funkcjonalnoœci. Wynika to miêdzy innymi z tego, ¿e ka¿da platforma
 oferuje inne mo¿liwoœci i przy okazji wprowadza inne ograniczenia. Co wiêcej tego
-typu ró¿nicowanie wystepujê równie¿ w obrêbie samych plaftorm. Na przyk³ad J2ME
+typu ró¿nicowanie wystêpuje równie¿ w obrêbie samych platform. Na przyk³ad J2ME
 posiada profile zwi¹zane na sta³e z modelami urz¹dzeñ, które decyduj¹ o tym,
 jakie funkcjonalnoœci dostêpne s¹ dla programów. Wskazane powy¿ej ograniczenia
 techniczne wymuszaj¹ przy próbie wejœcia na rynek aplikacji mobilnych,ju¿ na
@@ -38,21 +38,21 @@ oferowane bêdzie nasze rozwi¹zanie. Wraz z sukcesem rozwi¹zania, mo¿liwa bêdzie
 dalsza ekspansja na pozosta³e platformy. Przed t¹ ostateczn¹ ewaluacj¹ wartoœci
 pomys³u na produkt, jest bardzo ryzykownym podjêcie próby równoleg³ego
 wprowadzenia go na ró¿nych, niekompatybilnych platformach. Zwiêksza to znacznie
-próg wejœcia oraz utrudnia poprawn¹ kontrolê nad stopniem doj¿a³oœci produktu. Co
-wiêcej przy s³abym zarz¹dzaniu funkcjonalnoœciami mo¿e wyst¹piæ problem
+próg wejœcia oraz utrudnia poprawn¹ kontrolê nad stopniem dojrza³oœci produktu.
+Co wiêcej przy s³abym zarz¹dzaniu funkcjonalnoœciami mo¿e wyst¹piæ problem
 zró¿nicowania pomiêdzy ró¿nymi wersjami naszej aplikacji. Tego typu problemy
 wp³yn¹ w sposób bezpoœredni na postrzeganie naszego produktu przez klientów, w
 szczególnoœci gdy bêdziemy mieli do czynienia z korporacjami, w obrêbie których
 stosowane s¹ rózne rozwi¹zania mobilne. W wypadku naszego systemu integracyjnego
 naturalnym wyborem bêdzie J2ME. Na chwilê obecn¹ jest jedynym standardem, który
 daje jakiekolwiek nadzieje na uzyskanie dominacji na rynku. Co wiêcej platforma
-Blackberry, która jest stworzona w³asnie w oparciu o ten standard jest jedn¹ z
+Blackberry, która jest stworzona w³aœnie w oparciu o ten standard jest jedn¹ z
 najbardziej popularnych, w firmach, które chc¹ podj¹æ dzia³ania maj¹ce na celu
-umobilnienie, wystêpuj¹chych w ich obrêbie, procesów biznesowych.
+umobilnienie, wystêpuj¹cych w ich obrêbie, procesów biznesowych.
 
 \section{Jak siê do tego zabraæ ?}
 
-W momencie gdy mamy ustalon¹ ju¿ platformê docelow¹ (J2ME) musimy przyj¿eæ siê,
+W momencie gdy mamy ustalon¹ ju¿ platformê docelow¹ (J2ME) musimy przyjrzeæ siê
 temu co nam oferuje. Z punktu widzenia integracji najwa¿niejsze dla nas s¹ dwie
 cechy : 
 \begin{itemize}
@@ -73,9 +73,9 @@ dodatkowej pracy. Przy analizowaniu zdolnoœci do komunikacji sprawy siê znacznie
 komplikuj¹. Istnieje kilka, doœæ znacz¹co ró¿nych metod komunikacji, które mo¿emy
 wykorzystaæ do synchronizacji danych z naszymi zewnêtrznymi Ÿród³ami. U podstaw
 komunikacji le¿¹ takie protoko³y takie jak Direct TCP czy Http, które pozwalaj¹
-na wymianê czystych nie przetworzonych danych binarnych, czy te¿ tesktowych.
-Mo¿na je wykorzystaæ w sposób bezpoœredni, jednak jest to niezwykle trudne i
-niewygodne. Z pomoc¹ przychodz¹ nam protoko³y komunikacyjne wy¿szego poziomu. Ich
+na wymianê czystych nie przetworzonych danych binarnych, czy te¿
+tekstowych. Mo¿na je wykorzystaæ w sposób bezpoœredni, jednak jest to
+niezwykle trudne i niewygodne. Z pomoc¹ przychodz¹ nam protoko³y komunikacyjne wy¿szego poziomu. Ich
 wad¹ jest to, ¿e czêsto nie s¹ elementem standardowego wyposa¿enia urz¹dzeñ, na
 które bêdziemy pisali nasz¹ aplikacjê. Nie jest to jednak problemem, ze wzglêdu
 na to, ¿e u podstaw tych¿e protoko³ów wy¿szego poziomu zawsze le¿y protokó³
@@ -83,7 +83,7 @@ podstawowy, który jest dostêpny bezpoœrednio w standardowej bibliotece. Co wiêce
 istniej¹ dziesi¹tki darmowych implementacji protoko³ów wy¿szego poziomu, które
 przy zerowym niemal koszcie, mog¹ zostaæ zaadoptowane do naszych potrzeb. Poni¿ej
 przedstawimy krótki przegl¹d rozwi¹zañ wysokiego poziomu, które pozwalaj¹ na
-wygodn¹ i ³atw¹ do przeœledzenia komunikacje z systemami zewnêtrznymi.
+wygodn¹ i ³atw¹ do przeœledzenia komunikacjê z systemami zewnêtrznymi.
 
 - JMS - Java Messaging System - 
 
