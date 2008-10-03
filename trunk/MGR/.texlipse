@@ -1,13 +1,13 @@
 #TeXlipse project settings
-#Sat May 31 10:56:40 CEST 2008
+#Mon Jun 09 01:21:52 CEST 2008
 builderNum=2
 outputDir=
 makeIndSty=
 bibrefDir=
 outputFormat=pdf
 tempDir=tmp
-mainTexFile=document.tex
-outputFile=document.pdf
+mainTexFile=Sprawozdanie.tex
+outputFile=Sprawozdanie.pdf
 langSpell=en
 markDer=true
 srcDir=
