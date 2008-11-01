@@ -1,13 +1,13 @@
 %%This is a very basic article template.
 %%There is just one section and two subsections.
 \documentclass{article}
-\title{Integracja aplikacji oparta o przesy³anie wiadomoœci}
-\author{Konrad Starzyk \\kstarzyk@stud.elka.pw.edu.pl}
+
 
 \usepackage{graphicx}
 \usepackage{polski}
 \usepackage[cp1250]{inputenc}
-
+\title{Integracja aplikacji oparta o przesy³anie wiadomoœci}
+\author{Konrad Starzyk \\kstarzyk@stud.elka.pw.edu.pl}
 \begin{document}
 \maketitle
 
@@ -25,22 +25,119 @@ siê potrzeba ich wspó³pracy.
 Z czasem pojawi³o kilka powszechnie stosowanych sposobów wspomnianego problemu,
 z których ka¿dy ma swoje zastosowania.
 \begin{itemize} 
-    \item Transfer plików
-	\item Wspólna baza danych
-	\item RPC
-	\item Wiadomoœci
+    \item Transfer plików - jedna aplikacja zapisuje plik w okreœlonym formacie
+    w ustalonym miejscu, nastêpnie druga go odczytuje i przetwarza. Zalet¹
+    takiego rozwi¹zania jest jego dostêpnoœæ - zawsze bêdziemy mieli
+    dostêp do systemu plików. Poza tym nie musimy wiedzieæ jak dzia³a
+    aplikacja, jedyne co powinniœmy zrobiæ to dostarczyæ plik we w³aœciwym
+    formacie. Z drugiej strony nie istnieje ¿aden sposób wymuszenia formatu
+    zapisywanego pliku, mo¿emy zapisaæ na dysku dowolny plik, a aplikacja
+    docelowa bêdzie go mog³a ewentualnie odrzuciæ.
+	\item Wspólna baza danych - dwie aplikacje dzia³aj¹ na jednej bazie danych.
+	Poniewa¿ obie korzystaj¹ z tych samych danych, nie ma potrzeby ich
+	duplikacji. Dodatkowo, przez ograniczenia wymuszone przez bazê musimy
+	je zapisywaæ w œciœle okreœlonym formacie przestrzegaj¹c typów i wiêzów
+	integralnoœci. Z drugiej strony trudno jest tak¹ bazê zaprojektowaæ. Gdybyœmy
+	nawet stworzyli dwie takie aplikacje, które wspó³pracuj¹ z jedn¹ baz¹ danych,
+	to w wypadku gdybyœmy chcieli do³¹czyæ kolejn¹, wspó³pracuj¹c¹ aplikacjê,
+	mog³oby siê to wi¹zaæ z koniecznoœci¹ przemodelowania bazy danych. Dodatkowo,
+	zmiana danych w bazie nie zawsze wystarczy. Mo¿emy sobie wyobraziæ sytuacjê,
+	w której zmiana wysokoœci pensji niesie za sob¹ koniecznoœæ wykonania
+	dodatkowych czynnoœci, np. zmiany wysokoœci sk³adki w systemie
+	ubezpieczeniowym.
+	\item RPC - Zdalne wywo³ywanie procedur, które mo¿e siê odbywaæ z
+	wykorzystaniem mechanizmów typowych dla danej technologii (RPC,RMI czy
+	WebServices). Jedna aplikacja udostêpnia funkcjonalnoœæ, która mo¿e zostaæ
+	wywo³ana z poziomu drugiej. Komunikacja odbywa siê synchronicznie, 
+	aplikacja wywo³uj¹ca oczekuje na wynik przetwarzania. Zalet¹ takiego
+	rozwi¹zania jest dobra enkapsulacja takiego wywo³ania - nie istnieje mo¿liwoœæ
+	wywo³ania nieistniej¹cej funkcjonalnoœci z przekazaniem parametrów nie
+	spe³niaj¹cych okreœlonych za³o¿eñ. Wywo³anie zdalnej procedury po odpowiednim
+	skonfigurowaniu ca³ego systemu nie powinno siê ró¿niæ od wywo³ania procedury w
+	obrêbie tej samej aplikacji. Pomimo wygody takiego rozwi¹zania stwarza ono
+	pewne niebezpieczeñstwo. Programista, nieœwiadomy narzutu stwarzanego przez
+	zdalne wywo³anie procedur, mo¿e wywo³ywaæ je z równ¹ bezstroska niczym
+	procedury lokalne.
+	\item Wiadomoœci - Jedna aplikacja wysy³a komunikat do wspólnego kana³u
+	komunikacyjnego, który jest nastêpnie przetwarzany przez drug¹ aplikacjê.
+	Komunikacja odbywa siê asynchronicznie, po umieszczeniu koumnikatu w kanale,
+	aplikacja kontynuuje dzia³anie. Odbiorca komunikatu mo¿e go odebraæ w dogodnym
+	dla siebie momencie. Rozwi¹zanie to nie wprowadza œcis³ych zale¿noœci
+	pomiêdzy systemami, podobnie jak przesy³anie plików. Pewn¹ niedogodnoœci¹
+	takiego rozwi¹zania jest jednak wiêksze skomplikowanie systemu wynikaj¹ce z
+	wprowadzenie dodatkowego elementu - brokera wiadomoœci.
+\end{itemize}
+\subsection{Koncepcje stosowane w wiadomoœciach}
+
+Przy przesy³aniu wiadomoœci znane s¹ pewne, doœæ intuicyjne, koncepcje:
+\begin{itemize}
+  \item Wiadomoœæ - podstawowa jednostka informacyjna przesy³ana w uzgodnionym
+  przez nadawcê i odbiorcê formacie
+  \item Kana³ komunikacyjny - medium umo¿liwiaj¹ce przesy³anie wiadomoœci
+  \item Translator - komponent poœrednicz¹cy pomiêdzy aplikacj¹ a systemem
+  przesy³ania wiadomoœci. Przyk³adem takiego komponentu mo¿e byæ wyzwalacz w
+  bazie danych wysy³aj¹cy wiadomoœæ przy ka¿dej modyfikacji danej struktury.
+  \item Router - komponent przesy³aj¹cy przychodz¹ce wiadomoœci do innego
+  komponentu
+  \item Potoki i filtry - odpowiadaj¹ za selekcjonowanie i przetwarzan
+ ie wiadomoœci w drodze od nadawcy do odbiorcy
+  \item Endpoint - punkt styku aplikacji i systemu przesy³ania wiadomoœci
+\end{itemize}
+
+\subsubsection{Rodzaje kana³ów}
+
+Istniej¹ dwa g³ówne typy kana³ów komunikacyjnych:
+\begin{itemize}
+  \item Point-to-point - wiadomoœæ przesy³ana jest bezpoœrednio od nadawcy do
+  odbiorcy. W wypadku gdy odbiorca nie odbierze wiadomoœci, czeka ona na niego
+  w kanale.
+  \item Publish-subscribe - jedna wiadomoœæ mo¿e mieæ kilku odbiorców. Ka¿da z
+  nich po umieszczeniu w kanale jest do nich dostarczana. W wypadku gdy dany
+  odbiorca w momencie wys³ania wiadomoœci nie jest pod³¹czony do kana³u, jego
+  zachowanie nie jest zdefiniowane - mo¿e dojœæ do pominiêcia wiadomoœci, lub
+  te¿, w zale¿noœci od konfiguracji mo¿e byæ ona dostarczona do wszystkich
+  odbiorców, nawet tych aktualnie niepod³¹czonych.
 \end{itemize}
 
 
-\subsection{Another subtitle}
+\subsection{Java Messaging System}
 
-More plain text.
+Interfejsem który umo¿liwia przesy³anie wiadomoœci na platformie Java jest JMS.
+Jako uniwersalne API dostêpu do us³ug przesy³ania wiadomoœci opakowuje ono
+implementacjê konkretnego producenta w taki sposób, ¿e przynajmniej w teorii
+mo¿na j¹ potem zmieniæ na inne rozwi¹zanie. W typowym scenariuszu u¿ycia
+aplikacja musi wykonaæ kilka czynnoœci które pozwol¹ jej na wys³anie wiadomoœci:
+\begin{itemize}
+  \item Pobranie fabryki z kontekstu aplikacji.\newline \texttt{Context
+  ctx = new InitialContext(); \\ QueueConnectionFactory qcf = \newline
+  (QueueConnectionFactory)ctx.lookup("QConnFactory"); } 
+  \item Pobranie obiektu kolejki z kontekstu aplikacji \newline
+   \texttt{Queue myQueue=(Queue)ctx.lookup("MyQueue");} 
+   \item Utworzenie po³¹czenia \newline
+   \texttt{QueueConnection qc
+	=qcf.createQueueConnection();} 
+   \item Otwiercie sesji po³¹czenia: \newline
+   \texttt{QueueSession sess = 
+  qc.createQueueSession(true, 0);}    
+  \item Utworzenie obiektu wysy³aj¹cego wiadomoœci:\newline   
+  \texttt{QueueSender sender = sess.createSender(myQueue);}   
+   \item Wys³anie wiadomoœci:\newline   
+  \texttt{ sender.send(message);}   
+\end{itemize}
+Nietrudno zauwa¿yæ, ¿e jest to ci¹g czynnoœci ma³o oczywistych i
+wprowadzaj¹cych pewien sta³y narzut. Po do³¹czeniu obs³ugi wyj¹tków okazuje siê
+¿e kod wysy³aj¹cy wiadomoœæ sk³ada siê z kilkunastu poleceñ przygotowuj¹cych
+obiekt wysy³aj¹cy. Istniej¹ na szczêœcie prostsze rozwi¹zania.
 
-
-
-
-
-
+\subsection{Spring Framework i Apache ActiveMQ}
+Jedn¹ z funkcjonalnoœci frameworku Spring s¹ template'y zwalniaj¹ce nas z
+koniecznoœci rêcznego tworzenia obiektów i obs³ugi wyj¹tków. Okazuje siê, ¿e
+przy odpowiednim skonfigurowaniu kontekstu aplikacji w Springu, mo¿emy wys³aæ
+wiadomoœæ przy u¿yciu jednego polecenia. W dalszej czêœci artyku³u wykorzystamy
+Apache ActiveMQ jako dostawcê JMS oraz jego podprojekt Apache Camel, dlatego te¿
+przedstawimy konfiguracjê która wspó³pracuje ze wspomnianymi rozwi¹zaniami. W
+pliku konfiguracyjnym musimy zdefiniowaæ alias dla fizycznej kolejki
+znajduj¹cej siê w systemie kolejkowym: \newline
 
 
 
@@ -49,6 +146,8 @@ More plain text.
 Patterns}, The Addison-Wesley Signaure Series 2003
 \bibitem{techfaq360}: \emph{Spring Tutorial},
 http://www.techfaq360.com/tutorial/spring/
+\bibitem{camel}: \emph{Apache Camel},
+http://activemq.apache.org/camel
 \end{thebibliography}
 
 \end{document}
