@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="
+  http://www.springframework.org/schema/jee
+  http://www.springframework.org/schema/jee/spring-jee-2.0.xsd
+  http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+    <!-- Hibernate transaction manager-->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"> 
+       <property name="sessionFactory"> 
+          <ref bean="sessionFactory"/> 
+       </property>
+    </bean>
+    
+    
+    <!-- ============================ POOLS =========================== -->
+    
+    <bean id="poolDAO" class="com.minfo.dao.hibernate.PoolHibernateDAO"> 
+       <property name="sessionFactory"> 
+          <ref bean="sessionFactory"/> 
+       </property> 
+    </bean>    
+    <bean id="poolManagerTarget" class="com.minfo.mgr.PoolManager"> 
+        <property name="poolDAO">
+           <ref local="poolDAO"/>
+        </property>
+    </bean>
+    
+    <bean id="poolManager" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"> 
+       <property name="transactionManager"> 
+           <ref local="transactionManager"/> 
+       </property> 
+       <property name="target"> 
+           <ref local="poolManagerTarget"/> 
+       </property> 
+       <property name="transactionAttributes"> 
+           <props> 
+              <prop key="add*">PROPAGATION_REQUIRED</prop> 
+              <prop key="update*">PROPAGATION_REQUIRED</prop> 
+              <prop key="remove*">PROPAGATION_REQUIRED</prop> 
+              <prop key="*">PROPAGATION_REQUIRED,readOnly</prop> 
+           </props> 
+       </property>
+    </bean>   
+    
+    
+    
+    
+  <!-- ============================ USERS =========================== -->
+    
+    <bean id="userDAO" class="com.minfo.dao.hibernate.UserHibernateDAO"> 
+       <property name="sessionFactory"> 
+          <ref bean="sessionFactory"/> 
+       </property> 
+    </bean>    
+    <bean id="userManagerTarget" class="com.minfo.mgr.UserManager"> 
+        <property name="userDAO">
+           <ref local="userDAO"/>
+        </property>
+    </bean>
+    
+    <bean id="userManager" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"> 
+       <property name="transactionManager"> 
+           <ref local="transactionManager"/> 
+       </property> 
+       <property name="target"> 
+           <ref local="userManagerTarget"/> 
+       </property> 
+       <property name="transactionAttributes"> 
+           <props> 
+              <prop key="add*">PROPAGATION_REQUIRED</prop> 
+              <prop key="update*">PROPAGATION_REQUIRED</prop> 
+              <prop key="remove*">PROPAGATION_REQUIRED</prop> 
+              <prop key="*">PROPAGATION_REQUIRED,readOnly</prop> 
+           </props> 
+       </property>
+    </bean>   
+	
+</beans>
