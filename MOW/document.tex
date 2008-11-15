@@ -42,10 +42,10 @@ rozwiniêciu tej techniki mo¿na korzystaæ z predyktorów o wzorach \begin{math}{f(
 lub nawet \begin{math}{f(x)=ax^2+bx+c}\end{math}. Jak siê jednak okazuje, nawet
 taki predyktor jest w stanie trafnie przewidywaæ preferencje u¿ytkowników. 
 \newline
-Oznaczmy przez vi i wi tablice ocen dla dwóch ró¿nych u¿ytkowników, gdzie
-\begin{math}{i=1..n}\end{math} jest indeksem przedmiotu. Wtedy
+Oznaczmy przez \begin{math}v_i\end{math} i \begin{math}w_i\end{math} tablice
+ocen dla dwóch ró¿nych u¿ytkowników, gdzie \begin{math}{i=1..n}\end{math} jest indeksem przedmiotu. Wtedy
 \begin{math}{v_i-w_i}\end{math} jest ró¿nic¹ ocen tego samego przedmiotu przez dwóch u¿ytkowników. Spróbujmy znaleŸæ wartoœæ która
-nalepiej przybli¿a ró¿nicê w ocenach dawanych przez tych u¿ytkowników.
+nalepiej przybli¿a ró¿nicê w ocenach dawanych przez tych u¿ytkowników.\newline
 Minimalizuj¹c wyra¿enie:
 \begin{math}
 \sum_{i}{(v_i+b-w_i)^2}
@@ -58,15 +58,38 @@ przedmioty \begin{math}i\end{math} oraz \begin{math}j\end{math}, wraz z ich
 ocenami \begin{math}u_i\end{math} oraz \begin{math}u_j\end{math} mo¿emy
 okreœliæ œrednie odchylenie przedmiotu \begin{math}i\end{math} wzglêdem
 \begin{math}j\end{math} jako:
-$$dev_{i,j} = \sum_{u}{\dfrac{u_j-u_i}{|S|}} $$
-gdzie jako \begin{math}S\end{math} oznaczymy zbiór takich u¿ytkowników którzy
-ocenili obydwa przedmioty.\newline
-
+$$dev_{i,j} = \sum_{u \in S}{\dfrac{u_j-u_i}{|S|}} $$
+gdzie jako \begin{math}S\end{math} oznaczymy zbiór ocen które
+zawiera³y obydwa przedmioty.\newline
+Bior¹c pod uwagê, ¿e nieznan¹ wartoœæ oceny przedmiotu
+\begin{math}j\end{math} mo¿emy przewidywaæ jako \begin{math}u_j =
+dev_{i,j}+u_i\end{math}, sensowny predyktor móg³by byæ œredni¹ takich
+przewidywañ:
+$$P(u)_j=\dfrac{1}{|R_j|}\sum_{i\in R_j}(dev_{i,j}+u_i)$$
+gdzie \begin{math}R_j\end{math} jest zbiorem wszystkich przedmiotów \begin{math}
+i\end{math} które zosta³y ocenione i dla których istnieje wyznaczona wartoœæ
+œredniego odchylenia wzglêdem przedmiotu \begin{math}j\end{math} równa
+\begin{math}dev_{i,j}\end{math}.
 
 \section{Plan eksperymentów}
 \subsection{Pytania}
+\begin{itemize}
+  \item Jaka bêdzie przewidywana ocena danego filmu przez danego
+  u¿ytkownika wyznaczona przez algorytm?
+  \item Jaka bêdzie trafnoœæ tej oceny?
+\end{itemize}
+
 \subsection{Charakterystyka zbiorów danych}
+Dane u¿ywane do testów pochodz¹ z serwisu Movielens. Dostêpne s¹ dwa zestawy
+danych: pierwszy sk³ada siê z 100,000 ocen 1682 filmów wystawionych przez 943
+u¿ytkowników. Drugi zawiera oko³o miliona ocen 3900 filmów wystawionych przez
+600 u¿ytkowników. Ka¿dy film zosta³ oceniony w skali od 1 do 5.
+
+coœ tu jeszcze dodaæ? jak dzielimy zbiór testowy??
+
 \subsection{Parametry algorytmów których wp³yw na wyniki bêdzie badany}
 \subsection{Sposób oceny jakoœci modeli}
+
+
 \section{Otwarte kwestie wymagaj¹ce póŸniejszego rozpatrzenia}
 \end{document}
