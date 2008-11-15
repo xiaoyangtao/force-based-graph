@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{polski}
+\usepackage[cp1250]{inputenc}
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{amssymb,amsmath}
+\title{Metod Odkrywania Wiedzy\\Sprawozdanie z projektu}
+
+\author{Wojciech Klicki\\Konrad Starzyk}
+\begin{document}
+
+\maketitle
+\section{Zadanie}
+Zadanie sk³ada siê z dwóch czêœci : implementacyjnej oraz badawczej. 
+Czêœæ implementacyjna polega na implementacji metody dokonuj¹cej 
+predykcji w œrodowisku GNU R. Na czêœæ drug¹ sk³ada siê szereg 
+testów testuj¹cych skutecznoœæ algorytmu.
+\newline
+Realizacja zadania polega na wykonaniu poni¿szych etapów:
+\begin{itemize}
+  \item Postawienie pytañ dotycz¹cych danych wejœciowych oraz algorytmu
+  kooperatywnej filtracji, na które odpowiedŸ powinniœmy uzyskaæ przy pomocy Slope-One.
+  \item Analiza danych – wybranie kategorii oraz atrybutów, które bêd¹
+  analizowane przez nasz algorytm.
+  \item Implementacja algorytmu.
+  \item Wykonanie eksperymentów, a nastêpnie ocena jakoœci klasyfikatora.
+\end{itemize}
+
+\section{Opis algorytmów}
+\subsection{Kooperatywna filtracja}
+Kooperatywna filtracja polega na przewidywaniu ocen jakie otrzymaj¹
+ produkty od poszczególnych u¿ytkowników na podstawie ju¿ ocenionych
+  produktów. Zgadniêcie oceny polega na za³o¿eniu pewnego podobieñstwa
+   oceny jak¹ wystawi u¿ytkownik do ocen ju¿ wystawionych.
+\subsection{Technika Slope-One}
+Przewidywanie preferencji za pomoc¹ techniki Slope-One opiera siê na za³o¿eniu, ¿e
+ocenê u¿ytkownika mo¿na przybli¿yæ za pomoc¹ wzoru \begin{math}{f(x)=x+b}\end{math}, który wyznacza 
+œredni¹ ró¿nicê pomiêdzy ocenami dwóch u¿ytkowników którzy dokonali oceny 
+tego samego elementu. Jest to oczywiœcie daleko id¹ce uproszczenie – w 
+rozwiniêciu tej techniki mo¿na korzystaæ z predyktorów o wzorach \begin{math}{f(x)=ax+b}\end{math}
+lub nawet \begin{math}{f(x)=ax^2+bx+c}\end{math}. Jak siê jednak okazuje, nawet
+taki predyktor jest w stanie trafnie przewidywaæ preferencje u¿ytkowników. 
+\newline
+Oznaczmy przez vi i wi tablice ocen dla dwóch ró¿nych u¿ytkowników, gdzie
+\begin{math}{i=1..n}\end{math} jest indeksem przedmiotu. Wtedy
+\begin{math}{v_i-w_i}\end{math} jest ró¿nic¹ ocen tego samego przedmiotu przez dwóch u¿ytkowników. Spróbujmy znaleŸæ wartoœæ która
+nalepiej przybli¿a ró¿nicê w ocenach dawanych przez tych u¿ytkowników.
+Minimalizuj¹c wyra¿enie:
+\begin{math}
+\sum_{i}{(v_i+b-w_i)^2}
+\end{math}
+ze wzglêdu na parametr \begin{math}b\end{math} otrzymujemy
+\begin{math}b = \dfrac{\sum_{i}{v_i-w_i}}{n}\end{math}.
+\newline \newline
+Maj¹c zbiór testowy \begin{math}\kappa\end{math} oraz dowolne dwa oceniane
+przedmioty \begin{math}i\end{math} oraz \begin{math}j\end{math}, wraz z ich
+ocenami \begin{math}u_i\end{math} oraz \begin{math}u_j\end{math} mo¿emy
+okreœliæ œrednie odchylenie przedmiotu \begin{math}i\end{math} wzglêdem
+\begin{math}j\end{math} jako:
+$$dev_{i,j} = \sum_{u}{\dfrac{u_j-u_i}{|S|}} $$
+gdzie jako \begin{math}S\end{math} oznaczymy zbiór takich u¿ytkowników którzy
+ocenili obydwa przedmioty.\newline
+
+
+\section{Plan eksperymentów}
+\subsection{Pytania}
+\subsection{Charakterystyka zbiorów danych}
+\subsection{Parametry algorytmów których wp³yw na wyniki bêdzie badany}
+\subsection{Sposób oceny jakoœci modeli}
+\section{Otwarte kwestie wymagaj¹ce póŸniejszego rozpatrzenia}
+\end{document}
