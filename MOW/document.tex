@@ -88,8 +88,20 @@ u¿ytkowników. Drugi zawiera oko³o miliona ocen 3900 filmów wystawionych przez
 coœ tu jeszcze dodaæ? jak dzielimy zbiór testowy??
 
 \subsection{Parametry algorytmów których wp³yw na wyniki bêdzie badany}
-\subsection{Sposób oceny jakoœci modeli}
 
+Algorytm nie zawiera parametrów którymi mo¿na sterowaæ jego dzia³aniem. 
+
+\subsection{Sposób oceny jakoœci modeli}
+Aby oceniæ trafnoœæ przewidywañ porównamy je z danymi ze zbioru testowego.
+Ka¿d¹ wyznaczon¹ ocenê \begin{math}\hat{u_j}\end{math} porównujemy z ocen¹
+testow¹ \begin{math}u_j\end{math}.Poniewa¿ istnieje 5 mo¿liwych ocen, b³¹d dla
+jednej oceny mo¿emy okreœliæ jako:
+$$e_j = \dfrac{|\hat{u_j}-u_j|}{5}$$
+gdzie \begin{math}j=1..n\end{math}, a \begin{math}n\end{math} to liczba
+wszystkich przewidywañ. Œredni b³¹d bêdzie wiêc równy:
+$$\sum_j\dfrac{|\hat{u_j}-u_j|}{5n} $$
+St¹d miarê jakoœci oceny mo¿emy wyraziæ jako:
+$$q = 1 - \sum_j\dfrac{|\hat{u_j}-u_j|}{5n} $$
 
 \section{Otwarte kwestie wymagaj¹ce póŸniejszego rozpatrzenia}
 \end{document}
