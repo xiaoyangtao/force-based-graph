@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serviceGroup>
+	<service name="MobileService" targetNamespace="http://com.minfo">
+		<description>Mobile sample service</description>
+		<parameter name="ServiceObjectSupplier" locked="false">org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier</parameter>
+		<parameter name="SpringBeanName" locked="false">mobileService</parameter>
+		<schema schemaNamespace="http://ws.apache.org/axis2/samples/book/xsd/" />
+		<parameter name="ServiceClass" locked="false">
+			com.minfo.services.MobileService
+		</parameter>
+	
+		<operation name="getNextPool">
+			<messageReceiver
+				class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+		</operation>
+		
+		<operation name="getPool">
+			<messageReceiver
+				class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+		</operation>
+		
+	</service>
+</serviceGroup>

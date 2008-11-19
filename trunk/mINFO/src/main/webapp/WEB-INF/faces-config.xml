@@ -19,6 +19,10 @@
             <property-name>poolManager</property-name>
             <value>#{poolManager}</value>
         </managed-property>
+        <managed-property>
+            <property-name>newsFeeder</property-name>
+            <value>#{newsFeeder}</value>
+        </managed-property>
 	</managed-bean>
 	
 	
