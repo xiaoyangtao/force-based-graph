@@ -13,6 +13,7 @@ import com.minfo.dao.hibernate.PoolHibernateDAO;
 import com.minfo.mgr.PoolManager;
 import com.minfo.model.Answer;
 import com.minfo.model.Pool;
+import com.minfo.services.NewsFeeder;
 
 
 public class PoolListController {
@@ -20,6 +21,8 @@ public class PoolListController {
 	
     PoolManager poolManager;
     Pool currentPool;
+    NewsFeeder newsFeeder;
+    
     /**
      * default empty constructor
      */
@@ -98,6 +101,11 @@ public class PoolListController {
 		return "newPool";
 	}
 	
+	public String feedNews() {
+		newsFeeder.getNews();
+		return "poolList";
+	}
+	
     public String editPool() {
     	log.debug("enter editPool");
     	Long poolId=null;
@@ -117,5 +125,10 @@ public class PoolListController {
     
 	public void setPoolManager(PoolManager poolManager) {
 		this.poolManager = poolManager;
+	}
+
+
+	public void setNewsFeeder(NewsFeeder newsFeeder) {
+		this.newsFeeder = newsFeeder;
 	}
 }
