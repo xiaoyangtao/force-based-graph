@@ -35,6 +35,8 @@ public class PoolManager {
 	
 
 	public Pool getPool(Long id) {
+		Pool p = poolDAO.getPool(id);
+		System.out.println(p);
 		return poolDAO.getPool(id);
 	}
 	
