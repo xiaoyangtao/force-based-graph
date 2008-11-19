@@ -30,6 +30,7 @@
 		<param-value>
 			/WEB-INF/applicationContext-ds.xml
 			/WEB-INF/applicationContext.xml
+			/WEB-INF/applicationContext-services.xml
 		</param-value>
 	</context-param>
 
@@ -286,6 +287,26 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.faces</url-pattern>
 	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>AxisServlet</servlet-name>
+		<servlet-class>
+			org.apache.axis2.transport.http.AxisServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AxisServlet</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+
+
+	<filter-mapping>
+		<filter-name>sessionFilter</filter-name>
+		<url-pattern>/services/*</url-pattern>
+	</filter-mapping>
+
 
 	<!-- Welcome files -->
 	<welcome-file-list>
