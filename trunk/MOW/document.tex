@@ -104,3 +104,15 @@ wszystkich przewidywañ. Œredni b³¹d bêdzie wiêc równy:
 $$\sum_j\dfrac{|\hat{u_j}-u_j|}{5n} $$
 St¹d miarê jakoœci oceny mo¿emy wyraziæ jako:
 $$q = 1 - \sum_j\dfrac{|\hat{u_j}-u_j|}{5n} $$
+
+\section{Otwarte kwestie wymagaj¹ce póŸniejszego rozpatrzenia}
+
+W miarê przeprowadzania testów zostanie podjêta decyzja o rodzaju algorytmu 
+Slope One, który bêdzie wykorzystywany. Pod uwagê zostan¹ wziête dwa jego
+rodzaje: zwyk³y (taki jak opisany wy¿ej) oraz Bi-Polar Slope One. Ten drugia
+wprowadza modyfikacjê do ocen dziel¹c je na dwie kategorie : oceny dobre i
+oceny z³ê. Ze wzglêdu na asymetriê ocen wystêpuj¹cych w zbiorach testowych (70%
+ocen jest pozytywnych, czyli powy¿ej œredniej) podzia³ bêdzie wykonany w sposób
+nastêpuj¹cy : ocena dobra (3,4,5), ocena z³a (1,2). Zostan¹ im przyporz¹dkowane
+odpowiednio liczby : 0 oraz 1.
+\end{document}
