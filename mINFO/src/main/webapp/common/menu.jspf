@@ -1,0 +1,20 @@
+<%@ page import="java.util.HashMap" %>
+<%
+	StringBuffer sb = request.getRequestURL();
+	String file = sb.substring(sb.lastIndexOf("/")+1,sb.lastIndexOf(".jsp"));
+	HashMap activeMap = new HashMap();
+	activeMap.put(file,"active");
+
+%>
+
+<div id="menulinks">
+		<a class="<%=activeMap.get("listPools") %>" href="/mINFO/pool/listPools.faces"><span>Lista ankiet</span></a>	
+		<div class="menulines"></div>
+		<a class="<%=activeMap.get("listUsers") %>" href="/mINFO/user/listUsers.faces"><span>Lista uzytkownikow</span></a>
+		<div class="menulines"></div>
+		<a href="#"><span></span></a>
+		<div class="menulines"></div>
+		<a href="#"><span></span></a>
+		<div class="menulines"></div>
+	</div>
+	
