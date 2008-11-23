@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pool id="123" xmlns:p="http://klicki.com.pl/pool" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://klicki.com.pl/pool validate.xsd">
+	<question type="single">What is your favourite color?</question>
+	<answers>
+		<answer value="1">black</answer>
+		<answer value="2">white</answer>
+	</answers>
+</pool>
