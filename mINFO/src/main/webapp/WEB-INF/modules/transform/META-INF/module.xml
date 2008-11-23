@@ -1,0 +1,30 @@
+<module name="transform" class="com.minfo.services.module.TransformModule">
+  
+  
+  <inflow>
+        <handler name="InFlowLogHandler" class="com.minfo.services.module.TransformHandler">
+        <order phase="transformPhase" />
+        </handler>
+   </inflow>
+
+   <outflow>
+        <handler name="OutFlowLogHandler" class="com.minfo.services.module.TransformHandler">
+        <order phase="transformPhase"/>
+        </handler>
+   </outflow>
+
+   <Outfaultflow>
+        <handler name="FaultOutFlowLogHandler" class="com.minfo.services.module.TransformHandler">
+        <order phase="transformPhase"/>
+        </handler>
+   </Outfaultflow>
+
+   <INfaultflow>
+        <handler name="FaultInFlowLogHandler" class="com.minfo.services.module.TransformHandler">
+        <order phase="transformPhase"/>
+        </handler>
+   </INfaultflow>
+  
+  
+ 
+</module>
