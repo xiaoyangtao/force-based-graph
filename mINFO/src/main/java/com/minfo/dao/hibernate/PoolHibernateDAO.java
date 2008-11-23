@@ -53,4 +53,14 @@ public class PoolHibernateDAO extends HibernateDaoSupport implements PoolDAO {
 		return poolList;
 	}
 
+	public List<Pool> getNewPoolsForUser(Long userId) {
+		List<Pool> pools = getHibernateTemplate().
+		find("from Pool p where p not in (select pool from " +
+				"User u join u.userAnswers as answer " +
+				"join answer.pool as pool where u.id=?)",userId);
+		// TODO Auto-generated method stub
+		System.out.println(pools);
+		return pools;
+	}
+
 }

@@ -31,6 +31,10 @@ public class Answer implements Serializable {
 	private List<User> usersForAnswer;
 	
 	
+	public List<User> getUsersForAnswer() {
+		return usersForAnswer;
+	}
+
 	public String getAnswer() {
 		return answer;
 	}

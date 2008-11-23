@@ -4,9 +4,12 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.application.FacesMessage.Severity;
 import javax.faces.context.FacesContext;
 
 import org.apache.log4j.Logger;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import com.minfo.common.StringUtil;
 import com.minfo.dao.hibernate.PoolHibernateDAO;
@@ -21,6 +24,7 @@ public class PoolListController {
 	
     PoolManager poolManager;
     Pool currentPool;
+    Answer currentAnswer;
     NewsFeeder newsFeeder;
     
     /**
@@ -46,7 +50,14 @@ public class PoolListController {
     	FacesContext context = FacesContext.getCurrentInstance();
 		String poolId = (String) context.getExternalContext().getRequestParameterMap().get("poolId");
 		log.debug("poolId=" + poolId);
-		poolManager.removePool(new Long(poolId));
+		try {
+			poolManager.removePool(new Long(poolId));
+		}catch(DataIntegrityViolationException e) {
+			String message = "Cannot delete this record!";
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage( FacesMessage.SEVERITY_INFO, message, message));
+
+			log.debug(e.getMessage(),e);
+		}
 		
     	return "poolList";
     }
@@ -83,13 +94,29 @@ public class PoolListController {
 		for(Answer a:answers) {
 			if(a.getId().equals(answerId))
 			{
-				answers.remove(a);
+				if(a.getUsersForAnswer().size()==0) {
+					answers.remove(a);
+				} else {
+					context.addMessage("Test", new FacesMessage());
+				}
 				break;
 			}
 		}
     	
 		return "success";
 	}
+	
+	public String showUsersForAnswer() {
+		log.debug("enter showUsersForAnswer");
+		FacesContext context = FacesContext.getCurrentInstance();
+		String answerIdStr = (String) context.getExternalContext().getRequestParameterMap().get("answerId");
+		log.debug("answerId=" + answerIdStr);
+		Long answerId = new Long(answerIdStr);
+		currentAnswer = poolManager.getAnswer(answerId);
+		return "showUsersForAnswer";
+	}
+	
+	
 	
 	public Pool getCurrentPool() {
 		return currentPool;
@@ -130,5 +157,10 @@ public class PoolListController {
 
 	public void setNewsFeeder(NewsFeeder newsFeeder) {
 		this.newsFeeder = newsFeeder;
+	}
+
+
+	public Answer getCurrentAnswer() {
+		return currentAnswer;
 	}
 }

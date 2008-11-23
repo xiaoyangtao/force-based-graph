@@ -41,22 +41,26 @@ public class UserAnswerTest {
 			PoolManager poolManager = (PoolManager)ctx.getBean("poolManager");
 			UserManager userManager = (UserManager)ctx.getBean("userManager");
 			
-			System.out.println(" ======= POOLS ========");
-			List<Pool> pools = poolManager.getPool();
-			System.out.println(pools);
+		//	System.out.println(" ======= POOLS ========");
+		//	List<Pool> pools = poolManager.getPool();
+		//	System.out.println(pools);
 			
-			Answer answer = poolManager.getAnswer(new Long(29));
+		//	Answer answer = poolManager.getAnswer(new Long(29));
 			
-			System.out.println(" ======= USERS ========");
+	//		System.out.println(" ======= USERS ========");
 //			List<User> users = userManager.getUser();
 //			System.out.println(users);
 			
-			User user = userManager.getUser(new Long(2));
-			System.out.println(user);
-			poolManager.makeAnswer(user, answer);
+		//	User user = userManager.getUser(new Long(2));
+		//	System.out.println(user);
+		//	poolManager.makeAnswer(user, answer);
 			
 			//System.out.println("Answers:"+user.getUserAnswers());
-			userManager.updateUser(user);
+		//	userManager.updateUser(user);
+			
+			
+			Pool pools = poolManager.getNextPoolForUser(new Long(3));
+			
 			//================================================================
 			SessionHolder sessionHolder = (SessionHolder) TransactionSynchronizationManager.unbindResource(sessionFactory);
 			// sessionHolder.getSession().getTransaction().commit();

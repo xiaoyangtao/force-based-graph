@@ -13,4 +13,5 @@ public interface PoolDAO {
 	public Pool getPool(Long id);
 	public List<Pool> getPool();
 	public Answer getAnswer(Long id);
+	public List<Pool> getNewPoolsForUser(Long userId);
 }
