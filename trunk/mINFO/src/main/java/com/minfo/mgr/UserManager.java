@@ -35,4 +35,13 @@ public class UserManager {
 	public void removeUser(Long id) {
 		userDAO.removeUser(id);
 	}
+	
+	public User addRegisterUser() {
+		User u = new User();
+		userDAO.addUser(u);
+		u.setUsername("u"+u.getId());
+		u.setPassword("password");
+		userDAO.updateUser(u);
+		return u;
+	}
 }

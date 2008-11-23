@@ -14,6 +14,8 @@
   <classpathentry kind="var" path="M2_REPO/org/apache/ws/commons/axiom/axiom-api/1.2.7/axiom-api-1.2.7.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/ws/commons/axiom/axiom-dom/1.2.7/axiom-dom-1.2.7.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/ws/commons/axiom/axiom-impl/1.2.7/axiom-impl-1.2.7.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2/1.4.1/axis2-1.4.1.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-adb/1.4.1/axis2-adb-1.4.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-kernel/1.4.1/axis2-kernel-1.4.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/apache/axis2/axis2-spring/1.4.1/axis2-spring-1.4.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>
@@ -24,7 +26,7 @@
   <classpathentry kind="var" path="M2_REPO/commons-digester/commons-digester/1.8/commons-digester-1.8.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-discovery/commons-discovery/0.4/commons-discovery-0.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-el/commons-el/1.0/commons-el-1.0.jar"/>
-  <classpathentry kind="var" path="M2_REPO/commons-fileupload/commons-fileupload/1.2/commons-fileupload-1.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-fileupload/commons-fileupload/1.2.1/commons-fileupload-1.2.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-io/commons-io/1.4/commons-io-1.4.jar"/>
   <classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.1/commons-lang-2.1.jar"/>
@@ -45,6 +47,7 @@
   <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpcore-nio/4.0-beta1/httpcore-nio-4.0-beta1.jar"/>
   <classpathentry kind="var" path="M2_REPO/jaxen/jaxen/1.1.1/jaxen-1.1.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/slf4j/jcl104-over-slf4j/1.4.3/jcl104-over-slf4j-1.4.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/jdom/jdom/1.1/jdom-1.1.jar"/>
   <classpathentry kind="var" path="M2_REPO/jstl/jstl/1.2/jstl-1.2.jar"/>
   <classpathentry kind="var" path="M2_REPO/javax/transaction/jta/1.0.1B/jta-1.0.1B.jar"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit/4.0/junit-4.0.jar"/>

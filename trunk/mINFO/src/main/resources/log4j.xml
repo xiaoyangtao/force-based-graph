@@ -65,7 +65,7 @@
 
 	<appender name="NEWSFEEDER"
 		class="org.apache.log4j.RollingFileAppender">
-		<param name="File" value="../logs/axis2.log" />
+		<param name="File" value="../logs/newsfeeder.log" />
 		<param name="Append" value="true" />
 		<param name="MaxFileSize" value="300MB" />
 		<param name="MaxBackupIndex" value="5" />

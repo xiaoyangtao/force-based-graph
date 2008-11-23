@@ -55,6 +55,10 @@
 			<from-outcome>poolList</from-outcome>
 			<to-view-id>/pool/listPools.jsp</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>showUsersForAnswer</from-outcome>
+			<to-view-id>/pool/showUsersForAnswer.jsp</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 	
@@ -78,4 +82,12 @@
 		</navigation-case>
 	</navigation-rule>
 
+	<navigation-rule>
+		<from-view-id>/pool/showUsersForAnswer.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>back</from-outcome>
+			<to-view-id>/pool/addEditPool.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 </faces-config>
