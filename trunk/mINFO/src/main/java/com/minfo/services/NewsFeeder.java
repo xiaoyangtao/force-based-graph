@@ -58,14 +58,12 @@ public class NewsFeeder {
 		    	a.setPool(pool);
 		    	pool.getAnswers().add(a);
 		    	
-		    	
 		    	a = new Answer();
 		    	a.setAnswer("NIE");
 		    	a.setPool(pool);
 		    	pool.getAnswers().add(a);
 		    	
 		    	poolManager.addPool(pool);
-		    	
 		    	log.debug(item);
 		    }
 
