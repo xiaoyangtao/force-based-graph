@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="rolling"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="../logs/minfo.log" />
+		<param name="datePattern" value="'.'yyyy-MM" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d [%t] %-5p (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="HIBERNATE"
+		class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="../logs/hibernate.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="300MB" />
+		<param name="MaxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{yyyy-MM-dd HH:mm:ss.SSS}]%-5p[%t][%c{1}] %m%n" />
+		</layout>
+	</appender>
+
+
+	<appender name="SPRING"
+		class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="../logs/spring.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="300MB" />
+		<param name="MaxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{yyyy-MM-dd HH:mm:ss.SSS}]%-5p[%t][%c{1}] %m%n" />
+		</layout>
+	</appender>
+
+
+	<appender name="FACES"
+		class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="../logs/faces.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="300MB" />
+		<param name="MaxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{yyyy-MM-dd HH:mm:ss.SSS}]%-5p[%t][%c{1}] %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="AXIS2"
+		class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="../logs/axis2.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="300MB" />
+		<param name="MaxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{yyyy-MM-dd HH:mm:ss.SSS}]%-5p[%t][%c{1}] %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="NEWSFEEDER"
+		class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="../logs/newsfeeder.log" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="300MB" />
+		<param name="MaxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{yyyy-MM-dd HH:mm:ss.SSS}]%-5p[%t][%c{1}] %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="org.hibernate" additivity="true">
+		<level value="DEBUG" />
+		<appender-ref ref="HIBERNATE" />
+	</logger>
+	
+	<logger name="org.springframework" additivity="true">
+		<level value="DEBUG" />
+		<appender-ref ref="SPRING" />
+	</logger>
+	
+	<logger name="org.apache.myfaces" additivity="true">
+		<level value="DEBUG" />
+		<appender-ref ref="FACES" />
+	</logger>
+	
+	<logger name="com.minfo" additivity="true">
+		<level value="DEBUG" />
+		<appender-ref ref="rolling" />
+	</logger>
+	
+	<logger name="org.apache.axis2" additivity="true">
+		<level value="DEBUG" />
+		<appender-ref ref="AXIS2" />
+	</logger>
+	
+	<logger name="com.minfo.services.NewsFeeder" additivity="true">
+		<level value="DEBUG" />
+		<appender-ref ref="NEWSFEEDER" />
+	</logger>
+
+</log4j:configuration>
