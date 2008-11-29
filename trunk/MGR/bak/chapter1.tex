@@ -3,14 +3,14 @@ Oprogramowanie Enterprise jest pojêciem doœæ szerokim, opisuj¹cym systemy
 przeznaczone dla przedsiêbiorstw, których dzia³anie odwzorowuje
 zachodz¹ce procesy biznesowe. Niekiedy pojêcie to odnosi siê do oprogramowania
 pisanego na zamówienie lub te¿ do rozbudowanych pakietów wspieraj¹cych
-okreœlone czynnoœci, np. kontakty z klientami lub ksiêgowoœæ. Rzadko siê jednak
+okreœlone czynnoœci, np kontakty z klientami lub ksiêgowoœæ. Rzadko siê jednak
 zdarza, by istnia³ jeden system który potrafi³by spe³niæ wymagania
 klienta, a nawet je¿eli, z ró¿nych przyczyn firma mo¿e nie chcieæ go
 wdro¿yæ. Tak wiêc nawet w jednym przedsiêbiorstwie czêsto
 mo¿na siê spotkaæ z sytuacj¹ w której dzia³a wiele niezale¿nych aplikacji, 
 nierzadko pisanych przez ró¿ne firmy, które musz¹ siê ze sob¹ komunikowaæ w
-celu wymiany danych.  
-\newline 
+celu wymiany danych.
+\newline
 Jeszcze do niedawna mówi¹c o integracji mieliœmy na myœli w³aœciwie
 wy³¹cznie serwery aplikacyjne. Obecnie obowi¹zuj¹cym trendem jest postêpuj¹ca
 miniaturyzacja i wzrost mocy obliczeniowej urz¹dzeñ mobilnych, które
@@ -20,8 +20,7 @@ istniej¹cymi ju¿ systemami, napotykamy jednak na problem komunikacji.
 
 \section{Istniej¹ce podejœcia do integracji}
 Rozwa¿aj¹c mo¿liwe sposoby integracji technologii mobilnych z rozbudowan¹
-aplikacj¹ klasy Enteprise musimy zwróciæ uwagê na udostêpniane z obu stron
-mechanizmy.
+aplikacj¹ klasy enteprise musimy zwróciæ uwagê na udostêpniane z obu stron mechanizmy.
 \subsection{Transfer plików}
 W tym przypadku dane s¹ zapisywane i odczytywane z plików. Niezbêdna jest
 wspólna przestrzeñ dyskowa lub sposób przesy³ania (np. FTP). Z tego powodu
@@ -38,29 +37,21 @@ wywo³añ RPC jest synchronicznoœæ, która wprawdzie nie oznacza, ¿e musimy czekaæ
 na rezultat dzia³ania (mo¿emy za³o¿yæ, ¿e wy³¹cznie zlecamy wykonanie
 procedury, pobieraj¹c wynik potem),ale ¿e zak³adamy niezawodnoœæ komunikacji
 miêdzy urz¹dzeniami.
-
 \subsection{Wiadomoœci}
-Komunikacja za pomoc¹ wiadomoœci jest asynchroniczna, dodatkowo
+Preferowanym przez nas rozwi¹zaniem w takim przypadku jest wykorzystanie
+wiadomoœci. Komunikacja za pomoc¹ wiadomoœci jest asynchroniczna, dodatkowo
 dobry system przesy³ania wiadomoœci gwarantuje jej dostarczenie do adresata,
-lub informacjê o jej niedostarczeniu. Musimy pamiêtaæ, ¿e warunki w jakich mo¿emy komunikowaæ siê z
+lub informacjê o jej niedostarczeniu. System przesy³ania wiadomoœci znakomicie
+wype³nia lukê komunikacyjn¹ pomiêdzy systemami klasy Enterprise i urz¹dzeniami
+mobilnymi. Musimy pamiêtaæ, ¿e warunki w jakich mo¿emy komunikowaæ siê z
 urz¹dzeniem przenoœnym s¹ dalekie od doskona³ych, a mimo to u¿ytkownik oczekuje
 pe³nej niezawodnoœci systemu. To sprawia, ¿e nale¿y go tak zaprojektowaæ, aby
 przerwy w komunikacji by³y jak najmniej odczuwalne. Systemy komunikacyjne takie
 jak RPC,RMI czy CORBA projektowane by³y dla warunków w których problemy
 komunikacyjne s¹ sytuacj¹ nadzwyczajn¹. Tymczasem w przypadku ³¹cznoœci
 bezprzewodowej utrata po³¹czenia nie jest niczym czego nie moglibyœmy siê
-spodziewaæ. W tym momencie idea przesy³ania wiadomoœci wydaje siê skutecznym 
-rozwi¹zaniem tych problemów. Podczas tworzenia przyk³adowej implementacji
-napotkaliœmy jednak na problemy, które uniemo¿liwi³y wykorzystanie go do
-integracji która jest przedmiotem tej pracy. Tym co ogranicza mo¿liwoœæ
-wykorzystania takiego 
-
-\section{Zdalne wywo³ywanie procedur - Webserwisy}
-[tu coœ trzeba by napisaæ]
-
-
-
-
+spodziewaæ. W tym momencie idea przesy³ania wiadomoœci wydaje siê skutecznym (o
+ile nie jedynym) rozwi¹zaniem tych problemów.
 
 \section{Systemy oparte na przesy³aniu wiadomoœci}
 Systemy przesy³ania wiadomoœci pozwalaj¹ na integracjê systemów z
@@ -70,7 +61,7 @@ swoje mocne i s³abe strony.
 \subsection{Niezale¿noœæ integrowanych systemów}
 Komunikacja miêdzy systemami jest asynchroniczna, co z jednej strony powoduje,
 ¿e system musi obs³ugiwaæ bardziej skomplikowane scenariusze w których
-odpowiedŸ na ¿¹danie mo¿e nie pojawiæ siê od razu, z drugiej pozwala na
+odpowiedŸ na ¿adanie mo¿e nie pojawiæ siê od razu, z drugiej pozwala na
 dzia³anie komponentom wzglêdnie niezale¿nie do czasu odzyskania komunikacji.
 W razie awarii jednego z systemów, drugi mo¿e ca³y czas wysy³aæ wiadomoœci do
 kana³u komunikacyjnego, które zostan¹ odebrane po odzyskaniu sprawnoœci przez
@@ -118,11 +109,14 @@ pod³¹czanie ich do kana³u komunikacyjnego.
 \subsection{Kana³ Publish-Subscribe}
 Je¿eli chcemy udostêpniæ pewne informacje szerszej grupie procesów mo¿emy
 utworzyæ kana³ typu Publish-Subscribe. W tym przypadku procesy rejestruj¹ siê w
-mened¿erze kolejki wybieraj¹c temat (Topic) z którego chcia³yby otrzymywaæ
-wiadomoœci. Zadaniem mened¿era kolejki jest zapewnienie by wszystkie
+menad¿erze kolejki wybieraj¹c temat (Topic) z którego chcia³yby otrzymywaæ
+wiadomoœci. Zadaniem menad¿era kolejki jest zapewnienie by wszystkie
 zarejestrowane procesy otrzyma³y wstawion¹ do kolejki wiadomoœæ, oczywiœcie
 ka¿dy z nich jeden raz. 
 [tu bêdzie rysunek publish-subscribe]
+
+\subsection{Kana³ Datatype}
+[dopiszemy]
 
 
 \section{Platforma Java Enterprise Edition}
@@ -136,7 +130,7 @@ umo¿liwiaj¹ce przesy³anie wiadomoœci - Java Message Service.
 Java Message Service jest standardem oferuj¹cym aplikacjom Javowym mo¿liwoœæ
 tworzenia, wysy³ania, odbierania i czytania wiadomoœci. JMS jest jedynie
 specyfikacj¹, pozwalaj¹c¹ na jednolite korzystanie z ró¿nych systemów
-przesy³ania wiadomoœci. Porównuj¹c konkretn¹ implementacjê z baz¹ danych, mo¿na
+przesy³ania wiadomoœci. Porówuj¹c konkretn¹ implementacjê z baz¹ danych, mo¿na
 powiedzieæ, ¿e JMS oferuje podobne zunifikowane API do przesy³ania wiadomoœci,
 jak JDBC zunifikowany interfejs dostêpu do bazy danych. Istnieje wiele
 implementacji JMS, zarówno komercyjnych jak i dostêpnych bezp³atnie. Istniej¹
@@ -148,8 +142,6 @@ implementacje pod k¹tem urz¹dzeñ mobilnych.
 
 \subsection{Serwer aplikacyjny}
 Chocia¿ wykorzystanie serwera aplikacyjnego do uruchomienia aplikacji
-obs³uguj¹cych kolejki wiadomoœci jest jedn¹ z mo¿liwoœci, obok lekkich
-kontenerów jak np. Spring, wybierzemy serwer JBoss jako popularne i
-sprawdzone, a jednoczeœnie darmowe rozwi¹zanie implementuj¹ce wszystkie us³ugi
-JEE.
+obs³uguj¹ch kolejki wiadomoœci jest jedn¹ z mo¿liwoœci obok lekkich kontenerów
+jak np Spring, wybierze
 
