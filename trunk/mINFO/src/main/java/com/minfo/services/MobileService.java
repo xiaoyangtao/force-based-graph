@@ -94,6 +94,7 @@ public class MobileService {
 	}
 
 	public String getNextPoolScreen(Long userId, String password) {
+		log.debug("enter getNextPoolScreen; userId="+userId);
 		Pool pool = poolManager.getNextPoolForUser(userId);
 		
 		return getPoolScreen(pool.getId());
