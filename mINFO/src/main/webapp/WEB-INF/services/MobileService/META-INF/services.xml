@@ -3,38 +3,47 @@
 	<service name="MobileService" targetNamespace="http://com.minfo">
 		<description>Mobile sample service</description>
 		<!-- module ref="transform"/-->
-		<parameter name="ServiceObjectSupplier" locked="false">org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier</parameter>
-		<parameter name="SpringBeanName" locked="false">mobileService</parameter>
-		<schema schemaNamespace="http://ws.apache.org/axis2/samples/book/xsd/" />
+		<parameter name="ServiceObjectSupplier" locked="false">
+			org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier
+		</parameter>
+		<parameter name="SpringBeanName" locked="false">
+			mobileService
+		</parameter>
+		<schema
+			schemaNamespace="http://ws.apache.org/axis2/samples/book/xsd/" />
 		<parameter name="ServiceClass" locked="false">
 			com.minfo.services.MobileService
 		</parameter>
-		
+
 		<operation name="getPool">
 			<messageReceiver
 				class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
 		</operation>
-		
+
 		<operation name="getPoolScreen">
 			<messageReceiver
 				class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
 		</operation>
-		
+
 		<operation name="getNextPoolScreen">
 			<messageReceiver
 				class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
 		</operation>
-		
+
 		<operation name="registerNewUser">
 			<messageReceiver
 				class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
 		</operation>
-		
+
 		<operation name="makeAnswer">
 			<messageReceiver
 				class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
 		</operation>
 
-		
+		<operation name="getVersion">
+			<messageReceiver
+				class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+		</operation>
+
 	</service>
 </serviceGroup>

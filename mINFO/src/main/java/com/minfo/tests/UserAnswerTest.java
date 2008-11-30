@@ -59,7 +59,8 @@ public class UserAnswerTest {
 		//	userManager.updateUser(user);
 			
 			
-			Pool pools = poolManager.getNextPoolForUser(new Long(3));
+			Pool pool = poolManager.getNextPoolForUser(new Long(3));
+			System.out.println("GOT:"+pool);
 			
 			//================================================================
 			SessionHolder sessionHolder = (SessionHolder) TransactionSynchronizationManager.unbindResource(sessionFactory);
