@@ -1,0 +1,121 @@
+\chapter{Przyk³adowy szablon komunikacyjny}
+
+Do zademonstrowania mo¿liwoœci komunikacyjnych pomiêdzy systemem stacjonarnym i
+mobilnym stworzyliœmy szablon u³atwiaj¹cy tworzenie aplikacji posiadaj¹cych
+mobilny interfejs, z poziomu którego mo¿na sterowaæ aplikacj¹ serwerow¹.
+Rozwi¹zanie, które przyjêliœmy jest na tyle ogólne, ¿e umo¿liwia rozwi¹zanie
+kilku podobnych problemów, które przedstawimy dalej.
+
+\section{Istniej¹ce sposoby dostêpu do informacji z urz¹dzenia mobilnego}
+Przyjrzyjmy siê jednak najpierw mo¿liwym sposobom zdalnego dostêpu do danych z
+poziomu urz¹dzenia mobilnego. Przedstawione sposoby byæ mo¿e nie wyczerpuj¹
+wszystkich mo¿liwoœci podzia³u, jednak daj¹ obraz tego w jaki sposób tworzone
+s¹ dzisiaj aplikacje mobilne.
+
+\subsection{Mobilne przegl¹darki}
+Urz¹dzenia mobilne, w tym telefony komórkowe, maj¹ wbudowane przegl¹darki
+internetowe, za pomoc¹ których coraz czêœciej mo¿na przegl¹daæ wszystkie
+dostêpne w Internecie strony (w przeciwieñstwie do sytuacji sprzed kilku lat,
+gdy jedynie czêœæ z nich, posiadaj¹ca wersjê WAP, by³a dostêpna). Trzeba
+przyznaæ, ¿e w tym czasie dokona³ siê du¿y postêp w rozwoju mobilnych
+przegl¹darek. Ci¹gle jednak nie zapewniaj¹ one wygody porównywalnej z
+przegl¹daniem stron na tradycyjnym komputerze. Z drugiej strony, korzystanie z
+aplikacji zbudowanych w oparciu o model trójwarstwowy (z u¿yciem tzw. cienkiego
+klienta - czyli przegl¹darki WWW) niesie za sob¹ szereg korzyœci, jak brak
+potrzeby instalowania aplikacji,³atwoœæ wdro¿enia czy wreszcie ca³kowita
+przenoœnoœæ. 
+
+\subsection{Aplikacje mobilne}
+Innym podejœciem, przypominaj¹cym aplikacje zbudowane w oparciu o model
+dwuwarstwowy, jest stworzenie aplikacji mobilnej, która samodzielnie ³¹czy siê
+z Internetem i umo¿liwia wyœwietlanie i modyfikacjê danych w sposób
+przewidziany przez jej twórców. Ogranicza to oczywiœcie funkcjonalnoœæ takiej
+aplikacji do zakresu przewidzianego w danej wersji, a wszelkie zmiany wymagaj¹
+jej aktualizacji. W zamian za to otrzymujemy wiêksz¹ szybkoœæ dzia³ania,
+mo¿liwoœæ walidacji danych po stronie klienta oraz elastycznoœæ w tworzeniu
+interfejsu (który w tym przypadku nie jest ograniczony do kontrolek
+zapewnianych przez przegl¹darkê WWW).
+
+Wad¹ z której niewiele osób zdaje sobie
+sprawê jest mniejsza przenoœnoœæ aplikacji, choæby by³y one napisane w jêzyku
+projektowanym z myœl¹ o niezale¿noœci od platformy, takim jak Java. 
+[Dlaczego,mo¿e by tu coœ napisaæ?]
+
+
+\subsection{Generatory aplikacji}
+[Wojtek - tu Ty coœ napisz:)]
+
+\section{Idea szablonu}
+Ide¹ stoj¹c¹ za stworzeniem szablonu by³o po³¹czenie zalet zapewnianych przez
+aplikacjê zbudowan¹ w oparciu o model trójwarstwowy z tymi typowymi
+dla samodzielnej aplikacji. Stworzone rozwi¹zanie stanowi raczej pomys³, który
+mo¿na rozwijaæ i wykorzystywaæ do budowy bardziej skomplikowanych systemów.
+Dlatego te¿ mo¿liwoœci takiego podejœcia nie s¹ ograniczone przez stworzony
+szablon.
+\newline
+Szablon sk³ada siê z dwóch czêœci - mobilnej i serwerowej.
+U¿ytkownik mo¿e okreœliæ wygl¹d ekranu przesy³anego do urz¹dzenia mobilnego,
+który po stronie mobilnej interpretowany jest do postaci elementów interfejsu
+ciê¿kiego klienta, np pól tekstowych, wyboru czy rozwijanych list. 
+Rozszerza to mo¿liwoœci aplikacji w stosunku do zwyk³ej strony internetowej o
+elementy niedostêpne w przypadku statycznej strony WWW jak rysunki
+wektorowe,obs³uga przycisków urz¹dzenia czy mo¿liwoœæ wyœwietlania strony przez
+jakiœ czas.
+\newline
+W typowym przypadku scenariusz u¿ycia aplikacji bêdzie wygl¹da³
+nastêpuj¹co:
+\begin{itemize}
+  \item Tworzymy nowy 'ekran' na serwerze. Oznacza to okreœlenie wygl¹du i
+  zachowania aplikacji w formacie XML. Okreœlamy dostêpne akcje dla
+  danego ekranu. 
+  \item Aplikacja mobilna ³¹czy siê z serwerem i pobiera przygotowany dla niej
+  ekran. U¿ytkownik wykonuje jedn¹ z dostêpnych na nim akcji, a informacja o
+  tym jest przesy³ana do serwera. Dodatkowo aplikacja mo¿e wykonaæ dowolne
+  zdefiniowane akcje. W ten sposób pojawia siê mo¿liwoœæ kontrolowania ekranu
+  po stronie klienta w dowolny sposób.
+  \item Aplikacja mobilna pobiera kolejny ekran przygotowany przez serwer i
+  dalej postêpuje wg powy¿szego schematu.
+\end{itemize}
+
+
+\subsection{Mo¿liwoœci}
+Aplikacja oparta o tak zaprojektowany model posiada³aby cechy typowe dla modelu
+dwuwarstwowego - w tym szybki czas reakcji, niezale¿noœæ wygl¹du aplikacji od
+stosowanego klienta oraz mo¿liwoœæ przeprowadzenia pewnych dodatkowych operacji
+(jak walidacja) po stronie klienta. W idealnym przypadku móg³by byæ
+dynamicznie przesy³any kod wykonywany po stronie klienta (odpowiednik JavaScript
+w przypadku przegl¹darki internetowej). Pozbawiona by³aby te¿ typowych wad obu rozwi¹zañ -
+brak koniecznoœci aktualizowania aplikacji przy drobnych poprawkach (poza
+b³êdami w zainstalowanym oprogramowaniu). Nie by³aby równie¿ ograniczona do
+mechanizmów oferowanych przez statyczne strony WWW - mo¿na by by³o
+wyœwietlaæ dowolne ekrany, a na nich wykonywaæ dowolne akcje.
+Dodatkowo, poniewa¿ stan aplikacji przechowywany by³by na serwerze, mo¿na w
+dowolnym momencie zmieniæ urz¹dzenie mobilne, wy³¹czyæ aplikacjê, a potem
+powróciæ do zapamiêtanego wczeœniej miejsca.
+ 
+\subsection{Dlaczego to jest nowatorskie - jak by to napisaæ?}
+
+\subsection{Mo¿liwe zastosowania}
+
+
+\subsubsection{Ankietowanie}
+\subsubsection{Zdalne podejmowanie decyzji}
+
+\subsection{Architektura}
+Tak jak zosta³o to ju¿ wspomniane szablon sk³ada siê z dwóch
+g³ównych czêœci - serwerowej oraz mobilnej. Przed przejœciem do szczegó³ów
+implementacyjnych zaprezentujemy koncepcjê ca³ego systemu.
+
+Napisaæ o komunikacji
+\subsubsection{Aplikacja serwerowa}
+
+
+\subsubsection{Aplikacja mobilna}
+
+\subsection{Istniej¹ce problemy}
+
+\subsubsection{Bezpieczeñstwo}
+
+\subsubsection{Gwarancja dostarczenia}
+
+\subsubsection{Transakcyjnoœæ}
