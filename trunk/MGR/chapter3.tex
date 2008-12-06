@@ -108,8 +108,9 @@ implementacyjnych zaprezentujemy koncepcjê ca³ego systemu.
 
 \setlength\fboxsep{5pt}  
 \setlength\fboxrule{0.0pt}
-\fbox{\scalebox{0.5}{\includegraphics{img/diag1.png} }}
-\newline
+\begin{center}
+\fbox{\scalebox{0.7}{\includegraphics{img/diag1.png} }}
+\end{center}
 Jak widaæ, urz¹dzenia mobilne bêd¹ siê ³¹czy³y przez Internet do uruchomionego
 serwera aplikacyjnego. Ka¿de z nich wysy³a ¿¹danie pobrania ekranu, który jest
 dynamicznie przygotowywany w zale¿noœci od stanu aplikacji dla danego
@@ -148,7 +149,43 @@ komunikacyjnej i samodzielne rozwi¹zanie problemów, które siê z tym wi¹¿¹.
 
 \subsubsection{Aplikacja serwerowa}
 
-Przedstawimy teraz architekturê czêœci serwerowej, 
+Przedstawimy teraz architekturê czêœci serwerowej, komponenty z których siê
+sk³ada i technologie, które wykorzystuj¹.
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+
+\begin{center}
+\fbox{\scalebox{0.7}{\includegraphics{img/diag2.png} }}
+\end{center}
+
+Aplikacja serwerowa zbudowana zosta³a w oparciu o model trójwarstwowy, z
+podwójnym dostêpem (widokiem) do danych. Aby zrozumieæ projekt ca³ego systemu
+wprowadŸmy pewne pojêcia w naszym systemie, z których wynikaj¹ dalsze
+rozwi¹zania: 
+\begin{itemize}
+  \item \emph{Ankieta} - treœæ, dla której istniej¹ dostêpne zdefiniowane
+  odpowiedzi.
+ \item \emph{OdpowiedŸ} - jedna z mo¿liwoœci wyboru dostêpnych dla danej ankiety
+  \item \emph{U¿ytkownik} - konto z którym zwi¹zane s¹ uprawnienia i udzielone
+  w ankietach odpowiedzi. Jeden u¿ytkownik mo¿e udzieliæ wielu odpowiedzi w
+  trakcie dzia³ania ca³ego systemu.
+\end{itemize}
+W oparciu o te za³o¿enia stworzony zosta³ prosty schemat bazy danych:
+\begin{center}
+\fbox{\scalebox{0.7}{\includegraphics{img/pool_schema_o.png} }}
+\end{center}
+
+Choæ wydaje siê, ¿e ogranicza to dzia³anie systemu do mo¿liwoœci wyboru
+odpowiedzi z dostêpnej listy, to jednak schemat bez problemu mo¿na rozbudowaæ o
+dodatkowe pola, które pozwol¹ na podawanie wolnych (nieograniczonych dostêpn¹
+list¹ wyboru) odpowiedzi.
+\newline
+Na postawie schematu koncepcyjnego stworzony zosta³ schemat fizyczny bazy
+danych:
+\newline
+\begin{center}
+\fbox{\scalebox{0.7}{\includegraphics{img/pool_schema.png} }}
+\end{center}
 
 
 \subsubsection{Aplikacja mobilna}
