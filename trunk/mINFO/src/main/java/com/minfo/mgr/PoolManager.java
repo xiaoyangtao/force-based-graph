@@ -44,7 +44,12 @@ public class PoolManager {
 		List<Pool> pools = poolDAO.getNewPoolsForUser(userId);
 		log.debug("Pools size:"+pools.size());
 		log.debug("Pools:"+pools);
-		Pool p = pools.get(0);
+		int idx = 0;
+		if(pools.size()>0) {
+			idx = new Double(Math.random()).intValue() % pools.size();
+		}
+		
+		Pool p = pools.get(idx);
 		
 		return p;
 	}
