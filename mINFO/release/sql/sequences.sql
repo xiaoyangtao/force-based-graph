@@ -4,7 +4,7 @@
 
 CREATE SEQUENCE seq_user
   INCREMENT 1
-  MINVALUE 1
+  MINVALUE 1;
 ALTER TABLE seq_user OWNER TO postgres;
 
 
@@ -14,7 +14,7 @@ ALTER TABLE seq_user OWNER TO postgres;
 
 CREATE SEQUENCE seq_answer
   INCREMENT 1
-  MINVALUE 1
+  MINVALUE 1;
 ALTER TABLE seq_answer OWNER TO postgres;
 
 
@@ -25,7 +25,7 @@ ALTER TABLE seq_answer OWNER TO postgres;
 
 CREATE SEQUENCE seq_pool
   INCREMENT 1
-  MINVALUE 1
+  MINVALUE 1;
 ALTER TABLE seq_pool OWNER TO postgres;
 
 
