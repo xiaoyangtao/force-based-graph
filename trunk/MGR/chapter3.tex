@@ -61,9 +61,14 @@ Rozszerza to mo¿liwoœci aplikacji w stosunku do zwyk³ej strony internetowej o
 elementy niedostêpne w przypadku statycznej strony WWW jak rysunki
 wektorowe,obs³uga przycisków urz¹dzenia czy mo¿liwoœæ wyœwietlania strony przez
 jakiœ czas.
-\newline
+
 W typowym przypadku scenariusz u¿ycia aplikacji bêdzie wygl¹da³
 nastêpuj¹co:
+\begin{center}
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{0.7}{\includegraphics{img/pool_schema_uml.png} }}
+\end{center}
 \begin{itemize}
   \item Tworzymy nowy 'ekran' na serwerze. Oznacza to okreœlenie wygl¹du i
   zachowania aplikacji w formacie XML. Okreœlamy dostêpne dla
@@ -95,11 +100,36 @@ powróciæ do zapamiêtanego wczeœniej miejsca.
  
 \subsection{Dlaczego to jest nowatorskie - jak by to napisaæ?}
 
-\subsection{Mo¿liwe zastosowania}
+Tworzymy aplikacjê która ma sens tylko dla urz¹dzeñ mobilnych, zacz¹tek do
+tworzenia mobilnych rozwi¹zañ.
 
+Postêpujemy w sposób który nie by³ nigdzie stosowany
+
+
+
+\subsection{Mo¿liwe zastosowania}
+Opisywana idea u³atwia tworzenie okreœlonego typu aplikacji i tak jak ka¿dy
+szablon nie pokrywa wszystkich istniej¹cych rozwi¹zañ. Nasz szablon u³atwi
+pisanie aplikacji, które nie wymagaj¹ przesy³ania du¿ych iloœci danych i od
+której oczekujemy interaktywnoœci wiêkszej ni¿ w przypadku strony internetowej
+pozbawione JavaScript. 
 
 \subsubsection{Ankietowanie}
+Jednym z zastosowañ które mo¿emy sobie wyobraziæ jest zdalne ankietowanie
+u¿ytkowników. Stworzenie aplikacji która na ekranie wyœwietla listê dostêpnych
+odpowiedzi i pozwala na wybranie jednej z nich, jest przy u¿yciu
+przedstawianego szablonu prostym zadaniem.
 \subsubsection{Zdalne podejmowanie decyzji}
+Podobnie jak powy¿ej, u¿ytkownicy mog¹ wybraæ jedn¹ z mo¿liwych decyzji, w
+takim przypadku potrzebne bêdzie rozbudowanie szablonu o zaawansowane
+mechanizmy bezpieczeñstwa, jednak idea pozostaje podobna.
+\subsubsection{Zdalne wyœwietlanie treœci}
+Urz¹dzenie mobilne mo¿e byæ te¿ jedynie miejscem które wyœwietla dostarczane do
+niego informacje. Interakacja z u¿ytkownikiem mo¿e byæ w tym momencie
+wy³¹czona, a urz¹dzenie mobilne mo¿e 
+
+
+
 
 \subsection{Architektura}
 Tak jak zosta³o to ju¿ wspomniane szablon sk³ada siê z dwóch
@@ -147,21 +177,15 @@ wspierana.
 Z tych powodów zdecydowaliœmy siê na wykorzystanie Web serwisów jako warstwy
 komunikacyjnej i samodzielne rozwi¹zanie problemów, które siê z tym wi¹¿¹.
 
+
+
 \subsubsection{Aplikacja serwerowa}
 
 Przedstawimy teraz architekturê czêœci serwerowej, komponenty z których siê
 sk³ada i technologie, które wykorzystuj¹.
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-
-\begin{center}
-\fbox{\scalebox{0.7}{\includegraphics{img/diag2.png} }}
-\end{center}
-
-Aplikacja serwerowa zbudowana zosta³a w oparciu o model trójwarstwowy, z
-podwójnym dostêpem (widokiem) do danych. Aby zrozumieæ projekt ca³ego systemu
-wprowadŸmy pewne pojêcia w naszym systemie, z których wynikaj¹ dalsze
-rozwi¹zania: 
+\newline
+Aby zrozumieæ projekt ca³ego systemu wprowadŸmy pewne pojêcia w naszym
+systemie, z których wynikaj¹ dalsze rozwi¹zania: 
 \begin{itemize}
   \item \emph{Ankieta} - treœæ, dla której istniej¹ dostêpne zdefiniowane
   odpowiedzi.
@@ -170,11 +194,27 @@ rozwi¹zania:
   w ankietach odpowiedzi. Jeden u¿ytkownik mo¿e udzieliæ wielu odpowiedzi w
   trakcie dzia³ania ca³ego systemu.
 \end{itemize}
-W oparciu o te za³o¿enia stworzony zosta³ prosty schemat bazy danych:
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+
+Aplikacja serwerowa zbudowana zosta³a w oparciu o model trójwarstwowy, z
+podwójnym dostêpem (widokiem) do danych. 
+
+\begin{center}
+\fbox{\scalebox{0.7}{\includegraphics{img/diag2.png} }}
+\end{center}
+Przedstawmy teraz poszczególne warstwy systemu, wraz z przyjêtymi w nich
+za³o¿eniami.
+
+\paragraph{Serwer}
+Aplikacja serwerowa jest uruchamiana na kontenerze Apache Tomcat 6.0.
+
+\paragraph{Baza danych}
+W oparciu o przedtawione wczeœniej za³o¿enia stworzony zosta³ prosty schemat
+bazy danych:
 \begin{center}
 \fbox{\scalebox{0.7}{\includegraphics{img/pool_schema_o.png} }}
 \end{center}
-
 Choæ wydaje siê, ¿e ogranicza to dzia³anie systemu do mo¿liwoœci wyboru
 odpowiedzi z dostêpnej listy, to jednak schemat bez problemu mo¿na rozbudowaæ o
 dodatkowe pola, które pozwol¹ na podawanie wolnych (nieograniczonych dostêpn¹
@@ -187,6 +227,44 @@ danych:
 \fbox{\scalebox{0.7}{\includegraphics{img/pool_schema.png} }}
 \end{center}
 
+
+\paragraph{Hibernate}
+Dostêp do danych realizowany jest za pomoc¹ mapowania relacyjno-obiektowego
+Hibernate. Teoretycznie pozwala to, a na pewno znacznie u³atwia ewentualn¹
+zmianê dostawcy bazy danych. Dodatkowo uwalnia nas z koniecznoœci rêcznego
+pisania zapytañ SQL. 
+
+\paragraph{Spring Framework}
+Spring jest zestawem narzêdzi u³atwiaj¹cym tworzenie aplikacji. Pozwala on,
+miêdzy innymi, na deklaratywne zarz¹dzanie transakcjami, zarz¹dzanie czasem
+cyklem ¿ycia obiektów oraz zwalnia programistê z koniecznoœci pisania
+ czêsto powtarzanego kodu przez dostarczenie odpowiednich szablonów. Dodatkowo
+ wymusza on pewien model programowania i sprawia, ¿e pisane aplikacje s¹
+ bardziej przejrzyste i ³atwiejsze w utrzymaniu. Jak ju¿ zosta³o to wspomniane
+ aplikacja serwerowa jest aplikacj¹ typu Web, z któr¹ to framework Spring
+ doskonale siê integruje.
+ 
+\paragraph{Apache Myfaces} 
+Myfaces jest implementacj¹ specyfikacji Java Server Faces, która pozwala na
+wygodne tworzenie widoku aplikacji. W naszym przypadku interfejsem bêdzie
+dynamicznie generowana strona WWW, choæ specyfikacja JSF nie wprowadza takiego
+ograniczenia. Warstwa ta bêdzie s³u¿y³a do administrowania systemem,
+przegl¹dania podjêtych decyzji i zarz¹dzania ankietami i u¿ytkownikami.
+
+\paragraph{Apache Axis2}
+Axis2 to kontener webserwisów,który odpowiada za odbieranie zdalnych wywo³añ
+procedur i przekazywanie ich do odpowiednich obiektów które je wykonuj¹.
+Zwalnia te¿ programistê z koniecznoœci samodzielnego przetwarzania XML w
+¿¹daniach, umo¿liwia te¿ automatyczn¹ serializacjê i deserializacjê obiektów
+Javowych. 
+
+\paragraph{Transformata XSLT}
+Elementem wspomagaj¹cym w systemie jest transformata XSLT wykonywana na
+odpowiedziach przesy³anych do urz¹dzenia mobilnego. Jej celem jest utworzenie
+widoku dla urz¹dzenia mobilnego w sposób niezale¿ny od generowanej odpowiedzi.
+W wyniku wywo³ania procedury generuj¹cej ekran, tworzony jest XML, zawieraj¹cy
+podstawowe informacje, a nastêpnie przetwarzany jest on w opisany sposób,
+dziêki czemu odpowiedŸ mo¿na dowolnie modyfikowaæ bez zmiany kodu aplikacji.
 
 \subsubsection{Aplikacja mobilna}
 
