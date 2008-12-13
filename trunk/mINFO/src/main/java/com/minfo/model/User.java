@@ -37,6 +37,16 @@ public class User implements Serializable {
 		    )
 	private List<Answer> userAnswers;
 	
+	@ManyToMany(
+	        targetEntity=Pool.class
+	    )
+	    @JoinTable(
+	        name="t_user_displayed_pool",
+	        joinColumns=@JoinColumn(name="id_user"),
+	        inverseJoinColumns=@JoinColumn(name="id_pool")
+	    )
+	    private List<Pool> userDisplayedPools;
+	
 	
 	public Long getId() {
 		return id;
@@ -67,6 +77,13 @@ public class User implements Serializable {
 	public String toString() {
 		return "[User:id="+id+";username="+username+";password="+password+"]";
 	}
+	public List<Pool> getUserDisplayedPools() {
+		return userDisplayedPools;
+	}
+	public void setUserDisplayedPools(List<Pool> userDisplayedPools) {
+		this.userDisplayedPools = userDisplayedPools;
+	}
+	
 	
 
 

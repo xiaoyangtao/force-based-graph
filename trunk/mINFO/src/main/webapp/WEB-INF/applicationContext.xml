@@ -45,6 +45,7 @@
               <prop key="update*">PROPAGATION_REQUIRED</prop> 
               <prop key="remove*">PROPAGATION_REQUIRED</prop> 
               <prop key="make*">PROPAGATION_REQUIRED</prop> 
+              <prop key="getNextPoolForUser">PROPAGATION_REQUIRED</prop> 
               <prop key="*">PROPAGATION_REQUIRED,readOnly</prop> 
            </props> 
        </property>
@@ -79,9 +80,40 @@
               <prop key="update*">PROPAGATION_REQUIRED</prop> 
               <prop key="remove*">PROPAGATION_REQUIRED</prop> 
               <prop key="make">PROPAGATION_REQUIRED</prop> 
-              <prop key="*">PROPAGATION_REQUIRED,readOnly</prop> 
+              <prop key="*">PROPAGATION_REQUIRED</prop> 
            </props> 
        </property>
     </bean>   
 	
+	 <!-- ============================ TAGS =========================== -->
+    
+    <bean id="tagDAO" class="com.minfo.dao.hibernate.TagHibernateDAO"> 
+       <property name="sessionFactory"> 
+          <ref bean="sessionFactory"/> 
+       </property> 
+    </bean>    
+    <bean id="tagManagerTarget" class="com.minfo.mgr.TagManager"> 
+        <property name="tagDAO">
+           <ref local="tagDAO"/>
+        </property>
+    </bean>
+    
+    <bean id="tagManager" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"> 
+       <property name="transactionManager"> 
+           <ref local="transactionManager"/> 
+       </property> 
+       <property name="target"> 
+           <ref local="tagManagerTarget"/> 
+       </property> 
+       <property name="transactionAttributes"> 
+           <props> 
+              <prop key="add*">PROPAGATION_REQUIRED</prop> 
+              <prop key="update*">PROPAGATION_REQUIRED</prop> 
+              <prop key="remove*">PROPAGATION_REQUIRED</prop> 
+              <prop key="make">PROPAGATION_REQUIRED</prop> 
+              <prop key="*">PROPAGATION_REQUIRED</prop> 
+           </props> 
+       </property>
+    </bean>   
+    
 </beans>

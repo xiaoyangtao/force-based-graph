@@ -66,6 +66,21 @@ public class UserListController {
 		return "newUser";
 	}
 	
+	public String displayInfo() {
+		log.debug("enter displayInfo");
+		Long userId=null;
+		FacesContext context = FacesContext.getCurrentInstance();
+		String userIdStr = (String) context.getExternalContext().getRequestParameterMap().get("userId");
+		log.debug("userId=" + userIdStr);
+    	if(!StringUtil.emptyString(userIdStr)){
+			userId = new Long(userIdStr);
+		}
+		currentUser = userManager.getUser(new Long(userId));
+		log.debug("Got user:"+currentUser);
+		
+		return "displayInfo";
+	}
+	
     public String editUser() {
     	log.debug("enter editUser");
     	Long userId=null;

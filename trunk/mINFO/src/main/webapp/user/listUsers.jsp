@@ -37,6 +37,12 @@
 					<h:outputText value="#{msg.delete}" />
 				</h:commandLink>
 			</h:column>
+			<h:column>
+				<h:commandLink action="#{user.displayInfo}">
+					<f:param name="userId" value="#{item.id}" />
+					<h:outputText value="#{msg.displayInfo}" />
+				</h:commandLink>
+			</h:column>
 		</h:dataTable></div>
 
 		<div id="sidebar">

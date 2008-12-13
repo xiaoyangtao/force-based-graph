@@ -36,6 +36,7 @@
 				<value>com.minfo.model.Pool</value>
 				<value>com.minfo.model.Answer</value>
 				<value>com.minfo.model.User</value>
+				<value>com.minfo.model.Tag</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
