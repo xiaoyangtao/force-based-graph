@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.Cascade;
 
-
 @Entity
 @Table(name = "t_pool", schema = "public")
 public class Pool implements Serializable {
@@ -24,13 +23,16 @@ public class Pool implements Serializable {
 	@Column(name = "question")
 	private String question;
 
-	@OneToMany(mappedBy="pool",fetch=FetchType.LAZY)
-	@JoinColumn(name="id_pool")
+	@OneToMany(mappedBy = "pool", fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_pool")
 	@OrderBy("id")
-	@Cascade({org.hibernate.annotations.CascadeType.ALL,
-          org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
+	@Cascade( { org.hibernate.annotations.CascadeType.ALL,
+			org.hibernate.annotations.CascadeType.DELETE_ORPHAN })
 	private List<Answer> answers;
-	
+
+	@ManyToMany(mappedBy = "userDisplayedPools", fetch = FetchType.LAZY, targetEntity = User.class)
+	private List<User> usersDisplayedPools;
+
 	public Long getId() {
 		return id;
 	}
@@ -55,8 +57,8 @@ public class Pool implements Serializable {
 		StringBuffer sb = new StringBuffer();
 		sb.append("\nPool[");
 		sb.append("id=" + id + ";");
-		sb.append("question=" + question+";");
-		sb.append("Answers:"+answers+"]");
+		sb.append("question=" + question + ";");
+		sb.append("Answers:" + answers + "]");
 		return sb.toString();
 
 	}
@@ -67,6 +69,14 @@ public class Pool implements Serializable {
 
 	public void setAnswers(List<Answer> answers) {
 		this.answers = answers;
+	}
+
+	public List<User> getUsersDisplayedPools() {
+		return usersDisplayedPools;
+	}
+
+	public void setUsersDisplayedPools(List<User> usersDisplayedPools) {
+		this.usersDisplayedPools = usersDisplayedPools;
 	}
 
 	

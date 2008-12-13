@@ -1,0 +1,11 @@
+-- Sequence: seq_tag
+
+-- DROP SEQUENCE seq_tag;
+
+CREATE SEQUENCE seq_tag
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
+ALTER TABLE seq_tag OWNER TO postgres;

@@ -40,8 +40,8 @@ public class XMLTransformTest {
 			//================================================================
 			MobileService mobileService = (MobileService)ctx.getBean("mobileService");
 			
-			String xml = mobileService.getPoolScreen(new Long(70));
-			System.out.println(xml);
+		//	String xml = mobileService.getPoolScreen(new Long(70));
+		//	System.out.println(xml);
 			
 			
 			//================================================================

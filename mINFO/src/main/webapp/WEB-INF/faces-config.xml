@@ -36,6 +36,16 @@
         </managed-property>
 	</managed-bean>
 	
+	<managed-bean>
+		<managed-bean-name>tag</managed-bean-name>
+		<managed-bean-class>com.minfo.faces.beans.TagListController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+            <property-name>tagManager</property-name>
+            <value>#{tagManager}</value>
+        </managed-property>
+	</managed-bean>
+	
 	
 	<navigation-rule>
 		<from-view-id>/pool/listPools.jsp</from-view-id>
@@ -71,6 +81,10 @@
 		<navigation-case>
 			<from-outcome>editUser</from-outcome>
 			<to-view-id>/user/addEditUser.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>displayInfo</from-outcome>
+			<to-view-id>/user/userInfo.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	

@@ -4,7 +4,7 @@
 <%@ include file="/common/header.jspf"%>
 <%@ include file="/common/menu.jspf"%>
 
-
+ 
 
 <f:view locale="#{facesContext.externalContext.request.locale}">
 	<f:loadBundle var="msg" basename="message" />

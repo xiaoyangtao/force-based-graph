@@ -1,6 +1,7 @@
 package com.minfo.mgr;
 
 import java.util.List;
+import java.util.Random;
 
 import org.apache.log4j.Logger;
 
@@ -41,17 +42,22 @@ public class PoolManager {
 	
 
 	public Pool getNextPoolForUser(Long userId) {
+		log.debug("enter getNextPoolForUser");
+		User u = userDAO.getUser(userId);
 		List<Pool> pools = poolDAO.getNewPoolsForUser(userId);
 		log.debug("Pools size:"+pools.size());
 		log.debug("Pools:"+pools);
-		int idx = 0;
 		if(pools.size()>0) {
-			idx = new Double(Math.random()).intValue() % pools.size();
+			int idx = new Random().nextInt(pools.size());
+			log.debug("idx:"+idx);
+			Pool p = pools.get(idx);
+			u.getUserDisplayedPools().add(p);
+			userDAO.updateUser(u);
+			log.debug("p.getUsersDisplayedPools()="+p.getUsersDisplayedPools());
+			return p;
+		} else {
+			return null;
 		}
-		
-		Pool p = pools.get(idx);
-		
-		return p;
 	}
 	
 	public Pool getPool(Long id) {

@@ -1,18 +1,21 @@
 <%@ page import="java.util.HashMap" %>
+<%@ taglib uri='http://java.sun.com/jstl/fmt' prefix='fmt'%>
 <%
 	StringBuffer sb = request.getRequestURL();
 	String file = sb.substring(sb.lastIndexOf("/")+1,sb.lastIndexOf(".jsp"));
 	HashMap activeMap = new HashMap();
 	activeMap.put(file,"active");
-
 %>
+<fmt:setLocale value="pl"/>
+<fmt:setBundle basename="message"/>
+
 
 <div id="menulinks">
-		<a class="<%=activeMap.get("listPools") %>" href="/mINFO/pool/listPools.faces"><span>Lista ankiet</span></a>	
+		<a class="<%=activeMap.get("listPools") %>" href="/mINFO/pool/listPools.faces"><span><fmt:message key="news"/></span></a>	
 		<div class="menulines"></div>
-		<a class="<%=activeMap.get("listUsers") %>" href="/mINFO/user/listUsers.faces"><span>Lista uzytkownikow</span></a>
+		<a class="<%=activeMap.get("listUsers") %>" href="/mINFO/user/listUsers.faces"><span><fmt:message key="users"/></span></a>
 		<div class="menulines"></div>
-		<a href="#"><span></span></a>
+		<a class="<%=activeMap.get("listTags") %>" href="/mINFO/tag/listTags.faces"><span><fmt:message key="tags"/></span></a>
 		<div class="menulines"></div>
 		<a href="#"><span></span></a>
 		<div class="menulines"></div>

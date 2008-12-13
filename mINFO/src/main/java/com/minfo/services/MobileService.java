@@ -114,21 +114,21 @@ public class MobileService {
 	public String getNextPoolScreen(Long userId, String password) {
 		log.debug("enter getNextPoolScreen; userId=" + userId);
 		Pool pool = poolManager.getNextPoolForUser(userId);
-
-		return getPoolScreen(pool.getId());
+		byte[] xmlByteArray = null;
+		if(pool!=null) {
+			xmlByteArray = getPoolScreenXML(pool.getId()).toByteArray();
+		} else {
+			xmlByteArray = getMessageScreenXML("Nie ma wiêcej wiadomoœci").toByteArray();
+		}
+		return transformScreen(xmlByteArray);
 	}
 
-	public String getPoolScreen(Long id) {
+	public String transformScreen(byte[] xmlByteArray) {
 		
 		BufferedOutputStream bos = null;
 		ByteArrayInputStream bais = null;
 		String transformed = null;
-		byte[] xmlByteArray = null;
-		String temp = null;
 		try {
-			xmlByteArray = getPoolScreenXML(id).toByteArray();
-			temp = new String(xmlByteArray,"UTF-8");
-			// log.debug("xml to tranform:" + xml);
 			InputStream xsltStream = this.getClass().getResourceAsStream(
 					"/com/minfo/services/xslt/template.xsl");
 			log.debug("xsltStream=" + xsltStream);
@@ -255,4 +255,49 @@ public class MobileService {
 		return null;
 	}
 
+	
+	private ByteArrayOutputStream getMessageScreenXML(String message) {
+		log.debug("enter getPoolScreenXML");
+
+
+		try {
+			String mainElement = "pool";
+
+			ByteArrayOutputStream bs = new ByteArrayOutputStream();
+			BufferedOutputStream bos = new BufferedOutputStream(bs);
+			if (bos != null) {
+				try {
+
+					OutputFormat of = new OutputFormat();
+					of.setIndent(1);
+					of.setIndenting(true);
+
+					XMLSerializer serializer = new XMLSerializer(bos, of);
+					ContentHandler hd = serializer.asContentHandler();
+					hd.startDocument();
+					AttributesImpl atts = new AttributesImpl();
+					atts.addAttribute("", "", "id", "CDATA", "0");
+					hd.startElement("", "", mainElement, atts);
+					atts.clear();
+					atts.addAttribute("", "", "type", "xs:string", "single");
+					hd.startElement("", "", "question", atts);
+					hd.characters(message.toCharArray(), 0, message.length());
+					hd.endElement("", "", "question");
+					hd.endElement("", "", mainElement);
+					hd.endDocument();
+					return bs;
+				} finally {
+					if (bos != null) {
+						bos.close();
+					}
+				}
+			}
+
+		} catch (Throwable t) {
+			log.error(t.getMessage(), t);
+		}
+		return null;
+	}
+
+	
 }
