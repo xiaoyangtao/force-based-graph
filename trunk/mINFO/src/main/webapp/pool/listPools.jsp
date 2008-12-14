@@ -3,7 +3,9 @@
 <%@ include file="/common/taglibs.jspf"%>
 <%@ include file="/common/header.jspf"%>
 <%@ include file="/common/menu.jspf"%>
-
+<%
+	request.setAttribute("pageView",request.getSession().getAttribute("pageView"));
+%>
  
 
 <f:view locale="#{facesContext.externalContext.request.locale}">
@@ -28,7 +30,7 @@
 				<f:facet name="header">
 					<h:outputText value="#{msg.poolQuestion}" />
 				</f:facet>
-				<h:outputText value="#{item.question}" />
+				<h:outputText value="#{item.questionShort}" />
 			</h:column>
 			<h:column>
 				<h:commandLink action="#{pool.editPool}">

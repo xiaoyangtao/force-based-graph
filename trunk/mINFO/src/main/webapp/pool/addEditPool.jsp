@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglibs.jspf"%>
-<%@ include file="/common/header.jspf" %>
-<%@ include file="/common/menu.jspf" %>
-  
-<div id="mainarea">
-<div id="contentarea">
+<%@ include file="/common/header.jspf"%>
+<%@ include file="/common/menu.jspf"%>
+
 <f:view locale="#{facesContext.externalContext.request.locale}">
 	<f:loadBundle var="msg" basename="message" />
+	<div id="mainarea">
 	<h:form id="mainForm">
+	<div id="contentarea">
 
 		<h:outputLabel value="#{msg.poolId}" />: <h:outputText
 			value="#{pool.currentPool.id}" />
@@ -58,9 +58,25 @@
 		<h:commandButton value="#{msg.addNewAnswer}"
 			action="#{pool.addAnswer}" />
 
-
+	
+	</div>
+	
+	<div id="sidebar">
+	<div class="sidebarheader"><h:outputLabel value="#{msg.tags}" />
+	</div>
+	<div class="sidebarheader">
+		<h:dataTable var="item" value="#{pool.selectedTags}">
+			<h:column>
+				<h:selectBooleanCheckbox value="#{item.selected}"></h:selectBooleanCheckbox>
+			</h:column>
+			<h:column>
+				<h:outputText value="#{item.tag.name}" />
+			</h:column>
+		</h:dataTable>
+	</div>
 	</h:form>
+	</div>
+	</div>
 
 </f:view>
-</div></div>
 <c:import url="/common/footer.jspf" />

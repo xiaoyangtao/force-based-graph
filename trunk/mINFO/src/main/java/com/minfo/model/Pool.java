@@ -32,6 +32,16 @@ public class Pool implements Serializable {
 
 	@ManyToMany(mappedBy = "userDisplayedPools", fetch = FetchType.LAZY, targetEntity = User.class)
 	private List<User> usersDisplayedPools;
+	
+	@ManyToMany(
+	        targetEntity=Tag.class
+	    )
+	    @JoinTable(
+	        name="t_pool_tag",
+	        joinColumns=@JoinColumn(name="id_pool"),
+	        inverseJoinColumns=@JoinColumn(name="id_tag")
+	    )
+	private List<Tag> tags;
 
 	public Long getId() {
 		return id;
@@ -78,6 +88,19 @@ public class Pool implements Serializable {
 	public void setUsersDisplayedPools(List<User> usersDisplayedPools) {
 		this.usersDisplayedPools = usersDisplayedPools;
 	}
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+	
+	public String getQuestionShort() {
+		return question.substring(0, 30)+"...";
+	}
+
 
 	
 

@@ -1,19 +1,26 @@
 package com.minfo.faces.beans;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 
+import com.minfo.cewolf.beans.UserStatsDatasetProducer;
 import com.minfo.common.StringUtil;
 import com.minfo.mgr.UserManager;
 import com.minfo.model.User;
+import com.minfo.model.UserStats;
 
 public class UserListController {
 	private static Logger log = Logger.getLogger(UserListController.class);
 	
     UserManager userManager;
     User currentUser;
+    UserStatsDatasetProducer userStatsDatasetProducer;
     /**
      * default empty constructor
      */
@@ -51,10 +58,8 @@ public class UserListController {
 		{
 			userManager.updateUser(currentUser);
 		}
-		
 		return "success";
 	}
-	
 	
 	
 	public User getCurrentUser() {
@@ -78,7 +83,23 @@ public class UserListController {
 		currentUser = userManager.getUser(new Long(userId));
 		log.debug("Got user:"+currentUser);
 		
+		((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().
+				getRequest()).getSession().setAttribute( "pageViews", getUserStatsDatasetProducer() );
+		
 		return "displayInfo";
+	}
+	
+	public Collection<UserStats> getUserStats() {
+		return userManager.getUserStats(currentUser.getId());
+	}
+	
+	public UserStatsDatasetProducer getUserStatsDatasetProducer() {
+		if(userStatsDatasetProducer==null) {
+			userStatsDatasetProducer = new UserStatsDatasetProducer();
+		}
+		userStatsDatasetProducer.setUserStatsMap(userManager.getUserStatsMap(currentUser.getId()));
+		
+		return userStatsDatasetProducer;
 	}
 	
     public String editUser() {
