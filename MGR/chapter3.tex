@@ -1,4 +1,4 @@
-\chapter{Przyk³adowy szablon komunikacyjny}
+\chapter{Szablon komunikacyjny}
 
 Do zademonstrowania mo¿liwoœci komunikacyjnych pomiêdzy systemem stacjonarnym i
 mobilnym stworzyliœmy szablon u³atwiaj¹cy tworzenie aplikacji posiadaj¹cych
@@ -12,7 +12,7 @@ poziomu urz¹dzenia mobilnego. Przedstawione sposoby byæ mo¿e nie wyczerpuj¹
 wszystkich mo¿liwoœci podzia³u, jednak daj¹ obraz tego w jaki sposób tworzone
 s¹ dzisiaj aplikacje mobilne.
 
-\subsection{Mobilne przegl¹darki}
+\paragraph{Mobilne przegl¹darki}
 Urz¹dzenia mobilne, w tym telefony komórkowe, maj¹ wbudowane przegl¹darki
 internetowe, za pomoc¹ których coraz czêœciej mo¿na przegl¹daæ wszystkie
 dostêpne w Internecie strony (w przeciwieñstwie do sytuacji sprzed kilku lat,
@@ -25,7 +25,7 @@ klienta - czyli przegl¹darki WWW) niesie za sob¹ szereg korzyœci, jak brak
 potrzeby instalowania aplikacji,³atwoœæ wdro¿enia czy wreszcie ca³kowita
 przenoœnoœæ. 
 
-\subsection{Aplikacje mobilne}
+\paragraph{Aplikacje mobilne}
 Innym podejœciem, przypominaj¹cym aplikacje zbudowane w oparciu o model
 dwuwarstwowy, jest stworzenie aplikacji mobilnej, która samodzielnie ³¹czy siê
 z Internetem i umo¿liwia wyœwietlanie i modyfikacjê danych w sposób
@@ -42,7 +42,7 @@ projektowanym z myœl¹ o niezale¿noœci od platformy, takim jak Java.
 [Dlaczego,mo¿e by tu coœ napisaæ?]
 
 
-\subsection{Generatory aplikacji}
+\paragraph{Generatory aplikacji}
 [Wojtek - tu Ty coœ napisz:)]
 
 \section{Idea szablonu}
@@ -98,35 +98,46 @@ Dodatkowo, poniewa¿ stan aplikacji przechowywany by³by na serwerze, mo¿na w
 dowolnym momencie zmieniæ urz¹dzenie mobilne, wy³¹czyæ aplikacjê, a potem
 powróciæ do zapamiêtanego wczeœniej miejsca.
  
-\subsection{Dlaczego to jest nowatorskie - jak by to napisaæ?}
+\paragraph{Nowe podejœcie}
 
-Tworzymy aplikacjê która ma sens tylko dla urz¹dzeñ mobilnych, zacz¹tek do
-tworzenia mobilnych rozwi¹zañ.
-
-Postêpujemy w sposób który nie by³ nigdzie stosowany
-
-
+W przypadku tworzenia aplikacji mobilnych naturalna jest chêæ przeniesienia 
+funkcjonalnoœci dostêpnych w aplikacjach 'biurkowych' na urz¹dzenie mobilne.
+Nie zawsze jest to podejœcie s³uszne - u¿ytkownik korzystaj¹cy z urz¹dzenia
+mobilngo - palmtopa czy telefonu komórkowego ma znacznie ograniczone mo¿liwoœci
+dzia³ania i tym co siê w takiej sytuacji liczy jest szybkoœæ i ³atwoœæ obs³ugi
+aplikacji, któr¹ mo¿na postawiæ przed jej du¿ymi mo¿liwoœciami. Dlatego naszym
+zdaniem, celem tworzenia aplikacji mobilnych nie powinno byæ dostarczenie
+wszystkich mo¿liwych funkcjonalnoœci, ale raczej maksymalna ergonomia i
+prostota u¿ycia, które przyœwieca³y nam w trakcie tworzenia szablonu.
+\newline 
+Ponadto, techniczne rozwi¹zania przyjête w szablonie nie by³y - zgodnie z nasz¹
+wiedz¹ - do tej pory stosowane. Nasz szablon opiera siê na bibliotece KUIX,
+która pozwala na wykorzystanie formatu XML do stworzenia interfejsu
+u¿ytkownika. Pozwala to na dynamiczne ³adowanie komponentów wczeœniej
+przygotowywanych na serwerze.
+Naturaln¹ drog¹ rozwoju by³oby rozbudowanie szablonu o mo¿liwoœæ dynamicznego
+³adowania kodu, mechanizmów walidacji czy tworzenia grafiki.
 
 \subsection{Mo¿liwe zastosowania}
 Opisywana idea u³atwia tworzenie okreœlonego typu aplikacji i tak jak ka¿dy
 szablon nie pokrywa wszystkich istniej¹cych rozwi¹zañ. Nasz szablon u³atwi
 pisanie aplikacji, które nie wymagaj¹ przesy³ania du¿ych iloœci danych i od
 której oczekujemy interaktywnoœci wiêkszej ni¿ w przypadku strony internetowej
-pozbawione JavaScript. 
+pozbawionej JavaScript. 
 
-\subsubsection{Ankietowanie}
+\paragraph{Ankietowanie}
 Jednym z zastosowañ które mo¿emy sobie wyobraziæ jest zdalne ankietowanie
 u¿ytkowników. Stworzenie aplikacji która na ekranie wyœwietla listê dostêpnych
 odpowiedzi i pozwala na wybranie jednej z nich, jest przy u¿yciu
 przedstawianego szablonu prostym zadaniem.
-\subsubsection{Zdalne podejmowanie decyzji}
+\paragraph{Zdalne podejmowanie decyzji}
 Podobnie jak powy¿ej, u¿ytkownicy mog¹ wybraæ jedn¹ z mo¿liwych decyzji, w
 takim przypadku potrzebne bêdzie rozbudowanie szablonu o zaawansowane
 mechanizmy bezpieczeñstwa, jednak idea pozostaje podobna.
-\subsubsection{Zdalne wyœwietlanie treœci}
+\paragraph{Zdalne wyœwietlanie treœci}
 Urz¹dzenie mobilne mo¿e byæ te¿ jedynie miejscem które wyœwietla dostarczane do
 niego informacje. Interakacja z u¿ytkownikiem mo¿e byæ w tym momencie
-wy³¹czona, a urz¹dzenie mobilne mo¿e 
+wy³¹czona, a urz¹dzenie mobilne mo¿e pe³niæ rolê zdalnie kontrolowanego ekranu.
 
 
 
