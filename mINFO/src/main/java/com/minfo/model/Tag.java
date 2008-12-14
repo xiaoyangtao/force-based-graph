@@ -23,15 +23,9 @@ public class Tag implements Serializable {
 	private Long id;
 	@Column(name = "name")
 	private String name;
-	@ManyToMany(
-	        targetEntity=Answer.class
-	    )
-	    @JoinTable(
-	        name="t_pool_tag",
-	        joinColumns=@JoinColumn(name="id_tag"),
-	        inverseJoinColumns=@JoinColumn(name="id_pool")
-	    )
-	private List<Answer> newsForTag;
+	
+	@ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY, targetEntity = Pool.class)
+	private List<Answer> poolsForTag;
 	
 	
 	public Long getId() {
@@ -46,14 +40,16 @@ public class Tag implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<Answer> getNewsForTag() {
-		return newsForTag;
+	public List<Answer> getPoolsForTag() {
+		return poolsForTag;
 	}
-	public void setNewsForTag(List<Answer> newsForTag) {
-		this.newsForTag = newsForTag;
+	public void setPoolsForTag(List<Answer> poolsForTag) {
+		this.poolsForTag = poolsForTag;
 	}
-	
 
+	public String toString() {
+		return "[Tag: id="+id+";name="+name+"]";
+	}
 	
 
 }

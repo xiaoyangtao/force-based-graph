@@ -21,6 +21,12 @@
 		<property name="poolManager">
 			<ref bean="poolManager" />
 		</property>
+		<property name="tagManager">
+			<ref bean="tagManager" />
+		</property>
+		<property name="hibernateTemplate">
+			<ref bean="hibernateTemplate" />
+		</property>
 	</bean>
 
 </beans>

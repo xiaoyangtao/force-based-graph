@@ -6,71 +6,106 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map.Entry;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.apache.log4j.Logger;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
 import com.minfo.faces.beans.PoolListController;
 import com.minfo.mgr.PoolManager;
+import com.minfo.mgr.TagManager;
 import com.minfo.model.Answer;
 import com.minfo.model.Pool;
+import com.minfo.model.Tag;
 
 public class NewsFeeder {
 	private static transient Logger log = Logger
 			.getLogger(PoolListController.class);
 	
 	private PoolManager poolManager;
+	private TagManager tagManager;
+	private HibernateTemplate hibernateTemplate;
+	private List<Tag> availableTags;
+	private boolean init = false;
+	public static final HashMap<String,String> channels = new HashMap<String,String>();
+	
+	static {
+		channels.put("polityka", "http://wiadomosci.wp.pl/ver,rss,rss.xml");
+		channels.put("biznes", "http://media.wp.pl/rss_biznes.xml");
+		channels.put("kultura", "http://kultura.wp.pl/rss.xml");
+		channels.put("sport", "http://sport.wp.pl/rss.xml");
+		channels.put("technologie", "http://tech.wp.pl/rss.xml");
+		channels.put("nauka", "http://nauka.wp.pl/rss.xml");
+		channels.put("ciekawostki", "http://wiadomosci.onet.pl/69,kategoria.rss");
+	}
 	
 	public void getNews() {
-		String url = "http://wiadomosci.wp.pl/ver,rss,rss.xml";
-		try {
-			URL rssURL = new URL(url);
-			InputStream is = rssURL.openStream();
-			
-			/*InputStreamReader isr = new InputStreamReader(is);
-			BufferedReader br = new BufferedReader(isr);
+		for(Entry<String,String> e:channels.entrySet()) {
+			String url = e.getValue();
+			String channelName = e.getKey();
+			List<Tag> tags = hibernateTemplate.find("from Tag t where t.name=?",channelName);
+			if(tags.size()==1) {
+				
+				try {
+					URL rssURL = new URL(url);
+					InputStream is = rssURL.openStream();
+					
+					/*InputStreamReader isr = new InputStreamReader(is);
+					BufferedReader br = new BufferedReader(isr);
 
-			String line = br.readLine();
-			while (line != null) {
-				System.out.println(line);
-				log.debug(line);
-				line = br.readLine();
+					String line = br.readLine();
+					while (line != null) {
+						System.out.println(line);
+						log.debug(line);
+						line = br.readLine();
+					}
+		*/
+					SAXParserFactory factory = SAXParserFactory.newInstance();
+					RSSHandler handler = new RSSHandler();
+					SAXParser p = factory.newSAXParser();
+				    p.parse(is, handler);
+				    
+				    for(RSSItem item:handler.getItems()) {
+				    	Pool pool = new Pool();
+				    	pool.setAnswers(new LinkedList<Answer>());
+				    	pool.setQuestion(item.getDescription().replaceAll("\\<.*?>",""));
+				    	
+				    	Answer a = new Answer();
+				    	a.setAnswer("TAK");
+				    	a.setPool(pool);
+				    	pool.getAnswers().add(a);
+				    	
+				    	a = new Answer();
+				    	a.setAnswer("NIE");
+				    	a.setPool(pool);
+				    	pool.getAnswers().add(a);
+				    	
+				    	pool.setTags(tags);
+				    	poolManager.addPool(pool);
+				    	log.debug(item);
+				    }
+
+				} catch (Throwable t) {
+					t.printStackTrace();
+					log.debug(t.getMessage(), t);
+				}
+				
+				
+			} else {
+				log.error("Tagi w bazie zosta³y b³êdnie okreœlone");
 			}
-*/
-			SAXParserFactory factory = SAXParserFactory.newInstance();
-			RSSHandler handler = new RSSHandler();
-			SAXParser p = factory.newSAXParser();
-		    p.parse(is, handler);
-		    
-		    for(RSSItem item:handler.getItems()) {
-		    	Pool pool = new Pool();
-		    	pool.setAnswers(new LinkedList<Answer>());
-		    	pool.setQuestion(item.getDescription().replaceAll("\\<.*?>",""));
-		    	
-		    	Answer a = new Answer();
-		    	a.setAnswer("TAK");
-		    	a.setPool(pool);
-		    	pool.getAnswers().add(a);
-		    	
-		    	a = new Answer();
-		    	a.setAnswer("NIE");
-		    	a.setPool(pool);
-		    	pool.getAnswers().add(a);
-		    	
-		    	poolManager.addPool(pool);
-		    	log.debug(item);
-		    }
-
-		} catch (Throwable e) {
-			e.printStackTrace();
-			log.debug(e.getMessage(), e);
 		}
+		
+		
+	
 
 	}
 
@@ -166,5 +201,13 @@ public class NewsFeeder {
 
 	public void setPoolManager(PoolManager poolManager) {
 		this.poolManager = poolManager;
+	}
+
+	public void setTagManager(TagManager tagManager) {
+		this.tagManager = tagManager;
+	}
+
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+		this.hibernateTemplate = hibernateTemplate;
 	}
 }

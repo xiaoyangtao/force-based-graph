@@ -1,52 +1,63 @@
 <?xml version="1.0"?>
 
-<faces-config version="1.2" 
-    xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xi="http://www.w3.org/2001/XInclude"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
-	
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+
 	<application>
-        <variable-resolver>org.springframework.web.jsf.DelegatingVariableResolver</variable-resolver>
-    </application>
-	
-	
+		<variable-resolver>
+			org.springframework.web.jsf.DelegatingVariableResolver
+		</variable-resolver>
+	</application>
+
+
 	<managed-bean>
 		<managed-bean-name>pool</managed-bean-name>
-		<managed-bean-class>com.minfo.faces.beans.PoolListController</managed-bean-class>
+		<managed-bean-class>
+			com.minfo.faces.beans.PoolListController
+		</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 		<managed-property>
-            <property-name>poolManager</property-name>
-            <value>#{poolManager}</value>
-        </managed-property>
-        <managed-property>
-            <property-name>newsFeeder</property-name>
-            <value>#{newsFeeder}</value>
-        </managed-property>
+			<property-name>poolManager</property-name>
+			<value>#{poolManager}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>tagManager</property-name>
+			<value>#{tagManager}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>newsFeeder</property-name>
+			<value>#{newsFeeder}</value>
+		</managed-property>
 	</managed-bean>
-	
-	
+
+
 	<managed-bean>
 		<managed-bean-name>user</managed-bean-name>
-		<managed-bean-class>com.minfo.faces.beans.UserListController</managed-bean-class>
+		<managed-bean-class>
+			com.minfo.faces.beans.UserListController
+		</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 		<managed-property>
-            <property-name>userManager</property-name>
-            <value>#{userManager}</value>
-        </managed-property>
+			<property-name>userManager</property-name>
+			<value>#{userManager}</value>
+		</managed-property>
 	</managed-bean>
-	
+
 	<managed-bean>
 		<managed-bean-name>tag</managed-bean-name>
-		<managed-bean-class>com.minfo.faces.beans.TagListController</managed-bean-class>
+		<managed-bean-class>
+			com.minfo.faces.beans.TagListController
+		</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 		<managed-property>
-            <property-name>tagManager</property-name>
-            <value>#{tagManager}</value>
-        </managed-property>
+			<property-name>tagManager</property-name>
+			<value>#{tagManager}</value>
+		</managed-property>
 	</managed-bean>
-	
-	
+
+
 	<navigation-rule>
 		<from-view-id>/pool/listPools.jsp</from-view-id>
 		<navigation-case>
@@ -58,7 +69,7 @@
 			<to-view-id>/pool/addEditPool.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/pool/addEditPool.jsp</from-view-id>
 		<navigation-case>
@@ -70,8 +81,8 @@
 			<to-view-id>/pool/showUsersForAnswer.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
-	
+
+
 	<navigation-rule>
 		<from-view-id>/user/listUsers.jsp</from-view-id>
 		<navigation-case>
@@ -86,8 +97,18 @@
 			<from-outcome>displayInfo</from-outcome>
 			<to-view-id>/user/userInfo.jsp</to-view-id>
 		</navigation-case>
+
 	</navigation-rule>
-	
+
+	<navigation-rule>
+		<from-view-id>/user/userInfo.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>editPool</from-outcome>
+			<to-view-id>/pool/addEditPool.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+
 	<navigation-rule>
 		<from-view-id>/user/addEditUser.jsp</from-view-id>
 		<navigation-case>
@@ -103,5 +124,5 @@
 			<to-view-id>/pool/addEditPool.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 </faces-config>
