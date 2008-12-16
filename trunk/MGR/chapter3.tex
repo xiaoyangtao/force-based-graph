@@ -36,14 +36,47 @@ mo¿liwoœæ walidacji danych po stronie klienta oraz elastycznoœæ w tworzeniu
 interfejsu (który w tym przypadku nie jest ograniczony do kontrolek
 zapewnianych przez przegl¹darkê WWW).
 
-Wad¹ z której niewiele osób zdaje sobie
-sprawê jest mniejsza przenoœnoœæ aplikacji, choæby by³y one napisane w jêzyku
-projektowanym z myœl¹ o niezale¿noœci od platformy, takim jak Java. 
-[Dlaczego,mo¿e by tu coœ napisaæ?]
+Wad¹, z której niewiele osób zdaje sobie
+sprawê, jest mniejsza przenoœnoœæ aplikacji, choæby by³y one napisane w jêzyku
+projektowanym z myœl¹ o niezale¿noœci od platformy, takim jak Java. Wynika ona
+z ró¿norodnoœci urz¹dzeñ dostêpnych na rynku. Ca³kowita przenoœnoœæ mo¿liwa
+jest do uzyskania tylko dla prostych aplikacji, nie korzystaj¹cych z
+mo¿liwoœci oferowanych przez konkretne modele urz¹dzeñ mobilnych. Przy próbie
+zbudowania czegokolwiek wiêkszego natychmiast natkniemy siê na niewidzialny mur
+generowany przez ogromne ró¿nice pomiêdzy dostêpnoœci¹ profili na
+poszczególnych platformach oraz przez ró¿nice w implementacji pewnych czêœci
+samych maszyn wirtualnych. Co wiêcej tu opisana sytuacja wskazuje na problem,
+który generuje stworzona z myœla o przenoœnoœci platforma J2ME. Jeszcze wiêksze
+problemy pojawiaj¹ siê gdy chcemy rozszerzyæ zasiêg naszej aplikacji o kolejne
+segmenty rynku, takie jak u¿ytkownicy systemów Symbian czy Windows Mobile. W
+tym momencie okazuje siê, ¿e zostaniemy zmuszeni do napisanie nie jednej
+aplikacji, ale wielu, które czêsto mog¹ nie mieæ prawie ¿adnych czêœci
+wspólnych.
 
 
 \paragraph{Generatory aplikacji}
-[Wojtek - tu Ty coœ napisz:)]
+Wielu producentów podejmuje próby zbudowania œrodowisk umo¿liwiaj¹cych szybkie
+tworzenie aplikacji mobilnych (tak zwane RAD - Rapid Application Development).
+Maj¹ one ³¹czyæ zalety obu przedstawionych wczeœniej œwiatów :
+
+\begin{itemize} 
+\item{Pozwalaæ na ³atwe i szybkie tworzenie aplikacji dostêpowych - tak jak
+mobilne przegl¹darki}
+\item{Dostarczaæ elastycznoœci i rozbudowanych interfejsów u¿ytkownika - tak
+jak aplikacje mobilne}
+\end{itemize}
+
+W dalszej czêœci niniejszej pracy przedstawione zostan¹ dwa tego typu
+rozwi¹zania, pozwalaj¹ce na oszczêdzenie znacznej iloœci pracy przy budowaniu
+nowych aplikacji.
+
+\subsubsection{Blackberry MDS}
+Blackberry MDS jest przyk³adem narzêdzia wyspecjalizowanego do tworzenia
+aplikacji tylko i wy³¹cznie na platformê jednego producenta. Rozwi¹zanie to
+opiera siê na integracji ma³ej aplikacji zainstalowanej na urz¹dzeniach
+klienckich (MDS Runtime) z us³ug¹ typu Web Service dzia³aj¹c¹ na serwerze. 
+
+\subsubsection{Netbeans Mobile IDE}
 
 \section{Idea szablonu}
 Ide¹ stoj¹c¹ za stworzeniem szablonu by³o po³¹czenie zalet zapewnianych przez
