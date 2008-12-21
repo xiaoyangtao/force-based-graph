@@ -75,8 +75,55 @@ Blackberry MDS jest przyk³adem narzêdzia wyspecjalizowanego do tworzenia
 aplikacji tylko i wy³¹cznie na platformê jednego producenta. Rozwi¹zanie to
 opiera siê na integracji ma³ej aplikacji zainstalowanej na urz¹dzeniach
 klienckich (MDS Runtime) z us³ug¹ typu Web Service dzia³aj¹c¹ na serwerze. 
+Dziêki niemu mo¿liwe jest tworzenie aplikacji u¿ywaj¹c podejœcia opisowego.
+Zamiast pisaæ ca³¹ aplikacjê u¿ywaj¹c jêzyka programowania wraz z
+bibliotekami oferuj¹cymi interfejs u¿ytkownika, mo¿emy przy u¿yciu graficznego
+edytora projektowaæ takie elementy jak ekrany czy pola z danymi. Wszystko to
+przy u¿ycia standardowego drag and drop. Nastêpnie mo¿emy po³¹czyæ tak
+zbudowane komponenty przy u¿yciu ró¿nych przewodników(wizards) czy te¿ edytorów.
+Co wiêcej aplikacja MDS daje nam pe³n¹ kontrolê nad przep³ywem sterowania -
+przy pomocy jêzyka JavaScript jesteœmy w stanie zaimplementowaæ niemal dowoln¹
+logikê aplikacji. Aplikacje typu enterprise oraz Ÿród³¹ danych dostêpne s¹ dla
+aplikacji mobilnej poprzez standardow¹ technologiê Web Service.
+\begin{center}
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{0.7}{\includegraphics{img/mds1.png} }}
+\end{center}
+Aplikacja MDS dla Blackberry jest to aplikacja typu rich-client zbudowana na
+podstawie metadanych zdefiniowanych w jêzyku XML. Te metadane wraz z zasobami
+takimi jak obrazki gromadzone s¹ w pakietach, które nastêpnie publikowane s¹ na
+serwerze BES. Serwer ten przy u¿yciu technologii push rozsy³a aplikacje do
+terminali mobilnych Blackberry. Dziêki zcentralizowanemu sposobowi
+dystrybucji oraz zarz¹dzania aplikacjami mobilnymi koszty utrzymania mobilnej
+infrastruktury s¹ znacznie ni¿sze.
+
+\begin{center}
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{0.7}{\includegraphics{img/mds2.png} }}
+\end{center}
+
+\paragraph{Us³uga Blackberry MDS}
+Us³uga MDS Blackberry zosta³a zaprojektowana tak by umo¿liwiæ wymianê danych
+pomiêdzy urz¹dzeniami Blackberry a aplikacjami typu enterprise. Zapewnia ona :
+\begin{itemize} 
+\item{Izolacjê platformy od szczegó³ów zwi¹zanych z integracj¹ Ÿróde³ danych}
+\item{Standard asynchronicznej wymiany komunikatów}
+\item{Przezroczyste dla u¿ytkownika i developera protoko³y bezpieczeñstwa}
+\item {Transformacje wiadomoœci}
+\item {Wspomnian¹ wczeœniej zcentralizowan¹ administracjê przy pomocy
+technologii push}
+\end{itemize}
+
+\paragraph{Blackberry MDS runtime}
+Po stronie urz¹dzenia mobilnego zainstalowany jest kontener aplikacji MDS.
+Zajmuje siê on instalacj¹, wyszukiwanie oraz przegl¹daniem aplikacji MDS.
+Dostarcza równie¿ niezbêdne funkcjonalnoœci do tych aplikacji, takie jak
+interfejs u¿ytkownika, kontener danych oraz us³ugi komunikacyjne klient-server.
 
 \subsubsection{Netbeans Mobile IDE}
+
 
 \section{Idea szablonu}
 Ide¹ stoj¹c¹ za stworzeniem szablonu by³o po³¹czenie zalet zapewnianych przez
@@ -89,7 +136,7 @@ szablon.
 Szablon sk³ada siê z dwóch czêœci - mobilnej i serwerowej.
 U¿ytkownik mo¿e okreœliæ wygl¹d ekranu przesy³anego do urz¹dzenia mobilnego,
 który po stronie mobilnej interpretowany jest do postaci elementów interfejsu
-ciê¿kiego klienta, np pól tekstowych, wyboru czy rozwijanych list. 
+ciê¿kiego klienta, na przyk³ad pól tekstowych, wyboru czy rozwijanych list. 
 Rozszerza to mo¿liwoœci aplikacji w stosunku do zwyk³ej strony internetowej o
 elementy niedostêpne w przypadku statycznej strony WWW jak rysunki
 wektorowe,obs³uga przycisków urz¹dzenia czy mo¿liwoœæ wyœwietlania strony przez
@@ -311,6 +358,37 @@ podstawowe informacje, a nastêpnie przetwarzany jest on w opisany sposób,
 dziêki czemu odpowiedŸ mo¿na dowolnie modyfikowaæ bez zmiany kodu aplikacji.
 
 \subsubsection{Aplikacja mobilna}
+Cech¹ wyró¿niaj¹c¹ podejœcie prezentowane w niniejszej pracy od typowych
+rozwi¹zañ problemu integracji systemów enterprise jest sposób generowania
+interfejsu u¿ytkownika. W typowym podejœciu po stronie aplikacji mobilnej mamy
+do czynienia z raz zdefinowanym przez programistê uk³adzie oraz wygl¹dzie
+interfejsu graficznego. Wi¹¿e siê to bezpoœredno ze sposobem pisania aplikacji,
+w którym programista ma do dyspozycji gotowe komponenty ui, które musz¹ zostaæ
+odpowiednio oprogramowane i wkompilowane w koñcow¹ wersjê aplikacji mobilnej.
+To powoduje, ¿e jakiekolwiek zmiany w interfejsie s¹ mo¿liwe tylko i wy³¹cznie
+poprzez przebudowê aplikacji. A co za tym idzie tak¿e i ponowne rozprowadzenie
+tak zmienionego programu. Takie podejœcie generuje dodatkowe koszty wynikaj¹ce
+z potrzeby zapewnienia dostarczenia aktualnej wersji aplikacji do wszystkich
+klientów posiadaj¹cych jej star¹ wersjê. Czêœciowo problem ten rozwi¹zuje
+podejœcie anga¿uj¹ce cinkiego klienta w postaci mobilnej przegl¹darki
+internetowej. Zapewnia ono centralizacjê aplikacji przez co wdro¿enie nowych
+wersji staje sie niemal automatyczne. Niestety rozwi¹zanie tego typu jest
+czêsto niewystarczaj¹co elastyczne oraz posiada s³abo rozbudowany interfejs
+u¿ytkownika. 
+W niniejszej pracy wykorzystane zosta³o podejœcie poœrednie, bêd¹ce czymœ
+pomiêdzy interfejsem generowanym przez przegl¹darki internetowe, a
+pe³nowartoœciowym interfejsem aplikacji mobilnych. 
+\subsubsection{Dynamiczny interfejs u¿ytkownika}
+W odró¿nieniu od typowej aplikacji dostêpnej na urz¹dzeniach mobilnych, nasza
+aplikacja nie posiada zdefiniowanego z góry interfejsu u¿ytkownika. Za
+wyj¹tkiem g³ównego ekranu, wszystkie pozosta³e s¹ generowane na podstawie
+danych przesy³anych z serwera. System zachowuje siê analogicznie do
+przegl¹darki internetowej - redeneruje znaczniki interfejsu u¿ytkowniku. W
+odró¿nieniu od rozwi¹zañ oprtych na przegl¹darce mamy mo¿liwoœæ zmian w kodzie
+Ÿród³owym aplikacji redeneruj¹cej, dzieki czemu w zale¿noœci od potrzeby mo¿emy
+dostosowywaæ
+
+\subsubsection{Kuix}
 
 \subsection{Istniej¹ce problemy}
 
