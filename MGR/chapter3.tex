@@ -378,17 +378,168 @@ u¿ytkownika.
 W niniejszej pracy wykorzystane zosta³o podejœcie poœrednie, bêd¹ce czymœ
 pomiêdzy interfejsem generowanym przez przegl¹darki internetowe, a
 pe³nowartoœciowym interfejsem aplikacji mobilnych. 
-\subsubsection{Dynamiczny interfejs u¿ytkownika}
+\subsubsection{Dynamicznie generowany interfejs u¿ytkownika}
 W odró¿nieniu od typowej aplikacji dostêpnej na urz¹dzeniach mobilnych, nasza
 aplikacja nie posiada zdefiniowanego z góry interfejsu u¿ytkownika. Za
 wyj¹tkiem g³ównego ekranu, wszystkie pozosta³e s¹ generowane na podstawie
 danych przesy³anych z serwera. System zachowuje siê analogicznie do
 przegl¹darki internetowej - redeneruje znaczniki interfejsu u¿ytkowniku. W
 odró¿nieniu od rozwi¹zañ oprtych na przegl¹darce mamy mo¿liwoœæ zmian w kodzie
-Ÿród³owym aplikacji redeneruj¹cej, dzieki czemu w zale¿noœci od potrzeby mo¿emy
-dostosowywaæ
+Ÿród³owym aplikacji redeneruj¹cej, dziêki czemu w zale¿noœci od potrzeby mo¿emy
+dostosowywaæ zachowanie programu do wymagañ u¿ytkownika. Nasza aplikacja nie
+jest ograniczona przez niemodyfikowaln¹ przegl¹darkê internetow¹.
 
 \subsubsection{Kuix}
+Opisany w poprzednim rozdziale dynamicznie generowany interfejs jest mo¿liwy do
+osi¹gniêcia w œrodowisku j2me przy u¿yciu pewnego danego z góry uniwersalnego
+sposobu opisu wygl¹du poszczególnych elementów aplikacji. Ze wzglêdu na
+popularnoœæ XML oraz wsparcie dla tego jêzyka za równo po stronie urz¹dzeñ jak
+i serwerów, mo¿na przyj¹æ, ¿e w³aœnie w nim opisany zostanie interfejs
+u¿ytkownika. Po stronie serwera, na podstawie informacji z bazy danych budowany
+bêdzie dokument XML ³¹cz¹cy dane z ich sposobem wizualizacji. Po stronie
+urz¹dzenia mobilnego dokument ten zostanie przetworzony przez parser XML, a
+nastêpnie jego poszczególne elementy zostan¹ zmapowane na odpowiadaj¹ce im
+elementy interfejsu j2me (odpowiednio rozszerzone o dodakowe komponenty,
+niedostêpne w standardowej wersji tego œrodowiska). Opisana powy¿ej procedura
+zosta³a zaimplementowana w szkielecie programistycznym kuix.
+\subsubsection{Cechy szkieletu Kuix}
+Model programistyczny oferowany przez szkielet Kuix znacznie ró¿ni siê od
+innych rozwi¹zañ spotykanych na platformach mobilnych. Posiada on wiele cech
+charakterystycznych dla lekkiego modelu tworzenia oprogramowania mobilnego -
+opartego o mobiln¹ przegl¹darkê internetow¹. Najlepsz¹ ilustracj¹ zasady
+dzia³ania tego szkieletu, jest przyk³adowa aplikacja, wiêc w dalszej czêœci
+pracy zostanie przedstawiony krótki przyk³adowy program obracuj¹cy podstawowe
+idee.
+
+\paragraph{HelloKuix}
+
+Na poni¿szym obrazku widoczn¹ jest struktura bardzo prostgo programu
+posiadaj¹cego wszystkie cechy dostarczane przez szkielet Kuix.
+
+\begin{center}
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{1}{\includegraphics{img/kuix_structure.png} }}
+\end{center}
+Poza standardowymi plikami *.java zawieraj¹cymi kod aplikacji nale¿y tu zwróciæ
+uwagê na dodatkowe pliki zasobów :
+\begin{itemize}
+  \item helloworld.css
+  \item helloworld.xml
+\end{itemize}
+
+Plik helloworld.xml to dokument xml we wspomnianym wczeœniej formacie
+reprezentuj¹cym dane wraz ze sposobem ich wizualizacji. 
+
+\begin{verbatim}
+<screen title="helloworld">
+    <container style="layout:inlinelayout(false,fill); align: center">
+        <text text="Hello World!" />
+        <picture src="logo_community.png" />
+    </container>
+</screen>
+\end{verbatim}
+
+Tag screen to pojedynczy ekran na urz¹dzeniu mobilnym mog¹cy posiadaæ jeden,
+b¹dŸ wiêcej tak zwanych widgetów - elementów interfejsu u¿ytkownika. Powy¿szy
+przyk³ad zawiera kontener (container), czyli pojemnik widgetów pozwalaj¹cy na
+grupowanie ich w odrêbne uk³ady. W pojemniku znajduje siê tekst (tag text) oraz
+obazek (tag picture). Informacje o zawartoœci oraz cechach
+poszczególnych elementów przekazywane s¹ za pomoc¹ atrybutów.
+
+Powy¿szy plik xml jest wczytywany na pocz¹tku dzia³ania programu. S³u¿y do tego
+kod widoczny poni¿ej.
+
+\begin{verbatim}
+// Load the content from the XML file with Kuix.loadScreen static method
+Screen screen = Kuix.loadScreen("helloworld.xml", null);
+
+// Set the application current screen  
+screen.setCurrent();
+\end{verbatim}
+
+Jak widaæ z za³¹czonego przyk³adu budowanie elementów interfejsu, oraz ich
+wczytywanie jest bardzo proste i pewnien sposób przypomina tworzenie interfejsu
+u¿ytkownika dla stron wyœwietlanych w przegl¹darkach inernetowych.
+
+\paragraph{CSS, a Kuix}
+Charakterystycznym elementem zapo¿yczonym przez Kuix z technologii
+internetowych jest sposób nadawania po¿¹danego wygl¹du elementom aplikacji.
+S³u¿¹ do tego kaskadowe arkusze stylów (Cascading Style Sheets). W przyk³¹dzie
+z poprzedniego paragrafu plik helloworld.css wygl¹da nastêpuj¹co :
+
+\begin{verbatim}
+text {
+    align: center;
+    font-style: normal;
+    color: #f19300;
+}
+screenTopbar text {
+    color: white;
+    padding: 1 2 1 2;
+}
+screenTopbar {
+    font-style: bold;
+    bg-color: #cccccc;
+    border: 0 0 1 0;
+    border-color: #f19300;
+}
+desktop {
+    bg-color: #444447;
+}
+\end{verbatim}
+
+Powy¿szy kod css praktycznie niczym siê nei ró¿ni od tego spotykanego w
+projektach pisanych pod standardowe przegl¹darki internetowe.
+Do ka¿dego elementu interfejsu, takiego jak ekran, czy pulpit (screen, desktop)
+mamy przypisane odpowiednie selektory. Na przyk³ad by nadaæ styl paskowi
+tytu³owemu ekranu u¿ywamy selektora screenTopbar.
+
+By za³adowaæ do systemu plik css znajudj¹cy siê w zasobach projektu nale¿y u¿yæ
+statycznej metody loadCSS klasy Kuix:
+
+\begin{verbatim}
+// Load the stylesheet from the CSS-like file with Kuix.loadCss static method
+//  note: a stylesheet is not associated with a screen but with the midlet
+//  note 2 : by default '/css/' folder is use to find the 'helloworld.css' file
+Kuix.loadCss("helloworld.css");
+\end{verbatim}
+
+Koñcowy efekt po³¹czenia pliku xml ze stylami css widoczny jest na poni¿szym
+obrazku:
+
+\begin{center}
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{1}{\includegraphics{img/kuix_hellowrold.png} }}
+\end{center}
+
+W analogiczny sposób mo¿na równie ³atwo dodaæ podrêczne menu do aplikacji :
+
+\begin{verbatim}
+    <screenFirstMenu>Exit</screenFirstMenu>
+    <screenSecondMenu>
+        more...
+        <menuPopup>
+            <menuItem>
+                About
+            </menuItem>
+            <menuItem>
+                Exit
+            </menuItem>
+        </menuPopup>
+    </screenSecondMenu> 
+\end{verbatim}
+
+Efekt koñcowy wraz z menu dostêpnym pod prawym przyciskiem (tak zwane Second
+Menu).
+
+\begin{center}
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{1}{\includegraphics{img/kuix_hellowrold2.png} }}
+\end{center}
+
 
 \subsection{Istniej¹ce problemy}
 
