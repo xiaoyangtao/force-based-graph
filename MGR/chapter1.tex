@@ -55,8 +55,9 @@ napotkaliœmy jednak na problemy, które uniemo¿liwi³y wykorzystanie go do
 integracji, która jest przedmiotem tej pracy. 
 
 \paragraph{Web Services}
-Ze wzglêdu na istotnoœæ dla niniejszej pracy opisowi tej technologii zostanie
-poœwiêcony ca³y nastêpny rozdzia³.
+Technologia Web Service zsota³a wykorzystana w przyk³adowej implementacji
+systemu integruj¹cego, dlatego te¿ jej szczegó³owemu opisowi zosta³ poœwiêcony
+ca³y nastêpny rozdzia³.
 
 \section{Zdalne wywo³ywanie procedur - Web Serwisy}
 Najpopularniejsz¹ technologi¹ zwi¹zan¹ z zagadnieniem zdalnego wywo³ywania
@@ -65,11 +66,11 @@ przedstawiony zostanie zbiór ogólnych informacji o tej technologii oraz
 zostanie podjêta próba umiejscowienia jej w œwiecie rozwi¹zañ mobilnych.
 
 \subsection{Podstawowe informacje o technologii Web Service} 
-Pierwsze wzmianki o rozwi¹zaniu pozwalaj¹cym wspó³pracê ró¿norodnych systemów,
-poprzez ogólnodostêpne medium pojawi³y siê w okolicach roku 1999. W krótkim czasie zainteresowa³y siê nim
+Pierwsze wzmianki o rozwi¹zaniu pozwalaj¹cym na wspó³pracê ró¿norodnych
+systemów, poprzez ogólnodostêpne medium pojawi³y siê w okolicach roku 1999. W krótkim czasie zainteresowa³y siê nim
 wszystkie najwiêksze firmy dzia³aj¹ce na rynku rozwi¹zañ informatycznych.
 U podstaw technologii Web Service le¿y Extensible Markup Language(XML). Na jego
-podstawie zbudowana dwa podstawowe jêzyki towarzysz¹ce rozwi¹zaniom typu Web
+podstawie zbudowano dwa podstawowe jêzyki towarzysz¹ce rozwi¹zaniom typu Web
 Service : Standard Object Access Protocol (SOAP) oraz Web Services Definition
 Language (WSDL). Dodatkowo istnieje te¿ technologia pozwalaj¹ca na stworzenie
 rejestru us³ug typu Web Service o nazwie Universal Description, Discovery, and
@@ -92,16 +93,16 @@ protoko³y warstwy aplikacyjnej , takie jak RPC czy te¿ HTTP, które realizuj¹ za
 niego wszelkie negocjacje, czy te¿ transmisje. SOAP stanowi podstawê dla 
 stosu protoko³u Web Service dostarczaj¹c elementarn¹ funkcjonalnoœæ wymiany
 wiadomoœci, na której mog¹ byæ budowane wy¿sze, abstrakcyjne warstwy.
-Wykorzystanie tego protoko³u jako podstawy Web Service niesie ze sob¹
-konsekwencje. SOAP bêd¹c form¹ elektronicznej koperty generujê stosunkowo durzy
-narzut danych na ka¿d¹ wysy³an¹ wiadomoœæ, przez co wp³ywa równie¿ na wydajnoœæ
-komunikacji przy u¿yciu Web Services. W zwi¹zku ze wspomnian¹ powy¿ej wad¹ nie
+Wykorzystanie tego protoko³u jako podstawy Web Service niesie ze sob¹ doœæ
+powa¿ne konsekwencje. SOAP bêd¹c form¹ elektronicznej koperty generuje
+stosunkowo du¿y narzut danych na ka¿d¹ wysy³an¹ wiadomoœæ, przez co wp³ywa
+równie¿ na wydajnoœæ komunikacji przy u¿yciu Web Services. W zwi¹zku ze wspomnian¹ powy¿ej wad¹ nie
 jest zalecane stosowanie tej technologii do zadañ, w których kluczowy jest czas
 reakcji systemu. Poniewa¿ przedmiotem niniejszej pracy jest przedstawienie
-ró¿nych metod integracji œrodowisk mobilnych nale¿y zwróciæ uwagê na to, ¿e
+ró¿nych metod integracji œrodowisk mobilnych, nale¿y zwróciæ uwagê na to, ¿e
 mo¿e siê zdarzyæ, ¿e pomimo wygody i standaryzacji jakiej dostarcza ta
 technologia, rozwa¿enia wymaga to czy narzut wydajnoœciowy nie bêdzie stanowi³
-przeszkody w rozwoju aplikacji. Szczególne znaczenie mo¿e mieæ to w sytuacji
+przeszkody w rozwoju aplikacji. Szczególne znaczenie mo¿e mieæ to w sytuacji,
 gdy potencjalny klient mobilnej aplikacji ma niezrycza³towany dostêp do sieci.
 Oznacza to, ¿e narzut na rozmiar danych bêdzie siê bezpoœrednio przek³ada³ na
 koszt wykorzystywania aplikacji. A wiêc bêdzie równie¿ wp³ywa³ na op³acalnoœæ
@@ -119,8 +120,8 @@ znajduje siê opis us³ugi, a nastêpnie na jego podstawie generator aplikacji
 tworzy szkielet pozwalaj¹cy pod³¹czenie siê do tej us³ugi oraz wywo³anie
 wybranych funkcji. To podejœcie pozwala oszczêdziæ pracy potrzebnej na napisanie
 obs³ugi tego typu wywo³añ. Nie jest ono jednak dostêpne dla wszystkich
-platforma, gdy¿ generatory wymagaj¹ zwykle wsparcia po stronie urz¹dzenia (na
-przyk³ad wymagaj¹ implementacji odpowiedniego profilu).
+platform, gdy¿ generatory wymagaj¹ zwykle wsparcia po stronie urz¹dzenia (na
+przyk³ad potrzebuj¹ implementacji odpowiedniego profilu).
 By moæ przejœæ do bardziej zaawansowanych zagadnieñ nale¿y wyjaœniæ sposób w
 jaki WSDL mapuje abstrakcyjne porty na konkretne us³ugi dostêpne w systemie.
 WSDL definiuje us³ugê jako kolekcjê punktów dostêpowych lub te¿ portów. Port
@@ -165,13 +166,13 @@ Oprócz wy¿ej wymienionych wyró¿nia siê jeszcze pi¹ty model zwi¹zany ze stylem
 wi¹zania zwany document/literal wrapped. Wiedza o istnieniu tego typu podzia³u
 jest kluczowa do poprawnej implementacji konsumenta Web Service. W zwi¹zku z
 ograniczonymi zasobami zarówno pamiêciowymi jak i wydajnoœciowymi konsumenci
-pisanie na urz¹dzenia mobilne musz¹ byæ od razu konfigurowani pod k¹tem obs³ugi
+pisani na urz¹dzenia mobilne musz¹ byæ od razu konfigurowani pod k¹tem obs³ugi
 konkretnego modelu. Nie s¹ w stanie dokonaæ analizy dokumentu WSDL generowanego
 po stronie serwera. 
 Co wiêcej nale¿y bardzo uwa¿aæ na to jakie style wi¹zañ jest w stanie obs³u¿yæ
 zarówno klient jak i serwer. Czêsto ka¿da ze stron potrafi poradziæ sobie tylko
-z niektórymi rodzajami. W skrajnym przypadku dochodzi tak¿e do ró¿niæ pomiêdzy
-wersjami. Taka sytuacja zachodzi na przyk³ad w Apache Axis, który
+z niektórymi ich rodzajami. W skrajnym przypadku dochodzi tak¿e do ró¿nic
+pomiêdzy wersjami. Taka sytuacja zachodzi na przyk³ad w Apache Axis, który
 wykorzystywany jest przy implementacji przyk³adowego systemu integracyjnego.
 \subsubsection{RPC/encoded}
 Najbardziej opisowy styl wi¹zania. Wyró¿nia siê dodawaniem do argumentów
@@ -227,7 +228,7 @@ podpisów oraz nag³ówków zwi¹zanych z szyfrowaniem danych. Wspiera ta¿e formaty
 certyfikacyjne takie jak X.509. Protokó³ dzia³a w warstwie aplikacyjnej i zosta³
 tak zaprojektowany by zapewniæ bezpieczeñstwo od koñca do koñca (end-to-end security). Niestety w obecnej
 chwili protokó³ ten nie zosta³ zaimplementowany na urz¹dzeniach mobilnych i na
-pewno w najbli¿szym czasie nie stanie siê na nich standarde. Ograniczeniem tu
+pewno w najbli¿szym czasie nie stanie siê na nich standardem. Ograniczeniem tu
 s¹ typowe dla tych urz¹dzeñ problemy z wydajnoœci¹. Alternatywnym rozwi¹zaniem
 problemu bezpieczeñstwa jest pos³u¿enie siê zabezpieczeniami na poziomie
 warstwy transportowej (TLS) takimi jak https. Pozwala to na zapewnienie
@@ -264,11 +265,11 @@ komunikacyjny.
 \subsection{Czas reakcji}
 Przesy³anie i przetwarzanie wiadomoœci ustêpuje wydajnoœci¹ integracji na
 poziomie danych, gdzie nie pojawia siê narzut zwi¹zany z wy³uskiwaniem danych i
-opakowywaniem ich do ustalonego formatu. Istnieje jednak wiele zastosowañ gdzie
+opakowywaniem ich do ustalonego formatu. Istnieje jednak wiele zastosowañ, gdzie
 szybkoœæ nie gra najwa¿niejszej roli,a przesy³ane s¹ jedynie niewielkie (ale
 czêste) porcje informacji. Nawet sytuacje w których nale¿y przes³aæ ogromn¹
 iloœæ danych, np. podczas migracji systemów mog¹ zostaæ obs³u¿one w procesach
-batchowych wykonywanych poza godzinami normalnego u¿ytkowania systemu.
+batchowych, wykonywanych poza godzinami normalnego u¿ytkowania systemu.
 
 \newpage
 \subsubsection{Sposoby po³¹czenia}
@@ -286,7 +287,7 @@ komunikacyjnego. Z jednej strony kilka równolegle dzia³aj¹cych procesów mo¿e
 wysy³aæ wiadomoœci, z drugiej strony procesy mog¹ je odbieraæ. Poniewa¿ jednak
 równoleg³e przetwarzanie tej samej wiadomoœci przez kilka procesów mog³oby byæ
 nie porz¹dane, kana³ komunikacyjny dba o to by jedna wiadomoœæ mog³a byæ
-pobrana przez jeden tylko przez jeden z nich. Pozwala to na znakomite
+pobrana tylko przez jeden z nich. Pozwala to na znakomite
 zrównoleglenie przetwarzania wiadomoœci przez proste dodawanie odbiorców i
 pod³¹czanie ich do kana³u komunikacyjnego. 
 
@@ -314,8 +315,5 @@ jak JDBC zunifikowany interfejs dostêpu do bazy danych. Istnieje wiele
 implementacji JMS, zarówno komercyjnych jak i dostêpnych bezp³atnie. Istniej¹
 wersje stand-alone, jak np IBM WebsphereMQ czy Apache ActiveMQ, jak równie¿
 systemy przesy³ania wiadomoœci wbudowane w serwery aplikacyjne. Niestety nie
-wszystkie pozwalaj¹ na wymianê wiadomoœci z urz¹dzeniami mobilnymi. Jednym z
-celów pracy bêdzie przeanalizowanie mo¿liwoœci oferowanych przez poszczególne
-implementacje pod k¹tem urz¹dzeñ mobilnych.
-
+wszystkie pozwalaj¹ na wymianê wiadomoœci z urz¹dzeniami mobilnymi. 
 

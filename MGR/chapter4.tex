@@ -61,3 +61,99 @@ Inspiracj¹, która stoi za naszym pomys³em jest system wyœwietlania wiadomoœci
 na stacjach i w wagonach metra. Tym co chcielibyœmy w nim udoskonaliæ to
 mo¿liwoœæ dostarczenia spersonalizowanych, dostosowanych do ka¿dego czytelnika
 informacji.
+
+\chapter{Interfejs u¿ytkownika mobilnego klienta}
+
+Mobilny klient naszej aplikacji jest midletem zbudowanym w oparciu o szkielet
+Kuix. Wersja instalacyjna sk³ada siê z dwóch plików :
+\begin{itemize}
+  \item {Archiwum jar zawieraj¹cego midlet}
+  \item {Desktyptora jad zawieraj¹cego dane niezbêdne do instalacji aplikacji w
+  trybie OTA (Over-The-Air)}
+\end{itemize}
+
+\paragraph {Menu g³ówne}
+
+Po instalacji aplikacji w zak³adce zawieraj¹cej listê zainstalowanych na
+telefonie midletów powinna pojawiæ siê nowa aplikacji o nazwie mINFO. Po jej
+uruchomieniu zostaniemy przeniesieni do g³ównego ekranu zawieraj¹cego trzy
+opcje :
+\begin{itemize}
+  \item {Show news - rozpoczyna ³adowanie danych ze wskazanego serwera}
+  \item {Settings - pozwala na skonfigurowanie Ÿród³a danych (serwera)}
+  \item {Exit - koñczy dzia³anie midletu}
+\end{itemize}
+
+Na poni¿szym obrazku widzimy g³ówne menu aplikacji. Zosta³a ona uruchomiona w
+domyœlnym œrodowisku symulacyjnym dostarczonym razem z pakietem Netbeans
+Mobility Pack.
+
+\begin{center}
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{0.6}{\includegraphics{img/phone_processed1.png} }}
+\end{center}
+
+\paragraph {Zak³adka Settings}
+
+W zak³adce settings mamy mo¿liwoœæ wybrania adres, pod którym znajduje siê
+serwer dostarczaj¹cy dane dla naszej aplikacji. Aplikacja potrafi zapamiêtaæ
+kilka takich adresów. By dodaæ nowy adres nale¿y w polu 'New feed address'
+wpisaæ URL do nowego serwera, a nastêpnie wybraæ przycisk 'New feed'. Jeœli
+chcemy pozbyæ siê niepotrzebnych wpisów znajduj¹cych siê na liœcie, to
+zaznaczamy wpis do usuniêcia, a nastêpnie wybieramy przycisk 'Remove feed'.
+Istnieje tak¿e mo¿liwoœæ modyfikacji adresu URL serwera. S³u¿y do tego przycisk
+'Edit feed'.
+
+\begin{center}
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{0.7}{\includegraphics{img/phone_processed2.png} }}
+\end{center}
+
+Zak³adka 'Settings' po wprowadzeniu nowego adresu serwera: 
+
+\begin{center}
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{0.7}{\includegraphics{img/phone_processed3.png} }}
+\end{center}
+
+\paragraph {Dynamicznie generowane ekrany wiadomoœci}
+
+Po wybraniu z g³ównego menu opcji 'Show news' zostajemy zalogowani jako nowy
+u¿ytkownik - pod warunkiem, ¿e pierwszy raz pod³¹czamy siê do danego
+serwera. W przeciwnym wypadku z pamiêci urz¹dzenia zostaje odczytana uprzednio
+wygenerowana nazwa u¿ytkownika oraz has³o. Dziêki temu serwer jest w stanie
+œledziæ dzia³ania wykonywane na danym urz¹dzeniu przez u¿ytkownika, poddawaæ je
+analizie, a nastêpnie zmieniaæ zawartoœæ wysy³anych treœci. Ekrany z
+wiadomoœciami s¹ ca³kowicie generowane po stronie serwera (nie tylko sama ich
+treœæ ale tak¿e elementy interfejsu u¿ytkownika). Przyk³adowy ekran
+informacyjny :
+
+\begin{center}
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{0.7}{\includegraphics{img/phone_processed4.png} }}
+\end{center}
+
+Ekrany s¹ automatycznie prze³adowywane co pewien okreœlony z góry przedzia³
+czasu. Dziêki temu jeœli u¿ytkownik chce, to mo¿e biernie wykorzystywaæ
+nasz¹ aplikacjê (w trybie nie wymagaj¹cym interakcji). 
+
+\paragraph {Wybór preferencji odnoœnie treœci wiadomoœci}
+
+Jeœli u¿ytkownik chce wykorzystywaæ aplikacje w sposób interaktywny, to ma do
+dyspozycji podrêczne menu okreœlenia preferencji dotycz¹cych aktualnie
+ogl¹danej wiadomoœci. Mo¿e poinformowaæ system, ¿e dana wiadomoœæ go
+szczególnie zainteresowa³a, lub w przeciwnym wypadku, ¿e nie chce wiêcej
+dostawaæ tego typu wiadomoœci. Na podstawie udzielonych odpowiedzi system
+personalizuje listê wiadomoœci, które zostan¹ wys³ane do danego u¿ytkownika.
+Po wybraniu preferencji zostaje natychmiast za³adowany ekran z nastêpn¹
+wiadomoœci¹.
+
+\begin{center}
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{0.7}{\includegraphics{img/phone_processed5.png} }}
+\end{center}
