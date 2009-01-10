@@ -37,6 +37,7 @@
 				<value>com.minfo.model.Answer</value>
 				<value>com.minfo.model.User</value>
 				<value>com.minfo.model.Tag</value>
+				<value>com.minfo.model.UserPrefs</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

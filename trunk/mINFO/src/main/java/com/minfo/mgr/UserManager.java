@@ -7,15 +7,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.minfo.dao.TagDAO;
 import com.minfo.dao.UserDAO;
 import com.minfo.model.Answer;
 import com.minfo.model.StatsPair;
 import com.minfo.model.Tag;
 import com.minfo.model.User;
+import com.minfo.model.UserPrefs;
 import com.minfo.model.UserStats;
 
 public class UserManager {
 	private UserDAO userDAO;
+	private TagDAO tagDAO;
 
 	public void setUserDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
@@ -57,6 +60,7 @@ public class UserManager {
 		
 		Map<StatsPair, Integer> result = new HashMap<StatsPair, Integer>();
 		User u = userDAO.getUser(userId);
+		updatePrefs(u);
 		List<Answer> userAnswers = u.getUserAnswers();
 		for (Answer a : userAnswers) {
 			for (Tag t : a.getPool().getTags()) {
@@ -72,6 +76,21 @@ public class UserManager {
 		return result;
 		
 	}
+	
+	public void updatePrefs(User user) {
+		Tag t = tagDAO.getTag(new Long(2));
+		
+		UserPrefs up = new UserPrefs();
+		up.setUser(user);
+		up.setTag(t);
+		up.setPart(new Double(0.97));
+		
+		ArrayList<UserPrefs> al = new ArrayList<UserPrefs>();
+		al.add(up);
+		
+		userDAO.setPrefs(al);
+	}
+	
 
 	public ArrayList<UserStats> getUserStats(Long userId) {
 		Map<String, UserStats> result = new HashMap<String, UserStats>();
@@ -114,5 +133,9 @@ public class UserManager {
 		}
 		return temp;
 
+	}
+
+	public void setTagDAO(TagDAO tagDAO) {
+		this.tagDAO = tagDAO;
 	}
 }
