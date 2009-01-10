@@ -51,16 +51,17 @@ public class UserAnswerTest {
 //			List<User> users = userManager.getUser();
 //			System.out.println(users);
 			
-		//	User user = userManager.getUser(new Long(2));
+			User user = userManager.getUser(new Long(14));
 		//	System.out.println(user);
-		//	poolManager.makeAnswer(user, answer);
+			userManager.updatePrefs(user);
+			
 			
 			//System.out.println("Answers:"+user.getUserAnswers());
 		//	userManager.updateUser(user);
 			
 			
-			Pool pool = poolManager.getNextPoolForUser(new Long(3));
-			System.out.println("GOT:"+pool);
+		//	Pool pool = poolManager.getNextPoolForUser(new Long(3));
+		//	System.out.println("GOT:"+pool);
 			
 			//================================================================
 			SessionHolder sessionHolder = (SessionHolder) TransactionSynchronizationManager.unbindResource(sessionFactory);
