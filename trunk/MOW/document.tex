@@ -84,6 +84,10 @@ Dane u¿ywane do testów pochodz¹ z serwisu Movielens. Dostêpne s¹ dwa zestawy
 danych: pierwszy sk³ada siê z 100,000 ocen 1682 filmów wystawionych przez 943
 u¿ytkowników. Drugi zawiera oko³o miliona ocen 3900 filmów wystawionych przez
 600 u¿ytkowników. Ka¿dy film zosta³ oceniony w skali od 1 do 5.
+\newline
+Dane zosta³y podzielone na 5 czêœci w taki sposób, ¿e 80\% stanowi zbiór
+trenuj¹cy, a pozosta³e 20\% to zbiór testowy (przy czym zbiory testowe s¹
+roz³¹czne). Umo¿liwia to przeprowadzenie krzy¿owej walidacji na zbiorach danych.
 
 Do naszych badañ zostanie wykorzystany pierwszy zbiór zawieraj¹cy 100000
 rekordów. Zosta³ on ju¿ wstêpnie podzielony na podzbory : trenuj¹cy (80000
@@ -109,9 +113,9 @@ $$q = 1 - \sum_j\dfrac{|\hat{u_j}-u_j|}{5n} $$
 
 W miarê przeprowadzania testów zostanie podjêta decyzja o rodzaju algorytmu 
 Slope One, który bêdzie wykorzystywany. Pod uwagê zostan¹ wziête dwa jego
-rodzaje: zwyk³y (taki jak opisany wy¿ej) oraz Bi-Polar Slope One. Ten drugia
+rodzaje: zwyk³y (taki jak opisany wy¿ej) oraz Bi-Polar Slope One. Ten druga
 wprowadza modyfikacjê do ocen dziel¹c je na dwie kategorie : oceny dobre i
-oceny z³ê. Ze wzglêdu na asymetriê ocen wystêpuj¹cych w zbiorach testowych (70%
+oceny z³e. Ze wzglêdu na asymetriê ocen wystêpuj¹cych w zbiorach testowych (70%
 ocen jest pozytywnych, czyli powy¿ej œredniej) podzia³ bêdzie wykonany w sposób
 nastêpuj¹cy : ocena dobra (3,4,5), ocena z³a (1,2). Zostan¹ im przyporz¹dkowane
 odpowiednio liczby : 0 oraz 1.
