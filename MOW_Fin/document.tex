@@ -66,8 +66,10 @@ zawiera³y obydwa przedmioty.\newline
 Bior¹c pod uwagê, ¿e nieznan¹ wartoœæ oceny przedmiotu
 \begin{math}j\end{math} mo¿emy przewidywaæ jako \begin{math}u_j =
 dev_{i,j}+u_i\end{math}, sensowny predyktor móg³by byæ œredni¹ takich
-przewidywañ: 
+przewidywañ:
+ 
 $$P(u)_j=\dfrac{1}{|R_j|}\sum_{i\in R_j}(dev_{i,j}+u_i)$$
+
 gdzie \begin{math}R_j\end{math} jest zbiorem wszystkich przedmiotów \begin{math}
 i\end{math} które zosta³y ocenione i dla których istnieje wyznaczona wartoœæ
 œredniego odchylenia wzglêdem przedmiotu \begin{math}j\end{math} równa
@@ -75,11 +77,26 @@ i\end{math} które zosta³y ocenione i dla których istnieje wyznaczona wartoœæ
 Co wiêcej, jeœli dodatowo mo¿na zaobserwowaæ, ¿e zbiór danych jest gêsty, czyli
 ¿e prawie ka¿da z par filmów posiada pewn¹ ocenê, to mo¿na przyj¹æ, ¿e
 \begin{math}R_j ~= S(u)\end{math}  
-A poniewa¿ \begin{math}\bar{u}=\sum_{i\in S(u)}\dfrac{u_j}{card(S(u))}=\sum_{i\i
-R_j}\dfrac{u_j}{card(R_j)}\end{math} to mo¿emy przedefiniowaæ predykcjê P:
-$$P(u)_j=\bar{u}+\dfrac{1}{|R_j|}\sum_{j\in R_j}(dev_{i,j})$$
-Wzór tej postaci jest du¿o szybszy do przeliczania (zak³adaj¹c, ¿e
+A poniewa¿ $$\bar{u}=\sum_{i\in
+S(u)}\dfrac{u_j}{card(S(u))}=\sum_{i\in R_j}\dfrac{u_j}{card(R_j)}$$ to mo¿emy
+przedefiniowaæ predykcjê P: $$P(u)_j=\bar{u}+\dfrac{1}{|R_j|}\sum_{j\in R_j}(dev_{i,j})$$
+Wzór tej postaci jest nieco szybszy do przeliczania (zak³adaj¹c, ¿e
 znamy œrednie oceny u¿ytkowników).       
+
+\subsection{Implementacja algorytmu}
+Przebieg dzia³ania programu mo¿na podzieliæ na nastêpuj¹ce etapy:
+\begin{itemize}
+  \item Wybór testu: algorytm normalny/uproszczony/losowy
+  \item Wczytanie danych ze zbiorów treningowych
+  \item Utworzenie dwuwymiarowej tablicy u¿ytkownik/film, przechowuj¹cej
+  oceny dla ka¿dej z kombinacji
+  \item Utworzenie macierzy dewiacji, przechowuj¹cej œrednie odchylenia ocen
+  miêdzy dwoma filmami
+  \item Wczytanie zbioru testowego
+  \item Wyznaczenie ocen dla danych znajduj¹cych siê w zbiorze testowym
+  \item Porównanie ocen i wyznaczenie œredniego b³êdu absolutnego (MAE)
+\end{itemize}
+
 
 \section{Plan eksperymentów}
 \subsection{Pytania}
