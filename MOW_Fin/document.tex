@@ -129,9 +129,52 @@ kalkulacyjnym.
  
 To pozwoli³o potwierdziæ poprawnoœæ implementacji. Nastêpnym krokiem by³o
 uruchomienie algorytmu slope-one dla piêciu zbiorów testowych pochodz¹cych z
-archiwów MoveLens. Przed predykcj¹ algorytm budowa³ na podstawie danych
+archiwów MovieLens. Przed predykcj¹ algorytm budowa³ na podstawie danych
 treningowych (ró¿nych dla ka¿dego z piêciu zbiorów) macierz odchyleñ ocen.
-Pierwsze piêæ przebiegów zosta³o wykonanych przy u¿yciu nie uproszczonej wersji
+Pierwsze piêæ przebiegów zosta³o wykonanych przy u¿yciu nieuproszczonej wersji
 algorytmu. Kolejne piêæ, na tych samych danych, zosta³o wykonane algorytmem ze
 zoptymalizowanym wzorem predykcji.
+
+Wyniki dla algorytmu nieuproszsczonego:
+
+MAE dla T1 = 0.2353901
+MAE dla T2 = 0.2247096
+MAE dla T3 = 0.2238898
+MAE dla T4 = 0.2321149
+MAE dla T5 = 0.2222222
+
+Wyniki dla algorytmu uproszczonego:
+
+MAE dla T1 = 0.2353901
+MAE dla T2 = 0.22
+MAE dla T3 = 0.22
+MAE dla T4 = 0.23
+MAE dla T5 = 0.22
+
+Ostatnim krokiem by³o przeprowadzenie testów dla zbioru losowych
+predykcji. Zbiór losowy zosta³ wygenerowany przy u¿yciu programu
+napisanego w œrodowisku Java (pos³u¿y³ do tego pakiet java.math). Efektem tego
+losowania by³y indeksy w tablic ocen u¿ytkowników. Dziêki temu mo¿na by³o
+wygenerowaæ losowo oceny filmów zgodnie z rozk³adem losowym ocen ze
+zbioru treningowego. Nastêpnie tak wygenerowane predykcje zosta³y wprowadzone
+do algorytmu licz¹cego MAE. W wyniku tego dzia³ania wygenerowane zosta³y nastêpuj¹ce dane: 
+
+MAE dla T1 = 0.3105243
+MAE dla T2 = 0.3094126
+MAE dla T3 = 0.3062914
+MAE dla T4 = 0.3078320
+MAE dla T5 = 0.3085444
+
+
+\subsection{Wnioski}
+
+Z powy¿szych danych liczbowych o b³êdzie MAE mo¿na wywniskowaæ, ¿e nasza
+implementacja algorytmu slope-one da³a lepsze wyniki ni¿ losowe zgadywanie
+ocen, które zachowywa³o ich rozk³ad. Co wiêcej uzyskaliœmy tak¿e pewne ró¿nice
+pomiêdzy implementacj¹ uproszczon¹ a pe³n¹ algorytmu predykcji. Algorytm pe³ny,
+zgodnie z przewidywaniami okaza³ siê nieznacznie lepszy.
+Testy okaza³y siê niezwykle czasoch³onne. Wynika³o to g³ównie z przyjêtego
+sposobu implementacji opartego na pêtlach, które to s¹ niestety bardzo
+niewydajnym narzêdziem w obrêbie œrodowiska GNU R.
+
 \end{document}
