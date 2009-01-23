@@ -96,7 +96,8 @@ Przebieg dzia³ania programu mo¿na podzieliæ na nastêpuj¹ce etapy:
   \item Wyznaczenie ocen dla danych znajduj¹cych siê w zbiorze testowym
   \item Porównanie ocen i wyznaczenie œredniego b³êdu absolutnego (MAE)
 \end{itemize}
-
+Wiêcej informacji na temat przebiegu dzia³ania programu mo¿na znaleŸæ w
+dokumentacji kodu.
 
 \section{Plan eksperymentów}
 \subsection{Pytania}
@@ -150,24 +151,23 @@ archiwów MovieLens. Przed predykcj¹ algorytm budowa³ na podstawie danych
 treningowych (ró¿nych dla ka¿dego z piêciu zbiorów) macierz odchyleñ ocen.
 Pierwsze piêæ przebiegów zosta³o wykonanych przy u¿yciu nieuproszczonej wersji
 algorytmu. Kolejne piêæ, na tych samych danych, zosta³o wykonane algorytmem ze
-zoptymalizowanym wzorem predykcji.
-
-Wyniki dla algorytmu nieuproszsczonego:
-
-MAE dla T1 = 0.2258310
-MAE dla T2 = 0.2247096
-MAE dla T3 = 0.2238898
-MAE dla T4 = 0.2321149
-MAE dla T5 = 0.2266362
-
+zoptymalizowanym wzorem predykcji.\\
+\\
+Wyniki dla algorytmu nieuproszsczonego:\\
+MAE dla T1 = 0.2258310\\
+MAE dla T2 = 0.2247096\\
+MAE dla T3 = 0.2238898\\
+MAE dla T4 = 0.2321149\\
+MAE dla T5 = 0.2266362\\
+\\
 Wyniki dla algorytmu uproszczonego:
-
-MAE dla T1 = 0.2353901
-MAE dla T2 = 0.2348408
-MAE dla T3 = 0.2312165 
-MAE dla T4 = 0.2387700
-MAE dla T5 = 0.2366075
-
+\\
+MAE dla T1 = 0.2353901\\
+MAE dla T2 = 0.2348408\\
+MAE dla T3 = 0.2312165\\
+MAE dla T4 = 0.2387700\\
+MAE dla T5 = 0.2366075\\
+\\\\
 Ostatnim krokiem by³o przeprowadzenie testów dla zbioru losowych
 predykcji. Zbiór losowy zosta³ wygenerowany przy u¿yciu programu
 napisanego w œrodowisku Java (pos³u¿y³ do tego pakiet java.math). Efektem tego
@@ -175,13 +175,12 @@ losowania by³y indeksy w tablic ocen u¿ytkowników. Dziêki temu mo¿na by³o
 wygenerowaæ losowo oceny filmów zgodnie z rozk³adem losowym ocen ze
 zbioru treningowego. Nastêpnie tak wygenerowane predykcje zosta³y wprowadzone
 do algorytmu licz¹cego MAE. W wyniku tego dzia³ania wygenerowane zosta³y nastêpuj¹ce dane: 
-
-MAE dla T1 = 0.3105243
-MAE dla T2 = 0.3094126
-MAE dla T3 = 0.3062914
-MAE dla T4 = 0.3078320
-MAE dla T5 = 0.3085444
-
+\\\\
+MAE dla T1 = 0.3105243\\
+MAE dla T2 = 0.3094126\\
+MAE dla T3 = 0.3062914\\
+MAE dla T4 = 0.3078320\\
+MAE dla T5 = 0.3085444\\
 
 \subsection{Wnioski}
 
