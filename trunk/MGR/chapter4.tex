@@ -9,12 +9,12 @@ informacji w skróconej formie. Dodatkowo czytelnik w prosty sposób mo¿e
 okreœliæ, czy aktualnie pokazywane wiadomoœci interesuj¹ go czy te¿ nie. W ten
 sposób uzyskamy mo¿liwoœæ analizy zainteresowañ u¿ytkowników, tak aby w
 przysz³oœci przekazywaæ im jedynie informacje które mog¹ ich zainteresowaæ.
-\section{Funkcjonalnoœæ systemu}    
+\section{Koncepcja}    
 Funkcjonalnoœæ systemu bêdzie oparta na nastêpuj¹cych za³o¿eniach:
 \begin{itemize}
   \item {Aplikacja na urz¹dzeniu mobilnym wyœwietla krótkie,
   dostosowane do u¿ytkownika informacje}
-  \item {Informacje zmienieniaj¹ siê automatycznie, tak aby ograniczyæ potrzebê
+  \item {Informacje zmieniaj¹ siê automatycznie, tak aby ograniczyæ potrzebê
   samodzielnego ich wyszukiwania}
   \item {Istnieje mo¿liwoœæ okreœlenia czy aktualnie pokazywana wiadomoœæ jest
   dla nas interesuj¹ca, co bêdzie mia³o wp³yw na dobór kolejnych wiadomoœci}
@@ -23,7 +23,7 @@ Funkcjonalnoœæ systemu bêdzie oparta na nastêpuj¹cych za³o¿eniach:
   przeczytania}
 \end{itemize}
 
-\section{Wymagania systemu}
+\subsection{Wymagania systemu}
 \paragraph{Infrastruktura}
 Potrzebne bêdzie po³¹czenie z Internetem, dostêpne z urz¹dzenia mobilnego jak i
 z serwera dostarczaj¹cego informacje. Dodatkowo dla komfortowego przegl¹dania
@@ -33,7 +33,7 @@ rozdzielczoœci (co najmniej 320x240).
 Urz¹dzenie mobilne bêdzie musia³o posiadaæ maszynê wirtualn¹ Java. Aplikacja na
 serwerze bêdzie dzia³a³a pod kontrol¹ kontenera Apache Tomcat.
 
-\section{Wstêpna analiza projektu} 
+\subsection{Wstêpna analiza projektu} 
 Przypuszczamy, ¿e system który planujemy stworzyæ mo¿e znaleŸæ realne
 zastosowanie i odnieœæ sukces rynkowy. 
  
@@ -62,7 +62,7 @@ na stacjach i w wagonach metra. Tym co chcielibyœmy w nim udoskonaliæ to
 mo¿liwoœæ dostarczenia spersonalizowanych, dostosowanych do ka¿dego czytelnika
 informacji.
 
-\chapter{Interfejs u¿ytkownika mobilnego klienta}
+\section{Interfejs mobilny}
 
 Mobilny klient naszej aplikacji jest midletem zbudowanym w oparciu o szkielet
 Kuix. Wersja instalacyjna sk³ada siê z dwóch plików :
@@ -157,3 +157,5 @@ wiadomoœci¹.
 \setlength\fboxrule{0.0pt}
 \fbox{\scalebox{0.7}{\includegraphics{img/phone_processed5.png} }}
 \end{center}
+
+\section{Interfejs administracyjny}
