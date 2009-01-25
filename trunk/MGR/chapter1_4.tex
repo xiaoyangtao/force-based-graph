@@ -1,0 +1,35 @@
+\section{Istniej¹ce podejœcia do integracji}
+Rozwa¿aj¹c mo¿liwe sposoby integracji technologii mobilnych z rozbudowan¹
+aplikacj¹ klasy Enteprise musimy zwróciæ uwagê na udostêpniane z obu stron
+mechanizmy.
+\subsection{Transfer plików}
+W tym przypadku dane s¹ zapisywane i odczytywane z plików. Niezbêdna jest
+wspólna przestrzeñ dyskow¹ lub sposób przesy³ania (np. FTP). Z tego powodu
+musimy odrzuciæ takie rozwi¹zanie jako niedaj¹ce siê zaimplementowaæ w
+œrodowisku mobilnym.
+\subsection{Wspólna baza danych}
+Dane s¹ sk³adowane we wspólnej bazie danych. Ze wzglêdu na zawodnoœæ transferu
+oraz d³ugi czas przesy³ania danych pomiêdzy urz¹dzeniem mobilnym a serwerem, a
+tym samym koniecznoœæ d³ugiego oczekiwania, rezygnujemy z takiego rozwi¹zania.
+\subsection{RPC}
+Zdalne wywo³ywanie procedur (ang. Remote Procedure Call) jest mechanizmem który
+pozwala wykonywaæ procedury udostêpniane przez zdalny system. Za³o¿eniem
+wywo³añ RPC jest synchronicznoœæ, która wprawdzie nie oznacza, ¿e musimy czekaæ
+na rezultat dzia³ania (mo¿emy za³o¿yæ, ¿e wy³¹cznie zlecamy wykonanie
+procedury, pobieraj¹c wynik potem),ale ¿e zak³adamy niezawodnoœæ komunikacji
+miêdzy urz¹dzeniami.
+
+\subsection{Wiadomoœci}
+Komunikacja za pomoc¹ wiadomoœci jest asynchroniczna, dodatkowo
+dobry system przesy³ania wiadomoœci gwarantuje jej dostarczenie do adresata,
+lub informacjê o jej nie dostarczeniu. Musimy pamiêtaæ, ¿e warunki w jakich
+mo¿emy komunikowaæ siê z urz¹dzeniem przenoœnym s¹ dalekie od doskona³ych, a mimo to u¿ytkownik oczekuje
+pe³nej niezawodnoœci systemu. To sprawia, ¿e nale¿y go tak zaprojektowaæ, aby
+przerwy w komunikacji by³y jak najmniej odczuwalne. Systemy komunikacyjne takie
+jak RPC, RMI czy CORBA projektowane by³y dla warunków w których problemy
+komunikacyjne s¹ sytuacj¹ nadzwyczajn¹. Tymczasem w przypadku ³¹cznoœci
+bezprzewodowej utrata po³¹czenia nie jest niczym czego nie moglibyœmy siê
+spodziewaæ. W tym momencie idea przesy³ania wiadomoœci wydaje siê skutecznym 
+rozwi¹zaniem tych problemów. Podczas tworzenia przyk³adowej implementacji
+napotkaliœmy jednak na problemy, które uniemo¿liwi³y wykorzystanie go do
+integracji, która jest przedmiotem tej pracy. 
