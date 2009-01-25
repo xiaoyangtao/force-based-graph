@@ -1,5 +1,75 @@
 \section{Generatory aplikacji}
 
+Wielu producentów podejmuje próby zbudowania œrodowisk umo¿liwiaj¹cych szybkie
+tworzenie aplikacji mobilnych (tak zwane RAD - Rapid Application Development).
+Maj¹ one ³¹czyæ zalety obu przedstawionych wczeœniej œwiatów :
+
+\begin{itemize} 
+\item{Pozwalaæ na ³atwe i szybkie tworzenie aplikacji dostêpowych - tak jak
+mobilne przegl¹darki}
+\item{Dostarczaæ elastycznoœci i rozbudowanych interfejsów u¿ytkownika - tak
+jak aplikacje mobilne}
+\end{itemize}
+
+W dalszej czêœci niniejszej pracy przedstawione zostan¹ dwa tego typu
+rozwi¹zania, pozwalaj¹ce na oszczêdzenie znacznej iloœci pracy przy budowaniu
+nowych aplikacji.
+
+
 \subsection{Uniwersalne}
 
 \subsection{Przygotowane pod platformê}
+
+\subsubsection{Blackberry MDS}
+Blackberry MDS jest przyk³adem narzêdzia wyspecjalizowanego do tworzenia
+aplikacji tylko i wy³¹cznie na platformê jednego producenta. Rozwi¹zanie to
+opiera siê na integracji ma³ej aplikacji zainstalowanej na urz¹dzeniach
+klienckich (MDS Runtime) z us³ug¹ typu Web Service dzia³aj¹c¹ na serwerze. 
+Dziêki niemu mo¿liwe jest tworzenie aplikacji u¿ywaj¹c podejœcia opisowego.
+Zamiast pisaæ ca³¹ aplikacjê u¿ywaj¹c jêzyka programowania wraz z
+bibliotekami oferuj¹cymi interfejs u¿ytkownika, mo¿emy przy u¿yciu graficznego
+edytora projektowaæ takie elementy jak ekrany czy pola z danymi. Wszystko to
+przy u¿ycia standardowego drag and drop. Nastêpnie mo¿emy po³¹czyæ tak
+zbudowane komponenty przy u¿yciu ró¿nych przewodników(wizards) czy te¿ edytorów.
+Co wiêcej aplikacja MDS daje nam pe³n¹ kontrolê nad przep³ywem sterowania -
+przy pomocy jêzyka JavaScript jesteœmy w stanie zaimplementowaæ niemal dowoln¹
+logikê aplikacji. Aplikacje typu enterprise oraz Ÿród³¹ danych dostêpne s¹ dla
+aplikacji mobilnej poprzez standardow¹ technologiê Web Service.
+\begin{center}
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{0.7}{\includegraphics{img/mds1.png} }}
+\end{center}
+Aplikacja MDS dla Blackberry jest to aplikacja typu rich-client zbudowana na
+podstawie metadanych zdefiniowanych w jêzyku XML. Te metadane wraz z zasobami
+takimi jak obrazki gromadzone s¹ w pakietach, które nastêpnie publikowane s¹ na
+serwerze BES. Serwer ten przy u¿yciu technologii push rozsy³a aplikacje do
+terminali mobilnych Blackberry. Dziêki zcentralizowanemu sposobowi
+dystrybucji oraz zarz¹dzania aplikacjami mobilnymi koszty utrzymania mobilnej
+infrastruktury s¹ znacznie ni¿sze.
+
+\begin{center}
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{0.7}{\includegraphics{img/mds2.png} }}
+\end{center}
+
+\paragraph{Us³uga Blackberry MDS}
+Us³uga MDS Blackberry zosta³a zaprojektowana tak by umo¿liwiæ wymianê danych
+pomiêdzy urz¹dzeniami Blackberry a aplikacjami typu enterprise. Zapewnia ona :
+\begin{itemize} 
+\item{Izolacjê platformy od szczegó³ów zwi¹zanych z integracj¹ Ÿróde³ danych}
+\item{Standard asynchronicznej wymiany komunikatów}
+\item{Przezroczyste dla u¿ytkownika i developera protoko³y bezpieczeñstwa}
+\item {Transformacje wiadomoœci}
+\item {Wspomnian¹ wczeœniej zcentralizowan¹ administracjê przy pomocy
+technologii push}
+\end{itemize}
+
+\paragraph{Blackberry MDS runtime}
+Po stronie urz¹dzenia mobilnego zainstalowany jest kontener aplikacji MDS.
+Zajmuje siê on instalacj¹, wyszukiwanie oraz przegl¹daniem aplikacji MDS.
+Dostarcza równie¿ niezbêdne funkcjonalnoœci do tych aplikacji, takie jak
+interfejs u¿ytkownika, kontener danych oraz us³ugi komunikacyjne klient-server.
+
+\subsubsection{Netbeans Mobile IDE}
