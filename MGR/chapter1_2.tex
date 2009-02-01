@@ -1,1 +1,40 @@
 \section{Klasyczne wyzwania integracji}
+
+Integracja aplikacji w przedsiêbiorstwach rzadko jest prostym zadaniem. Mimo, ¿e w niemal ka¿dej du¿ej firmie zachodzi potrzeba integracji i powsta³o ju¿ wiele opracowañ na ten temat, nikt nie przedstawi kompletnej listy problemów, które nale¿a³oby rozwa¿yæ podczas integrowania systemów.
+Dodatkowo, wyzwania które stawia integracja wykraczaj¹ poza tylko techniczne rozwa¿ania, a rozci¹gaj¹ siê tak¿e na procedury biznesowe.
+Tak jak ju¿ wspomnieliœmy, przedstawienie kompletnej listy takich problemów nie jest mo¿liwe, ze wzglêdu na koniecznoœæ dokonania analizy ka¿dego z przypadków. Mimo to, spróbujemy przedstawiæ te najbardziej typowe, zauwa¿one i opisane jako te, które koniecznie trzeba wzi¹æ pod uwagê.
+
+\subsection{Wyzwania techniczne}
+
+\paragraph{Fizyczna i logiczna odrêbnoœæ systemów,}
+z której tak naprawdê wynika potrzeba integracji. Wprowadza to jednak konieczne do rozwa¿enia kwestie, takie jak:
+\begin{itemize}
+  \item wybór sposobu komunikacji miêdzy systemami (o których wiêcej w
+  rozdziale 1.4)
+  \item wp³yw tego wyboru na bezpieczeñstwo i zgodnoœæ takiego rozwi¹zania z
+  polityk¹ bezpieczeñstwa firmy
+\end{itemize}
+  
+\paragraph{Ograniczony dostêp do integrowanych aplikacji.}
+Czêsto okazuje siê, ¿e integrowane aplikacje to istniej¹ce od dawna systemy, które nie doœæ, ¿e nie daj¹ mo¿liwoœci zmian w Ÿród³ach, to dodatkowo udostêpniaj¹ mocno ograniczony interfejs zewnêtrzny. W takiej sytuacji programiœci musz¹ niekiedy uciekaæ siê do stosowania niskopoziomowych modyfikacji (np. na bazie danych, której u¿ywa aplikacja) czy w ostatecznoœci do dekompilacji jej modu³ów.
+
+\paragraph{Brak uniwersalnego standardu wymiany danych pomiêdzy aplikacjami.}
+Pomimo czêsto istniej¹cej potrzeby integracji, wiele aplikacji nie wspiera ¿adnego uniwersalnego formatu danych, co powoduje koniecznoœæ specjalizowania platform integracyjnych pod k¹tem pod³¹czanych do niej aplikacji. Jako rozwi¹zanie tego problemu czêsto stosuje siê XML i Web serwisy, jednak ich obs³ugi mo¿emy oczekiwaæ jedynie w przypadku stosunkowo nowych aplikacji. Jednak nawet te technologie nie daj¹ gwarancji pe³nej uniwersalnoœci ze wzglêdu na dodatkowe rozszerzenia, które siê wykszta³ci³y w ramach Web serwisów (o których wiêcej informacji w dalszej czêœci pracy). Warto zauwa¿yæ, ¿e ten sam problem - brak wspó³pracy pomiêdzy aplikacjami oficjalnie wspieraj¹cymi pewien standard - by³ g³ówn¹ przeszkod¹ w stosowaniu CORBY-y, zaawansowanego protoko³u umo¿liwiaj¹cego wspó³pracê aplikacji stworzonych w ró¿nych jêzykach i dzia³aj¹cych na ró¿nych platformach.
+
+\paragraph{Utrzymanie platformy integracyjnej.} O ile uruchomienie platformy
+integracyjnej - systemu komunikuj¹cego ze sob¹ wiele ró¿norodnych aplikacji jest trudnym zadaniem, o tyle utrzymanie go mo¿e byæ jeszcze trudniejsze. Rzadko siê zdarza, by by³a ona ca³kowicie scentralizowana i nie wymaga³a najmniejszej ingerencji, lub chocia¿ konfiguracji integrowanych aplikacji. W zwi¹zku z tym, czêsto osoby, które odpowiadaj¹ za utrzymanie takiej platformy musz¹ posiadaæ wiedzê na ich temat. Dodatkowo, ciê¿ko jest tê wiedzê utrzymaæ, szczególnie gdy pracownicy siê zmieniaj¹. Natura platformy integracyjnej wymusza jej automatyzacjê - powoduje to,¿e mo¿e ona bezproblemowo dzia³aæ bardzo d³ugo, wrêcz przezroczyœcie dla wszystkich, a¿ do wyst¹pienia pierwszego problemu, lub potrzeby wprowadzenia modyfikacji. Wtedy okazuje siê, ¿e osobami od których wymaga siê tej wiedzy s¹ w³aœnie ci, którzy tê platformê tworzyli, co z ich punktu widzenia zdecydowanie zwiêksza nak³ad pracy (którego by nie ponieœli, gdyby systemy by³y integrowane bez punktu centralnego, poniewa¿ wtedy osoby odpowiadaj¹ce za nie by³yby równie¿ odpowiedzialne za ich integracjê). Ostatecznie okazuje siê, ¿e istnienie platformy integracyjnej jest utrudnieniem, a nie u³atwieniem dla dzia³u IT.
+
+\subsection{Wyzwania biznesowe}
+
+\paragraph{Zmiana polityki wewnêtrznej przedsiêbiorstwa.} 
+Poprawna integracja
+oznacza nie tylko doprowadzenie do wspó³pracy systemów informatycznych, ale równie¿ departamentów w firmie. Wynika to z faktu, ¿e integrowane aplikacje najczêœciej komunikuj¹ automatycznie, co powoduje, ¿e wprowadzenie zmian do systemu przez jeden departament, mo¿e mieæ konsekwencje (np. w postaci realizacji zlecenia) w drugim. Konieczne jest uœwiadomienie u¿ytkowników o tym fakcie, tak by integracja przynosi³a korzyœci w postaci uproszczenia przep³ywu danych i zaoszczêdzenia czasu, zamiast prób rêcznego kontrolowania niezale¿nych do tej pory aplikacji.
+
+\paragraph{Wp³yw integracji na przedsiêbiorstwo.} 
+Rozwi¹zania integracyjne ³¹cz¹ ze sob¹ wiele aplikacji, których dzia³anie jest
+kluczowe dla dzia³ania przedsiêbiorstwa. Powoduje to, ¿e b³êdy w dzia³aniu lub
+niedostêpnoœæ platformy integracyjnej maj¹ bardzo powa¿ne konsekwencje, tak¿e
+finansowe. Z drugiej strony, poprawnie funkcjonuj¹ca integracja przyspiesza przep³yw informacji i powoduje, ¿e ka¿dy scenariusz wspó³pracy przebiega w daj¹cych siê przewidzieæ krokach, co gwarantuje powtarzalnoœæ i wiedzê o stanie wspó³pracy (np. stanie zlecenia, które wp³ynê³o i jest obs³ugiwane).
+
+\paragraph{Ró¿nice semantyczne w pojêciach.} Choæ XML rozwi¹zuje wiele problemów
+technicznych, nie stanowi on odpowiedzi na ró¿n¹ semantykê w ramach obu systemów. Przyk³adowo, tym co w jednym systemie rozumiemy pod pojêciem "konto" mo¿e oznaczaæ numer konta bankowego, w innym natomiast mo¿e to byæ wewnêtrzny numer konta w korporacji, czy te¿ konto u¿ytkownika. Dlatego poza znalezieniem wspólnych pojêæ, konieczne jest dok³adne zdefiniowanie ich znaczenia, aby unikn¹æ nieporozumieñ.
