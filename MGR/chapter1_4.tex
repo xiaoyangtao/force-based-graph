@@ -1,35 +1,102 @@
 \section{Istniej¹ce podejœcia do integracji}
-Rozwa¿aj¹c mo¿liwe sposoby integracji technologii mobilnych z rozbudowan¹
-aplikacj¹ klasy Enteprise musimy zwróciæ uwagê na udostêpniane z obu stron
-mechanizmy.
-\subsection{Transfer plików}
-W tym przypadku dane s¹ zapisywane i odczytywane z plików. Niezbêdna jest
-wspólna przestrzeñ dyskow¹ lub sposób przesy³ania (np. FTP). Z tego powodu
-musimy odrzuciæ takie rozwi¹zanie jako niedaj¹ce siê zaimplementowaæ w
-œrodowisku mobilnym.
-\subsection{Wspólna baza danych}
-Dane s¹ sk³adowane we wspólnej bazie danych. Ze wzglêdu na zawodnoœæ transferu
-oraz d³ugi czas przesy³ania danych pomiêdzy urz¹dzeniem mobilnym a serwerem, a
-tym samym koniecznoœæ d³ugiego oczekiwania, rezygnujemy z takiego rozwi¹zania.
-\subsection{RPC}
-Zdalne wywo³ywanie procedur (ang. Remote Procedure Call) jest mechanizmem który
-pozwala wykonywaæ procedury udostêpniane przez zdalny system. Za³o¿eniem
-wywo³añ RPC jest synchronicznoœæ, która wprawdzie nie oznacza, ¿e musimy czekaæ
-na rezultat dzia³ania (mo¿emy za³o¿yæ, ¿e wy³¹cznie zlecamy wykonanie
-procedury, pobieraj¹c wynik potem),ale ¿e zak³adamy niezawodnoœæ komunikacji
-miêdzy urz¹dzeniami.
+Istnieje kilka powszechnie znanych sposobów integracji, które maj¹ swoje mocne i
+s³abe strony. Mo¿na zauwa¿yæ, ¿e pojawia³y siê one wraz z rozwojem systemów
+informatycznych i ka¿dy z nich odpowiada jakiemuœ etapowi rozwoju (np.
+istnienie plików jako podstawowych struktur przechowuj¹cych dane, na d³ugo przed
+pojawieniem siê baz danych). Mimo to, ka¿dy z nich ci¹gle znajduje swoje
+zastosowanie gdy okazuje siê, ¿e nie wszystkie mechanizmy s¹ jednakowo dostêpne
+lub gdy bardziej skomplikowane technologie wprowadzaj¹ zbyt du¿y narzut.
 
-\subsection{Wiadomoœci}
-Komunikacja za pomoc¹ wiadomoœci jest asynchroniczna, dodatkowo
-dobry system przesy³ania wiadomoœci gwarantuje jej dostarczenie do adresata,
-lub informacjê o jej nie dostarczeniu. Musimy pamiêtaæ, ¿e warunki w jakich
-mo¿emy komunikowaæ siê z urz¹dzeniem przenoœnym s¹ dalekie od doskona³ych, a mimo to u¿ytkownik oczekuje
-pe³nej niezawodnoœci systemu. To sprawia, ¿e nale¿y go tak zaprojektowaæ, aby
-przerwy w komunikacji by³y jak najmniej odczuwalne. Systemy komunikacyjne takie
-jak RPC, RMI czy CORBA projektowane by³y dla warunków w których problemy
+\paragraph{Transfer plików}- jedna aplikacja zapisuje plik w okreœlonym
+formacie w ustalonym miejscu, nastêpnie druga go odczytuje i przetwarza. Zalet¹
+takiego rozwi¹zania jest jego dostêpnoœæ - prawie zawsze bêdziemy mieli
+dostêp do systemu plików. Poza tym nie musimy wiedzieæ, jak dzia³a
+aplikacja, jedyne co powinniœmy zrobiæ to dostarczyæ plik we w³aœciwym
+formacie. Z drugiej strony, nie istnieje ¿aden sposób wymuszenia formatu
+zapisywanego pliku, mo¿emy zapisaæ na dysku dowolny plik, a aplikacja
+docelowa bêdzie go mog³a ewentualnie odrzuciæ.
+    
+\paragraph{Wspólna baza danych}- dwie aplikacje dzia³aj¹ na jednej bazie
+danych. Poniewa¿ obie korzystaj¹ z tych samych danych, nie ma potrzeby ich
+duplikacji. Dodatkowo, przez ograniczenia wymuszone przez bazê musimy
+je zapisywaæ w œciœle okreœlonym formacie, przestrzegaj¹c typów i wiêzów
+integralnoœci. Z drugiej strony, trudno jest tak¹ bazê zaprojektowaæ. Gdybyœmy
+nawet stworzyli dwie takie aplikacje, które wspó³pracuj¹ z jedn¹ baz¹ danych,
+to w wypadku gdybyœmy chcieli do³¹czyæ kolejn¹, wspó³pracuj¹c¹ aplikacjê,
+mog³oby siê to wi¹zaæ z koniecznoœci¹ przemodelowania bazy danych. Dodatkowo,
+zmiana danych w bazie nie zawsze wystarczy. Mo¿emy sobie wyobraziæ sytuacjê,
+w której zmiana wysokoœci pensji niesie za sob¹ koniecznoœæ wykonania
+dodatkowych czynnoœci, np. zmiany wysokoœci sk³adki w systemie
+ubezpieczeniowym.
+	
+\paragraph{Zdalne wywo³ywanie procedur},które mo¿e siê odbywaæ z
+wykorzystaniem mechanizmów typowych dla danej technologii (RPC,RMI czy
+WebServices). Jedna aplikacja udostêpnia funkcjonalnoœæ, która mo¿e zostaæ
+wywo³ana z poziomu drugiej. Komunikacja odbywa siê synchronicznie, 
+aplikacja wywo³uj¹ca oczekuje na wynik przetwarzania. Zalet¹ takiego
+rozwi¹zania jest dobra enkapsulacja wywo³ania - nie istnieje mo¿liwoœæ
+wywo³ania nieistniej¹cej funkcjonalnoœci z przekazaniem parametrów nie
+spe³niaj¹cych okreœlonych za³o¿eñ. Wywo³anie zdalnej procedury po odpowiednim
+skonfigurowaniu ca³ego systemu, nie powinno siê ró¿niæ od wywo³ania procedury w
+obrêbie tej samej aplikacji. Pomimo wygody takiego rozwi¹zania, stwarza ono
+pewne niebezpieczeñstwo. Programista, nieœwiadomy narzutu stwarzanego przez
+zdalne wywo³anie procedur, mo¿e wywo³ywaæ je z równ¹ bezstrosk¹ niczym
+procedury lokalne.
+
+\paragraph{Wiadomoœci} - jedna aplikacja wysy³a komunikat do wspólnego kana³u
+komunikacyjnego, który jest nastêpnie przetwarzany przez drug¹ aplikacjê.
+Komunikacja odbywa siê asynchronicznie, po umieszczeniu koumnikatu w kanale,
+aplikacja kontynuuje dzia³anie. Odbiorca komunikatu mo¿e go odebraæ w dogodnym
+dla siebie momencie. Rozwi¹zanie to nie wprowadza œcis³ych zale¿noœci
+pomiêdzy systemami, podobnie jak przesy³anie plików. Pewn¹ niedogodnoœci¹
+takiego rozwi¹zania jest jednak wiêksze skomplikowanie systemu, wynikaj¹ce z
+wprowadzenie dodatkowego elementu - brokera wiadomoœci.
+
+
+\subsection{Wybór technologii do integracji mobilnej}
+
+W kontekœcie przedstawionych informacji musimy dokonaæ wyboru metody
+komunikacji urz¹dzenia mobilnego z klasycznym systemem informatycznym. W tym
+celu nale¿y rozwa¿yæ nastêpuj¹ce zagadnienia:
+
+\begin{itemize}
+  \item Jakie s¹ oczekiwania u¿ytkowników co do zintegrowanych systemów i jak
+  wybór metody integracji wp³ywa na ich spe³nienie?
+  \item Jakie mechanizmy s¹ dostêpne w obu œrodowiskach?
+\end{itemize} 
+
+Rozwa¿aj¹c te kwestie mo¿emy stwierdziæ, ¿e u¿ytkownik, szczególnie gdy jest
+przyzwyczajony do pracy w klasycznym œrodowisku informatycznym, oczekuje, ¿e
+komunikacja bêdzie siê odbywa³a jak najszybciej, bez uci¹¿liwych okresów
+oczekiwania. Dodatkowo, oczywistymi wymaganiami s¹ bezpieczeñstwo i niezawodnoœæ komunikacji.
+Z drugiej strony musimy pamiêtaæ, ¿e warunki w jakich mo¿emy komunikowaæ siê z
+urz¹dzeniem przenoœnym s¹ dalekie od doskona³ych.
+To sprawia, ¿e nale¿y j¹ tak zaprojektowaæ, aby przerwy w komunikacji by³y jak
+najmniej odczuwalne. Systemy komunikacyjne takie jak RPC, RMI czy CORBA projektowane by³y dla warunków w których problemy
 komunikacyjne s¹ sytuacj¹ nadzwyczajn¹. Tymczasem w przypadku ³¹cznoœci
 bezprzewodowej utrata po³¹czenia nie jest niczym czego nie moglibyœmy siê
 spodziewaæ. W tym momencie idea przesy³ania wiadomoœci wydaje siê skutecznym 
 rozwi¹zaniem tych problemów. Podczas tworzenia przyk³adowej implementacji
-napotkaliœmy jednak na problemy, które uniemo¿liwi³y wykorzystanie go do
-integracji, która jest przedmiotem tej pracy. 
+napotkaliœmy jednak na problemy, które uniemo¿liwi³y ich wykorzystanie. Okaza³o
+siê, ¿e rzadkoœci¹ s¹ brokery wiadomoœci, które jednakowo ³atwo obs³uguj¹ klienty mobilne jak i
+klasyczne. Dodatkowo, biblioteki do przesy³ania wiadomoœci wprowadzaj¹ du¿y
+narzut po stronie mobilnej, zarówno ze wzglêdu na swój rozmiar, jak i metodê
+komunikacji, któr¹ by³y Web serwisy. \\
+
+Naturalnym wyborem s¹ wiêc Web serwisy, zarówno ze wzglêdu na ³atwoœæ
+implementacji po obu stronach (choæ równie¿ nie pozbawion¹ pu³apek), jak
+równie¿ ³atwe zapewnienie bezpieczeñstwa, którego nie s¹ w stanie
+spe³niæ wiadomoœci. Nisk¹ zawodnoœæ technologii mo¿na zapewniæ poprzez jej obudowanie
+w odpowiednie mechanizmy (jak gwarancja dostarczenia). Tym co dodatkowo wymusza
+taki wybór jest utrudniony transfer plików lub dostêp do bazy danych z
+poziomu urz¹dzenia mobilnego. 
+Mo¿emy oczywiœcie przes³aæ plik z urz¹dzenia mobilnego, jednak wygoda tego
+rozwi¹zania pozostaje w tyle za wykorzystaniem wspólnej przestrzeni dyskowej.
+Podobnie, mo¿na stworzyæ mobilnego klienta bazy danych, jednak ze wzglêdu na
+przerwy w komunikacji nie bêdzie on tak efektywny jak klient klasyczny.
+Z tych powodoów nasze dalsze rozwa¿ania bêdziemy
+koncentrowaæ na tej technologii, by na koniec pokazaæ szablon integracyjny o
+ni¹ oparty.
+
+
+ 
