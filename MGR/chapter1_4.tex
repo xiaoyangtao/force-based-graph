@@ -4,7 +4,7 @@ s³abe strony. Mo¿na zauwa¿yæ, ¿e pojawia³y siê one wraz z rozwojem systemów
 informatycznych i ka¿dy z nich odpowiada jakiemuœ etapowi rozwoju (np.
 istnienie plików jako podstawowych struktur przechowuj¹cych dane, na d³ugo przed
 pojawieniem siê baz danych). Mimo to, ka¿dy z nich ci¹gle znajduje swoje
-zastosowanie gdy okazuje siê, ¿e nie wszystkie mechanizmy s¹ jednakowo dostêpne
+zastosowanie, gdy okazuje siê, ¿e nie wszystkie mechanizmy s¹ jednakowo dostêpne
 lub gdy bardziej skomplikowane technologie wprowadzaj¹ zbyt du¿y narzut.
 
 \paragraph{Transfer plików}- jedna aplikacja zapisuje plik w okreœlonym
@@ -29,7 +29,7 @@ w której zmiana wysokoœci pensji niesie za sob¹ koniecznoœæ wykonania
 dodatkowych czynnoœci, np. zmiany wysokoœci sk³adki w systemie
 ubezpieczeniowym.
 	
-\paragraph{Zdalne wywo³ywanie procedur},które mo¿e siê odbywaæ z
+\paragraph{Zdalne wywo³ywanie procedur}- mo¿e siê odbywaæ z
 wykorzystaniem mechanizmów typowych dla danej technologii (RPC,RMI czy
 WebServices). Jedna aplikacja udostêpnia funkcjonalnoœæ, która mo¿e zostaæ
 wywo³ana z poziomu drugiej. Komunikacja odbywa siê synchronicznie, 
@@ -43,7 +43,7 @@ pewne niebezpieczeñstwo. Programista, nieœwiadomy narzutu stwarzanego przez
 zdalne wywo³anie procedur, mo¿e wywo³ywaæ je z równ¹ bezstrosk¹ niczym
 procedury lokalne.
 
-\paragraph{Wiadomoœci} - jedna aplikacja wysy³a komunikat do wspólnego kana³u
+\paragraph{Wiadomoœci}- jedna aplikacja wysy³a komunikat do wspólnego kana³u
 komunikacyjnego, który jest nastêpnie przetwarzany przez drug¹ aplikacjê.
 Komunikacja odbywa siê asynchronicznie, po umieszczeniu koumnikatu w kanale,
 aplikacja kontynuuje dzia³anie. Odbiorca komunikatu mo¿e go odebraæ w dogodnym
@@ -60,9 +60,9 @@ komunikacji urz¹dzenia mobilnego z klasycznym systemem informatycznym. W tym
 celu nale¿y rozwa¿yæ nastêpuj¹ce zagadnienia:
 
 \begin{itemize}
+  \item Jakie mechanizmy s¹ dostêpne w obu œrodowiskach?
   \item Jakie s¹ oczekiwania u¿ytkowników co do zintegrowanych systemów i jak
   wybór metody integracji wp³ywa na ich spe³nienie?
-  \item Jakie mechanizmy s¹ dostêpne w obu œrodowiskach?
 \end{itemize} 
 
 Rozwa¿aj¹c te kwestie mo¿emy stwierdziæ, ¿e u¿ytkownik, szczególnie gdy jest
@@ -72,31 +72,33 @@ oczekiwania. Dodatkowo, oczywistymi wymaganiami s¹ bezpieczeñstwo i niezawodnoœæ
 Z drugiej strony musimy pamiêtaæ, ¿e warunki w jakich mo¿emy komunikowaæ siê z
 urz¹dzeniem przenoœnym s¹ dalekie od doskona³ych.
 To sprawia, ¿e nale¿y j¹ tak zaprojektowaæ, aby przerwy w komunikacji by³y jak
-najmniej odczuwalne. Systemy komunikacyjne takie jak RPC, RMI czy CORBA projektowane by³y dla warunków w których problemy
+najmniej odczuwalne. 
+Systemy komunikacyjne takie jak RPC, RMI czy CORBA projektowane by³y dla warunków w których problemy
 komunikacyjne s¹ sytuacj¹ nadzwyczajn¹. Tymczasem w przypadku ³¹cznoœci
 bezprzewodowej utrata po³¹czenia nie jest niczym czego nie moglibyœmy siê
-spodziewaæ. W tym momencie idea przesy³ania wiadomoœci wydaje siê skutecznym 
-rozwi¹zaniem tych problemów. Podczas tworzenia przyk³adowej implementacji
-napotkaliœmy jednak na problemy, które uniemo¿liwi³y ich wykorzystanie. Okaza³o
-siê, ¿e rzadkoœci¹ s¹ brokery wiadomoœci, które jednakowo ³atwo obs³uguj¹ klienty mobilne jak i
-klasyczne. Dodatkowo, biblioteki do przesy³ania wiadomoœci wprowadzaj¹ du¿y
-narzut po stronie mobilnej, zarówno ze wzglêdu na swój rozmiar, jak i metodê
-komunikacji, któr¹ by³y Web serwisy. \\
+spodziewaæ.\\
+Zacznijmy od ograniczenia wyboru do technologii, z których mo¿emy skorzystaæ w
+œrodowisku mobilnym. Na samym pocz¹tku musimy wyeliminowaæ transfer plików,
+jako metodê, która wymaga spe³nienia jednego z warunków: dostêp do wspólnego
+systemu plików lub obs³uga prostego protoko³u przesy³ania plików (np. FTP).
+Pierwsza mo¿liwoœæ jest trudna do zagwarantowania ze wzglêdu na brak
+wsparcia powszechnie stosowanych systemów plików we wszystkich urz¹dzeniach
+mobilnych (chocia¿ s¹ wyj¹tki, np. FAT), a tak¿e mo¿liwe przerwy w komunikacji,
+o których wspominaliœmy wczeœniej. Drugie rozwi¹zanie - obs³uga uniwersalnego
+protoko³u przesy³ania plików nie jest powszechnie wspierane, poza tym tak¿e tu
+pojawia siê problem zawodnej komunikacji. \\
+Wspólna baza danych równie¿ jest rozwi¹zaniem, którego nie mo¿emy wzi¹æ pod
+uwagê. G³ówn¹ przeszkod¹ jest brak uniwersalnego sposobu pod³¹czenia do bazy
+dzia³aj¹cej w klasycznym systemie. Du¿e ograniczenia platformy mobilnej nie
+pozwalaj¹ na uruchomienie sterowników do baz danych przeznaczonych dla
+klasycznych systemów, dodatkowo ich rozmiar nierzadko przekracza rozmiar
+mobilnych aplikacji. Gdyby jednak nawet uda³o siê stworzyæ sterowniki, które
+pozwoli³yby na dostêp do bazy danych z poziomu urz¹dzenia mobilnego, ponownie
+starlibyœmy siê z problemem zawodnej komunikacji.\\
+Okazuje siê, ¿e dwiema godnymi rozwa¿enia metodami s¹ Web serwisy, bêd¹ce
+jednym ze sposobów zdalnego wywo³ywania procedur oraz wiadomoœci.
 
-Naturalnym wyborem s¹ wiêc Web serwisy, zarówno ze wzglêdu na ³atwoœæ
-implementacji po obu stronach (choæ równie¿ nie pozbawion¹ pu³apek), jak
-równie¿ ³atwe zapewnienie bezpieczeñstwa, którego nie s¹ w stanie
-spe³niæ wiadomoœci. Nisk¹ zawodnoœæ technologii mo¿na zapewniæ poprzez jej obudowanie
-w odpowiednie mechanizmy (jak gwarancja dostarczenia). Tym co dodatkowo wymusza
-taki wybór jest utrudniony transfer plików lub dostêp do bazy danych z
-poziomu urz¹dzenia mobilnego. 
-Mo¿emy oczywiœcie przes³aæ plik z urz¹dzenia mobilnego, jednak wygoda tego
-rozwi¹zania pozostaje w tyle za wykorzystaniem wspólnej przestrzeni dyskowej.
-Podobnie, mo¿na stworzyæ mobilnego klienta bazy danych, jednak ze wzglêdu na
-przerwy w komunikacji nie bêdzie on tak efektywny jak klient klasyczny.
-Z tych powodoów nasze dalsze rozwa¿ania bêdziemy
-koncentrowaæ na tej technologii, by na koniec pokazaæ szablon integracyjny o
-ni¹ oparty.
-
+\paragraph{Wiadomoœci w œrodowisku mobilnym}
 
  
+\paragraph{Web serwisy}
