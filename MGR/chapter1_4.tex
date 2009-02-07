@@ -45,13 +45,12 @@ procedury lokalne.
 
 \paragraph{Wiadomoœci}- jedna aplikacja wysy³a komunikat do wspólnego kana³u
 komunikacyjnego, który jest nastêpnie przetwarzany przez drug¹ aplikacjê.
-Komunikacja odbywa siê asynchronicznie, po umieszczeniu koumnikatu w kanale,
+Komunikacja odbywa siê asynchronicznie, po umieszczeniu komunikatu w kanale,
 aplikacja kontynuuje dzia³anie. Odbiorca komunikatu mo¿e go odebraæ w dogodnym
 dla siebie momencie. Rozwi¹zanie to nie wprowadza œcis³ych zale¿noœci
 pomiêdzy systemami, podobnie jak przesy³anie plików. Pewn¹ niedogodnoœci¹
 takiego rozwi¹zania jest jednak wiêksze skomplikowanie systemu, wynikaj¹ce z
 wprowadzenie dodatkowego elementu - brokera wiadomoœci.
-
 
 \subsection{Wybór technologii do integracji mobilnej}
 
@@ -77,6 +76,7 @@ Systemy komunikacyjne takie jak RPC, RMI czy CORBA projektowane by³y dla warunkó
 komunikacyjne s¹ sytuacj¹ nadzwyczajn¹. Tymczasem w przypadku ³¹cznoœci
 bezprzewodowej utrata po³¹czenia jest czymœ czego mo¿emy siê
 spodziewaæ.\\
+\indent
 Zacznijmy od ograniczenia wyboru do technologii, z których mo¿emy skorzystaæ w
 œrodowisku mobilnym. Na samym pocz¹tku musimy wyeliminowaæ transfer plików,
 jako metodê, która wymaga spe³nienia jednego z warunków: dostêp do wspólnego
@@ -87,8 +87,9 @@ mobilnych (chocia¿ s¹ wyj¹tki, np. FAT), a tak¿e mo¿liwe przerwy w komunikacji,
 o których wspominaliœmy wczeœniej. Drugie rozwi¹zanie - obs³uga uniwersalnego
 protoko³u przesy³ania plików nie jest powszechnie wspierane, poza tym tak¿e tu
 pojawia siê problem zawodnej komunikacji. \\
-Wspólna baza danych równie¿ jest rozwi¹zaniem, którego nie mo¿emy wzi¹æ pod
-uwagê. G³ówn¹ przeszkod¹ jest brak uniwersalnego sposobu pod³¹czenia do bazy
+\indent
+Wspólna baza danych równie¿ jest rozwi¹zaniem, którego nie mo¿emy wzi¹æ
+pod uwagê. G³ówn¹ przeszkod¹ jest brak uniwersalnego sposobu pod³¹czenia do bazy
 dzia³aj¹cej w klasycznym systemie. Du¿e ograniczenia platformy mobilnej nie
 pozwalaj¹ na uruchomienie sterowników do baz danych przeznaczonych dla
 klasycznych systemów, dodatkowo ich rozmiar nierzadko przekracza rozmiar
@@ -98,8 +99,111 @@ starlibyœmy siê z problemem zawodnej komunikacji.\\
 Okazuje siê, ¿e dwiema godnymi rozwa¿enia metodami s¹ wiadomoœci oraz Web
 serwisy, bêd¹ce jednym ze sposobów zdalnego wywo³ywania procedur.
 
-\paragraph{Wiadomoœci w œrodowisku mobilnym}
-
-
  
-\paragraph{Web serwisy}
+\paragraph{Zdalne wywo³ywanie procedur - Web serwisy}
+Trzeba napisaæ, ¿e mimo, ¿e istnieje kilka ró¿nych standardów RPC, Web serwisy
+s¹ jedynym praktycznie stosowanym w przypadku integracji mobilnej.
+
+\paragraph{Wiadomoœci w œrodowisku mobilnym} 
+Integracja za pomoc¹ Web serwisów
+jest doœæ prosta do zaimplementowania, stawia jednak przed programist¹ szereg
+problemów,
+które musi samodzielnie rozwi¹zaæ. Jest to przede wszystkim brak gwarancji dostarczenia komunikatu. Dodatkowo
+jednak samodzielnie nale¿y obs³u¿yæ b³êdy transmisji, mo¿liwe przerwy 
+i koniecznoœæ ponownego nawi¹zania po³¹czenia. Z drugiej jednak
+strony nie ma potrzeby uruchamiania brokera wiadomoœci, który jest dodatkowym elementem
+zwiêkszaj¹cym skomplikowanie systemu. Jednak w sytuacji, gdy w przedsiêbiorstwie
+dzia³a ju¿ broker obs³uguj¹cy kilka aplikacji, do³¹czenie komponentu mobilnego
+mo¿e byæ dobrym rozwi¹zaniem. Zastosowanie wiadomoœci do integracji urz¹dzeñ
+mobilnych niesie ze sob¹ wszelkie konsekwencje tej metody integracji znane z
+integracji klasycznych systemów informatycznych:
+
+\begin{itemize}
+  \item Oddzielenie nadawcy wiadomoœci od jej odbiorcy. Pozwala to na wysy³anie
+  wiadomoœci nawet wtedy, gdy odbiorca nie jest w stanie jej aktualnie odebraæ 
+  (na przyk³ad ze wzglêdu na brak po³¹czenia).
+  \item Gwarancja dostarczenia. Umieszczenie wiadomoœci w kanale komunikacyjnym
+  gwarantuje, ¿e odbiorca odbierze j¹ wtedy gdy bêdzie pobiera³ przeznaczone
+  dla niego wiadomoœci. Z drugiej strony, w przypadku niepowodzenia, jest o
+  tym fakcie od razu informowany.
+  \item Skalowalnoœæ. Wiadomoœci pozwalaj¹ na lepsze wykorzystanie
+  zasobów serwerów. Aplikacje bêd¹ce odbiorcami wiadomoœci mog¹ je odbieraæ w
+  tempie, w którym s¹ w stanie je przetwarzaæ. Wyklucza to wiêc mo¿liwoœæ ich
+  przeci¹¿enia (tutaj oczywistym wymaganiem jest odpowiednio du¿a pojemnoœæ
+  kolejki wiadomoœci).
+  \item Nadawanie priorytetów. Dziêki wiadomoœciom, mo¿emy przetwarzaæ ¿¹dania
+  zgodnie z ich priorytetem, szczególnie w momentach wysokiego obci¹¿enia.
+  Pozwala to na obs³u¿enie najpilniejszych wiadomoœci przed innymi (co nie jest
+  mo¿liwe bez dodatkowych ingerencji w przypadku Web serwisów).
+  \item Mo¿liwoœæ stosowania wzorców integracyjnych. Droga wiadomoœci pomiêdzy
+  nadawc¹ i odbiorc¹ mo¿e byæ zmieniana w deklaratywny sposób (pomagaj¹ tu
+  specjalne pakiety integracyjne, np. Apache Camel), co pozwala na dodatkowe
+  przetwarzanie, konwertowanie, zmienianie kolejnoœci i inne modyfikacje przesy³anych wiadomoœci. Pod³¹czenie do kana³u publish-subscribe
+  pozwala na ³atwe wysy³anie wiadomoœci do wielu odbiorców.
+\end{itemize}
+Nie jest to, oczywiœcie, technologia pozbawiona wad. Tym co musimy wzi¹æ pod
+uwagê jest istnienie wspomnianego ju¿ brokera wiadomoœci. Dodatkowo, wszystkie
+wspomniane wczeœniej mo¿liwoœci maj¹ swój koszt, jakim jest wiêkszy rozmiar
+aplikacji mobilnej wynikaj¹cy z koniecznoœci skorzystania z dodatkowych
+komponentów. Nie jest to du¿y narzut w przypadku klasycznych aplikacji, jednak
+zwiêksza rozmiary aplikacji mobilnej w stopniu, który mo¿e nie pozwoliæ na jej
+uruchomienie na prostszych urz¹dzeniach.\\
+\indent
+W przeciwieñstwie do Web serwisów, nie wykszta³ci³ siê jeden, uniwersalny
+standard przesy³ania wiadomoœci. W ramach platformy J2ME naturalnym
+rozwi¹zaniem jest JMS pochodz¹cy z Javy Enterprise. Jednak inne platformy, jak
+Windows Mobile maj¹ swoje w³asne rozwi¹zania. Tym na co warto by zwróciæ uwagê,
+jest fakt, ¿e stosowanie wiadomoœci umo¿liwia zmianê najni¿szej warstwy
+komunikacyjnej pomiêdzy urz¹dzeniami. O ile w przypadku Web serwisów oczywistym
+wyborem jest po³¹czenie z internetem, o tyle wiadomoœci mog¹ byæ przesy³ane
+zarówno w ten sposób jak i za pomoc¹ SMS-ów. Pozwala to na funkcjonowanie
+aplikacji bez utrzymywania sta³ego po³¹czenia z internetem, co w przypadku
+ograniczonej ³¹cznoœci jest mocno utrudnione. 
+
+
+% Istnieje kilku dostawców
+% rozwi¹zañ opartych o wiadomoœci z których najpopularniejsze to IBM MQ Everyplace
+% oraz iBus//Mobile.
+% \subparagraph{IBM MQ Everyplace}
+% \subparagraph{iBus//Mobile}
+
+
+\indent
+Na pytanie, która metoda, wiadomoœci czy Web serwisy, jest lepsza, nie ma
+jednoznacznej odpowiedzi. Zale¿y to od oczekiwañ u¿ytkownika od integrowanego
+systemu, jego natury oraz aktualnie istniej¹cych komponentów. Wydaje
+siê, ¿e przed podjêciem decyzji warto zadaæ sobie nastêpuj¹ce pytania: 
+\begin{itemize}
+  \item Czy potrzebujemy gwarancji dostarczenia komunikatu, czy te¿ jest to
+  system w którym nie jest to kluczowe? Web serwisy nie zapewniaj¹ tej
+  funkcjonalnoœci i w razie potrzeby musimy j¹ sami zaimplementowaæ.
+  \item Czy integrujemy system mobilny z istniej¹cymi ju¿ systemami, które
+  porozumiewaj¹ siê ze sob¹ za pomoc¹ brokera wiadomoœci? W takim wypadku
+  wykorzystanie wiadomoœci jest naturalnym rozwi¹zaniem pozwalaj¹cym na
+  dointegrowanie urz¹dzeñ mobilnych do sieci korporacyjnej.
+  \item Czy bierzemy pod uwagê znaczne wydatki, które wynikaj¹ z wykorzystania
+  kosztownych, komercyjnych brokerów wiadomoœci? Wykorzystanie Web serwisów
+  pozwala na znaczne obni¿enie kosztów, wynikaj¹ce z obecnoœci wielu
+  bezp³atnych platform opartych na otwartych standardach.
+  \item Czy szybki czas dostarczenia jest kluczowy dla dzia³ania naszego
+  systemu? Wiadomoœci wprowadzaj¹ pewien narzut czasowy, który jednak nie musi
+  byæ istotny z naszego punktu widzenia.
+\end{itemize}
+
+
+ Po przeanalizowaniu obu
+metod komunikacji,w czêœci implementacyjnej naszej pracy zdecydowaliœmy siê na wykorzystanie Web serwisów z kilku powodów:
+\begin{itemize}
+  \item Wykorzystanie komercyjnego oprogramowania nie by³o mo¿liwe,a dodatkowo
+  wymaga³oby uruchomienia skomplikowanej czêœci po stronie serwerowej. Naszym celem nie by³o konfigurowanie jednej skomplikowanej
+platformy, ale raczej poznanie problemów, z którymi nale¿y siê liczyæ
+integruj¹c aplikacjê mobiln¹.  
+  \item Wykorzystanie powszechnie dostêpnego pakietu kJORAM (bezp³atnej
+  implementacji JMS dostêpnej tak¿e dla urz¹dzeñ mobilnych) oznacza³o tak naprawdê
+  wykorzystanie Web serwisów, które zosta³y odpowiednio obudowane przez twórców szablonu.
+  \item Tworzony przez nas szablon komunikacyjny musia³ dzia³aæ z jak
+  najmniejszym opóŸnieniem, tak aby u¿ytkownik nie odczuwa³ dyskomfortu
+  zwi¹zanego z oczekiwaniem na kolejne ekrany. Zastosowanie wiadomoœci
+  wprowadza dodatkowe opóŸnienie, które nie sprzyja responsywnoœci systemu.
+\end{itemize}
+
