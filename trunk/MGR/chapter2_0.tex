@@ -1,9 +1,54 @@
 \chapter{Metody realizacji aplikacji mobilnej zorientowanej na œrodowisko
 enterprise}
 
-Wa¿nym etapem w procesie tworzenia aplikacji mobilnej jest dobór metodologii,
-wed³ug której bêdzie ona powstawa³a. Wyboru dokonuje siê zwykle spoœród trzech
-klasycznych podejœæ. S¹ to:
+Na wstêpie dyskusji o realizacji mobilnej czêœci platformy integracyjnej
+zwróæmy uwagê na dostêpne na rynku urz¹dzenia, które posiadaj¹ preinstalowane
+systemy operacyjne pozwalaj¹ce na dodawanie nie przewidzianych przez twórców zewnêtrznych
+rozwi¹zañ. Tego typu systemy operacyjne musz¹ siê charakteryzowaæ udostêpnieniem
+na zewn¹trz, do instalowanych przez nas aplikacji, pewnego API pozwalaj¹cego na
+realizacjê podstawowych us³ug, takich jak transfer danych czy ich sk³adowanie w
+pamiêci urz¹dzenia. Na chwile obecn¹ (pierwszy kwarta³ 2009 roku) na rynku
+dostêpne s¹ urz¹dzenia dzia³aj¹ce w oparciu wymienione poni¿ej platformy mobilne :
+\begin{itemize} 
+\item{WMD - Windows Media Devices oparte o system operacyjny Windows Mobile
+opracowany przez firmê Microsoft}
+\item{Symbian - platforma spotykana g³ównie na
+smartfonach oferowanych przez firmy takie jak Nokia czy Samsung}
+\item{Blackberry - marka wypromowana prze firmê Research in Motion, oferuje
+urz¹dzenia z preistalowanym systemem operacyjnym opartym na wirtualnej maszynie Java}
+\item{Android - system operacyjny oparty na Linuxie, mo¿liwy do rozbudowywania
+g³ównie przez aplikacje J2ME (w obecnej chwili system jest w fazie testów) }
+\item{pozosta³e autorskie systemy operacyjne, udostêpniaj¹ce standardow¹
+maszynê wirtualn¹ Java}
+\end{itemize}
+
+Po dok³adnym przyjrzeniu siê powy¿szym platformom nasuwa siê jeden stanowczy
+wniosek - poza platformami opartymi na J2ME, wykonanie jednej, spójnej
+aplikacji spe³niaj¹cej za³o¿enia interoperacyjnoœci jest praktycznie niemo¿liwe. Jedynym
+rozwi¹zaniem jest przygotowanie kilku instancji tej samej aplikacji, które
+niestety nie bêd¹ mia³y ze sob¹ niczego wspólnego poza przyjêtymi za³o¿eniami
+dotycz¹cymi podstawowej funkcjonalnoœci. Wynika to miêdzy innymi z tego, ¿e
+ka¿da platforma oferuje inne mo¿liwoœci i przy okazji wprowadza inne ograniczenia. Co wiêcej tego
+typu ró¿nicowanie wystêpuje równie¿ w obrêbie samych platform. Na przyk³ad J2ME
+posiada profile zwi¹zane na sta³e z modelami urz¹dzeñ, które decyduj¹ o tym,
+jakie funkcjonalnoœci dostêpne s¹ dla programów. Wskazane powy¿ej ograniczenia
+techniczne wymuszaj¹ przy próbie wejœcia na rynek aplikacji mobilnych, ju¿ na
+etapie planowania produktu, wybranie konkretnej platformy docelowej, na jakiej
+oferowane bêdzie nasze rozwi¹zanie. Wraz z sukcesem rozwi¹zania, mo¿liwa bêdzie
+dalsza ekspansja na pozosta³e platformy. Przed t¹ ostateczn¹ ewaluacj¹ wartoœci
+pomys³u na produkt, jest bardzo ryzykownym podjêcie próby równoleg³ego
+wprowadzenia go na ró¿nych, niekompatybilnych platformach. Zwiêksza to znacznie
+próg wejœcia oraz utrudnia poprawn¹ kontrolê nad stopniem dojrza³oœci produktu.
+Co wiêcej przy s³abym zarz¹dzaniu funkcjonalnoœciami mo¿e wyst¹piæ problem
+powstania ró¿nic funkcjonalnych pomiêdzy ró¿nymi wersjami naszej aplikacji. Tego
+typu problemy wp³yn¹ w sposób bezpoœredni na postrzeganie naszego produktu przez klientów, w
+szczególnoœci gdy bêdziemy mieli do czynienia z korporacjami, w obrêbie których
+stosowane s¹ ró¿ne rozwi¹zania mobilne. 
+\newline
+Uzbrojeni w wiedzê o pewnych mo¿liwych do napotkania problemach skupimy teraz
+nasz¹ uwagê na doborze metodologii, wed³ug której bêdzie powstawa³a nasza
+aplikacja. Wyboru dokonuje siê zwykle spoœród trzech klasycznych podejœæ. S¹
+to:
 
 \begin{itemize}
   \item Budowa aplikacji w oparciu o przegl¹darkê mobiln¹
