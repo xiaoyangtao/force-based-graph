@@ -1,0 +1,56 @@
+
+\section{Mo¿liwoœci}
+Aplikacja oparta o tak zaprojektowany model posiada³aby cechy typowe dla modelu
+dwuwarstwowego - w tym szybki czas reakcji, niezale¿noœæ wygl¹du aplikacji od
+stosowanego klienta oraz mo¿liwoœæ przeprowadzenia pewnych dodatkowych operacji
+(jak walidacja) po stronie klienta. W idealnym przypadku móg³by byæ
+dynamicznie przesy³any kod wykonywany po stronie klienta (odpowiednik JavaScript
+w przypadku przegl¹darki internetowej). Pozbawiona by³aby te¿ typowych wad obu rozwi¹zañ -
+brak koniecznoœci aktualizowania aplikacji przy drobnych poprawkach (poza
+b³êdami w zainstalowanym oprogramowaniu). Nie by³aby równie¿ ograniczona do
+mechanizmów oferowanych przez statyczne strony WWW - mo¿na by by³o
+wyœwietlaæ dowolne ekrany, a na nich wykonywaæ dowolne akcje.
+Dodatkowo, poniewa¿ stan aplikacji przechowywany by³by na serwerze, mo¿na w
+dowolnym momencie zmieniæ urz¹dzenie mobilne, wy³¹czyæ aplikacjê, a potem
+powróciæ do zapamiêtanego wczeœniej miejsca.
+ 
+\paragraph{Nowe podejœcie}
+ 
+W przypadku tworzenia aplikacji mobilnych naturalna jest chêæ przeniesienia 
+funkcjonalnoœci dostêpnych w aplikacjach 'biurkowych' na urz¹dzenie mobilne.
+Nie zawsze jest to podejœcie s³uszne - u¿ytkownik korzystaj¹cy z urz¹dzenia
+mobilngo - palmtopa czy telefonu komórkowego ma znacznie ograniczone mo¿liwoœci
+dzia³ania i tym co siê w takiej sytuacji liczy jest szybkoœæ i ³atwoœæ obs³ugi
+aplikacji, któr¹ mo¿na postawiæ przed jej du¿ymi mo¿liwoœciami. Dlatego naszym
+zdaniem, celem tworzenia aplikacji mobilnych nie powinno byæ dostarczenie
+wszystkich mo¿liwych funkcjonalnoœci, ale raczej maksymalna ergonomia i
+prostota u¿ycia, które przyœwieca³y nam w trakcie tworzenia szablonu.
+\newline 
+Ponadto, techniczne rozwi¹zania przyjête w szablonie nie by³y - zgodnie z nasz¹
+wiedz¹ - do tej pory stosowane. Nasz szablon opiera siê na bibliotece KUIX,
+która pozwala na wykorzystanie formatu XML do stworzenia interfejsu
+u¿ytkownika. Pozwala to na dynamiczne ³adowanie komponentów wczeœniej
+przygotowywanych na serwerze.
+Naturaln¹ drog¹ rozwoju by³oby rozbudowanie szablonu o mo¿liwoœæ dynamicznego
+³adowania kodu, mechanizmów walidacji czy tworzenia grafiki.
+
+\subsection{Zastosowania}
+Opisywana idea u³atwia tworzenie okreœlonego typu aplikacji i tak jak ka¿dy
+szablon nie pokrywa wszystkich istniej¹cych rozwi¹zañ. Nasz szablon u³atwi
+pisanie aplikacji, które nie wymagaj¹ przesy³ania du¿ych iloœci danych i od
+której oczekujemy interaktywnoœci wiêkszej ni¿ w przypadku strony internetowej
+pozbawionej JavaScript. 
+
+\paragraph{Ankietowanie}
+Jednym z zastosowañ które mo¿emy sobie wyobraziæ jest zdalne ankietowanie
+u¿ytkowników. Stworzenie aplikacji która na ekranie wyœwietla listê dostêpnych
+odpowiedzi i pozwala na wybranie jednej z nich, jest przy u¿yciu
+przedstawianego szablonu prostym zadaniem.
+\paragraph{Zdalne podejmowanie decyzji}
+Podobnie jak powy¿ej, u¿ytkownicy mog¹ wybraæ jedn¹ z mo¿liwych decyzji, w
+takim przypadku potrzebne bêdzie rozbudowanie szablonu o zaawansowane
+mechanizmy bezpieczeñstwa, jednak idea pozostaje podobna.
+\paragraph{Zdalne wyœwietlanie treœci}
+Urz¹dzenie mobilne mo¿e byæ te¿ jedynie miejscem które wyœwietla dostarczane do
+niego informacje. Interakacja z u¿ytkownikiem mo¿e byæ w tym momencie
+wy³¹czona, a urz¹dzenie mobilne mo¿e pe³niæ rolê zdalnie kontrolowanego ekranu.
