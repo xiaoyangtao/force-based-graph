@@ -96,13 +96,82 @@ klasycznych systemów, dodatkowo ich rozmiar nierzadko przekracza rozmiar
 mobilnych aplikacji. Gdyby jednak nawet uda³o siê stworzyæ sterowniki, które
 pozwoli³yby na dostêp do bazy danych z poziomu urz¹dzenia mobilnego, ponownie
 starlibyœmy siê z problemem zawodnej komunikacji.\\
-Okazuje siê, ¿e dwiema godnymi rozwa¿enia metodami s¹ wiadomoœci oraz Web
+Okazuje siê, ¿e dwoma godnymi rozwa¿enia metodami s¹ wiadomoœci oraz Web
 serwisy, bêd¹ce jednym ze sposobów zdalnego wywo³ywania procedur.
 
- 
 \paragraph{Zdalne wywo³ywanie procedur - Web serwisy}
-Trzeba napisaæ, ¿e mimo, ¿e istnieje kilka ró¿nych standardów RPC, Web serwisy
-s¹ jedynym praktycznie stosowanym w przypadku integracji mobilnej.
+Pomimo, i¿ istnieje kilka ró¿nych standardów RPC, Web
+serwisy s¹ jedynym praktycznie stosowanym w przypadku integracji mobilnej.
+Jest to bezpoœrednio zwi¹zane z du¿¹ niezale¿noœci¹ od platformy jak¹
+gwarantuje zastosowanie protoko³u SOAP oraz popularnoœci¹ i powszechn¹
+akceptacj¹ jako standardu komunikacji odrêbnych systemów. Ich wyj¹tkowa si³a
+le¿y w zastosowaniu kilku powszechny technologii internetowych, takich jak
+protokó³ HTTP czy jêzyk XML. To gwarantuje, ¿e nie ma znaczenia w jakiej
+technologii i w jakim systemie pracuje dana aplikacja komunikuj¹ca siê za
+pomoc¹ Web Services. Trzy fundamentalne elementy wchodz¹ce w sk³ad tej
+techlogii mo¿na zobaczyæ na poni¿szym rysunku.
+
+\begin{center}
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{0.7}{\includegraphics{img/Webservices.png} }}
+\end{center}
+
+Wspomniany wczeœniej SOAP, czyli Simple Object Access Protocol jest form¹
+elektronicznej koperty, która zawiera podstawowe informacje o rz¹daniu oraz o
+odpowiedzi. Jest zbudowana w oparciu o jêzyk XML. Drug¹ kluczow¹ technologi¹
+jest jêzyk opisu us³ugi - Web Service Description Language (WSDL). Za jego
+pomoc¹ jesteœmy w stanie poinformowaæ jakie us³ugi oferuje nasz serwer oraz
+mo¿emy wskazaæ dok³adny sposób ich wywo³ywania. W wypadku urz¹dzeñ o
+ograniczonej mocy obliczeniowej spotyka siê go tylko przy automatycznym
+generowaniu kodu wywo³uj¹cego Web Services. Ostatnim fundamentem tej
+technologii jest us³uga UDDI (Universal Description, Discovery, and
+Integration). Pozwala ona na dynamiczne odnajdowanie innych us³ug Web. 
+\newline
+Najwiêksz¹ wad¹ tego rozwi¹zania jest pewien narzut wydajnoœciowy oraz
+pojemnoœciowy zwi¹zany z budow¹ samych wiadomoœci. W innych metodach treœæ
+wiadomoœci przesy³ana jest w zoptymalizownej postaci kodu binarnego i nie
+posiada zwykle ¿adnych metadanych(co zwykle prowadzi do problemów z komunikacj¹
+pomiêdzy ró¿nymi platformami). W przypadku Web Services wiadomoœci przesy³ane
+s¹ w kopercie zbudowanej na bazie XML, która posiada du¿o nadmiernych
+informacji. Powoduje to, ¿e przy przesy³aniu wiadomœci ³¹cze dodatkowo zostaje
+obci¹¿one tymi nadmiarowymi danymi. Co wiêcej, po stronie odbiorcy nale¿y
+przeprowadziæ rozbiór gramatyczny otrzymanego komunikatu. Zwiêksza to
+zapotrzebowanie na moc obliczeniow¹. Mo¿e to mieæ kluczowe znaczenie w
+przypadku urz¹dzeñ mobilnych, które czêsto dysponuj¹ bardzo ograniczonymi
+zasobami mocy obliczeniowej oraz przepustowoœci. Szczególnym przypadkiem s¹
+u¿ytkownicy, którzy posiadaj¹ niezrycza³towany dostêp do sieci i p³ac¹ ró¿ne
+stawki w zale¿noœci od iloœci przes³anych danych. W tym wypadku narzut
+pojemnoœciowy Web Services mo¿na w sposób bezpoœredni przeliczyæ na koszty
+jakie on generuje dla ca³ej organizacji.
+\newline
+Z myœl¹ o bezpiecznej komunikacji przy u¿yciu technologii Web Service
+wprowadzono protokó³ komunikacyjny WS-Security (Web Service Security),
+pozwalaj¹cy na zaaplikowanie podstawowych standardów bezpieczeñstwa. Protokó³
+ten zawiera specyfikacjê opisuj¹c¹ metody wymuszania integralnoœci oraz
+poufnoœci przesy³anych danych. Pozwala na do³¹czanie do wiadomoœci SOAP
+podpisów oraz nag³ówków zwi¹zanych z szyfrowaniem danych. Wspiera ta¿e formaty 
+certyfikacyjne takie jak X.509. Protokó³ dzia³a w warstwie aplikacyjnej i zosta³
+tak zaprojektowany by zapewniæ bezpieczeñstwo od koñca do koñca (end-to-end security). Niestety w obecnej
+chwili protokó³ ten nie zosta³ zaimplementowany na urz¹dzeniach mobilnych i na
+pewno w najbli¿szym czasie nie stanie siê na nich standardem. Ograniczeniem tu
+s¹ typowe dla tych urz¹dzeñ problemy z wydajnoœci¹. Alternatywnym rozwi¹zaniem
+problemu bezpieczeñstwa jest pos³u¿enie siê zabezpieczeniami na poziomie
+warstwy transportowej (TLS) takimi jak https. Pozwala to na zapewnienie
+bezpieczeñstwa punkt-punkt.
+\newline
+Technologia Web Services jest godna rozwa¿enia przy wyborze sposobu komunikacji
+w integracji mobilnej. Istniej¹ bardzo dobre implementacje takie jak kSoap,
+które dzia³aj¹ praktycznie na ka¿dej platformie wspieraj¹cej wirtualn¹ maszyne
+Java. Pozosta³e platformy taki jak Blackberry czy WMD (Windows Mobile Device)
+równie¿ posiadaj¹ stosowne biblioteki, które pozwalaj¹ w bardzo prosty sposób
+pod³¹czyæ siê do istniej¹cej infrastuktury. Znane s¹ komercyjne rozwi¹zania
+integracyjne takie jak Mobile Data Service na platformie Blackberry, które
+potrafi¹ automatycznie generowaæ kod wywo³uj¹cy procedury na podstawie podanego
+im wczeœniej schematu WSDL. Jeœli kluczowym nie jest optymalne wykorzystanie
+³¹cza czy te¿ gwarancja dostaczenia, to jest to technologia, której u¿ycie jest
+zalecane przy integracji mobilnej, czy te¿ jakiejkolwiek innej integracji w
+œrodowisku Enterprise.
 
 \paragraph{Wiadomoœci w œrodowisku mobilnym} 
 Integracja za pomoc¹ Web serwisów
