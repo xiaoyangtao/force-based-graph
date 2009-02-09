@@ -1,0 +1,43 @@
+\chapter{Szablon komunikacyjny}
+
+Do zademonstrowania mo¿liwoœci komunikacyjnych pomiêdzy systemem stacjonarnym i
+mobilnym stworzyliœmy szablon u³atwiaj¹cy tworzenie aplikacji posiadaj¹cych
+mobilny interfejs, z poziomu którego mo¿na sterowaæ aplikacj¹ serwerow¹.
+Rozwi¹zanie, które przyjêliœmy jest na tyle ogólne, ¿e umo¿liwia rozwi¹zanie
+kilku podobnych problemów, które przedstawimy dalej.
+\newline
+Ide¹ stoj¹c¹ za stworzeniem szablonu by³o po³¹czenie zalet zapewnianych przez
+aplikacjê zbudowan¹ w oparciu o model trójwarstwowy z tymi typowymi
+dla samodzielnej aplikacji. Stworzone rozwi¹zanie stanowi raczej pomys³, który
+mo¿na rozwijaæ i wykorzystywaæ do budowy bardziej skomplikowanych systemów.
+Dlatego te¿ mo¿liwoœci takiego podejœcia nie s¹ ograniczone przez stworzony
+szablon.
+\newline
+Szablon sk³ada siê z dwóch czêœci - mobilnej i serwerowej.
+U¿ytkownik mo¿e okreœliæ wygl¹d ekranu przesy³anego do urz¹dzenia mobilnego,
+który po stronie mobilnej interpretowany jest do postaci elementów interfejsu
+ciê¿kiego klienta, na przyk³ad pól tekstowych, wyboru czy rozwijanych list. 
+Rozszerza to mo¿liwoœci aplikacji w stosunku do zwyk³ej strony internetowej o
+elementy niedostêpne w przypadku statycznej strony WWW jak rysunki
+wektorowe,obs³uga przycisków urz¹dzenia czy mo¿liwoœæ wyœwietlania strony przez
+jakiœ czas.
+
+W typowym przypadku scenariusz u¿ycia aplikacji bêdzie wygl¹da³
+nastêpuj¹co:
+\begin{center}
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{0.7}{\includegraphics{img/pool_schema_uml.png} }}
+\end{center}
+\begin{itemize}
+  \item Tworzymy nowy 'ekran' na serwerze. Oznacza to okreœlenie wygl¹du i
+  zachowania aplikacji w formacie XML. Okreœlamy dostêpne dla
+  danego ekranu akcje. 
+  \item Aplikacja mobilna ³¹czy siê z serwerem i pobiera przygotowany dla niej
+  ekran. U¿ytkownik wykonuje jedn¹ z dostêpnych na nim akcji, a informacja o
+  tym jest przesy³ana do serwera. 
+  \item Aplikacja mobilna pobiera kolejny ekran przygotowany przez serwer i
+  dalej postêpuje wed³ug powy¿szego schematu. Poniewa¿ to serwer jest w ca³oœci
+  odpowiedzialny na przygotowanie ekranu, pojawia siê mo¿liwoœæ kontrolowania
+  ekranu i jego zachowania po stronie klienta w dowolny sposób.
+\end{itemize}

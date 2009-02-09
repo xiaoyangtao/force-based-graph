@@ -1,0 +1,266 @@
+
+
+
+ 
+
+
+
+
+\section{Systemy oparte na przesy³aniu wiadomoœci}
+Systemy przesy³ania wiadomoœci pozwalaj¹ na integracjê systemów z
+uwzglêdnieniem specyfiki ka¿dego z nich. Jednak jak ka¿de rozwi¹zanie maj¹
+swoje mocne i s³abe strony.
+
+\paragraph{Niezale¿noœæ integrowanych systemów}
+Komunikacja miêdzy systemami jest asynchroniczna, co z jednej strony powoduje,
+¿e system musi obs³ugiwaæ bardziej skomplikowane scenariusze w których
+odpowiedŸ na ¿¹danie mo¿e nie pojawiæ siê od razu, z drugiej pozwala na
+dzia³anie komponentom wzglêdnie niezale¿nie do czasu odzyskania komunikacji.
+W razie awarii jednego z systemów, drugi mo¿e ca³y czas wysy³aæ wiadomoœci do
+kana³u komunikacyjnego, które zostan¹ odebrane po odzyskaniu sprawnoœci przez
+odbiorcê. 
+
+\paragraph{Routing}
+Wiadomoœci mog¹ pokonywaæ skomplikowan¹ drogê zanim dotr¹ do miejsca
+przeznaczenia. System wysy³aj¹cy wiadomoœæ nie musi wiedzieæ jak dostarczyæ j¹
+do odbiorcy, jedyne co musi zrobiæ, to wstawiæ j¹ do kolejki. Daje to du¿e
+mo¿liwoœci zmian w konfiguracji systemu, bez ingerowania w
+aplikacjê. 
+
+\paragraph{Transformacja}
+System przesy³ania wiadomoœci mo¿e dokonywaæ zmian w wiadomoœciach zgodnie z
+ustalonymi regu³ami. Pozwala to na dalsze uniezale¿nienie integrowanych systemów
+od siebie: ka¿dy system mo¿e wysy³aæ i odbieraæ wiadomoœci we w³aœciwym dla
+siebie, natywnym formacie, podczas gdy za tranformacjê odpowiada kana³
+komunikacyjny.
+
+\subsection{Czas reakcji}
+Przesy³anie i przetwarzanie wiadomoœci ustêpuje wydajnoœci¹ integracji na
+poziomie danych, gdzie nie pojawia siê narzut zwi¹zany z wy³uskiwaniem danych i
+opakowywaniem ich do ustalonego formatu. Istnieje jednak wiele zastosowañ, gdzie
+szybkoœæ nie gra najwa¿niejszej roli,a przesy³ane s¹ jedynie niewielkie (ale
+czêste) porcje informacji. Nawet sytuacje w których nale¿y przes³aæ ogromn¹
+iloœæ danych, np. podczas migracji systemów mog¹ zostaæ obs³u¿one w procesach
+batchowych, wykonywanych poza godzinami normalnego u¿ytkowania systemu.
+
+\newpage
+\subsubsection{Sposoby po³¹czenia}
+W systemach komunikuj¹cych siê za pomoc¹ wiadomoœci
+mo¿na wyró¿niæ dwa ró¿ne sposoby po³¹czenia komponentów.
+
+\subparagraph{Kana³ Point-to-point}
+\begin{center}
+\setlength\fboxsep{5pt}
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{0.4}{\includegraphics{img/p2p.png} }}
+\end{center}
+W tym przypadku wiele procesów mo¿e byæ pod³¹czonych do obu stron kana³u
+komunikacyjnego. Z jednej strony kilka równolegle dzia³aj¹cych procesów mo¿e
+wysy³aæ wiadomoœci, z drugiej strony procesy mog¹ je odbieraæ. Poniewa¿ jednak
+równoleg³e przetwarzanie tej samej wiadomoœci przez kilka procesów mog³oby byæ
+nie porz¹dane, kana³ komunikacyjny dba o to by jedna wiadomoœæ mog³a byæ
+pobrana tylko przez jeden z nich. Pozwala to na znakomite
+zrównoleglenie przetwarzania wiadomoœci przez proste dodawanie odbiorców i
+pod³¹czanie ich do kana³u komunikacyjnego. 
+
+
+\subparagraph{Kana³ Publish-Subscribe}
+\begin{center}
+\setlength\fboxsep{5pt}
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{0.4}{\includegraphics{img/pub-sub.png} }}
+\end{center}
+Je¿eli chcemy udostêpniæ pewne informacje szerszej grupie procesów mo¿emy
+utworzyæ kana³ typu Publish-Subscribe. W tym przypadku procesy rejestruj¹ siê w
+mened¿erze kolejki wybieraj¹c temat (Topic) z którego chcia³yby otrzymywaæ
+wiadomoœci. Zadaniem mened¿era kolejki jest zapewnienie by wszystkie
+zarejestrowane procesy otrzyma³y wstawion¹ do kolejki wiadomoœæ, oczywiœcie
+ka¿dy z nich jeden raz. 
+
+\paragraph{Java Message Service} 
+Java Message Service jest standardem oferuj¹cym aplikacjom Javowym mo¿liwoœæ
+tworzenia, wysy³ania, odbierania i czytania wiadomoœci. JMS jest jedynie
+specyfikacj¹, pozwalaj¹c¹ na jednolite korzystanie z ró¿nych systemów
+przesy³ania wiadomoœci. Porównuj¹c konkretn¹ implementacjê z baz¹ danych, mo¿na
+powiedzieæ, ¿e JMS oferuje podobne zunifikowane API do przesy³ania wiadomoœci,
+jak JDBC zunifikowany interfejs dostêpu do bazy danych. Istnieje wiele
+implementacji JMS, zarówno komercyjnych jak i dostêpnych bezp³atnie. Istniej¹
+wersje stand-alone, jak np IBM WebsphereMQ czy Apache ActiveMQ, jak równie¿
+systemy przesy³ania wiadomoœci wbudowane w serwery aplikacyjne. Niestety nie
+wszystkie pozwalaj¹ na wymianê wiadomoœci z urz¹dzeniami mobilnymi. 
+
+\section{Zdalne wywo³ywanie procedur - Web Serwisy}
+
+Najpopularniejsz¹ technologi¹ zwi¹zan¹ z zagadnieniem zdalnego wywo³ywania
+procedur jest technologia Web Service. W nastêpnych rozdzia³ach
+przedstawiony zostanie zbiór ogólnych informacji o tej technologii oraz
+zostanie podjêta próba umiejscowienia jej w œwiecie rozwi¹zañ mobilnych.
+
+\subsection{Podstawowe informacje o technologii Web Service} 
+Pierwsze wzmianki o rozwi¹zaniu pozwalaj¹cym na wspó³pracê ró¿norodnych
+systemów, poprzez ogólnodostêpne medium pojawi³y siê w okolicach roku 1999. W krótkim czasie zainteresowa³y siê nim
+wszystkie najwiêksze firmy dzia³aj¹ce na rynku rozwi¹zañ informatycznych.
+U podstaw technologii Web Service le¿y Extensible Markup Language(XML). Na jego
+podstawie zbudowano dwa podstawowe jêzyki towarzysz¹ce rozwi¹zaniom typu Web
+Service : Standard Object Access Protocol (SOAP) oraz Web Services Definition
+Language (WSDL). Dodatkowo istnieje te¿ technologia pozwalaj¹ca na stworzenie
+rejestru us³ug typu Web Service o nazwie Universal Description, Discovery, and
+Integration (UDDI). Relacje istniej¹ce pomiêdzy tymi trzema elementami
+przedstawia poni¿szy rysunek.
+
+\begin{center}
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{0.7}{\includegraphics{img/Webservices.png} }}
+\end{center}
+
+\subsubsection{Standard Object Access Protocol}
+SOAP jest pewnym sposobem zapisu informacji posiadaj¹cych strukturê.
+Wykorzystuje on jêzyk XML jako format, w którym zapisywane s¹ wiadomoœci
+wymieniane pomiêdzy poszczególnymi systemami komunikuj¹cymi siê przy u¿yciu 
+technologii Web Serivce. Sam protokó³ SOAP opiera swoje dzia³anie o inne
+protoko³y warstwy aplikacyjnej , takie jak RPC czy te¿ HTTP, które realizuj¹ za
+niego wszelkie negocjacje, czy te¿ transmisje. SOAP stanowi podstawê dla 
+stosu protoko³u Web Service dostarczaj¹c elementarn¹ funkcjonalnoœæ wymiany
+wiadomoœci, na której mog¹ byæ budowane wy¿sze, abstrakcyjne warstwy.
+Wykorzystanie tego protoko³u jako podstawy Web Service niesie ze sob¹ doœæ
+powa¿ne konsekwencje. SOAP bêd¹c form¹ elektronicznej koperty generuje
+stosunkowo du¿y narzut danych na ka¿d¹ wysy³an¹ wiadomoœæ, przez co wp³ywa
+równie¿ na wydajnoœæ komunikacji przy u¿yciu Web Services. W zwi¹zku ze wspomnian¹ powy¿ej wad¹ nie
+jest zalecane stosowanie tej technologii do zadañ, w których kluczowy jest czas
+reakcji systemu. Poniewa¿ przedmiotem niniejszej pracy jest przedstawienie
+ró¿nych metod integracji œrodowisk mobilnych, nale¿y zwróciæ uwagê na to, ¿e
+mo¿e siê zdarzyæ, ¿e pomimo wygody i standaryzacji jakiej dostarcza ta
+technologia, rozwa¿enia wymaga to czy narzut wydajnoœciowy nie bêdzie stanowi³
+przeszkody w rozwoju aplikacji. Szczególne znaczenie mo¿e mieæ to w sytuacji,
+gdy potencjalny klient mobilnej aplikacji ma niezrycza³towany dostêp do sieci.
+Oznacza to, ¿e narzut na rozmiar danych bêdzie siê bezpoœrednio przek³ada³ na
+koszt wykorzystywania aplikacji. A wiêc bêdzie równie¿ wp³ywa³ na op³acalnoœæ
+wdro¿enia danego rozwi¹zania mobilnego.
+\subsubsection{Web Service Description Language}
+WSDL jest to jêzyk oparty o XML, który umo¿liwia opisanie us³ugi typu Web
+Service. U¿ywany jest czêsto w po³¹czeniu z protoko³em SOAP oraz z XML Schema
+umo¿liwiaj¹c wystawienie technologii Web Service na zewn¹trz, na przyk³ad do
+internetu. Tak wystawiony opis us³ugi w postaci zestawu tagów WSDL pozwala
+aplikacji klienckiej na sprawdzenie jakie funkcje s¹ dostêpne na wskazanym
+serwerze. W przypadku aplikacji mobilnych dostêp do opisu us³ugi Web Service
+najczêœciej wykorzystywany jest przy tworzeniu oprogramowania metod¹ RAD (Rapid
+Application Development). W tym podejœciu programista wskazuje miejsce gdzie
+znajduje siê opis us³ugi, a nastêpnie na jego podstawie generator aplikacji
+tworzy szkielet pozwalaj¹cy pod³¹czenie siê do tej us³ugi oraz wywo³anie
+wybranych funkcji. To podejœcie pozwala oszczêdziæ pracy potrzebnej na napisanie
+obs³ugi tego typu wywo³añ. Nie jest ono jednak dostêpne dla wszystkich
+platform, gdy¿ generatory wymagaj¹ zwykle wsparcia po stronie urz¹dzenia (na
+przyk³ad potrzebuj¹ implementacji odpowiedniego profilu).
+By moæ przejœæ do bardziej zaawansowanych zagadnieñ nale¿y wyjaœniæ sposób w
+jaki WSDL mapuje abstrakcyjne porty na konkretne us³ugi dostêpne w systemie.
+WSDL definiuje us³ugê jako kolekcjê punktów dostêpowych lub te¿ portów. Port
+definiowany jest poprzez asocjacjê adresu sieciowego z reu¿ywalnym wi¹zaniem.
+Kolekcja portów definiuje us³ugê. Wiadomoœci stanowi¹ abstrakcyjny opis
+wymienianych danych. Natomiast tak zwane Port Types stanowi¹
+abstrakcyjn¹ kolekcjê obs³ugiwanych operacji. Konkretny protokó³ oraz
+specyfikacja formatu danych dla wybranego portu tworzy reu¿ywalne wi¹zanie, w
+którym operacje i wiadomoœci przywi¹zywane s¹ do konkretnego protoko³u
+sieciowego oraz do konkretnego formatu wiadomoœci. Schemat opisanych powy¿ej
+zale¿noœci zosta³ przedstawiony na poni¿szym rysunku.
+
+\begin{center}
+\setlength\fboxsep{5pt}  
+\setlength\fboxrule{0.0pt}
+\fbox{\scalebox{1}{\includegraphics{img/Wsdl.png} }}
+\end{center}
+
+\subsubsection{Rodzaje us³ug Web Service}
+Pomimo, i¿ Web Services mia³o byæ jednolitym i ustandaryzowanym podejœciem
+umo¿liwiaj¹cym ³atw¹ wymianê dowolnych danych pomiêdzy systemami ró¿nego typu,
+to w ostatecznym rozliczeniu okazuje siê, ¿e nie dokoñca jest to ujednolicone.
+Przy ustalaniu powi¹zania us³ugi z protoko³em komunikacyjnym mamy do dyspozycji
+dwa style wi¹zania :
+\begin{itemize} 
+\item{Styl Remote Procedure Call (RPC)}
+\item{Styl dokumentowy}
+\end{itemize}
+Co wiêcej samo wi¹zanie SOAP mo¿e posiadaæ dwa sposoby u¿ycia :
+\begin{itemize} 
+\item{Zakodowany (encoded)}
+\item{Dos³owny (literal)}
+\end{itemize}
+To daje nam razem cztery mo¿liwe modele :
+\begin{itemize} 
+\item{RPC/encoded}
+\item{RPC/literal}
+\item{Document/encoded}
+\item{Document/literal}
+\end{itemize}
+Oprócz wy¿ej wymienionych wyró¿nia siê jeszcze pi¹ty model zwi¹zany ze stylem
+wi¹zania zwany document/literal wrapped. Wiedza o istnieniu tego typu podzia³u
+jest kluczowa do poprawnej implementacji konsumenta Web Service. W zwi¹zku z
+ograniczonymi zasobami zarówno pamiêciowymi jak i wydajnoœciowymi konsumenci
+pisani na urz¹dzenia mobilne musz¹ byæ od razu konfigurowani pod k¹tem obs³ugi
+konkretnego modelu. Nie s¹ w stanie dokonaæ analizy dokumentu WSDL generowanego
+po stronie serwera. 
+Co wiêcej nale¿y bardzo uwa¿aæ na to jakie style wi¹zañ jest w stanie obs³u¿yæ
+zarówno klient jak i serwer. Czêsto ka¿da ze stron potrafi poradziæ sobie tylko
+z niektórymi ich rodzajami. W skrajnym przypadku dochodzi tak¿e do ró¿nic
+pomiêdzy wersjami. Taka sytuacja zachodzi na przyk³ad w Apache Axis, który
+wykorzystywany jest przy implementacji przyk³adowego systemu integracyjnego.
+\subsubsection{RPC/encoded}
+Najbardziej opisowy styl wi¹zania. Wyró¿nia siê dodawaniem do argumentów
+zapytania dodatkowych informacji o typie (na przyk³ad xsd:int w poni¿szym
+przyk³adzie). 
+\begin{verbatim}
+<soap:envelope>
+    <soap:body>
+        <myMethod>
+            <x xsi:type="xsd:int">5</x>
+            <y xsi:type="xsd:float">5.0</y>
+        </myMethod>
+    </soap:body>
+</soap:envelope>
+\end{verbatim}
+\subsubsection{RPC/literal}
+W przypadku stylu RPC/literal zredukowano argumenty wywo³ania do samych
+wartoœci, pozbywaj¹c siê redundantnych danych.
+\begin{verbatim}
+<soap:envelope>
+    <soap:body>
+        <myMethod>
+            <x>5</x>
+            <y>5.0</y>
+        </myMethod>
+    </soap:body>
+</soap:envelope>
+\end{verbatim}
+\subsubsection{Document/literal}
+Obecnie najsilniej wspierany i promowany model. Jego najwiêksz¹ zalet¹ jest to,
+¿e mo¿e podlegaæ walidacji przy u¿yciu XML Scheme. Jak widaæ w poni¿szym
+przyk³adzie w kodzie wywo³ania brakuje nazwy metody. Jest ona przekazywana w
+nag³ówku zapytania HTTP.
+\begin{verbatim}
+<soap:envelope>
+    <soap:body>
+        <xElement>5</xElement>
+        <yElement>5.0</yElement>
+    </soap:body>
+</soap:envelope>
+\end{verbatim}
+Jest to najbardziej interesuj¹cy model z punktu widzenia niniejszej pracy.
+Gwarantuje on stosunkowo najmniejszy narzut oraz jest nieznacznie szybszy od
+pozosta³ych. Co wiêcej jest wspierany przez wszystkie najnowsze wersje
+konsumentów Web Services.
+\subsection{Bezpieczeñstwo a Web Service}
+Z myœla o bezpiecznnej komunikacji przy u¿yciu technologii Web Service
+wprowadzono protokó³ komunikacyjny WS-Security (Web Service Security),
+pozwalaj¹cy na zaaplikowanie podstawowych standardów bezpieczeñstwa. Protokó³
+ten zawiera specyfikacjê opisuj¹c¹ metody wymuszania integralnoœci oraz
+poufnoœci przesy³anych danych. Pozwala na do³¹czanie do wiadomoœci SOAP
+podpisów oraz nag³ówków zwi¹zanych z szyfrowaniem danych. Wspiera ta¿e formaty 
+certyfikacyjne takie jak X.509. Protokó³ dzia³a w warstwie aplikacyjnej i zosta³
+tak zaprojektowany by zapewniæ bezpieczeñstwo od koñca do koñca (end-to-end security). Niestety w obecnej
+chwili protokó³ ten nie zosta³ zaimplementowany na urz¹dzeniach mobilnych i na
+pewno w najbli¿szym czasie nie stanie siê na nich standardem. Ograniczeniem tu
+s¹ typowe dla tych urz¹dzeñ problemy z wydajnoœci¹. Alternatywnym rozwi¹zaniem
+problemu bezpieczeñstwa jest pos³u¿enie siê zabezpieczeniami na poziomie
+warstwy transportowej (TLS) takimi jak https. Pozwala to na zapewnienie
+bezpieczñstwa punkt-punkt.
+

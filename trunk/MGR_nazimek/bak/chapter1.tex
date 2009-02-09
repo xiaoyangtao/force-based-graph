@@ -1,0 +1,147 @@
+\chapter{Integracja w œrodowiskach Enterprise}
+Oprogramowanie Enterprise jest pojêciem doœæ szerokim, opisuj¹cym systemy
+przeznaczone dla przedsiêbiorstw, których dzia³anie odwzorowuje
+zachodz¹ce procesy biznesowe. Niekiedy pojêcie to odnosi siê do oprogramowania
+pisanego na zamówienie lub te¿ do rozbudowanych pakietów wspieraj¹cych
+okreœlone czynnoœci, np kontakty z klientami lub ksiêgowoœæ. Rzadko siê jednak
+zdarza, by istnia³ jeden system który potrafi³by spe³niæ wymagania
+klienta, a nawet je¿eli, z ró¿nych przyczyn firma mo¿e nie chcieæ go
+wdro¿yæ. Tak wiêc nawet w jednym przedsiêbiorstwie czêsto
+mo¿na siê spotkaæ z sytuacj¹ w której dzia³a wiele niezale¿nych aplikacji, 
+nierzadko pisanych przez ró¿ne firmy, które musz¹ siê ze sob¹ komunikowaæ w
+celu wymiany danych.
+\newline
+Jeszcze do niedawna mówi¹c o integracji mieliœmy na myœli w³aœciwie
+wy³¹cznie serwery aplikacyjne. Obecnie obowi¹zuj¹cym trendem jest postêpuj¹ca
+miniaturyzacja i wzrost mocy obliczeniowej urz¹dzeñ mobilnych, które
+udostêpniaj¹ klientom us³ugi dostêpne do tej pory wy³¹cznie za poœrednictwem komputera stacjonarnego.
+Tworz¹c aplikacjê na urz¹dzenia przenoœne, która bêdzie wspó³pracowa³a z
+istniej¹cymi ju¿ systemami, napotykamy jednak na problem komunikacji. 
+
+\section{Istniej¹ce podejœcia do integracji}
+Rozwa¿aj¹c mo¿liwe sposoby integracji technologii mobilnych z rozbudowan¹
+aplikacj¹ klasy enteprise musimy zwróciæ uwagê na udostêpniane z obu stron mechanizmy.
+\subsection{Transfer plików}
+W tym przypadku dane s¹ zapisywane i odczytywane z plików. Niezbêdna jest
+wspólna przestrzeñ dyskowa lub sposób przesy³ania (np. FTP). Z tego powodu
+musimy odrzuciæ takie rozwi¹zanie jako niedaj¹ce siê zaimplementowaæ w
+œrodowisku mobilnym.
+\subsection{Wspólna baza danych}
+Dane s¹ sk³adowane we wspólnej bazie danych. Ze wzglêdu na zawodnoœæ transferu
+oraz d³ugi czas przesy³ania danych pomiêdzy urz¹dzeniem mobilnym a serwerem, a
+tym samym koniecznoœæ d³ugiego oczekiwania, rezygnujemy z takiego rozwi¹zania.
+\subsection{RPC}
+Zdalne wywo³ywanie procedur (ang. Remote Procedure Call) jest mechanizmem który
+pozwala wykonywaæ procedury udostêpniane przez zdalny system. Za³o¿eniem
+wywo³añ RPC jest synchronicznoœæ, która wprawdzie nie oznacza, ¿e musimy czekaæ
+na rezultat dzia³ania (mo¿emy za³o¿yæ, ¿e wy³¹cznie zlecamy wykonanie
+procedury, pobieraj¹c wynik potem),ale ¿e zak³adamy niezawodnoœæ komunikacji
+miêdzy urz¹dzeniami.
+\subsection{Wiadomoœci}
+Preferowanym przez nas rozwi¹zaniem w takim przypadku jest wykorzystanie
+wiadomoœci. Komunikacja za pomoc¹ wiadomoœci jest asynchroniczna, dodatkowo
+dobry system przesy³ania wiadomoœci gwarantuje jej dostarczenie do adresata,
+lub informacjê o jej niedostarczeniu. System przesy³ania wiadomoœci znakomicie
+wype³nia lukê komunikacyjn¹ pomiêdzy systemami klasy Enterprise i urz¹dzeniami
+mobilnymi. Musimy pamiêtaæ, ¿e warunki w jakich mo¿emy komunikowaæ siê z
+urz¹dzeniem przenoœnym s¹ dalekie od doskona³ych, a mimo to u¿ytkownik oczekuje
+pe³nej niezawodnoœci systemu. To sprawia, ¿e nale¿y go tak zaprojektowaæ, aby
+przerwy w komunikacji by³y jak najmniej odczuwalne. Systemy komunikacyjne takie
+jak RPC,RMI czy CORBA projektowane by³y dla warunków w których problemy
+komunikacyjne s¹ sytuacj¹ nadzwyczajn¹. Tymczasem w przypadku ³¹cznoœci
+bezprzewodowej utrata po³¹czenia nie jest niczym czego nie moglibyœmy siê
+spodziewaæ. W tym momencie idea przesy³ania wiadomoœci wydaje siê skutecznym (o
+ile nie jedynym) rozwi¹zaniem tych problemów.
+
+\section{Systemy oparte na przesy³aniu wiadomoœci}
+Systemy przesy³ania wiadomoœci pozwalaj¹ na integracjê systemów z
+uwzglêdnieniem specyfiki ka¿dego z nich. Jednak jak ka¿de rozwi¹zanie maj¹
+swoje mocne i s³abe strony.
+
+\subsection{Niezale¿noœæ integrowanych systemów}
+Komunikacja miêdzy systemami jest asynchroniczna, co z jednej strony powoduje,
+¿e system musi obs³ugiwaæ bardziej skomplikowane scenariusze w których
+odpowiedŸ na ¿adanie mo¿e nie pojawiæ siê od razu, z drugiej pozwala na
+dzia³anie komponentom wzglêdnie niezale¿nie do czasu odzyskania komunikacji.
+W razie awarii jednego z systemów, drugi mo¿e ca³y czas wysy³aæ wiadomoœci do
+kana³u komunikacyjnego, które zostan¹ odebrane po odzyskaniu sprawnoœci przez
+odbiorcê. 
+
+\subsection{Routing}
+Wiadomoœci mog¹ pokonywaæ skomplikowan¹ drogê zanim dotr¹ do miejsca
+przeznaczenia. System wysy³aj¹cy wiadomoœæ nie musi wiedzieæ jak dostarczyæ j¹
+do odbiorcy, jedyne co musi zrobiæ, to wstawiæ j¹ do kolejki. Daje to du¿e
+mo¿liwoœci zmian w konfiguracji systemu, bez ingerowania w
+aplikacjê. 
+
+\subsection{Transformacja}
+System przesy³ania wiadomoœci mo¿e dokonywaæ zmian w wiadomoœciach zgodnie z
+ustalonymi regu³ami. Pozwala to na dalsze uniezale¿nienie integrowanych systemów
+od siebie: ka¿dy system mo¿e wysy³aæ i odbieraæ wiadomoœci we w³aœciwym dla
+siebie, natywnym formacie, podczas gdy za tranformacjê odpowiada kana³
+komunikacyjny.
+
+\subsection{Czas reakcji}
+Przesy³anie i przetwarzanie wiadomoœci ustêpuje wydajnoœci¹ integracji na
+poziomie danych, gdzie nie pojawia siê narzut zwi¹zany z wy³uskiwaniem danych i
+opakowywaniem ich do ustalonego formatu. Istnieje jednak wiele zastosowañ gdzie
+szybkoœæ nie gra najwa¿niejszej roli,a przesy³ane s¹ jedynie niewielkie (ale
+czêste) porcje informacji. Nawet sytuacje w których nale¿y przes³aæ ogromn¹
+iloœæ danych, np. podczas migracji systemów mog¹ zostaæ obs³u¿one w procesach
+batchowych wykonywanych poza godzinami normalnego u¿ytkowania systemu.
+
+
+\section{Sposoby po³¹czenia}
+W systemach komunikuj¹cych siê za pomoc¹ wiadomoœci
+mo¿na wyró¿niæ 3 ró¿ne sposoby po³¹czenia komponentów.
+
+\subsection{Kana³ Point-to-point}
+W tym przypadku wiele procesów mo¿e byæ pod³¹czonych do obu stron kana³u
+komunikacyjnego. Z jednej strony kilka równolegle dzia³aj¹cych procesów mo¿e
+wysy³aæ wiadomoœci, z drugiej strony procesy mog¹ je odbieraæ. Poniewa¿ jednak
+równoleg³e przetwarzanie tej samej wiadomoœci przez kilka procesów mog³oby byæ
+nie porz¹dane, kana³ komunikacyjny dba o to by jedna wiadomoœæ mog³a byæ
+pobrana przez jeden tylko przez jeden z nich. Pozwala to na znakomite
+zrównoleglenie przetwarzania wiadomoœci przez proste dodawanie odbiorców i
+pod³¹czanie ich do kana³u komunikacyjnego. 
+[tu bêdzie rysunek point-to-point]
+
+\subsection{Kana³ Publish-Subscribe}
+Je¿eli chcemy udostêpniæ pewne informacje szerszej grupie procesów mo¿emy
+utworzyæ kana³ typu Publish-Subscribe. W tym przypadku procesy rejestruj¹ siê w
+menad¿erze kolejki wybieraj¹c temat (Topic) z którego chcia³yby otrzymywaæ
+wiadomoœci. Zadaniem menad¿era kolejki jest zapewnienie by wszystkie
+zarejestrowane procesy otrzyma³y wstawion¹ do kolejki wiadomoœæ, oczywiœcie
+ka¿dy z nich jeden raz. 
+[tu bêdzie rysunek publish-subscribe]
+
+\subsection{Kana³ Datatype}
+[dopiszemy]
+
+
+\section{Platforma Java Enterprise Edition}
+Platforma JEE wykorzystywana jest do budowania rozbudowanych,
+wielokomponentowych, najczêœciej komercyjnych systemów. Poza standardow¹
+bibliotek¹ oferowan¹ przez Javê Standard Edition, zawiera Servlety, Enterprise
+Java Beany czy parsery XML. Jednym z najwa¿niejszych komponentów jest API
+umo¿liwiaj¹ce przesy³anie wiadomoœci - Java Message Service.
+
+\subsection{Java Message Service} 
+Java Message Service jest standardem oferuj¹cym aplikacjom Javowym mo¿liwoœæ
+tworzenia, wysy³ania, odbierania i czytania wiadomoœci. JMS jest jedynie
+specyfikacj¹, pozwalaj¹c¹ na jednolite korzystanie z ró¿nych systemów
+przesy³ania wiadomoœci. Porówuj¹c konkretn¹ implementacjê z baz¹ danych, mo¿na
+powiedzieæ, ¿e JMS oferuje podobne zunifikowane API do przesy³ania wiadomoœci,
+jak JDBC zunifikowany interfejs dostêpu do bazy danych. Istnieje wiele
+implementacji JMS, zarówno komercyjnych jak i dostêpnych bezp³atnie. Istniej¹
+wersje stand-alone, jak np IBM WebsphereMQ czy Apache ActiveMQ, jak równie¿
+systemy przesy³ania wiadomoœci wbudowane w serwery aplikacyjne. Niestety nie
+wszystkie pozwalaj¹ na wymianê wiadomoœci z urz¹dzeniami mobilnymi. Jednym z
+celów pracy bêdzie przeanalizowanie mo¿liwoœci oferowanych przez poszczególne
+implementacje pod k¹tem urz¹dzeñ mobilnych.
+
+\subsection{Serwer aplikacyjny}
+Chocia¿ wykorzystanie serwera aplikacyjnego do uruchomienia aplikacji
+obs³uguj¹ch kolejki wiadomoœci jest jedn¹ z mo¿liwoœci obok lekkich kontenerów
+jak np Spring, wybierze
+
