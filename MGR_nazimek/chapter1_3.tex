@@ -36,17 +36,70 @@ przypominaj¹ce biurkowe aplikacje strony internetowe.
 \subsection{Wysokie koszty}
 
 Koszty tworzenia aplikacji mobilnych (i wynikaj¹ce st¹d koszty
-integracji) ró¿ni¹ siê w przypadku ka¿dej z platform, jednak tym co
-podnosi koszt w przypadku ka¿dej z nich jest:
+integracji) ró¿ni¹ siê w przypadku ka¿dej z platform, istniej¹ jednak czynniki,
+które podnosz¹ koszt w przypadku ka¿dej z nich. Bez wzglêdu na metodologiê
+tworzenia oprogramowania, mo¿emy wyró¿niæ trzy fazy: analizê i projektowanie,
+programowanie, testowanie. Mog¹ one co prawda wystêpowaæ w ró¿nej kolejnoœci lub
+pojawiaæ siê wielokrotnie, jednak ¿aden wiêkszy projekt informatyczny nie mo¿e
+siê bez nich obejœæ. Je¿eli przyjrzymy siê ka¿dej z nich, bêdziemy mogli
+znaleŸæ potencjalne powody wy¿szych kosztów tworzenia aplikacji mobilnych.
 \begin{itemize}
-  \item Mniejsza spo³ecznoœæ programistów tworz¹cych aplikacje dla danej
-  platformy. Oznacza to, ¿e szeroko stosowane postêpowanie, polegaj¹ce na
-  poszukiwaniu podobnych problemów, z którymi star³ siê ktoœ inny, nie zawsze
+  \item Analiza i projektowanie - du¿e, rozbudowane aplikacje mobilne,
+  bêd¹ce czêœci¹ informatycznego systemu korporacji, s¹ ci¹gle jeszcze
+  rzadkoœci¹. Powoduje to, ¿e osoby odpowiedzialne za zebranie wymagañ,
+  przeprowadzenie analizy i studium wykonalnoœci maj¹ mniej przyk³adów
+  dzia³aj¹cych ju¿ systemów, na których mog¹ siê oprzeæ w swoich oszacowaniach.
+  \item Programowanie - tworzenie aplikacji mobilnych wymaga najczêœciej
+  uwzglêdnienia wielu platform, na których mog¹ one dzia³aæ. Podczas
+  programowania najczêœciej korzysta siê z emulatorów, które jednak ostatecznie
+  nie zawsze w pe³ni odpowiadaj¹ docelowym urz¹dzeniom. Niekiedy musimy
+  zaakceptowaæ nieco niepoprawne dzia³anie aplikacji na emulatorze, aby
+  dzia³a³a ona bez zarzutu na docelowym urz¹dzeniu. 
+  W przypadku, gdy
+  uruchamiamy aplikacjê na urz¹dzeniu mobilnym, mamy ograniczone mo¿liwoœci
+  debugowania i logowania.\\ Warto te¿ zwróciæ uwagê na to, ¿e ci¹gle istnieje mniejsza spo³ecznoœæ programistów tworz¹cych aplikacje mobilne. Oznacza to, ¿e szeroko stosowane
+  postêpowanie, polegaj¹ce na poszukiwaniu podobnych problemów, z którymi star³ siê ktoœ inny, nie zawsze
   przynosi równie dobre rezultaty. Zwiêksza to istotnie czas potrzebny na
-  rozwi¹zanie takiego problemu.
+  rozwi¹zanie problemu.
+  \item Testowanie - w przypadku aplikacji mobilnych samo uruchomienie
+  stanowiska testowego jest bardziej skomplikowane, czy to ze wzglêdu na
+  emulator czy docelowe urz¹dzenie. 
 \end{itemize}
 
 \subsection{Kana³y komunikacyjne}
+Mo¿liwoœci po³¹czenia z urz¹dzeniami mobilnymi ró¿ni¹ siê zasadniczo od tych
+oferowanych przez klasyczne systemy. Z oferowanych przez urz¹dzenia znajduj¹ce
+siê na rynku mo¿emy wyró¿niæ:
+\begin{itemize}
+  \item Bluetooth - protokó³ komunikacyjny pozwalaj¹cy na ³atwe ³¹czenie
+  urz¹dzeñ bezprzewodowych. Ma zasiêg o 1 do 100 metrów, w zale¿noœci od wersji,
+  jednak w najbardziej typowym przypadku oko³o 10 metrów. Ze wzglêdu na doœæ
+  nisk¹ prêdkoœæ (2.1Mbps w najszybszym, rzadko stosowanym wariancie) i
+  ograniczon¹ mobilnoœæ, mo¿e byæ stosowany jako protokó³ synchronizacyjny, przy za³o¿eniu, ¿e synchronizacja odbywa siê w
+  ustalonym miejscu dostêpowym. Bluetooth jest dostêpny w prawie wszystkich
+  obecnie oferowanych telefonach komórkowych, smartfonach i PDA.
+  \item Wifi - sieæ bezprzewodowa, zgodna ze standardem 802.11a/b/g. Oferuje o
+  wiele wiêksz¹ przepustowoœæ ni¿ Bluetooth (do 100Mbps), pozwalaj¹c na normalny
+  dostêp do sieci komputerowej. Niestety, nie jest powszechnie dostêpna we wszystkich
+  urz¹dzeniach. Podobnie jak Bluetooth, pozwala na po³¹czenie tylko w zasiêgu
+  punktu dostêpowego.
+  \item Sieæ komórkowa - dostêpna w przypadku wszystkich telefonów komórkowych
+  i du¿ej czêœci mobilnych organizerów oraz palmtopów. Pozwala na dostêp z doœæ
+  dobr¹ przepustowoœci¹ w obrêbie du¿ych miast (do 7,2Mbps w technologii HSDPA,
+  przy teoretycznie oferowanej 14,4Mbps). Ze wzglêdu na najlepsz¹ mobilnoœæ
+  jest w³aœciwie jedynym wyborem, je¿eli chcemy mieæ mo¿liwoœæ nieprzerwanej
+  komunikacji miêdzy urz¹dzeniem mobilnym i sieci¹ firmow¹.
+\end{itemize}
+G³ównym problemem, który siê pojawia podczas integrowania urz¹dzeñ mobilnych
+jest koniecznoœæ dostosowania sposobów przesy³ania danych do mo¿liwoœci oferowanych przez ka¿dy z kana³ów
+komunikacyjnych. Warto zwróciæ uwagê, ¿e ¿aden z nich nie oferuje niezawodnoœci
+równej sieci komputerowej opartej o tradycyjne media. Mo¿emy dopuœciæ
+synchronizacjê przy u¿yciu ka¿dej z dostêpnych metod, jednak ze wzglêdu na
+koszty jakie niesie ze sob¹ korzystanie z Internetu za poœrednictwem sieci
+komórkowej mo¿e siê okazaæ, ¿e powinniœmy rozwa¿yæ mo¿liwoœæ bardziej
+ekonomicznego korzystania z systemu, dopuszczenie czêœciowej synchronizacji czy
+pracê off-line. Takie funkcjonalnoœci nie s¹ proste do zaimplementowania, a
+czêsto le¿¹ w zakresie wymagañ u¿ytkowników. 
 
 \subsection{Sposoby interakcji}
 
