@@ -145,4 +145,48 @@ ró¿ni¹ siê one g³ównie brakiem wsparcia dla niektórych elementów Javascript, to
 praca zwi¹zana z ich umobilnianiem wi¹¿e siê g³ównie z upraszczeniem pewnych
 elementów lub przepisywaniem ich tak by by³y kompatybilne. Zwykle trzeba
 zrezygnowaæ te¿ z pewnych zaawansowanych funkcjonalnoœci, które dzia³aj¹ w
-oparciu o technologiê Javascript.
+oparciu o technologiê Javascript. Jeœli projektujemy portal od pocz¹tku mo¿emy
+w bardzo prosty sposób przestrzegaj¹c kilku podstawowych regu³ umo¿liwiæ dostêp
+do niego z urz¹dzeñ mobilnych. Najwa¿niejsze aspekty, które nale¿y mieæ na
+uwadze:
+\begin{itemize}
+  \item Nale¿y pamiêtaæ o budowaniu prostych i funkcjonalnych uk³adów stron.
+  Dotyczy to w szczególnoœci form, które powinny mieœciæ siê na jednym ekranie.
+  Co wiêcej nale¿y wykorzystywaæ listy opcji tam gdzie tylko siê da, tak by
+  u¿ytkonik musia³ w minimalnym stopniu u¿ywaæ klawiatury.
+  \item Nie mo¿na zak³adaæ, ¿e do nawigacji bêdzie wykorzystywana wirtualna
+  myszka. Nale¿y tak projektowaæ strony, by mo¿na by³o je obs³ugiwaæ innymi
+  rodzajami kontrolerów (na przyk³ad przy pomocy technologii trackwheel).
+  Wprowadzanie danych z klawiatury urz¹dzenia mobilnego jest bardzo niewygodne,
+  wiêc nale¿y zadbaæ o to by u¿ytkownik nie musia³ wprwadzaæ du¿ych iloœci
+  danych(wspomniane wczeœniej listy opcji rozwi¹zauj¹ w pewnym stopniu ten
+  probem)
+  \item Urz¹dzenia mobilne dysponuj¹ innymi, czêsto znacznie mniejszymi
+  rozdzielczoœciami ni¿ systemy stacjonarne. Niektóre przegl¹darki takie jak
+  Opera Mobile oferuj¹ funkcje szybkiej nawigacji w obrêbie du¿ych stron,
+  dziêki czemu problem ten jest w pewien sposób ograniczany. Jeœli jednak chcemy
+  dostarczyæ nalepsz¹ mo¿liw¹ obs³ugê stron nale¿y wykorzystaæ pewne elementy
+  CSS, takie jak zapytania o typ urz¹dzenia, by dostosowaæ stronê do konkretnej
+  rozdzielczoœci. Dobrym przyk³adem jak wa¿ne jest uwzglêdnienie tych
+  rozbie¿noœæi jest Opera Desktop oraz Opera Mini. Na rysunku \ref{fig:omini}
+  widaæ przyk³adow¹ realizacjê strony z wykorzystaniem specjalnych stylów dla
+  przegl¹darki moblinej.
+  \begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=.6]{img/desktopmobile.png}
+    \end{center}
+    \caption{Ta sama strona otwarta w Opera Desktop 9.5 oraz Opera Mini 4.1}
+    \label{fig:omini}
+\end{figure} 
+
+  \item  Nale¿y równie¿ wzi¹æ pod uwage ró¿nice pomiêdzy przegl¹darkami
+ mobilnymi - w szczególnoœci oferowanymi przez ró¿nych producentów. Ró¿nice w
+ silnikach tych przegl¹darek bywaj¹ tak du¿e, ¿e czêsto projektant jest
+ zmuszony do przygotowywania ró¿nych wersji tej samej strony dla ró¿nych
+ urz¹dzeñ mobilnych. Niezgodnoœci te wynikaj¹ g³ównie z nie przestrzegania
+ standardów przez producentów, oraz z wprowadzania do swoich rozwi¹zañ dodatkowych funkcjonalnoœci nie spotykanych na innych platformach. Dobrym przyk³adem takich dzia³añ jest wprowadzenie w najnowszej wersji mobilnej przegl¹darki
+	Safari na urz¹dzeniu iPhone mo¿liwoœci budowaniu animacji poklatkowych przy
+	pomocy samych stylów CSS. Jest to bardzo ciekawa i przydatna funkcjonalnoœæ,
+	ale ca³kowicie nie przenoœna na inne przegl¹darki.
+
+\end{itemize}
