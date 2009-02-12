@@ -24,11 +24,11 @@ Dziêki niemu mo¿liwe jest tworzenie aplikacji u¿ywaj¹c podejœcia opisowego.
 Zamiast pisaæ ca³¹ aplikacjê u¿ywaj¹c jêzyka programowania wraz z
 bibliotekami oferuj¹cymi interfejs u¿ytkownika, mo¿emy przy u¿yciu graficznego
 edytora projektowaæ takie elementy jak ekrany czy pola z danymi. Wszystko to
-przy u¿ycia standardowego drag and drop. Nastêpnie mo¿emy po³¹czyæ tak
-zbudowane komponenty przy u¿yciu ró¿nych przewodników(wizards) czy te¿ edytorów.
-Co wiêcej aplikacja MDS daje nam pe³n¹ kontrolê nad przep³ywem sterowania -
+przy u¿yciu standardowego drag and drop. Nastêpnie mo¿emy po³¹czyæ tak
+zbudowane komponenty przy u¿yciu ró¿nych przewodników (wizards) czy te¿
+edytorów. Co wiêcej aplikacja MDS daje nam pe³n¹ kontrolê nad przep³ywem sterowania -
 przy pomocy jêzyka JavaScript jesteœmy w stanie zaimplementowaæ niemal dowoln¹
-logikê aplikacji. Aplikacje typu enterprise oraz Ÿród³¹ danych dostêpne s¹ dla
+logikê aplikacji. Aplikacje typu enterprise oraz Ÿród³a danych dostêpne s¹ dla
 aplikacji mobilnej poprzez standardow¹ technologiê Web Service.
 \begin{center}
 \setlength\fboxsep{5pt}  
@@ -51,7 +51,7 @@ infrastruktury s¹ znacznie ni¿sze.
 
 \paragraph{Us³uga Blackberry MDS}
 Us³uga MDS Blackberry zosta³a zaprojektowana tak by umo¿liwiæ wymianê danych
-pomiêdzy urz¹dzeniami Blackberry a aplikacjami typu enterprise. Zapewnia ona:
+pomiêdzy urz¹dzeniami Blackberry, a aplikacjami typu enterprise. Zapewnia ona:
 \begin{itemize} 
 \item{Izolacjê platformy od szczegó³ów zwi¹zanych z integracj¹ Ÿróde³ danych}
 \item{Standard asynchronicznej wymiany komunikatów}
@@ -74,8 +74,8 @@ oraz zwi¹zane z nim œrodowisko programistyczne Netbeans. W przeciwieñstwie do
 poprzedniego przyk³adu, to œrodowisko pozwala budowaæ uniwersalne aplikacje,
 które dzia³aj¹ na niemal¿e dowolnej platformie mobilnej wspieraj¹cej J2ME.
 Rozpoczynaj¹c tworzenie aplikacji natychmiast natykamy siê na udogodnienia
-przygotowanie przez twórców Netbeans. Zamiast pisaæ setki linijek kodu Java
-mo¿emy u¿yæ specjalnych narzêdzi generuj¹cych go dla nas. Do konfigurowania
+przygotowane przez twórców Netbeans. Zamiast pisaæ setki linijek kodu Java
+mo¿emy u¿yæ specjalnych narzêdzi generuj¹cych je dla nas. Do konfigurowania
 preferowanego przez nas zachowania aplikacji s³u¿¹ interaktywne diagramy
 przep³ywu sterowania pomiêdzy ekranami aplikacji oraz graficzne edytory
 interfejsu u¿ytkownika pozwalaj¹ce na budowanie, z gotowych komponentów,
@@ -94,7 +94,7 @@ oraz bloku reprezentuj¹cego g³ówny i jedyny ekran. Elementy te po³¹czone s¹ dwie
 strza³kami, które przedstawiaj¹ przep³yw seterowania. Strza³ka skierowna w
 stronê formy ma swój pocz¹tek w zdarzeniu Started. Jest to zdarzenie wywo³ywane
 w momencie uruchomienia aplikacji. Dziêki takiej konfiguracji natychmiast po
-inicjalizacji aplikacja przechodzi do ekranu g³ównego. Strza³ka w dróg¹ stronê
+inicjalizacji aplikacja przechodzi do ekranu g³ównego. Strza³ka w drug¹ stronê
 podpiêta jest do komendy exitCommand. Wyzwala ona zamkniêcie aplikacji (jej
 drugi koniec wskazuje blok wyjœciowy).
 Ekran g³ówny zosta³ zaprojektowany tak by wyœwietlic napis oraz komendê
@@ -120,11 +120,11 @@ programu. W wersji 6.5 paleta ta wygl¹da tak jak na poni¿szym rysunku.
 Komponentowe budowanie aplikacji znacznie przyspiesza proces tworzenia. Co
 wiêcej w razie potrzeby istnieje mo¿liwoœæ definiowania w³asnych komponentów,
 które póŸniej mo¿na wykorzystywaæ w wielu aplikacjach mobilnych. Miejsce na
-w³asne komponenty mo¿na zobaczyæ w zak³adce custom na standardowej palecie
-komponentów.
+w³asne komponenty mo¿na zobaczyæ w zak³adce \emph{custom} na standardowej
+palecie komponentów. 
 Dziêki zastosowaniu przedstawionych wczeœniej edytorów uda³o siê zbudowaæ
 bardzo prost¹ aplikacjê zdoln¹ do wyœwietlenia napisu. Zosta³o to zrobione bez
-napisania linijki kodu w javie, u¿ywaj¹c jedynie narzêdzi graficznych. Tak
+napisania linijki kodu w Javie, u¿ywaj¹c jedynie narzêdzi graficznych. Tak
 zbudowana aplikacja dzia³a na praktycznie ka¿dej konfiguracji mobilnej i
 gwarantuje jednakowe zachowanie pomiêdzy ró¿nymi platformami. 
 
@@ -135,11 +135,11 @@ gwarantuje jednakowe zachowanie pomiêdzy ró¿nymi platformami.
 \end{center}
 
 Do konstruowania bardziej zaawansowanych aplikacji nale¿y pos³u¿yæ siê edytorem
-javy. Dostêp do kodu Ÿród³owego automatycznie generowanej aplikacji pozwala na
+Javy. Dostêp do kodu Ÿród³owego automatycznie generowanej aplikacji pozwala na
 elastyczne modyfikowanie jej zachowania w zakresie du¿o szerszym ni¿ pozwala na
-to jakakolwiek graficzna konfiguracja. Co wiêcej ka¿dy element, który zosta³
+to jakakolwiek graficzna konfiguracja. Co wiêcej, ka¿dy element, który zosta³
 przez nas skonfigurowany w jednym ze wspomnianych wczeœniej edytorów jest
-powi¹zany z kodem java, z którym mo¿na siê zapoznaæ w zak³adce source.
+powi¹zany z kodem Java, z którym mo¿na siê zapoznaæ w zak³adce \emph{source}.
 
 \begin{center}
 \setlength\fboxsep{5pt}  
@@ -147,10 +147,10 @@ powi¹zany z kodem java, z którym mo¿na siê zapoznaæ w zak³adce source.
 \fbox{\scalebox{0.6}{\includegraphics{img/netbeans_source.png} }}
 \end{center}
 
-Wyszarzone obszary to kod, który zosta³ automatycznie wygenrowany przez
-œrodowisko netbeans. W pozosta³ych obszarach mo¿na wprowadzaæ w³asny kod java,
+Wyszarzone obszary to kod, który zosta³ automatycznie wygenerowany przez
+œrodowisko Netbeans. W pozosta³ych obszarach mo¿na wprowadzaæ w³asny kod Java,
 który mo¿e kontrolowaæ dowolne aspekty zachowania siê aplikacji mobilnej.
 
 Przedstawione œrodowisko programistyczne jest jednym z popularniejszych podejœæ
-do probelmu szybkiego konstruowania aplikacji mobilnych. Jest elastyczne i
-efektywne dlatego pos³u¿ymy siê nim przy budowie przyk³adowego systemu. 
+do problemu szybkiego konstruowania aplikacji mobilnych. Jest elastyczne i
+efektywne, dlatego pos³u¿ymy siê nim przy budowie przyk³adowego systemu. 
