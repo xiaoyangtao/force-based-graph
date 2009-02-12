@@ -14,7 +14,7 @@ platform. Istnieje wiele niekompatybilnych ze sob¹ rozwi¹zañ pochodz¹cych od
 ró¿nych producentów. Je¿eli spojrzymy na platformy, na których budowane s¹
 klasyczne systemy korporacyjne, mo¿emy ograniczyæ je do Javy Suna i .NET
 Microsoftu. Po stronie mobilnej natomiast, mamy do wyboru wersje mobilne
-wymienionych platform oraz dodatkowo\index{Blackberry}Blackberry, Symbiana,
+wymienionych platform oraz dodatkowo Blackberry, Symbiana,
 Android, Palm OS oraz kilku mniejszych dostawców. Oprócz tego Apple promuje swojego iPhone, który mimo, ¿e
 jest platform¹ bardzo zamkniêt¹, cieszy siê wielkim zainteresowaniem wœród
 zwyk³ych u¿ytkowników. \\
@@ -23,7 +23,7 @@ naprawdê standard tworzenia korporacyjnych aplikacji dla urz¹dzeñ mobilnych,
 który dostarcza³by narzêdzi u³atwiaj¹cych czêsto powtarzane czynnoœci, podobnie
 jak ma to miejsce w przypadku Javy Enterprise. Tworz¹c lub integruj¹c
 istniej¹c¹ aplikacjê dla urz¹dzenia mobilnego musimy wiêc wzi¹æ pod uwagê
-platformê na której dzia³a, a i tak nie obêdzie siê bez u¿ycia dodatkowych
+platformê, na której dzia³a, a i tak nie obêdzie siê bez u¿ycia dodatkowych
 narzêdzi rozwi¹zuj¹cych dawno ju¿ rozwi¹zane w klasycznych systemach problemy.\\
 W przypadku urz¹dzeñ mobilnych nie mo¿emy te¿ skorzystaæ ze sprawdzonej
 trójwarstwowej architektury, u¿ywaj¹c palmtopa lub telefonu komórkowego, tak
@@ -44,15 +44,15 @@ pojawiaæ siê wielokrotnie, jednak ¿aden wiêkszy projekt informatyczny nie mo¿e
 siê bez nich obejœæ. Je¿eli przyjrzymy siê ka¿dej z nich, bêdziemy mogli
 znaleŸæ potencjalne powody wy¿szych kosztów tworzenia aplikacji mobilnych.
 \begin{itemize}
-  \item Analiza i projektowanie - du¿e, rozbudowane aplikacje mobilne,
-  bêd¹ce czêœci¹ informatycznego systemu korporacji, s¹ ci¹gle jeszcze
+  \item \index{analiza}Analiza i \index{projektowanie}projektowanie - du¿e,
+  rozbudowane aplikacje mobilne, bêd¹ce czêœci¹ informatycznego systemu korporacji, s¹ ci¹gle jeszcze
   rzadkoœci¹. Powoduje to, ¿e osoby odpowiedzialne za zebranie wymagañ,
   przeprowadzenie analizy i studium wykonalnoœci maj¹ mniej przyk³adów
   dzia³aj¹cych ju¿ systemów, na których mog¹ siê oprzeæ w swoich oszacowaniach.
-  \item Programowanie - tworzenie aplikacji mobilnych wymaga najczêœciej
-  uwzglêdnienia wielu platform, na których mog¹ one dzia³aæ. Podczas
-  programowania najczêœciej korzysta siê z emulatorów, które jednak ostatecznie
-  nie zawsze w pe³ni odpowiadaj¹ docelowym urz¹dzeniom. Niekiedy musimy
+  \item \index{programowanie}Programowanie - tworzenie aplikacji mobilnych
+  wymaga najczêœciej uwzglêdnienia wielu platform, na których mog¹ one dzia³aæ. Podczas
+  programowania najczêœciej korzysta siê z \index{emulator}emulatorów, które
+  jednak ostatecznie nie zawsze w pe³ni odpowiadaj¹ docelowym urz¹dzeniom. Niekiedy musimy
   zaakceptowaæ nieco niepoprawne dzia³anie aplikacji na emulatorze, aby
   dzia³a³a ona bez zarzutu na docelowym urz¹dzeniu. 
   W przypadku, gdy
@@ -61,10 +61,12 @@ znaleŸæ potencjalne powody wy¿szych kosztów tworzenia aplikacji mobilnych.
   postêpowanie, polegaj¹ce na poszukiwaniu podobnych problemów, z którymi star³ siê ktoœ inny, nie zawsze
   przynosi równie dobre rezultaty. Zwiêksza to istotnie czas potrzebny na
   rozwi¹zanie problemu.
-  \item Testowanie - w przypadku aplikacji mobilnych samo uruchomienie
-  stanowiska testowego jest bardziej skomplikowane, czy to ze wzglêdu na
+  \item \index{testowanie}Testowanie - w przypadku aplikacji mobilnych samo
+  uruchomienie stanowiska testowego jest bardziej skomplikowane, czy to ze wzglêdu na
   emulator czy docelowe urz¹dzenie. 
 \end{itemize}
+
+\hyphenation{najwiêksza naj-wiêk-sza} 
 
 \subsection{Kana³y komunikacyjne}
 Mo¿liwoœci po³¹czenia z urz¹dzeniami mobilnymi ró¿ni¹ siê zasadniczo od tych
@@ -89,17 +91,83 @@ siê na rynku mo¿emy wyró¿niæ:
   przy teoretycznie oferowanej 14,4Mbps). Ze wzglêdu na najlepsz¹ mobilnoœæ
   jest w³aœciwie jedynym wyborem, je¿eli chcemy mieæ mo¿liwoœæ nieprzerwanej
   komunikacji miêdzy urz¹dzeniem mobilnym i sieci¹ firmow¹.
-\end{itemize}
-G³ównym problemem, który siê pojawia podczas integrowania urz¹dzeñ mobilnych
+  \item SMS - choæ umieszczenie wiadomoœci tekstowych obok tak
+  zaawansowanych protoko³ów, jak wymienione wczeœniej, mo¿e siê wydawaæ
+  ma³o przekonuj¹ce, to musimy zwróciæ uwagê na ich zaletê:
+  dzia³aj¹ nawet wtedy gdy dostêp do sieci komórkowej jest mocno ograniczony. W
+  oparciu o SMS-y mo¿na przesy³aæ ma³e porcje informacji, które w niektórych
+  zastosowaniach mog¹ siê okazaæ wystarczaj¹ce. Zosta³o to uwzglêdnione przez
+  producentów oprogramowania, dziêki czemu z poziomu API mo¿emy wysy³aæ i
+  odbieraæ SMS-y (na przyk³ad na Windows Mobile), jak i korzystaæ z tej
+  technologii w bardziej przezroczysty sposób, korzystaj¹c z wiadomoœci, o
+  których mowa w nastêpnym rozdziale
+  \item Stacje dokuj¹ce - wiele urz¹dzeñ mobilnych mo¿na pod³¹czyæ do komputera
+  za pomoc¹ kabla lub specjalnej stacji dokuj¹cej. Jest to oczywiœcie
+  rozwi¹zanie ma³o wygodne, jednak jego zalet¹ jest najwiêksza z poœród
+  przedstawionych technologii prêdkoœæ. Poniewa¿ wiele urz¹dzeñ mobilnych
+  posiada teraz znaczn¹ pamiêæ, siêgaj¹c¹ kilku gigabajtów, któr¹ czêsto mo¿na
+  rozbudowywaæ za pomoc¹ dodatkowych kart, pobranie takiej iloœci danych dro
+ g¹ bezprzewodow¹ mo¿e byæ bardzo czasoch³onne. 
+ W tym momencie dobrym
+ rozwi¹zaniem mo¿e byæ pocz¹tkowe ³adowanie danych do urz¹dzenia za pomoc¹ stacji dokuj¹cej
+  i uzupe³nianie w zale¿noœci od potrzeb np. przez Internet dostarczany
+  przez sieæ komórkow¹.
+\end{itemize} 
+
+\indent Problemem, który siê pojawia podczas integrowania urz¹dzeñ mobilnych
 jest koniecznoœæ dostosowania sposobów przesy³ania danych do mo¿liwoœci oferowanych przez ka¿dy z kana³ów
-komunikacyjnych. Warto zwróciæ uwagê, ¿e ¿aden z nich nie oferuje niezawodnoœci
-równej sieci komputerowej opartej o tradycyjne media. Mo¿emy dopuœciæ
-synchronizacjê przy u¿yciu ka¿dej z dostêpnych metod, jednak ze wzglêdu na
-koszty jakie niesie ze sob¹ korzystanie z Internetu za poœrednictwem sieci
-komórkowej mo¿e siê okazaæ, ¿e powinniœmy rozwa¿yæ mo¿liwoœæ bardziej
-ekonomicznego korzystania z systemu, dopuszczenie czêœciowej synchronizacji czy
-pracê off-line. Takie funkcjonalnoœci nie s¹ proste do zaimplementowania, a
-czêsto le¿¹ w zakresie wymagañ u¿ytkowników. 
+komunikacyjnych. Warto zwróciæ uwagê, ¿e ¿aden z nich nie
+oferuje niezawodnoœci równej sieci komputerowej opartej o tradycyjne media (poza stacj¹ dokuj¹c¹,
+jednak nie jest to rozwi¹zanie, które pozwala³oby na prawdziw¹ mobilnoœæ).
+\indent
+Mo¿emy dopuœciæ synchronizacjê przy u¿yciu ka¿dej z dostêpnych metod, jednak to
+sieæ komórkowa oferuje najwiêksz¹ mobilnoœæ i dlatego to j¹ scharakteryzujemy
+dok³adniej. Projektuj¹c aplikacjê, która bêdzie siê komunikowa³a za jej pomoc¹,
+musimy pamiêtaæ o:
+\begin{itemize}
+  \item Mo¿liwych utratach po³¹czenia - tak jak ju¿ mówiliœmy wczeœniej, utraty
+  po³¹czenia s¹ sytuacj¹ której mo¿emy siê spodziewaæ podczas komunikacji z
+  urz¹dzeniem mobilnym. 
+  \item Asymetrycznoœci komunikacji - ³¹cza komórkowe s¹ najczêœciej
+  asymetryczne, co oznacza, ¿e dane pobierane s¹ wielokrotnie szybciej ni¿
+  wysy³ane (np. dla HSDPA przy prêdkoœci pobierania 7,2Mb/s wysy³anie odbywa
+  siê jedynie z prêdkoœci¹ 384kb/s). Oznacza to, ¿e przesy³anie danych nale¿y
+  tak zorganizowaæ, aby pozornie doœæ wydajne ³¹cze nie sta³o siê w¹skim
+  gard³em systemu.
+  \item Kosztach po³¹czenia - przesy³anie danych w sieciach komórkowych
+  czêsto jest obci¹¿one op³at¹ zale¿n¹ od ich iloœci. Powoduje to, ¿e nale¿y
+  znaleŸæ z³oty œrodek miêdzy utrzymywaniem aktualnoœci danych, a czêstoœci¹ ich
+  pobierania. Mo¿e siê bowiem okazaæ, ¿e przy bardzo czêsto przesy³anych, ale
+  niewielkich paczkach danych, bêdziemy p³acili g³ównie za przesy³anie
+  sieciowych nag³ówków i sta³ych elementów protoko³u, z którego korzystamy.
+  Sprawa nabiera jeszcze wiêkszego znaczenia, gdy korzystamy z Web serwisów,
+  które wykorzystuj¹ XML, który jest formatem ma³o efektywnym.
+  \indent Z drugiej
+  strony, przesy³aj¹c bardzo du¿e paczki danych nara¿amy siê na koniecznoœæ
+  powtórzenia ca³ej transmisji w razie utraty po³¹czenia.
+\end{itemize}
+
+
+\subsection{Ograniczone zasoby}
+Ka¿de urz¹dzenie mobilne 
+
+
+Bateria!
+Mo¿liwoœci przetwarzania
+Pamiêæ
+Ma³y ekran
+Ma³a skalowalnoœæ
+Nie da sie rozbudowac
+
+
+\subsection{Bezpieczeñstwo}
+Mówi¹c o kana³ach komunikacyjnych nie sposób nie wspomnieæ o bezpieczeñstwie
+ka¿dego z nich. Zawuwa¿my, ¿e problem, którego najczêœciej nie bierze siê pod
+uwagê przy projektowaniu 
+
+Wysoka podatnoœæ na ataki
+
+
 
 \subsection{Sposoby interakcji}
 
