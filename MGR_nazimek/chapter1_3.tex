@@ -149,15 +149,44 @@ musimy pamiêtaæ o:
 
 
 \subsection{Ograniczone zasoby}
-Ka¿de urz¹dzenie mobilne 
-
-
-Bateria!
-Mo¿liwoœci przetwarzania
-Pamiêæ
-Ma³y ekran
-Ma³a skalowalnoœæ
-Nie da sie rozbudowac
+Urz¹dzenia mobilne s¹ zaprojektowane z uwzglêdnieniem kompromisu, który
+trzeba zawrzeæ pomiêdzy ich rozmiarami, wydajnoœci¹ czy czasem pracy na
+baterii. Ró¿nicê widaæ ju¿ pomiêdzy komputerem stacjonarnym, a laptopem. W tej
+samej cenie otrzymujemy laptopa, który jest znacznie wolniejszy od zwyk³ego
+komputera, jednak oferuje mobilnoœæ, której tamten nie posiada. Zasobami, o
+których trzeba pamiêtaæ w przypadku urz¹dzenia mobilnego s¹:
+\begin{itemize}
+  \item Mo¿liwoœci przetwarzania. Choæ procesory montowane w przenoœnych
+  urz¹dzeniach kilka lat temu z powodzeniem mog³yby byæ stosowane w komputerach
+  biurkowych, to musimy pamiêtaæ, ¿e ci¹gle ich wydajnoœæ ustêpuje temu do
+  czego jesteœmy przyzwyczajeni w stacjonarnych komputerach. Powoduje to, ¿e
+  tworz¹c rozwi¹zanie integracyjne powinniœmy braæ pod uwagê, ¿e niektóre
+  operacje s¹ wymagaj¹ce
+  pamiêciowo (jak np. parsowanie XML-a i budowanie drzewa DOM) czy obliczeniowo
+  (np. szyfrowanie).
+  \item Bateria. Choæ wiele urz¹dzeñ mobilnych umo¿liwia nawet 2-3 dniow¹ pracê
+  bez ³adowania, to jednak nie mo¿emy zapominaæ, ¿e pewne operacje s¹ znacznie
+  bardziej energoch³onne od pozosta³ych. Szczególnie obci¹¿aj¹ce jest
+  przesy³anie danych - ³¹czenie siê z sieci¹ WiFi,Bluetooth lub komórkow¹.
+  Dlatego te¿, je¿eli nawet wysokie koszty korzystania z tej ostatniej nie s¹
+  dla nas przeszkod¹, to ju¿ wysokie zu¿ycie energii na pewno ni¹ bêdzie.
+  Oznacza to, ¿e musimy projektowaæ komunikacjê w taki sposób, by ograniczyæ
+  czas po³¹czeñ.
+  \item Ekran. Nie jest to mo¿e problem œciœle zwi¹zany z
+  integracj¹, a raczej z tworzeniem aplikacji mobilnych, to warto zauwa¿yæ, ¿e
+  urz¹dzenia mobilne dysponuj¹ o wiele mniejszym ekranem ni¿ stacjonarne komputery. 
+  Oznacza to, ¿e mo¿emy na nim
+  jednorazowo wyœwietliæ znacznie mniej informacji, co powoduje, ¿e musimy je
+  przedstawiæ w odpowiedni sposób. 
+  \item Ma³a skalowalnoœæ. Urz¹dzenie mobilne rzadko daj¹ siê rozbudowywaæ
+  (wyj¹tkiem s¹ karty pamiêci). Powoduje to, ¿e tworz¹c aplikacjê mobiln¹
+  musimy siê ograniczyæ do istniej¹cych ju¿ zasobów. Nie mo¿emy za³o¿yæ, ¿e 
+  gdyby nasza aplikacja dzia³a³a zbyt wolno, u¿ytkownicy bêd¹ mogli
+  swoje telefony czy organizery wyposa¿yæ w szybszy procesor czy wiêcej pamiêci
+  operacyjnej. Filozofia tworzenia oprogramowania przypomina w tym momencie
+  nieco tworzenie gier dla konsol - programista ma do dyspozycji sprzêt o
+  znanych mo¿liwoœciach i jego zadaniem jest wykorzystaæ je jak najlepiej.
+\end{itemize}
 
 
 \subsection{Bezpieczeñstwo}
@@ -166,8 +195,6 @@ ka¿dego z nich. Zawuwa¿my, ¿e problem, którego najczêœciej nie bierze siê pod
 uwagê przy projektowaniu 
 
 Wysoka podatnoœæ na ataki
-
-
 
 \subsection{Sposoby interakcji}
 
