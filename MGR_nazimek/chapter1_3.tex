@@ -12,35 +12,40 @@ rozwi¹zania integracyjnego.
 Pierwszym problemem, który mo¿emy zauwa¿yæ, jest ró¿norodnoœæ mobilnych
 platform. Istnieje wiele niekompatybilnych ze sob¹ rozwi¹zañ pochodz¹cych od
 ró¿nych producentów. Je¿eli spojrzymy na platformy, na których budowane s¹
-klasyczne systemy korporacyjne, mo¿emy ograniczyæ je do Javy Suna i .NET
-Microsoftu. Po stronie mobilnej natomiast, mamy do wyboru wersje mobilne
-wymienionych platform oraz dodatkowo Blackberry, Symbiana,
-Android, Palm OS oraz kilku mniejszych dostawców. Oprócz tego Apple promuje swojego iPhone, który mimo, ¿e
-jest platform¹ bardzo zamkniêt¹, cieszy siê wielkim zainteresowaniem wœród
+klasyczne systemy korporacyjne, mo¿emy ograniczyæ je do Javy Suna oraz
+technologii .NET Microsoftu. Po stronie mobilnej natomiast, mamy do wyboru
+wersje mobilne wymienionych platform oraz dodatkowo Blackberry, Symbiana,
+Google Android, Palm OS oraz kilku mniejszych dostawców. Oprócz tego Apple
+promuje swojego iPhone, który mimo, ¿e jest platform¹ bardzo zamkniêt¹, cieszy siê wielkim zainteresowaniem wœród
 zwyk³ych u¿ytkowników. \\
 Dodatkowym problemem jest to, ¿e nie istnieje tak
 naprawdê standard tworzenia korporacyjnych aplikacji dla urz¹dzeñ mobilnych,
-który dostarcza³by narzêdzi u³atwiaj¹cych czêsto powtarzane czynnoœci, podobnie
-jak ma to miejsce w przypadku Javy Enterprise. Tworz¹c lub integruj¹c
+który dostarcza³by narzêdzi umo¿liwiaj¹cych automatyzacjê czêsto powtarzanych
+czynnoœci, podobnie jak ma to miejsce w przypadku Javy Enterprise. Tworz¹c lub integruj¹c
 istniej¹c¹ aplikacjê dla urz¹dzenia mobilnego musimy wiêc wzi¹æ pod uwagê
-platformê, na której dzia³a, a i tak nie obêdzie siê bez u¿ycia dodatkowych
-narzêdzi rozwi¹zuj¹cych dawno ju¿ rozwi¹zane w klasycznych systemach problemy.\\
-W przypadku urz¹dzeñ mobilnych nie mo¿emy te¿ skorzystaæ ze sprawdzonej
-trójwarstwowej architektury, u¿ywaj¹c palmtopa lub telefonu komórkowego, tak
+platformê, na której dzia³a, a i tak nie obejdzie siê bez u¿ycia dodatkowych
+narzêdzi rozwi¹zuj¹cych dawno ju¿ rozwi¹zane problemy znane z klasycznych
+systemów.\\ 
+W przypadku urz¹dzeñ mobilnych nie mo¿emy te¿
+skorzystaæ ze sprawdzonej trójwarstwowej architektury, u¿ywaj¹c palmtopa lub telefonu komórkowego, tak
 jak cienkiego klienta. Jest to spowodowane niezgodnoœci¹ przegl¹darek mobilnych
 i brakiem pe³nej obs³ugi JavaScript, na którym opartych jest wiele stron
 internetowych. Istniej¹ oczywiœcie wersje stron przygotowane dla platform
 mobilnych, ale daleko im do interaktywnoœci oferowanej przez bogate i
-przypominaj¹ce biurkowe aplikacje strony internetowe.
+przypominaj¹ce biurkowe aplikacje strony internetowe spotykane we wspó³czesnych
+przegl¹darkach na systemach stacjonarnych. Nie oznacza to, ¿e wykorzystanie
+przegl¹darki mobilnej zawsze skazane jest na pora¿kê, ale ¿e wi¹¿e siê z
+dodatkowymi ograniczeniami i mo¿e byæ stosowane tylko w przypadku prostych
+systemów.
 
 \subsection{Wysokie koszty}
 
-Koszty tworzenia aplikacji mobilnych (i wynikaj¹ce st¹d koszty
-integracji) ró¿ni¹ siê w przypadku ka¿dej z platform, istniej¹ jednak czynniki,
+Koszty tworzenia aplikacji mobilnych (i wynikaj¹ce z nich koszty
+integracji) ró¿ni¹ siê w przypadku ka¿dej z platform. Istniej¹ jednak czynniki,
 które podnosz¹ koszt w przypadku ka¿dej z nich. Bez wzglêdu na metodologiê
 tworzenia oprogramowania, mo¿emy wyró¿niæ trzy fazy: analizê i projektowanie,
-programowanie, testowanie. Mog¹ one co prawda wystêpowaæ w ró¿nej kolejnoœci lub
-pojawiaæ siê wielokrotnie, jednak ¿aden wiêkszy projekt informatyczny nie mo¿e
+programowanie oraz testowanie. Mog¹ one co prawda wystêpowaæ w ró¿nej kolejnoœci
+lub pojawiaæ siê wielokrotnie, jednak ¿aden wiêkszy projekt informatyczny nie mo¿e
 siê bez nich obejœæ. Je¿eli przyjrzymy siê ka¿dej z nich, bêdziemy mogli
 znaleŸæ potencjalne powody wy¿szych kosztów tworzenia aplikacji mobilnych.
 \begin{itemize}
@@ -57,10 +62,10 @@ znaleŸæ potencjalne powody wy¿szych kosztów tworzenia aplikacji mobilnych.
   dzia³a³a ona bez zarzutu na docelowym urz¹dzeniu. 
   W przypadku, gdy
   uruchamiamy aplikacjê na urz¹dzeniu mobilnym, mamy ograniczone mo¿liwoœci
-  debugowania i logowania.\\ Warto te¿ zwróciæ uwagê na to, ¿e ci¹gle istnieje mniejsza spo³ecznoœæ programistów tworz¹cych aplikacje mobilne. Oznacza to, ¿e szeroko stosowane
-  postêpowanie, polegaj¹ce na poszukiwaniu podobnych problemów, z którymi star³ siê ktoœ inny, nie zawsze
-  przynosi równie dobre rezultaty. Zwiêksza to istotnie czas potrzebny na
-  rozwi¹zanie problemu.
+  debugowania i logowania.\\ Warto te¿ zwróciæ uwagê na to, ¿e spo³e
+ cznoœæ programistów tworz¹cych aplikacje mobilne jest niewielka i Ÿle
+ zorganizowana. Oznacza to, ¿e szeroko stosowane postêpowanie, polegaj¹ce na
+ poszukiwaniu podobnych problemów, z którymi star³ siê ktoœ inny, nie zawsze przynosi równie dobre rezultaty. Zwiêksza to istotnie czas potrzebny na rozwi¹zanie problemu.
   \item \index{testowanie}Testowanie - w przypadku aplikacji mobilnych samo
   uruchomienie stanowiska testowego jest bardziej skomplikowane, czy to ze wzglêdu na
   emulator czy docelowe urz¹dzenie. 
@@ -110,7 +115,7 @@ siê na rynku mo¿emy wyró¿niæ:
  g¹ bezprzewodow¹ mo¿e byæ bardzo czasoch³onne. 
  W tym momencie dobrym
  rozwi¹zaniem mo¿e byæ pocz¹tkowe ³adowanie danych do urz¹dzenia za pomoc¹ stacji dokuj¹cej
-  i uzupe³nianie w zale¿noœci od potrzeb np. przez Internet dostarczany
+  i uzupe³nianie ich w zale¿noœci od potrzeb np. przez Internet dostêpny
   przez sieæ komórkow¹.
 \end{itemize} 
 
@@ -121,7 +126,7 @@ oferuje niezawodnoœci równej sieci komputerowej opartej o tradycyjne media (poza
 jednak nie jest to rozwi¹zanie, które pozwala³oby na prawdziw¹ mobilnoœæ).\\
 \indent
 Mo¿emy dopuœciæ synchronizacjê przy u¿yciu ka¿dej z dostêpnych metod, jednak to
-sieæ komórkowa oferuje najwiêksz¹ mobilnoœæ i dlatego to j¹ scharakteryzujemy
+sieæ komórkowa oferuje najwiêksz¹ mobilnoœæ i dlatego scharakteryzujemy j¹
 dok³adniej. Projektuj¹c aplikacjê, która bêdzie siê komunikowa³a za jej pomoc¹,
 musimy pamiêtaæ o:
 \begin{itemize}
@@ -196,10 +201,18 @@ uwagê przy projektowaniu
 
 Wysoka podatnoœæ na ataki
 
-\subsection{Sposoby interakcji}
-
 \subsection{Systemy off-line}
  
+G³ównym celem urz¹dzeñ mobilnych zorienowanych na systemy enterprise jest
+umo¿liwienie sta³ego dostêpu do danych korporacyjnych. Poniewa¿ nie w ka¿dym
+miejscu jest dostêp do sieci by urz¹dzenia te mog³y spe³niaæ swoje zadanie
+wa¿nym jest aby istnia³a mo¿liwoœæ tymczasowego przechowywania czêœci
+potrzebnych danych w pamiêci trwa³ej. Pozwala to na dostêp do nich off-line.
+Niestety funkcjonalnoœæ ta generuje bardzo du¿o ró¿nych problemów technicznych
+zwi¹zanych z synchronizacj¹. Co wiêcej urz¹dzenia mobilne maj¹ bardzo
+ograniczone mo¿liwoœci przechowywania danych w stosunku do normalnych systemów,
+wiec pojawia siê problem wyboru, które dane kopiowaæ na czas przebywania poza
+sieci¹.
 
 %  - obecnoœæ wielu platform
 %- wysokie koszty (zwi¹zane z niezbêdnymi umiejêtnoœciami programistów)
