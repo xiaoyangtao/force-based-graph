@@ -1,9 +1,9 @@
 \section{Architektura}
 
 
-Tak jak zosta³o to ju¿ wspomniane szablon sk³ada siê z dwóch
+Tak, jak zosta³o to ju¿ wspomniane, szablon sk³ada siê z dwóch
 g³ównych czêœci - serwerowej oraz mobilnej. Przed przejœciem do szczegó³ów
-implementacyjnych zaprezentujemy koncepcjê ca³ego systemu.
+implementacyjnych, zaprezentujemy koncepcjê ca³ego systemu.
 
 \setlength\fboxsep{5pt}  
 \setlength\fboxrule{0.0pt}
@@ -20,7 +20,7 @@ w dalszej czêœci pracy.
 \newline
 Podczas projektowania szablonu pojawi³y siê w¹tpliwoœci co do sposobu
 komunikacji pomiêdzy elementami systemu. Pocz¹tkowa i bardzo przekonuj¹ca
-koncepcja zak³ada³a wykorzystanie JMS - Java Messaging System, specyfikacji
+koncepcja zak³ada³a wykorzystanie JMS - Java Messaging System, specyfikacji,
 umo¿liwaj¹cej przesy³anie wiadomoœci w Javie. Przemawia³ za tym szereg
 argumentów:
 \begin{itemize}
@@ -28,17 +28,17 @@ argumentów:
   bezprzewodowej, która jest szczególnie nara¿ona na przerwy w transmisji.
   \item Niezale¿noœæ systemów - u¿ycie wiadomoœci znacznie u³atwi³oby
   ewentualne zmiany po stronie serwera aplikacyjnego, ze wzglêdu na dodatkowy
-  element poœrednicz¹cy jakim jest serwer wiadomoœci.
+  element poœrednicz¹cy, jakim jest serwer wiadomoœci.
   \item £atwoœæ implementacji - przesy³ane wiadomoœci mog¹ zawieraæ
   zserializowane obiekty, co zdejmuje z programisty obowi¹zek samodzielnej
   serializacji i deserializacji danych.
 \end{itemize}
-Jak siê jednak okaza³o,istotne ograniczenia techniczne po stronie urz¹dzeñ
-mobilnych uniemo¿liwi³y skorzystanie z JMS. Jest to technologia wymagaj¹ca
-znacznych zasobów, niedostêpnych w specyfikacji Java Micro Edition - platformy
+Jak siê jednak okaza³o, istotne ograniczenia techniczne po stronie urz¹dzeñ
+mobilnych uniemo¿liwi³y skorzystanie z JMS. Jest to technologia, wymagaj¹ca
+znacznych zasobów, niedostêpnych w specyfikacji Java Micro Edition - platformy,
 na której stworzyliœmy nasz szablon. Nie daje ona mo¿liwoœci bezpoœredniego
 pod³¹czenia do kana³u komunikacyjnego, co wymusza korzystanie z zewnêtrznych
-bibliotek. Jednak nawet wtedy, okazuje siê, ¿e takie biblioteki korzystaj¹ z
+bibliotek. Jednak nawet wtedy okazuje siê, ¿e takie biblioteki korzystaj¹ z
 Web Serwisów jako technologii poœrednicz¹cej w komunikacji. Podobnie,
 automatyczna serializacja i deserializacja w takiej sytuacji nie jest jeszcze
 wspierana. 
