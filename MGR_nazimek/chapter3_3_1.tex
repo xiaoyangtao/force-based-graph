@@ -2,16 +2,16 @@
 
 \subsection{Aplikacja serwerowa}
 
-Przedstawimy teraz architekturê czêœci serwerowej, komponenty z których siê
+Przedstawimy teraz architekturê czêœci serwerowej, komponenty, z których siê
 sk³ada i technologie, które wykorzystuj¹.
 \newline
-Aby zrozumieæ projekt ca³ego systemu wprowadŸmy pewne pojêcia w naszym
+Aby zrozumieæ projekt ca³ego systemu, wprowadŸmy pewne pojêcia w naszym
 systemie, z których wynikaj¹ dalsze rozwi¹zania: 
 \begin{itemize}
   \item \emph{Ankieta} - treœæ, dla której istniej¹ dostêpne zdefiniowane
   odpowiedzi.
  \item \emph{OdpowiedŸ} - jedna z mo¿liwoœci wyboru dostêpnych dla danej ankiety
-  \item \emph{U¿ytkownik} - konto z którym zwi¹zane s¹ uprawnienia i udzielone
+  \item \emph{U¿ytkownik} - konto, z którym zwi¹zane s¹ uprawnienia i udzielone
   w ankietach odpowiedzi. Jeden u¿ytkownik mo¿e udzieliæ wielu odpowiedzi w
   trakcie dzia³ania ca³ego systemu.
 \end{itemize}
@@ -31,7 +31,7 @@ za³o¿eniami.
 Aplikacja serwerowa jest uruchamiana na kontenerze Apache Tomcat 6.0.
 
 \paragraph{Baza danych}
-W oparciu o przedtawione wczeœniej za³o¿enia stworzony zosta³ prosty schemat
+W oparciu o przedstawione wczeœniej za³o¿enia stworzony zosta³ prosty schemat
 bazy danych:
 \begin{center}
 \fbox{\scalebox{0.7}{\includegraphics{img/pool_schema_o.png} }}
@@ -51,17 +51,17 @@ danych:
 
 \paragraph{Hibernate}
 Dostêp do danych realizowany jest za pomoc¹ mapowania relacyjno-obiektowego
-Hibernate. Teoretycznie pozwala to, a na pewno znacznie u³atwia ewentualn¹
+Hibernate. Teoretycznie pozwala to, a na pewno znacznie u³atwia, ewentualn¹
 zmianê dostawcy bazy danych. Dodatkowo uwalnia nas z koniecznoœci rêcznego
 pisania zapytañ SQL. 
 
 \paragraph{Spring Framework}
-Spring jest zestawem narzêdzi u³atwiaj¹cym tworzenie aplikacji. Pozwala on,
-miêdzy innymi, na deklaratywne zarz¹dzanie transakcjami, zarz¹dzanie czasem
+Spring jest zestawem narzêdzi, u³atwiaj¹cym tworzenie aplikacji. Pozwala on,
+miêdzy innymi, na deklaratywne zarz¹dzanie transakcjami, zarz¹dzanie
 cyklem ¿ycia obiektów oraz zwalnia programistê z koniecznoœci pisania
- czêsto powtarzanego kodu przez dostarczenie odpowiednich szablonów. Dodatkowo
+ czêsto powtarzanego kodu przez dostarczenie odpowiednich szablonów. Dodatkowo,
  wymusza on pewien model programowania i sprawia, ¿e pisane aplikacje s¹
- bardziej przejrzyste i ³atwiejsze w utrzymaniu. Jak ju¿ zosta³o to wspomniane
+ bardziej przejrzyste i ³atwiejsze w utrzymaniu. Jak ju¿ zosta³o wspomniane,
  aplikacja serwerowa jest aplikacj¹ typu Web, z któr¹ to framework Spring
  doskonale siê integruje.
  
@@ -73,15 +73,15 @@ ograniczenia. Warstwa ta bêdzie s³u¿y³a do administrowania systemem,
 przegl¹dania podjêtych decyzji i zarz¹dzania ankietami i u¿ytkownikami.
 
 \paragraph{Apache Axis2}
-Axis2 to kontener webserwisów,który odpowiada za odbieranie zdalnych wywo³añ
-procedur i przekazywanie ich do odpowiednich obiektów które je wykonuj¹.
-Zwalnia te¿ programistê z koniecznoœci samodzielnego przetwarzania XML w
+Axis2 to kontener webserwisów, który odpowiada za odbieranie zdalnych wywo³añ
+procedur i przekazywanie ich do odpowiednich obiektów, które je wykonuj¹.
+Zwalnia programistê z koniecznoœci samodzielnego przetwarzania XML w
 ¿¹daniach, umo¿liwia te¿ automatyczn¹ serializacjê i deserializacjê obiektów
 Javowych. 
 
 \paragraph{Transformata XSLT}
-Elementem wspomagaj¹cym w systemie jest transformata XSLT wykonywana na
-odpowiedziach przesy³anych do urz¹dzenia mobilnego. Jej celem jest utworzenie
+Elementem wspomagaj¹cym w systemie jest transformata XSLT, wykonywana na
+odpowiedziach, przesy³anych do urz¹dzenia mobilnego. Jej celem jest utworzenie
 widoku dla urz¹dzenia mobilnego w sposób niezale¿ny od generowanej odpowiedzi.
 W wyniku wywo³ania procedury generuj¹cej ekran, tworzony jest XML, zawieraj¹cy
 podstawowe informacje, a nastêpnie przetwarzany jest on w opisany sposób,
