@@ -149,8 +149,7 @@ musimy pamiêtaæ o:
   niewielkich paczkach danych, bêdziemy p³acili g³ównie za przesy³anie
   sieciowych nag³ówków i sta³ych elementów protoko³u, z którego korzystamy.
   Sprawa nabiera jeszcze wiêkszego znaczenia, gdy korzystamy z Web serwisów,
-  które wykorzystuj¹ XML, który jest formatem ma³o efektywnym.
-  \indent Z drugiej
+  które wykorzystuj¹ XML, który jest formatem ma³o efektywnym. Z drugiej
   strony, przesy³aj¹c bardzo du¿e paczki danych nara¿amy siê na koniecznoœæ
   powtórzenia ca³ej transmisji w razie utraty po³¹czenia.
 \end{itemize}
@@ -200,13 +199,84 @@ i jego zadaniem jest wykorzystaæ je jak najlepiej.
 
 \subsection{Bezpieczeñstwo}
 \index{bezpieczeñstwo}
-Mówi¹c o kana³ach komunikacyjnych nie sposób nie wspomnieæ o bezpieczeñstwie
-ka¿dego z nich. Zawuwa¿my, ¿e problem, którego najczêœciej nie bierze siê pod
-uwagê przy projektowaniu 
+Bezpieczeñstwo w urz¹dzeniach mobilnych jest zagadnieniem tak szerokim, ¿e
+samo mog³oby byæ tematem pracy. Integracja urz¹dzeñ mobilnych z systemami klasy
+enterprise przynosi nowe zagro¿enia, z których nale¿y zdawaæ sobie sprawê. Aby
+w mo¿liwie kompletny sposób je przeanalizowaæ, przedstawimy je w kolejnoœci
+od najbardziej ogólnych, po te najbardziej szczegó³owe.
 
-Wysoka podatnoœæ na ataki
+\paragraph{Polityka firmy}
+Wiêkszoœæ du¿ych firm ma zasady bezpieczeñstwa, do przestrzegania których
+zobowi¹zani s¹ jej pracownicy. Mog¹ one obejmowaæ zakaz wynoszenia firmowych,
+poufnych danych poza miejsce pracy, stosowanie z³o¿onych hase³ czy te¿ zakaz
+instalacji w³asnego oprogramowania. Wraz z integracj¹ urz¹dzeñ mobilnych musi
+byæ ona jednak przeanalizowana pod k¹tem jej stosowalnoœci w nowym kontekœcie.
+Mo¿e siê okazaæ, ¿e zakaz wynoszenia danych straci sens z powodu zewnêtrznego
+dostêpu, który zyskaj¹ pracownicy. Przedstawienie listy regu³, które nale¿y
+do³¹czyæ do stosowanej obecnie polityki nie jest mozliwe, bo w znacznym stopniu
+zale¿y ona od funkcjonalnoœci, które chcemy udostêpniæ mobilnym u¿ytkownikom,
+jak te¿ stosowanym w tym celu technologiom, wa¿na jest jednak œwiadomoœæ
+potrzeby przeanalizowania istniej¹cej polityki pod tym k¹tem.
+
+\paragraph{Czynnik ludzki}
+Pamiêtajmy, ¿e nawet najlepsza polityka bezpieczeñstwa zawiedzie, je¿eli nie
+bêdzie ona realizowana przez ludzi. Stosowanie najbardziej skomplikowanych
+hase³ nie zda siê na nic, je¿eli bêd¹ one zapisane w widocznym miejscu. Dlatego
+te¿ konieczne jest kszta³towanie œwiadomoœci u¿ytkowników, którzy bêd¹ mieli
+dostêp do systemu informatycznego z poziomu urz¹dzenia mobilnego. Nale¿y
+pamiêtaæ, ¿e ka¿de z takich urz¹dzeñ staje siê potencjalnie miejscem dostêpu do
+poufnych, firmowych danych. Dodatkowo, znacznie ³atwiej mo¿e staæ siê ono
+obiektem kradzie¿y, ni¿ stacjonarny komputer. \\
+\indent
+Warto zwróciæ uwagê, ¿e urz¹dzenia mobilne w rodzaju smartfonów czy PDA,
+traktowane s¹ znacznie bardziej osobiœcie ni¿ firmowe komputery. Pomijaj¹c ju¿
+fakt, ¿e u¿ytkownicy mog¹ tam przechowywaæ prywatne dane, to mog¹ tak¿e
+instalowaæ na nich nieautoryzowane, potencjalnie niebezpieczne, aplikacje. Je¿eli
+dodatkowo bêd¹ to urz¹dzenia pochodz¹ce od ró¿nych producentów, z których czêœæ
+bêdzie w³asnoœci¹ pracowników, wtedy kontrola bezpieczeñstwa staje siê
+prawdziwym wyzwaniem. 
+
+\paragraph{Aplikacje}
+W zale¿noœci od tego czy integrujemy istniej¹ce ju¿ aplikacje czy te¿ dopiero
+piszemy aplikacjê mobiln¹, musimy rozwa¿yæ bezpieczeñstwo integracji z
+istniej¹cym ju¿ systemem. Istnieje zagro¿enie, ¿e integrowana aplikacja mobilna
+posiada luki w bezpieczeñstwie (przyk³adowo zapis danych w jawnej postaci na
+lokalnym noœniku), które powoduj¹, ¿e do³¹czenie jej do dzia³aj¹cego systemu
+informatycznego zwiêkszy ryzyko ujawnienia poufnych danych.
+
+\paragraph{Systemy operacyjne}
+Systemy operacyjne stosowane w urz¹dzeniach mobilnych staj¹ siê coraz bardziej
+skomplikowane wraz ze wzrostem funkcjonalnoœci, które nale¿y obs³u¿yæ. Pierwsze
+telefony s³u¿y³y w³aœciwie wy³¹cznie do wykonywania po³¹czeñ, dlatego te¿
+niepomyœlanym by³o przenoszenie siê wirusów pomiêdzy nimi. Dzisiajsze smartfony
+posiadaj¹ wielow¹tkowe systemy operacyjne, procesory, które s¹ szybsze od
+stosowanych parê lat temu w biurkowych komputerach, a dodatkowo obs³uguj¹ kilka
+sposobów komunikacji bezprzewodowej. Kwesti¹ czasu by³o wiêc powstanie
+pierwszych wirusów atakuj¹cych takie urz¹dzenia. Poza z³oœliwymi programami,
+których g³ównym zadaniem by³o unieruchomienie zainfekowanych telefonów (np
+wirus Skulls dla systemu Symbian) o wiele wiêksze zagro¿enie stanowiæ bêd¹
+wirusy, których zadaniem bêdzie wykradanie danych z urz¹dzenia mobilnego.
+Pewn¹ pociech¹ jest ci¹gle du¿e zró¿nicowanie mobilnych platform, które jest
+przeszkod¹ dla twórców aplikacji, to utrudnia te¿ tworzenie uniwersalnych
+wirusów.
+\indent
+Warto jednak zwróciæ uwagê na to zagro¿enie, bo ataki na urz¹dzenia mobilne nie
+s¹ ju¿ tylko niegroŸn¹ ciekawostk¹, a faktem.
+
+\paragraph{£¹cza komunikacyjne}
+Choæ wybór sposobu komunikacyjnego jest tematem rozdzia³u 1.4, warto zwróciæ
+uwagê na ni¿sz¹ warstwê komunikacyjn¹, która odpowiada za transmisjê danych i
+która nie jest bezpoœrednio widoczna z poziomu aplikacji. O ile wszystkie
+stosowane algorytmy szyfrowania danych zak³adaj¹ transmisjê po otwartym kanale
+komunikacyjnym, to wybór odpowiedniej technologii z poœród przedstawionych
+wczeœniej mo¿e dodatkowo zwiêkszyæ bezpieczeñstwo. Poniewa¿, tak jak ju¿
+powiedzieliœmy, wybór sieci komórkowej pozwala na najwiêksz¹ mobilnoœæ, warto
+dodaæ, ¿e jest to najbezpieczeniejszy sposób przesy³ania danych. 
+
 
 \subsection{Systemy off-line}
+
+
  \index{off-line}
 G³ównym celem urz¹dzeñ mobilnych, zorienowanych na systemy enterprise, jest
 umo¿liwienie sta³ego dostêpu do danych korporacyjnych. W zwi¹zku tym, ¿e nie w
