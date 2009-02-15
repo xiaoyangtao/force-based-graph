@@ -22,13 +22,17 @@ elementy niedostêpne w przypadku statycznej strony WWW, jak rysunki
 wektorowe, obs³uga przycisków urz¹dzenia, czy mo¿liwoœæ wyœwietlania strony
 przez jakiœ czas.
 
-W typowym przypadku, scenariusz u¿ycia aplikacji bêdzie wygl¹da³
-nastêpuj¹co:
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{0.7}{\includegraphics{img/pool_schema_uml.png} }}
-\end{center}
+W typowym przypadku scenariusz u¿ycia aplikacji bêdzie wygl¹da³ nastêpuj¹co:
+
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.5]{img/pool_schema_uml.png}
+    \end{center}
+    \caption{Diagram przep³ywu sterowania w szablonie integracyjnym}
+    \label{fig:pool_schema_uml}
+\end{figure}
+
+
 \begin{itemize}
   \item Tworzymy nowy 'ekran' na serwerze. Oznacza to okreœlenie wygl¹du i
   zachowania aplikacji w formacie XML. Okreœlamy dostêpne dla

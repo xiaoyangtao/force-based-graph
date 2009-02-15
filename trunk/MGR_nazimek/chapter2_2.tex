@@ -15,6 +15,7 @@ W dalszej czêœci niniejszej pracy przedstawione zostan¹ dwa tego typu
 rozwi¹zania, pozwalaj¹ce na oszczêdzenie znacznej iloœci pracy przy budowaniu
 nowych aplikacji.
 
+\index{Blackberry}
 \subsubsection{Generator dedykowany - Blackberry MDS}
 Blackberry MDS jest przyk³adem narzêdzia wyspecjalizowanego do tworzenia
 aplikacji tylko i wy³¹cznie na platformê jednego producenta. Rozwi¹zanie to
@@ -30,11 +31,16 @@ edytorów. Co wiêcej, aplikacja MDS daje nam pe³n¹ kontrolê nad przep³ywem
 sterowania - przy pomocy jêzyka JavaScript jesteœmy w stanie zaimplementowaæ niemal dowoln¹
 logikê aplikacji. Aplikacje typu enterprise oraz Ÿród³¹ danych dostêpne s¹ dla
 aplikacji mobilnej poprzez standardow¹ technologiê Web Services.
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{0.7}{\includegraphics{img/mds1.png} }}
-\end{center}
+
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.7]{img/mds1.png}
+    \end{center}
+    \caption{Architektura aplikacji opartej o BlackBerry MDS}
+    \label{fig:mds1}
+\end{figure} 
+
+
 Aplikacja MDS dla Blackberry jest to aplikacja typu rich-client, zbudowana na
 podstawie metadanych zdefiniowanych w jêzyku XML. Te metadane wraz z zasobami,
 takimi jak obrazki, gromadzone s¹ w pakietach, które nastêpnie publikowane s¹ na
@@ -43,11 +49,14 @@ terminali mobilnych Blackberry. Dziêki scentralizowanej metodzie
 dystrybucji oraz zarz¹dzania aplikacjami mobilnymi, koszty utrzymania mobilnej
 infrastruktury s¹ znacznie ni¿sze.
 
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{0.7}{\includegraphics{img/mds2.png} }}
-\end{center}
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.7]{img/mds2.png}
+    \end{center}
+    \caption{Sposób zarz¹dzania aplikacjami opartymi o MDS}
+    \label{fig:mds2}
+\end{figure} 
+
 
 \paragraph{Us³uga Blackberry MDS}
 Us³uga MDS Blackberry zosta³a zaprojektowana tak, by umo¿liwiæ wymianê danych
@@ -66,7 +75,7 @@ Po stronie urz¹dzenia mobilnego zainstalowany jest kontener aplikacji MDS.
 Zajmuje siê on instalacj¹, wyszukiwaniem oraz przegl¹daniem aplikacji MDS.
 Dostarcza równie¿ niezbêdne funkcjonalnoœci do tych aplikacji, takie jak
 interfejs u¿ytkownika, kontener danych oraz us³ugi komunikacyjne klient-server.
-
+\index{Netbeans}
 \subsubsection{Generator uniwersalny - Netbeans Mobile IDE}
 
 Drugim przyk³adem generatora aplikacji mobilnych jest Netbeans Mobility Pack
@@ -82,11 +91,15 @@ interfejsu u¿ytkownika, pozwalaj¹ce na budowanie, z gotowych komponentów,
 ekranów naszej mobilnej aplikacji. Poni¿ej przedstawiony jest przyk³ad diagramu
 przep³ywu sterowania aplikacji typu Hello World.
 
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{0.5}{\includegraphics{img/netbeans_layout.png} }}
-\end{center}
+
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.4]{img/netbeans_layout.png}
+    \end{center}
+    \caption{Œrodowisko NetBeans z diagramem przep³ywu}
+    \label{fig:netbeans_layout}
+\end{figure} 
+
 
 Przyk³adowy diagram przep³ywu sk³ada siê z dwóch elementów - bloku,
 reprezentuj¹cego stan wyjœciowy aplikacji mobilnej (a jednoczeœnie stan koñcowy)
@@ -100,22 +113,29 @@ drugi koniec wskazuje blok wyjœciowy).
 Ekran g³ówny zosta³ zaprojektowany tak, by wyœwietliæ napis oraz komendê,
 pozwalajac¹ na opuszczenie aplikacji.
 
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{0.5}{\includegraphics{img/netbeans_design.png} }}
-\end{center}
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.5]{img/netbeans_design.png}
+    \end{center}
+    \caption{Tworzenie interfejsu u¿ytkownika w œrodowisku NetBeans}
+    \label{fig:netbeans_design}
+\end{figure} 
+
+
 
 Tak jak wspomniano wczeœniej tego typu ekrany buduje siê z gotowych
 komponentów. Œrodowisko Netbeans udostêpnia zestaw predefiniowanych komponentów
 o podstawowej funkcjonalnoœci. U¿ytkownik mo¿e odnaleŸæ je na palecie bocznej
 programu. W wersji 6.5 paleta ta wygl¹da tak, jak na poni¿szym rysunku.
 
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{0.6}{\includegraphics{img/netbeans_palette.png} }}
-\end{center}
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.5]{img/netbeans_palette.png}
+    \end{center}
+    \caption{Paleta komponentów w œrodowisku NetBeans}
+    \label{fig:netbeans_palette}
+\end{figure} 
+
 
 Komponentowe budowanie aplikacji znacznie przyspiesza proces tworzenia. Co
 wiêcej, w razie potrzeby istnieje mo¿liwoœæ definiowania w³asnych komponentów,
@@ -128,11 +148,13 @@ napisania linijki kodu w jêzyku Java, u¿ywaj¹c jedynie narzêdzi graficznych.
 Tak zbudowana aplikacja dzia³a na praktycznie ka¿dej konfiguracji mobilnej i
 gwarantuje jednakowe zachowanie pomiêdzy ró¿nymi platformami. 
 
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{0.7}{\includegraphics{img/netbeans_simulator.png} }}
-\end{center}
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.5]{img/netbeans_simulator.png}
+    \end{center}
+    \caption{Emulator telefonu dostarczany przez Suna}
+    \label{fig:netbeans_simulator}
+\end{figure}
 
 Do konstruowania bardziej zaawansowanych aplikacji nale¿y pos³u¿yæ siê
 jêzykiem Java. Dostêp do kodu Ÿród³owego automatycznie generowanej aplikacji
@@ -142,11 +164,14 @@ przez nas skonfigurowany w jednym ze wspomnianych wczeœniej edytorów jest
 powi¹zany z wygenerowanym kodem w jêzyku Java, z którym mo¿na siê zapoznaæ w
 zak³adce source.
 
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{0.6}{\includegraphics{img/netbeans_source.png} }}
-\end{center}
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.5]{img/netbeans_source.png}
+    \end{center}
+    \caption{Edycja kodu Ÿród³owego w NetBeans}
+    \label{fig:netbeans_source}
+\end{figure}
+
 
 Wyszarzone obszary to kod, który zosta³ automatycznie wygenrowany przez
 œrodowisko Netbeans. W pozosta³ych obszarach mo¿na wprowadzaæ w³asny kod w

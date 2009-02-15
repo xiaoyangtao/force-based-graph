@@ -8,6 +8,7 @@ zastosowanie, gdy okazuje siê, ¿e nie wszystkie mechanizmy s¹ jednakowo
 dostêpne, lub, gdy bardziej skomplikowane technologie wprowadzaj¹ zbyt du¿y
 narzut.
 
+\index{pliki}
 \paragraph{Transfer plików}- jedna aplikacja zapisuje plik w okreœlonym
 formacie w ustalonym miejscu, nastêpnie druga go odczytuje i przetwarza. Zalet¹
 takiego rozwi¹zania jest jego dostêpnoœæ - prawie zawsze bêdziemy mieli
@@ -16,7 +17,8 @@ aplikacja. Jedyne, co powinniœmy zrobiæ, to dostarczyæ plik we w³aœciwym
 formacie. Z drugiej strony, nie istnieje ¿aden sposób wymuszenia formatu
 zapisywanego pliku. Mo¿emy zapisaæ na dysku dowolny plik, a aplikacja
 docelowa bêdzie go mog³a ewentualnie odrzuciæ.
-    
+  
+\index{baza danych}  
 \paragraph{Wspólna baza danych}- dwie aplikacje dzia³aj¹ na jednej bazie
 danych. W momencie, gdy obie korzystaj¹ z tych samych danych, to nie ma potrzeby
 ich duplikacji. Dodatkowo, przez ograniczenia wymuszone przez bazê, musimy
@@ -29,7 +31,7 @@ zmiana danych w bazie nie zawsze wystarczy. Mo¿emy sobie wyobraziæ sytuacjê,
 w której zmiana wysokoœci pensji niesie za sob¹ koniecznoœæ wykonania
 dodatkowych czynnoœci, np. zmiany wysokoœci sk³adki w systemie
 ubezpieczeniowym.
-	
+\index{RPC}
 \paragraph{Zdalne wywo³ywanie procedur}- mo¿e siê odbywaæ z
 wykorzystaniem mechanizmów typowych dla danej technologii (RPC,RMI czy
 WebServices). Jedna aplikacja udostêpnia funkcjonalnoœæ, która mo¿e zostaæ
@@ -43,7 +45,7 @@ obrêbie tej samej aplikacji. Pomimo wygody takiego rozwi¹zania, stwarza ono
 pewne niebezpieczeñstwo. Programista, nieœwiadomy narzutu stwarzanego przez
 zdalne wywo³anie procedur, mo¿e wywo³ywaæ je z równ¹ bezstrosk¹ niczym
 procedury lokalne.
-
+\index{wiadomoœci}
 \paragraph{Wiadomoœci}- jedna aplikacja wysy³a komunikat do wspólnego kana³u
 komunikacyjnego, który jest nastêpnie przetwarzany przez drug¹ aplikacjê.
 Komunikacja odbywa siê asynchronicznie. Po umieszczeniu komunikatu w kanale,
@@ -101,6 +103,7 @@ Okazuje siê, ¿e dwie, godne rozwa¿enia metody stanowi¹, z jednej strony,
 wiadomoœci,a z drugiej - Web serwisy, bêd¹ce jednym ze sposobów zdalnego
 wywo³ywania procedur.
 
+\index{webserwisy}
 \paragraph{Zdalne wywo³ywanie procedur - Web serwisy}
 Pomimo, i¿ istnieje kilka ró¿nych standardów RPC, Web
 serwisy s¹ jedynym, praktycznie stosowanym w przypadku integracji mobilnej.
@@ -174,7 +177,7 @@ im wczeœniej schematu WSDL. Jeœli kluczowym nie jest optymalne wykorzystanie
 ³¹cza, czy te¿ gwarancja dostaczenia, to jest to technologia, której u¿ycie jest
 zalecane przy integracji mobilnej, czy te¿ jakiejkolwiek innej integracji w
 œrodowisku Enterprise.
-
+\index{wiadomoœci}
 \paragraph{Wiadomoœci w œrodowisku mobilnym} 
 Integracja za pomoc¹ Web serwisów
 jest doœæ prosta do zaimplementowania, stawia jednak przed programist¹ szereg
@@ -221,6 +224,7 @@ komponentów. Nie jest to du¿y narzut w przypadku klasycznych aplikacji.
 Zwiêksza on jednak rozmiary aplikacji mobilnej w stopniu, który mo¿e nie
 pozwoliæ na jej uruchomienie na prostszych urz¹dzeniach.\\
 \indent
+\index{JMS}
 W przeciwieñstwie do Web serwisów, nie wykszta³ci³ siê jeden, uniwersalny
 standard przesy³ania wiadomoœci. W ramach platformy J2ME naturalnym
 rozwi¹zaniem jest JMS, pochodz¹cy z Javy Enterprise. Jednak inne platformy, jak
