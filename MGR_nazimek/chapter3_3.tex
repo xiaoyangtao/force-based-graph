@@ -5,11 +5,16 @@ Tak, jak zosta³o to ju¿ wspomniane, szablon sk³ada siê z dwóch
 g³ównych czêœci - serwerowej oraz mobilnej. Przed przejœciem do szczegó³ów
 implementacyjnych, zaprezentujemy koncepcjê ca³ego systemu.
 
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\begin{center}
-\fbox{\scalebox{0.7}{\includegraphics{img/diag1.png} }}
-\end{center}
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.7]{img/diag1.png}
+    \end{center}
+    \caption{Komunikacja miêdzy urz¹dzeniami mobilnymi i systemem enterprise}
+    \label{fig:pool_arch}
+\end{figure}
+
+
+
 Jak widaæ, urz¹dzenia mobilne bêd¹ siê ³¹czy³y przez Internet do uruchomionego
 serwera aplikacyjnego. Ka¿de z nich wysy³a ¿¹danie pobrania ekranu, który jest
 dynamicznie przygotowywany w zale¿noœci od stanu aplikacji dla danego

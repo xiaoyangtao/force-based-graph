@@ -15,15 +15,21 @@ systemie, z których wynikaj¹ dalsze rozwi¹zania:
   w ankietach odpowiedzi. Jeden u¿ytkownik mo¿e udzieliæ wielu odpowiedzi w
   trakcie dzia³ania ca³ego systemu.
 \end{itemize}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
+
 
 Aplikacja serwerowa zbudowana zosta³a w oparciu o model trójwarstwowy, z
 podwójnym dostêpem (widokiem) do danych. 
 
-\begin{center}
-\fbox{\scalebox{0.7}{\includegraphics{img/diag2.png} }}
-\end{center}
+
+
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.7]{img/diag2.png}
+    \end{center}
+    \caption{Architektura czêœci serwerowej szablonu integracyjnego}
+    \label{fig:pool_arch2}
+\end{figure}
+
 Przedstawmy teraz poszczególne warstwy systemu, wraz z przyjêtymi w nich
 za³o¿eniami.
 
@@ -32,29 +38,46 @@ Aplikacja serwerowa jest uruchamiana na kontenerze Apache Tomcat 6.0.
 
 \paragraph{Baza danych}
 W oparciu o przedstawione wczeœniej za³o¿enia stworzony zosta³ prosty schemat
-bazy danych:
-\begin{center}
-\fbox{\scalebox{0.7}{\includegraphics{img/pool_schema_o.png} }}
-\end{center}
+bazy danych widoczny na rysunku \ref{fig:pool_db}.
+
+
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.7]{img/pool_schema_o.png}
+    \end{center}
+    \caption{Schemat koncepcyjny bazy danych czêœci serwerowej szablonu
+    integracyjnego}
+    \label{fig:pool_db}
+\end{figure}
+
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.7]{img/pool_schema.png}
+    \end{center}
+    \caption{Schemat fizyczny bazy danych czêœci serwerowej szablonu
+    integracyjnego}
+    \label{fig:pool_db2}
+\end{figure}
+
+
 Choæ wydaje siê, ¿e ogranicza to dzia³anie systemu do mo¿liwoœci wyboru
 odpowiedzi z dostêpnej listy, to jednak schemat bez problemu mo¿na rozbudowaæ o
 dodatkowe pola, które pozwol¹ na podawanie wolnych (nieograniczonych dostêpn¹
 list¹ wyboru) odpowiedzi.
 \newline
 Na postawie schematu koncepcyjnego stworzony zosta³ schemat fizyczny bazy
-danych:
+danych widoczny na rysunku \ref{fig:pool_db2}.
 \newline
-\begin{center}
-\fbox{\scalebox{0.7}{\includegraphics{img/pool_schema.png} }}
-\end{center}
 
 
+\index{Hibernate}
 \paragraph{Hibernate}
 Dostêp do danych realizowany jest za pomoc¹ mapowania relacyjno-obiektowego
 Hibernate. Teoretycznie pozwala to, a na pewno znacznie u³atwia, ewentualn¹
 zmianê dostawcy bazy danych. Dodatkowo uwalnia nas z koniecznoœci rêcznego
 pisania zapytañ SQL. 
 
+\index{Spring}
 \paragraph{Spring Framework}
 Spring jest zestawem narzêdzi, u³atwiaj¹cym tworzenie aplikacji. Pozwala on,
 miêdzy innymi, na deklaratywne zarz¹dzanie transakcjami, zarz¹dzanie
@@ -65,20 +88,22 @@ cyklem ¿ycia obiektów oraz zwalnia programistê z koniecznoœci pisania
  aplikacja serwerowa jest aplikacj¹ typu Web, z któr¹ to framework Spring
  doskonale siê integruje.
  
+\index{JSF}
 \paragraph{Apache Myfaces} 
 Myfaces jest implementacj¹ specyfikacji Java Server Faces, która pozwala na
 wygodne tworzenie widoku aplikacji. W naszym przypadku interfejsem bêdzie
 dynamicznie generowana strona WWW, choæ specyfikacja JSF nie wprowadza takiego
 ograniczenia. Warstwa ta bêdzie s³u¿y³a do administrowania systemem,
 przegl¹dania podjêtych decyzji i zarz¹dzania ankietami i u¿ytkownikami.
-
+\index{webserwisy}
+\index{Apache Axis}
 \paragraph{Apache Axis2}
 Axis2 to kontener webserwisów, który odpowiada za odbieranie zdalnych wywo³añ
 procedur i przekazywanie ich do odpowiednich obiektów, które je wykonuj¹.
 Zwalnia programistê z koniecznoœci samodzielnego przetwarzania XML w
 ¿¹daniach, umo¿liwia te¿ automatyczn¹ serializacjê i deserializacjê obiektów
 Javowych. 
-
+\index{XSLT}
 \paragraph{Transformata XSLT}
 Elementem wspomagaj¹cym w systemie jest transformata XSLT, wykonywana na
 odpowiedziach, przesy³anych do urz¹dzenia mobilnego. Jej celem jest utworzenie

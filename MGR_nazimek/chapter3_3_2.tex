@@ -31,7 +31,7 @@ odró¿nieniu od rozwi¹zañ opartych na przegl¹darce, mamy mo¿liwoœæ zmian w
 kodzie Ÿród³owym aplikacji redeneruj¹cej, dziêki czemu, w zale¿noœci od
 potrzeby, mo¿emy dostosowywaæ zachowanie programu do wymagañ u¿ytkownika. Nasza
 aplikacja nie jest ograniczona przez niemodyfikowaln¹ przegl¹darkê internetow¹.
-
+\index{Kuix}
 \subsubsection{Kuix}
 Opisany w poprzednim rozdziale dynamicznie generowany interfejs jest mo¿liwy do
 osi¹gniêcia w œrodowisku J2ME przy u¿yciu pewnego, danego z góry, uniwersalnego
@@ -56,14 +56,18 @@ idee.
 
 \paragraph{HelloKuix}
 
-Na poni¿szym obrazku widoczn¹ jest struktura bardzo prostego programu,
+Na rysunku \ref{fig:kuix_structure} widoczna jest struktura bardzo prostego programu,
 posiadaj¹cego wszystkie cechy dostarczane przez szkielet Kuix.
 
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{1}{\includegraphics{img/kuix_structure.png} }}
-\end{center}
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.7]{img/kuix_structure.png}
+    \end{center}
+    \caption{Struktura prostego projektu wykorzystuj¹cego szkielet Kuix}
+    \label{fig:kuix_structure}
+\end{figure}
+
+
 Poza standardowymi plikami *.java zawieraj¹cymi kod aplikacji nale¿y tu zwróciæ
 uwagê na dodatkowe pliki zasobów :
 \begin{itemize}
@@ -104,7 +108,7 @@ screen.setCurrent();
 Jak widaæ z za³¹czonego przyk³adu, budowanie elementów interfejsu oraz ich
 wczytywanie jest bardzo proste i w pewnien sposób przypomina tworzenie
 interfejsu u¿ytkownika dla stron wyœwietlanych w przegl¹darkach inernetowych.
-
+\index{CSS}
 \paragraph{CSS, a Kuix}
 Charakterystycznym elementem zapo¿yczonym przez Kuix z technologii
 internetowych jest sposób nadawania po¿¹danego wygl¹du elementom aplikacji.
@@ -148,14 +152,17 @@ u¿yæ statycznej metody loadCSS klasy Kuix:
 Kuix.loadCss("helloworld.css");
 \end{verbatim}
 
-Koñcowy efekt po³¹czenia pliku XML ze stylami CSS widoczny jest na poni¿szym
-obrazku:
+Koñcowy efekt po³¹czenia pliku XML ze stylami CSS widoczny jest na rysunku
+\ref{fig:kuix_helloworld}.
 
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{1}{\includegraphics{img/kuix_helloworld.png} }}
-\end{center}
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.7]{img/kuix_helloworld.png}
+    \end{center}
+    \caption{Wygl¹d omawianej aplikacji}
+    \label{fig:kuix_helloworld}
+\end{figure}
+
 
 W analogiczny sposób mo¿na równie ³atwo dodaæ podrêczne menu do aplikacji :
 
@@ -175,13 +182,16 @@ W analogiczny sposób mo¿na równie ³atwo dodaæ podrêczne menu do aplikacji :
 \end{verbatim}
 
 Efekt koñcowy wraz z menu dostêpnym pod prawym przyciskiem (tak zwane Second
-Menu).
+Menu) widzimy na rysunku \ref{fig:kuix_helloworld2}
 
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{1}{\includegraphics{img/kuix_helloworld2.png} }}
-\end{center}
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.7]{img/kuix_helloworld2.png}
+    \end{center}
+    \caption{Wygl¹d omawianej aplikacji}
+    \label{fig:kuix_helloworld2}
+\end{figure}
+
 
 \paragraph{Problemy}
 

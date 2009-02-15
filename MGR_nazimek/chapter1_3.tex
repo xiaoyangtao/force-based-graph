@@ -14,9 +14,9 @@ platform. Istnieje wiele niekompatybilnych ze sob¹ rozwi¹zañ, pochodz¹cych od
 ró¿nych producentów. Je¿eli spojrzymy na platformy, na których budowane s¹
 klasyczne systemy korporacyjne, mo¿emy ograniczyæ je do Javy Suna oraz
 technologii .NET Microsoftu. Natomiast po stronie mobilnej mamy do wyboru
-wersje mobilne wymienionych platform oraz dodatkowo Blackberry, Symbiana,
-Google Android, Palm OS oraz kilku mniejszych dostawców. Oprócz tego, Apple
-promuje swój produkt iPhone, który mimo, ¿e jest platform¹ bardzo zamkniêt¹,
+wersje mobilne wymienionych platform oraz dodatkowo Blackberry,
+\index{Symbian} Symbiana, Google Android, Palm OS oraz kilku mniejszych
+dostawców. Oprócz tego, Apple promuje swój produkt iPhone, który mimo, ¿e jest platform¹ bardzo zamkniêt¹,
 cieszy siê wielkim zainteresowaniem wœród zwyk³ych u¿ytkowników. \\
 Dodatkowym problemem jest to, ¿e nie istnieje tak
 naprawdê standard tworzenia korporacyjnych aplikacji dla urz¹dzeñ mobilnych,
@@ -27,8 +27,8 @@ platformê, na której dzia³a, co i tak bêdzie siê wi¹za³o z u¿yciem
 dodatkowych narzêdzi, rozwi¹zuj¹cych dawno ju¿ zbadane problemy znane z
 klasycznych systemów.\\ 
 W przypadku urz¹dzeñ mobilnych nie mo¿emy te¿
-skorzystaæ ze sprawdzonej trójwarstwowej architektury, u¿ywaj¹c palmtopa lub
-telefonu komórkowego, tak jak cienkiego klienta. Jest to spowodowane
+skorzystaæ ze sprawdzonej \index{trójwarstwowa architektura} trójwarstwowej
+architektury, u¿ywaj¹c palmtopa lub telefonu komórkowego, tak jak cienkiego klienta. Jest to spowodowane
 niezgodnoœci¹ przegl¹darek mobilnych i brakiem pe³nej obs³ugi jêzyka JavaScript,
 na którym opiera siê wiele stron internetowych. Istniej¹ oczywiœcie wersje
 stron, które zosta³y przygotowane dla platform mobilnych, ale wiele brakuje im
@@ -80,27 +80,27 @@ Mo¿liwoœci po³¹czenia z urz¹dzeniami mobilnymi ró¿ni¹ siê zasadniczo od tych,
 oferowanych przez klasyczne systemy. Z oferowanych przez urz¹dzenia znajduj¹ce
 siê na rynku mo¿emy wyró¿niæ:
 \begin{itemize}
-  \item Bluetooth - protokó³ komunikacyjny pozwalaj¹cy na ³atwe ³¹czenie
-  urz¹dzeñ bezprzewodowych. Ma zasiêg od 1 do 100 metrów, w zale¿noœci od
+  \item \index{Bluetooth}Bluetooth - protokó³ komunikacyjny pozwalaj¹cy na
+  ³atwe ³¹czenie urz¹dzeñ bezprzewodowych. Ma zasiêg od 1 do 100 metrów, w zale¿noœci od
   wersji. jednak w najbardziej typowym przypadku jest to zasiêg do oko³o 10
   metrów. Ze wzglêdu na doœæ nisk¹ prêdkoœæ (2.1Mbps w najszybszym, rzadko stosowanym wariancie) i
   ograniczon¹ mobilnoœæ, mo¿e byæ stosowany jako protokó³ synchronizacyjny,
   przy za³o¿eniu, ¿e synchronizacja odbywa siê w ustalonym miejscu dostêpowym. 
   Bluetooth jest obecnie dostêpny w prawie wszystkich oferowanych telefonach
   komórkowych, smartfonach i PDA.
-  \item Wifi - sieæ bezprzewodowa, zgodna ze standardem 802.11a/b/g. Oferuje o
-  wiele wiêksz¹ przepustowoœæ ni¿ Bluetooth (do 100Mbps), pozwalaj¹c na normalny
+  \item \index{Wifi}Wifi - sieæ bezprzewodowa, zgodna ze standardem
+  802.11a/b/g. Oferuje o wiele wiêksz¹ przepustowoœæ ni¿ Bluetooth (do 100Mbps), pozwalaj¹c na normalny
   dostêp do sieci komputerowej. Niestety, modu³ Wifi nie jest powszechnie
   dostêpny we wszystkich urz¹dzeniach. Podobnie jak Bluetooth, pozwala na
   po³¹czenie tylko w zasiêgu punktu dostêpowego.
-  \item Sieæ komórkowa - dostêpna w przypadku wszystkich telefonów komórkowych
-  i du¿ej czêœci mobilnych organizerów oraz palmtopów. Pozwala na dostêp z doœæ
+  \item \index{Sieæ komórkowa}Sieæ komórkowa - dostêpna w przypadku wszystkich telefonów
+  komórkowych i du¿ej czêœci mobilnych organizerów oraz palmtopów. Pozwala na dostêp z doœæ
   dobr¹ przepustowoœci¹ w obrêbie du¿ych miast (do 7,2Mbps w technologii HSDPA,
   przy teoretycznie oferowanej 14,4Mbps). Ze wzglêdu na najlepsz¹ mobilnoœæ
   jest w³aœciwie jedynym wyborem, gdy chcemy mieæ mo¿liwoœæ nieprzerwanej
   komunikacji miêdzy urz¹dzeniem mobilnym i sieci¹ firmow¹.
-  \item SMS - choæ umieszczenie wiadomoœci tekstowych obok tak
-  zaawansowanych protoko³ów, jak wymienione wczeœniej, mo¿e siê wydawaæ
+  \item \index{SMS}SMS - choæ umieszczenie wiadomoœci tekstowych
+  obok tak zaawansowanych protoko³ów, jak wymienione wczeœniej, mo¿e siê wydawaæ
   ma³o przekonuj¹ce, to musimy zwróciæ uwagê na ich zaletê:
   dzia³aj¹ nawet wtedy, gdy dostêp do sieci komórkowej jest mocno ograniczony. W
   oparciu o wiadomoœci tekstowe mo¿na przesy³aæ ma³e porcje informacji, które w
@@ -109,8 +109,8 @@ siê na rynku mo¿emy wyró¿niæ:
   odbieraæ wiadomoœci tekstowe (na przyk³ad na Windows Mobile), jak i korzystaæ
   z tej technologii w bardziej przezroczysty sposób, wykorzystuj¹c wiadomoœci,
   o których mowa w nastêpnym rozdziale
-  \item Stacje dokuj¹ce - wiele urz¹dzeñ mobilnych mo¿na pod³¹czyæ do komputera
-  za pomoc¹ kabla lub specjalnej stacji dokuj¹cej. Jest to, oczywiœcie,
+  \item \index{Stacja dokuj¹ca}Stacje dokuj¹ce - wiele urz¹dzeñ mobilnych mo¿na
+  pod³¹czyæ do komputera za pomoc¹ kabla lub specjalnej stacji dokuj¹cej. Jest to, oczywiœcie,
   rozwi¹zanie ma³o wygodne. Jednak jego zalet¹ jest najwiêksza z poœród
   przedstawionych technologii prêdkoœæ. W zwi¹zku z tym, ¿e wiele urz¹dzeñ
   mobilnych posiada obecnie znaczn¹ pamiêæ, siêgaj¹c¹ kilku gigabajtów, któr¹
@@ -142,8 +142,8 @@ musimy pamiêtaæ o:
   siê jedynie z prêdkoœci¹ 384kb/s). Oznacza to, ¿e przesy³anie danych nale¿y
   tak zorganizowaæ, aby pozornie doœæ wydajne ³¹cze nie sta³o siê w¹skim
   gard³em systemu.
-  \item Kosztach po³¹czenia - przesy³anie danych w sieciach komórkowych
-  czêsto jest obci¹¿one op³at¹ zale¿n¹ od ich iloœci. Powoduje to, ¿e nale¿y
+  \item \index{koszty}Kosztach po³¹czenia - przesy³anie danych w sieciach
+  komórkowych czêsto jest obci¹¿one op³at¹ zale¿n¹ od ich iloœci. Powoduje to, ¿e nale¿y
   znaleŸæ z³oty œrodek miêdzy utrzymywaniem aktualnoœci danych, a czêstoœci¹ ich
   pobierania. Mo¿e siê bowiem okazaæ, ¿e przy bardzo czêsto przesy³anych, ale
   niewielkich paczkach danych, bêdziemy p³acili g³ównie za przesy³anie
@@ -199,6 +199,7 @@ i jego zadaniem jest wykorzystaæ je jak najlepiej.
 
 
 \subsection{Bezpieczeñstwo}
+\index{bezpieczeñstwo}
 Mówi¹c o kana³ach komunikacyjnych nie sposób nie wspomnieæ o bezpieczeñstwie
 ka¿dego z nich. Zawuwa¿my, ¿e problem, którego najczêœciej nie bierze siê pod
 uwagê przy projektowaniu 
@@ -206,7 +207,7 @@ uwagê przy projektowaniu
 Wysoka podatnoœæ na ataki
 
 \subsection{Systemy off-line}
- 
+ \index{off-line}
 G³ównym celem urz¹dzeñ mobilnych, zorienowanych na systemy enterprise, jest
 umo¿liwienie sta³ego dostêpu do danych korporacyjnych. W zwi¹zku tym, ¿e nie w
 ka¿dym miejscu mamy dostêp do sieci, to aby urz¹dzenia te mog³y spe³niaæ swoje

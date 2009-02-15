@@ -12,7 +12,7 @@ sposób uzyskamy mo¿liwoœæ analizy zainteresowañ u¿ytkowników, tak, aby w
 przysz³oœci przekazywaæ im jedynie informacje, które mog¹ ich zainteresowaæ.
 Ca³a aplikacja oparta jest na przedstawionym wczeœniej szablonie, do którego
 stworzony zosta³ interfejs administracyjny, zgodny z charakterem systemu.
- 
+  
 \subsection{Za³o¿enia}    
 Funkcjonalnoœæ systemu bêdzie oparta na nastêpuj¹cych za³o¿eniach:
 \begin{itemize}
@@ -88,20 +88,23 @@ opcje :
   \item {Exit - koñczy dzia³anie midletu}
 \end{itemize}
 
-Na poni¿szym obrazku widzimy g³ówne menu aplikacji. Zosta³a ona uruchomiona w
+Na rysunku \ref{fig:phone_processed1} widzimy g³ówne menu aplikacji. Zosta³a ona uruchomiona w
 domyœlnym œrodowisku symulacyjnym, dostarczonym razem z pakietem Netbeans
 Mobility Pack.
 
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{0.6}{\includegraphics{img/phone_processed1.png} }}
-\end{center}
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.7]{img/phone_processed1.png}
+    \end{center}
+    \caption{Ekran startowy aplikacji}
+    \label{fig:phone_processed1}
+\end{figure}
+
 
 \paragraph {Zak³adka Settings}
 
-W zak³adce settings mamy mo¿liwoœæ wybrania adresu, pod którym znajduje siê
-serwer, dostarczaj¹cy dane dla naszej aplikacji. Aplikacja potrafi zapamiêtaæ
+W zak³adce settings (rysunek \ref{fig:phone_processed2}) mamy mo¿liwoœæ wybrania
+adresu, pod którym znajduje siê serwer, dostarczaj¹cy dane dla naszej aplikacji. Aplikacja potrafi zapamiêtaæ
 kilka takich adresów. By dodaæ nowy adres, nale¿y w polu 'New feed address'
 wpisaæ URL do nowego serwera, a nastêpnie wybraæ przycisk 'New feed'. Jeœli
 chcemy pozbyæ siê niepotrzebnych wpisów, znajduj¹cych siê na liœcie, to
@@ -109,19 +112,25 @@ zaznaczamy wpis do usuniêcia, a nastêpnie wybieramy przycisk 'Remove feed'.
 Istnieje tak¿e mo¿liwoœæ modyfikacji adresu URL serwera. S³u¿y do tego przycisk
 'Edit feed'.
 
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{0.7}{\includegraphics{img/phone_processed2.png} }}
-\end{center}
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.7]{img/phone_processed2.png}
+    \end{center}
+    \caption{Ekran wyboru serwera wiadomoœci}
+    \label{fig:phone_processed2}
+\end{figure}
 
-Zak³adka 'Settings' po wprowadzeniu nowego adresu serwera: 
+Zak³adkê 'Settings' po wprowadzeniu nowego adresu
+serwera widzimy na rysunku \ref{fig:phone_processed3}.
 
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{0.7}{\includegraphics{img/phone_processed3.png} }}
-\end{center}
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.7]{img/phone_processed3.png}
+    \end{center}
+    \caption{Ekran wyboru po dodaniu nowego serwera wiadomoœci}
+    \label{fig:phone_processed3}
+\end{figure}
+
 
 \paragraph {Dynamicznie generowane ekrany wiadomoœci}
 
@@ -133,13 +142,15 @@ wygenerowana nazwa u¿ytkownika oraz has³o. Dziêki temu serwer jest w stanie
 analizie, a nastêpnie zmieniaæ zawartoœæ wysy³anych treœci. Ekrany z
 wiadomoœciami s¹ ca³kowicie generowane po stronie serwera (nie tylko sama ich
 treœæ, ale tak¿e elementy interfejsu u¿ytkownika). Przyk³adowy ekran
-informacyjny :
+informacyjny widzimy na rysunku \ref{fig:phone_processed4}.
 
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{0.7}{\includegraphics{img/phone_processed4.png} }}
-\end{center}
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.7]{img/phone_processed4.png}
+    \end{center}
+    \caption{Ekran z wiadomoœci¹}
+    \label{fig:phone_processed4}
+\end{figure}
 
 Ekrany s¹ automatycznie prze³adowywane co pewien, okreœlony z góry przedzia³
 czasu. Dziêki temu, jeœli u¿ytkownik chce, to mo¿e biernie wykorzystywaæ
@@ -148,13 +159,22 @@ nasz¹ aplikacjê (w trybie nie wymagaj¹cym interakcji).
 \paragraph {Wybór preferencji odnoœnie treœci wiadomoœci}
 
 Jeœli u¿ytkownik chce wykorzystywaæ aplikacjê w sposób interaktywny, to ma do
-dyspozycji podrêczne menu okreœlenia preferencji, dotycz¹cych aktualnie
-ogl¹danej wiadomoœci. Mo¿e poinformowaæ system, ¿e dana wiadomoœæ go
+dyspozycji podrêczne menu okreœlenia preferencji (rysunek
+\ref{fig:phone_processed5}, dotycz¹cych aktualnie ogl¹danej wiadomoœci. Mo¿e poinformowaæ system, ¿e dana wiadomoœæ go
 szczególnie zainteresowa³a, lub w przeciwnym wypadku, ¿e nie chce wiêcej
 dostawaæ tego typu wiadomoœci. Na podstawie udzielonych odpowiedzi system
 personalizuje listê wiadomoœci, które zostan¹ wys³ane do danego u¿ytkownika.
 Po wybraniu preferencji zostaje natychmiast za³adowany ekran z nastêpn¹
 wiadomoœci¹.
+
+
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.7]{img/phone_processed5.png}
+    \end{center}
+    \caption{Okreœlenie preferencji u¿ytkownika}
+    \label{fig:phone_processed5}
+\end{figure}
 
 \begin{center}
 \setlength\fboxsep{5pt}  
@@ -168,16 +188,17 @@ Druga czêœæ aplikacja dzia³a w kontenerze serwletów. Instalacja odbywa siê
 poprzez umieszczenie przygotowanego archiwum w katalogu dla aplikacji. Po
 przejœciu na stronê serwletu (domyœlnie: http://serwer:port/mINFO) 
 Na górze mamy dostêp do edycji wiadomoœci, u¿ytkowników oraz 'tagów'. 
-Po uruchomieniu widzimy listê wiadomoœci, znajduj¹cych siê w systemie. 
-Mo¿emy dodawaæ wiadomoœci rêcznie, jak i pobraæ je automatycznie z serwera
+Po uruchomieniu widzimy listê wiadomoœci (rysunek \ref{fig:server_news_list}),
+znajduj¹cych siê w systemie. Mo¿emy dodawaæ wiadomoœci rêcznie, jak i pobraæ je automatycznie z serwera
 Wirtualnej Polski (dodanego g³ownie dla testów systemu).
 
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{0.35}{\includegraphics{img/server_news_list.png} }}
-Lista wiadomoœci w systemie
-\end{center}
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.35]{img/server_news_list.png}
+    \end{center}
+    \caption{Lista wiadomoœci w systemie}
+    \label{fig:server_news_list}
+\end{figure}
 
 Ka¿da z wiadomoœci jest w rzeczywistoœci 'ankiet¹', o której
 wczeœniej pisaliœmy w opisie szablonu integracyjnego. Dostêpne odpowiedzi to
@@ -185,24 +206,27 @@ TAK i NIE, okreœlaj¹ce, czy dana wiadomoœæ jest dla u¿ytkownika interesuj¹ca
 (istnieje oczywiœcie mo¿liwoœæ dodania w³asnych odpowiedzi, jednak aplikacja,
 któr¹ stworzyliœmy, uwzglêdnia tylko te dwie w dalszym przetwarzaniu). 
 
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{0.35}{\includegraphics{img/server_pool.png} }}
-Edycja wiadomoœci
-\end{center}
+\begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.35]{img/server_pool.png}
+    \end{center}
+    \caption{Edycja wiadomoœci}
+    \label{fig:server_pool}
+\end{figure}
+
 
 Dodatkowo, ka¿d¹ wiadomoœæ mo¿emy 'otagowaæ', to znaczy przypisaæ j¹ do pewnych
 kategorii tematycznych. Dziêki temu preferencje u¿ytkownika zostaj¹ uogólnione
 na kategorie. Mo¿emy te¿ obejrzeæ u¿ytkowników, którzy g³osowali w okreœlony
 sposób w naszej ankiecie. 
  
-\begin{center}
-\setlength\fboxsep{5pt}  
-\setlength\fboxrule{0.0pt}
-\fbox{\scalebox{0.35}{\includegraphics{img/server_user_prefs.png} }}
-Ustawienia i preferencje informacyjne u¿ytkownika
-\end{center}
+ \begin{figure}[htb]
+    \begin{center}
+    \includegraphics[angle=0,scale=0.35]{img/server_user_prefs.png}
+    \end{center}
+    \caption{Ustawienia i preferencje informacyjne u¿ytkownika}
+    \label{server_user_prefs}
+\end{figure}
 
 Na podstawie g³osów u¿ytkownika system tworzy jego profil informacyjny, aby
 serwowaæ mu informacje coraz bardziej odpowiadaj¹ce jego zainteresowaniom.
