@@ -8,8 +8,8 @@ wyzwania, które stawia integracja, wykraczaj¹ nie tylko poza techniczne
 rozwa¿ania, ale tak¿e rozci¹gaj¹ siê na procedury biznesowe. Tak jak ju¿
 wspominaliœmy, przedstawienie kompletnej listy takich problemów nie jest
 mo¿liwe ze wzglêdu na koniecznoœæ dokonania analizy ka¿dego z przypadków. Mimo to spróbujemy
-przedstawiæ te najbardziej typowe, zauwa¿one i opisane, które
-koniecznie trzeba wzi¹æ pod uwagê.
+przedstawiæ te najbardziej typowe w wiêkszoœci opisane w \cite{Entpatterns},
+które koniecznie trzeba wzi¹æ pod uwagê:
 
 \subsection{Wyzwania techniczne}
 
@@ -31,8 +31,9 @@ programiœci musz¹ niekiedy uciekaæ siê do stosowania niskopoziomowych
 modyfikacji (np. na bazie danych, której u¿ywa aplikacja) czy w ostatecznoœci
 do dekompilacji jej modu³ów.
 
+
 \paragraph{Brak uniwersalnego standardu wymiany danych pomiêdzy aplikacjami.}
-Pomimo, ¿e problemy z komunikacj¹ przy integracji danych znane s¹ od wielu lat,
+Pomimo ¿e problemy z komunikacj¹ przy integracji danych znane s¹ od wielu lat,
 du¿a czêœæ aplikacji nie wspiera ¿adnego uniwersalnego formatu danych, co
 powoduje koniecznoœæ specjalizowania platform integracyjnych pod k¹tem
 pod³¹czanych do niej aplikacji. Jako rozwi¹zanie tego problemu czêsto stosuje
@@ -42,7 +43,7 @@ gwarancji pe³nej uniwersalnoœci ze wzglêdu na dodatkowe rozszerzenia, które siê
 wykszta³ci³y w ramach Web serwisów (o których wiêcej informacji w dalszej
 czêœci pracy). Warto zauwa¿yæ, ¿e ten sam problem - brak wspó³pracy pomiêdzy
 aplikacjami oficjalnie wspieraj¹cymi pewien standard - by³ g³ówn¹ przeszkod¹ w
-stosowaniu CORBY-y - zaawansowanego protoko³u, umo¿liwiaj¹cego wspó³pracê
+stosowaniu CORBY - zaawansowanego protoko³u, umo¿liwiaj¹cego wspó³pracê
 aplikacji stworzonych w ró¿nych jêzykach i dzia³aj¹cych na ró¿nych platformach.
 \index{platforma integracyjna}
 \paragraph{Utrzymanie platformy integracyjnej.} O ile uruchomienie platformy
@@ -55,31 +56,39 @@ posiadaæ wiedzê na ich temat. Dodatkowo, ciê¿ko jest tê wiedzê utrzymaæ,
 zw³aszcza gdy pracownicy czêsto siê zmieniaj¹. Natura platformy
 integracyjnej wymusza jej automatyzacjê, co powoduje, ¿e mo¿e ona
 bezproblemowo dzia³aæ bardzo d³ugo, wrêcz przezroczyœcie dla wszystkich a¿ do
-wyst¹pienia pierwszego problemu lub potrzeby wprowadzenia modyfikacji. Wtedy
-okazuje siê, ¿e osoby, od których wymaga siê tej wiedzy s¹ tymi, które
-tê platformê tworzyli, co z ich punktu widzenia zdecydowanie zwiêksza nak³ad
-pracy,którego by nie ponieœli, gdyby systemy by³y integrowane bez punktu
-centralnego, poniewa¿ wtedy osoby odpowiadaj¹ce za nie by³yby równie¿
-odpowiedzialne za ich integracjê. Ostatecznie okazuje siê, ¿e istnienie
-platformy integracyjnej jest utrudnieniem, a nie u³atwieniem dla dzia³u IT.
+wyst¹pienia pierwszego problemu lub potrzeby wprowadzenia modyfikacji. 
+Wtedy w³aœnie od osób odpowiedzialnych za platformê integracyjn¹ wymaga siê
+wprowadzenia w niej modyfikacji lub usuniêcia b³êdów. Poniewa¿ platforma
+ jest najczêœciej centralnym punktem komunikacyjnym, który
+obs³uguje wiele systemów, za ka¿dym razem gdy dochodzi do zmian w jednym z
+nich, mo¿e (choæ oczywiœcie, nie musi) zajœæ potrzeba zmian w platformie
+integracyjnej. Takie ryzyko nie istnieje, je¿eli integrujemy ze sob¹ wy³¹cznie
+systemy, które maj¹ ze sob¹ wspó³pracowaæ (z pominiêciem punktu centralnego). W
+takiej sytuacji, to administratorzy ka¿dego z integrowanych systemów wspó³pracuj¹ ze sob¹.
+Oczywiœcie, to platforma integracyjna jest rozwi¹zaniem bardziej elastycznym,
+ale jej utrzymanie bez w¹tpienia stanowi du¿e obci¹¿enie dla dzia³u IT.
 \index{Ÿród³o danych}
+
 \paragraph{Ró¿norodnoœæ Ÿróde³ danych.} Niekiedy pojawia siê potrzeba
-integrowania danych, pochodz¹cych z ró¿nych, a czasami bardzo nietypowych
-Ÿróde³. Przyk³ad mo¿e stanowiæ wypowiedŸ pewnego biznesmena, który
-przedstawia³ sytuacjê w momencie, gdy pojawi³o siê zarz¹dzenie, wymagaj¹ce
-gromadzenia w jednym miejscu wszystkich informacji, zwi¹zanych z rozwojem
-projektu. Naturalnym sposobem komunikacji w firmach jest poczta elektroniczna
-oraz spotkania, na których powstaj¹ notatki. W tym momencie, przeniesienie
-wymienianych t¹ drog¹ ustaleñ, by³o czasoch³onnym zadaniem, którego efekt by³ ciê¿ki w ocenie. 
-Mo¿e siê wrêcz okazaæ, ¿e jest to wymaganie niemo¿liwe do spe³nienia, je¿eli
-format komunikacji nie zostanie wczeœniej ustalony.
+integrowania danych, pochodz¹cych z ró¿nych, czasami bardzo nietypowych
+Ÿróde³. 
+Przyk³ad mo¿e stanowiæ wypowiedŸ Hans-Joachim Poppa, szefa Deutsches Zentrum
+für Luft- und Raumfahrt (Niemieckie Centrum Lotnictwa). W \cite{computerwoche}
+opisuje on jak pojawi³o siê rozporz¹dzenie nak³adaj¹ce koniecznoœæ
+gromadzenia w uporz¹dkowany sposób wszystkich danych zwi¹zanych z prowadzonymi projektami
+naukowymi. Jak mówi, by³o to trudniejsze ni¿ mog³oby siê wydawaæ. W czasie
+realizacji projektu naturalne by³o przesy³anie informacji za pomoc¹ poczty
+elektronicznej jak i organizacja spotkañ, na których powstawa³y notatki. Nie s¹
+to uporz¹dkowane sposoby przesy³ania informacji, co gdy rozporz¹dzenie wesz³o w ¿ycie, 
+wprowadzi³o koniecznoœæ uporz¹dkowania i (co jeszcze trudniejsze)
+zlokalizowania danych, rozproszonych miêdzy komputery u¿ytkowników.
 
 \subsection{Wyzwania biznesowe}
 
 \paragraph{Zmiana polityki wewnêtrznej przedsiêbiorstwa.} 
 Poprawna integracja oznacza nie tylko doprowadzenie do wspó³pracy systemów
 informatycznych, ale równie¿ departamentów w firmie. Wynika to z faktu, ¿e
-integrowane aplikacje najczêœciej komunikuj¹ automatycznie, co powoduje, ¿e
+integrowane aplikacje najczêœciej komunikuj¹ siê automatycznie, co powoduje, ¿e
 wprowadzenie zmian do systemu przez jeden departament mo¿e mieæ konsekwencje
 (np. w postaci realizacji zlecenia) w drugim. Konieczne jest uœwiadomienie
 u¿ytkowników o tym fakcie, tak by integracja przynosi³a korzyœci w postaci
@@ -102,8 +111,25 @@ integrowanych systemów.
 
 
 \paragraph{Ró¿nice semantyczne w pojêciach.} Choæ XML rozwi¹zuje wiele problemów
-technicznych, to nie stanowi on odpowiedzi na ró¿n¹ semantykê w ramach obu
-systemów. WeŸmy za przyk³ad s³owo "konto". W jednym systemie mo¿e oznaczaæ
+technicznych, to nie stanowi on odpowiedzi na ró¿n¹ semantykê.
+WeŸmy za przyk³ad s³owo "konto". W jednym systemie mo¿e oznaczaæ
 numer konta bankowego. Natomiast w innym mo¿e to byæ wewnêtrzny numer
-konta w korporacji, czy te¿ konto u¿ytkownika. Dlatego poza znalezieniem
-wspólnych pojêæ, konieczne jest dok³adne zdefiniowanie ich znaczenia, aby unikn¹æ nieporozumieñ.
+konta w korporacji, czy te¿ konto u¿ytkownika. 
+Innym, pokrewnym problemem jest ró¿ny format zapisu tych samych danych.
+WyobraŸmy sobie system nawigacji satelitarnej na urz¹dzeniu mobilnym po³¹czony z
+bankiem map. Dane otrzymywane z odbiornika GPS s¹ wspó³rzêdnymi geograficznymi w pewnym uk³adzie
+odniesienia. Uk³adów odniesienia jest na œwiecie kilkaset i s³u¿¹ one uzyskaniu
+jak najwiêkszej dok³adnoœci w danym obszarze. Przyk³adowo, wg \cite{omapach} w
+Polsce u¿ywany jest uk³ad Pu³kowo 42. Je¿eli w odbiorniku GPS
+ustawimy uk³ad odniesienia na najpopularniejszy WGS84, to pracuj¹c z mapami w
+uk³adzie Pu³kowo 42 otrzymamy niedok³adnoœæ rzêdu 6'' czyli oko³o 120m. Choæ
+wiêc, u¿ywamy wspó³rzêdnych geograficznych do okreœlenia po³o¿enia na mapie i w
+terenie, rozbie¿noœci, o ile nie uwzglêdnimy uk³adu odniesienia mog¹ byæ bardzo
+znaczne.\\
+\indent
+Dlatego w³aœnie, w integracji, oprócz znalezienia wspólnych pojêæ, konieczne
+jest sprawdzenie czy pochodz¹ z tej samej dziedziny, a je¿eli tak, to czy maj¹
+to samo znaczenie. W tym celu przed rozpoczêciem integracji, powinniœmy
+przygotowaæ s³ownik pojêæ zawieraj¹cy dok³adne definicje w celu unikniêcia
+nieporozumieñ. 
+
