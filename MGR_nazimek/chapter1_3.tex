@@ -20,10 +20,10 @@ dostawców. Oprócz tego, Apple promuje swój produkt iPhone, który mimo, ¿e jest p
 cieszy siê wielkim zainteresowaniem wœród zwyk³ych u¿ytkowników. \\
 Dodatkowym problemem jest to, ¿e nie istnieje tak
 naprawdê standard tworzenia korporacyjnych aplikacji dla urz¹dzeñ mobilnych,
-który dostarcza³by narzêdzi, umo¿liwiaj¹cych automatyzacjê czêsto powtarzanych
+który dostarcza³by narzêdzi umo¿liwiaj¹cych automatyzacjê czêsto powtarzanych
 czynnoœci, podobnie jak ma to miejsce w przypadku Javy Enterprise. Tworz¹c lub integruj¹c
 istniej¹c¹ aplikacjê dla urz¹dzenia mobilnego, musimy wiêc wzi¹æ pod uwagê
-platformê, na której dzia³a, co i tak bêdzie siê wi¹za³o z u¿yciem
+platformê, na której dzia³a,co bêdzie siê wi¹za³o z u¿yciem
 dodatkowych narzêdzi, rozwi¹zuj¹cych dawno ju¿ zbadane problemy znane z
 klasycznych systemów.\\ 
 W przypadku urz¹dzeñ mobilnych nie mo¿emy te¿
@@ -41,16 +41,15 @@ mo¿e byæ stosowane tylko w przypadku prostych systemów.
 \subsection{Wysokie koszty}
 
 Koszty tworzenia aplikacji mobilnych (i wynikaj¹ce z nich koszty
-integracji) ró¿ni¹ siê w przypadku ka¿dej z platform. Istniej¹ jednak czynniki,
+integracji) s¹ ró¿ne dla poszczególnych platform. Istniej¹ jednak czynniki,
 które podnosz¹ koszt w przypadku ka¿dej z nich. Bez wzglêdu na metodologiê
-tworzenia oprogramowania, mo¿emy wyró¿niæ trzy fazy: analizê i projektowanie,
-programowanie oraz testowanie. Mog¹ one co prawda wystêpowaæ w ró¿nej kolejnoœci
-lub pojawiaæ siê wielokrotnie, jednak ¿aden wiêkszy projekt informatyczny nie mo¿e
-siê bez nich obejœæ. Je¿eli przyjrzymy siê ka¿dej z nich, bêdziemy mogli
-znaleŸæ potencjalne powody wy¿szych kosztów tworzenia aplikacji mobilnych.
+tworzenia oprogramowania, mo¿emy wyró¿niæ cztery zadania: analizê,
+projektowanie, programowanie oraz testowanie. Mog¹ one co prawda pojawiaæ siê wielokrotnie lub
+wzajemnie siê przenikaæ, jednak ¿aden wiêkszy projekt informatyczny nie mo¿e siê
+bez nich obejœæ. Je¿eli przyjrzymy siê ka¿dej z nich, bêdziemy mogli znaleŸæ potencjalne powody wy¿szych kosztów tworzenia aplikacji mobilnych.
 \begin{itemize}
   \item \index{analiza}Analiza i \index{projektowanie}projektowanie - du¿e,
-  rozbudowane aplikacje mobilne, bêd¹ce czêœci¹ informatycznego systemu korporacji s¹ ci¹gle jeszcze
+  rozbudowane aplikacje mobilne bêd¹ce czêœci¹ informatycznego systemu korporacji s¹ ci¹gle jeszcze
   rzadkoœci¹. Powoduje to, ¿e osoby odpowiedzialne za zebranie wymagañ,
   przeprowadzenie analizy i studium wykonalnoœci maj¹ mniej przyk³adów
   dzia³aj¹cych ju¿ systemów, na których mog¹ siê oprzeæ w swoich oszacowaniach.
@@ -60,23 +59,26 @@ znaleŸæ potencjalne powody wy¿szych kosztów tworzenia aplikacji mobilnych.
   jednak ostatecznie nie zawsze w pe³ni odpowiadaj¹ docelowym urz¹dzeniom. Niekiedy musimy
   zaakceptowaæ nieco niepoprawne dzia³anie aplikacji na emulatorze, aby
   dzia³a³a ona bez zarzutu na docelowym urz¹dzeniu. 
-  W przypadku, gdy
-  uruchamiamy aplikacjê na urz¹dzeniu mobilnym, mamy ograniczone mo¿liwoœci
-  debugowania i logowania.\\ Warto te¿ zwróciæ uwagê na to, ¿e spo³e
- cznoœæ programistów tworz¹cych aplikacje mobilne jest niewielka i Ÿle
+  Jeœli natomiast uruchamiamy aplikacjê na urz¹dzeniu mobilnym, mamy ograniczone mo¿liwoœci
+  debugowania i logowania. Warto te¿ zwróciæ uwagê na to, ¿e spo³ecznoœæ 
+  programistów tworz¹cych aplikacje mobilne jest niewielka i Ÿle
  zorganizowana. Oznacza to, ¿e szeroko stosowane postêpowanie, polegaj¹ce na
  poszukiwaniu podobnych problemów, z którymi spotka³ siê ktoœ inny, nie zawsze
- przynosi równie dobre rezultaty. Zwiêksza to istotnie czas, który jest
+ przynosi równie dobre rezultaty. Zwiêksza to istotnie czas
  potrzebny na rozwi¹zanie problemu.
   \item \index{testowanie}Testowanie - w przypadku aplikacji mobilnych samo
-  uruchomienie stanowiska testowego jest bardziej skomplikowane, czy to ze wzglêdu na
-  emulator, czy docelowe urz¹dzenie. 
+  uruchomienie stanowiska testowego jest bardziej skomplikowane. Do
+  uruchomienia aplikacji potrzebujemy emulatora lub docelowego urz¹dzenia.
+  Jeden i drugi sposób jest mniej wygodny w testowaniu ni¿ zwyk³e stanowisko
+  komputerowe. Tak¿e logowanie w przypadku urz¹dzeñ mobilnych jest prawdziwym
+  problemem, szczególnie gdy b³êdy dotycz¹ dzia³aj¹cego produkcyjnie
+  oprogramowania.
 \end{itemize}
 
 \hyphenation{najwiêksza naj-wiêk-sza} 
 
 \subsection{Kana³y komunikacyjne}
-Mo¿liwoœci po³¹czenia z urz¹dzeniami mobilnymi ró¿ni¹ siê zasadniczo od tych,
+Mo¿liwoœci po³¹czenia z urz¹dzeniami mobilnymi ró¿ni¹ siê zasadniczo od tych
 oferowanych przez klasyczne systemy. Z oferowanych przez urz¹dzenia znajduj¹ce
 siê na rynku mo¿emy wyró¿niæ:
 \begin{itemize}
@@ -84,21 +86,21 @@ siê na rynku mo¿emy wyró¿niæ:
   ³atwe ³¹czenie urz¹dzeñ bezprzewodowych. Ma zasiêg od 1 do 100 metrów, w zale¿noœci od
   wersji. jednak w najbardziej typowym przypadku jest to zasiêg do oko³o 10
   metrów. Ze wzglêdu na doœæ nisk¹ prêdkoœæ (2.1Mbps w najszybszym, rzadko stosowanym wariancie) i
-  ograniczon¹ mobilnoœæ, mo¿e byæ stosowany jako protokó³ synchronizacyjny,
-  przy za³o¿eniu, ¿e synchronizacja odbywa siê w ustalonym miejscu dostêpowym. 
+  ograniczon¹ mobilnoœæ, mo¿e byæ stosowany jako protokó³ transmisyjny,
+  przy za³o¿eniu, ¿e transmisja odbywa siê w ustalonym miejscu dostêpowym. 
   Bluetooth jest obecnie dostêpny w prawie wszystkich oferowanych telefonach
   komórkowych, smartfonach i PDA.
   \item \index{Wifi}Wifi - sieæ bezprzewodowa, zgodna ze standardem
-  802.11a/b/g. Oferuje o wiele wiêksz¹ przepustowoœæ ni¿ Bluetooth (do 100Mbps), pozwalaj¹c na normalny
-  dostêp do sieci komputerowej. Niestety, modu³ Wifi nie jest powszechnie
-  dostêpny we wszystkich urz¹dzeniach. Podobnie jak Bluetooth, pozwala na
+  802.11a/b/g/n . Oferuje o wiele wiêksz¹ przepustowoœæ ni¿ Bluetooth (do
+  300Mbps dla 802.11n), pozwalaj¹c na normalny dostêp do sieci komputerowej.
+  Niestety, modu³ Wifi nie jest powszechnie dostêpny we wszystkich urz¹dzeniach. Podobnie jak Bluetooth, pozwala na
   po³¹czenie tylko w zasiêgu punktu dostêpowego.
-  \item \index{Sieæ komórkowa}Sieæ komórkowa - dostêpna w przypadku wszystkich telefonów
+  \item \index{Sieæ komórkowa}Sieæ komórkowa - dostêpna we wszystkich telefonach
   komórkowych i du¿ej czêœci mobilnych organizerów oraz palmtopów. Pozwala na dostêp z doœæ
-  dobr¹ przepustowoœci¹ w obrêbie du¿ych miast (do 7,2Mbps w technologii HSDPA,
+  dobr¹ przepustowoœci¹ w obrêbie du¿ych miast (do 7,2Mbps w technologii HSxPA,
   przy teoretycznie oferowanej 14,4Mbps). Ze wzglêdu na najlepsz¹ mobilnoœæ
-  jest w³aœciwie jedynym wyborem, gdy chcemy mieæ mo¿liwoœæ nieprzerwanej
-  komunikacji miêdzy urz¹dzeniem mobilnym i sieci¹ firmow¹.
+  jest w³aœciwie jedynym wyborem, gdy chcemy mieæ mo¿liwoœæ
+  komunikacji miêdzy urz¹dzeniem mobilnym i sieci¹ firmow¹ w ka¿dym miejscu.
   \item \index{SMS}SMS - choæ umieszczenie wiadomoœci tekstowych
   obok tak zaawansowanych protoko³ów, jak wymienione wczeœniej, mo¿e siê wydawaæ
   ma³o przekonuj¹ce, to musimy zwróciæ uwagê na ich zaletê:
@@ -110,13 +112,13 @@ siê na rynku mo¿emy wyró¿niæ:
   z tej technologii w bardziej przezroczysty sposób, wykorzystuj¹c wiadomoœci,
   o których mowa w nastêpnym rozdziale
   \item \index{Stacja dokuj¹ca}Stacje dokuj¹ce - wiele urz¹dzeñ mobilnych mo¿na
-  pod³¹czyæ do komputera za pomoc¹ kabla lub specjalnej stacji dokuj¹cej. Jest to, oczywiœcie,
-  rozwi¹zanie ma³o wygodne. Jednak jego zalet¹ jest najwiêksza z poœród
+  pod³¹czyæ do komputera za pomoc¹ kabla lub specjalnej stacji dokuj¹cej. Jest to oczywiœcie
+  rozwi¹zanie ma³o wygodne. Jednak jego zalet¹ jest najwiêksza spoœród
   przedstawionych technologii prêdkoœæ. W zwi¹zku z tym, ¿e wiele urz¹dzeñ
   mobilnych posiada obecnie znaczn¹ pamiêæ, siêgaj¹c¹ kilku gigabajtów, któr¹
   czêsto mo¿na rozbudowywaæ za pomoc¹ dodatkowych kart, mo¿na oczekiwaæ,
-  ¿e u¿ytkownik bêdzie chcia³ pobraæ du¿¹ iloœci danych drog¹ bezprzewodow¹, co 
-  mo¿e byæ bardzo czasoch³onne. W tym momencie dobrym
+  ¿e u¿ytkownik bêdzie chcia³ pobraæ du¿¹ iloœæ danych drog¹ bezprzewodow¹, co 
+  mo¿e byæ bardzo czasoch³onne. W tej sytuacji dobrym
  rozwi¹zaniem mo¿e byæ pocz¹tkowe ³adowanie danych do urz¹dzenia za pomoc¹ stacji dokuj¹cej
   i uzupe³nianie ich w zale¿noœci od potrzeb np. przez Internet, dostêp do 
  kórego oferuj¹ nam operatorzy sieci komórkowych.
@@ -125,7 +127,7 @@ siê na rynku mo¿emy wyró¿niæ:
 \indent Problemem, który siê pojawia podczas integrowania urz¹dzeñ mobilnych,
 jest koniecznoœæ dostosowania sposobów przesy³ania danych do mo¿liwoœci,
 oferowanych przez ka¿dy z kana³ów komunikacyjnych. Warto zwróciæ uwagê, ¿e ¿aden z nich nie
-oferuje niezawodnoœci równej sieci komputerowej, opartej o tradycyjne media
+oferuje niezawodnoœci równej sieci komputerowej opartej na tradycyjnych mediach
 (poza stacj¹ dokuj¹c¹, jednak nie jest to rozwi¹zanie, które pozwala³oby na prawdziw¹ mobilnoœæ).\\
 \indent
 Mo¿emy dopuœciæ synchronizacjê przy u¿yciu ka¿dej z dostêpnych metod. Jednak to
@@ -206,8 +208,8 @@ ich dok³adniejszej analizy, przedstawimy je w kolejnoœci
 od najbardziej ogólnych do najbardziej szczegó³owych.
 
 \paragraph{Polityka firmy}
-Wiêkszoœæ du¿ych firm posiada zasady bezpieczeñstwa, do przestrzegania których
-zobowi¹zani s¹ jej pracownicy. Mog¹ one obejmowaæ, miêdzy innymi, zakaz wynoszenia firmowych,
+Wiêkszoœæ du¿ych firm ma okreœlone zasady bezpieczeñstwa, do przestrzegania
+których zobowi¹zani s¹ jej pracownicy. Mog¹ one obejmowaæ, miêdzy innymi, zakaz wynoszenia firmowych,
 poufnych danych poza miejsce pracy, stosowanie z³o¿onych hase³, czy te¿ zakaz
 instalacji w³asnego oprogramowania. Jednak¿e, wraz z integracj¹ urz¹dzeñ
 mobilnych, zasady bezpieczeñstwa musz¹ byæ przeanalizowane pod k¹tem ich
@@ -215,8 +217,8 @@ stosowalnoœci w nowym kontekœcie. Mo¿e siê okazaæ, ¿e zakaz wynoszenia danych
 straci sens z powodu zewnêtrznego dostêpu, który uzyskaj¹ pracownicy.
 Przedstawienie listy regu³, które nale¿a³oby do³¹czyæ do stosowanej obecnie
 polityki, nie jest mo¿liwe, bowiem w znacznym stopniu zale¿y ona od
-funkcjonalnoœci, które chcemy udostêpniæ mobilnym u¿ytkownikom, jak te¿
-od stosowanych w tym celu technologiom. Wa¿na jest jednak œwiadomoœæ potrzeby
+funkcjonalnoœci, któr¹ chcemy udostêpniæ mobilnym u¿ytkownikom, jak te¿
+od stosowanych w tym celu technologii. Wa¿na jest jednak œwiadomoœæ potrzeby
 przeanalizowania istniej¹cej polityki pod tym k¹tem.
 
 \paragraph{Czynnik ludzki}
@@ -226,14 +228,15 @@ najbardziej skomplikowanych hase³ zakoñczy siê niepowodzeniem, je¿eli bêd¹ one
 zapisane w widocznym miejscu. W zwi¹zku z tym, konieczne jest kszta³towanie
 œwiadomoœci u¿ytkowników, którzy bêd¹ mieli dostêp do systemu informatycznego z
 poziomu urz¹dzenia mobilnego. Nale¿y pamiêtaæ, ¿e ka¿de z takich urz¹dzeñ staje
-siê, potencjalnie, miejscem dostêpu do poufnych, firmowych danych. Dodatkowo, w
-przypadku urz¹dzeñ mobilnych, istnieje wiêksze ryzyko kradzie¿y, ni¿ komputeru stacjonarnego. \\
+siê potencjalnie miejscem dostêpu do poufnych, firmowych danych. Dodatkowo, w
+przypadku urz¹dzeñ mobilnych istnieje wiêksze ryzyko kradzie¿y, ni¿ komputera
+stacjonarnego. \\
 \indent
 Warto zwróciæ uwagê na fakt, ¿e u¿ytkownicy traktuj¹ bardziej osobiœcie
 urz¹dzenia mobilne, takie jak smartfon czy PDA, ni¿ firmowe komputery. Oprócz
 mo¿liwoœci przechowywania na nich prywatnych danych, mog¹ oni tak¿e instalowaæ
 nieautoryzowane, potencjalnie niebezpieczne aplikacje. Je¿eli dodatkowo bêd¹ to
-urz¹dzenia, pochodz¹ce od ró¿nych producentów, z których czêœæ bêdzie
+urz¹dzenia pochodz¹ce od ró¿nych producentów, z których czêœæ bêdzie
 w³asnoœci¹ pracowników, to wówczas, kontrola bezpieczeñstwa staje siê prawdziwym wyzwaniem. 
 
 \paragraph{Aplikacje}
@@ -245,7 +248,7 @@ lokalnym noœniku), które powoduj¹, ¿e do³¹czenie jej do dzia³aj¹cego systemu
 informatycznego zwiêkszy ryzyko ujawnienia poufnych danych.
 
 \paragraph{Systemy operacyjne}
-Systemy operacyjne, stosowane w urz¹dzeniach mobilnych, staj¹ siê coraz bardziej
+Systemy operacyjne stosowane w urz¹dzeniach mobilnych staj¹ siê coraz bardziej
 skomplikowane wraz ze wzrostem funkcjonalnoœci, które nale¿y obs³u¿yæ. Pierwsze
 telefony s³u¿y³y w³aœciwie wy³¹cznie do wykonywania po³¹czeñ, dlatego te¿
 nie rozwa¿ano mo¿liwoœci przenoszenia siê pomiêdzy nimi wirusów. Wspó³czesne smartfony
@@ -255,19 +258,18 @@ sposobów komunikacji bezprzewodowej. W zwi¹zku z tym, kwesti¹ czasu by³o powstan
 pierwszych wirusów, atakuj¹cych tego typu urz¹dzenia. Poza z³oœliwymi programami,
 g³ównym zadaniem których by³o unieruchomienie zainfekowanych telefonów (np.
 wirus Skulls dla systemu Symbian), o wiele wiêksze zagro¿enie stanowiæ bêd¹
-wirusy, stworzone w celu wykradania danych z urz¹dzenia mobilnego.
-W zwi¹zku z powy¿szym, du¿e zró¿nicowanie mobilnych platform, bêd¹cych
-przeszkod¹ dla twórców aplikacji, utrudniaj¹cyh tworzenie uniwersalnych
+wirusy stworzone w celu wykradania danych z urz¹dzenia mobilnego.
+W zwi¹zku z powy¿szym, du¿e zró¿nicowanie mobilnych platform, bêd¹ce
+przeszkod¹ dla twórców aplikacji, utrudniaj¹ce tworzenie uniwersalnych
 wirusów, mo¿e stanowiæ swego rodzaju pocieszenie. 
-\indent
 Warto jednak zwróciæ uwagê na to zagro¿enie, gdy¿ ataki na urz¹dzenia mobilne nie
 s¹ ju¿ tylko niegroŸn¹ ciekawostk¹, lecz faktem.
 
 \paragraph{£¹cza komunikacyjne}
 Chocia¿ wybór sposobu komunikacji jest tematem rozdzia³u 1.4, to warto zwróciæ
 uwagê na ni¿sz¹ warstwê komunikacyjn¹, która odpowiada za transmisjê danych i
-nie jest bezpoœrednio widoczna z poziomu aplikacji. O ile wszystkie, stosowane
-algorytmy szyfrowania danych zak³adaj¹ transmisjê po otwartym kanale
+nie jest bezpoœrednio widoczna z poziomu aplikacji. O ile wszystkie stosowane
+algorytmy szyfrowania danych zak³adaj¹ transmisjê w otwartym kanale
 komunikacyjnym, o tyle wybór odpowiedniej technologii, spoœród przedstawionych
 wczeœniej, mo¿e dodatkowo zwiêkszyæ bezpieczeñstwo. Tak, jak ju¿ wspominaliœmy,
 w zwi¹zku z tym, i¿ wybór sieci komórkowej pozwala na najwiêksz¹ mobilnoœæ, to
@@ -281,7 +283,7 @@ informacji w rozdziale 2.2).
 \subsection{Systemy off-line}
 
  \index{off-line}
-G³ównym celem urz¹dzeñ mobilnych, zorienowanych na systemy enterprise, jest
+G³ównym celem urz¹dzeñ mobilnych zorienowanych na systemy enterprise jest
 umo¿liwienie sta³ego dostêpu do danych korporacyjnych. W zwi¹zku tym, ¿e nie w
 ka¿dym miejscu mamy dostêp do sieci, to aby urz¹dzenia te mog³y spe³niaæ swoje
 zadanie, wa¿nym jest istnienie mo¿liwoœci tymczasowego przechowywania czêœci
@@ -292,16 +294,16 @@ ograniczone mo¿liwoœci przechowywania danych w stosunku do normalnych systemów.
 Pojawia siê wiêc problem wyboru. Musimy zautomatyzowaæ proces podejmowaiania
 decyzji o tym, które dane kopiowaæ na czas przebywania poza sieci¹. Jeœli
 dodatkowo u¿ytkownik, nie maj¹c po³¹czenia z baz¹, wprowadzi³ do urz¹dzenia
-jakieœ nowe dane lub te¿ zmodyfikowa³ istniej¹ce to pojawia siê problem
+jakieœ nowe dane lub te¿ zmodyfikowa³ istniej¹ce, to pojawia siê problem
 zwi¹zany z zapewnieniem spójnoœci danych znajduj¹cych siê na urz¹dzeniu
 oraz w bazie. Synchronizacja tych danych stanowi du¿e wyzwanie. Czêsto zdarza
 siê, ¿e nie jest mo¿liwa pe³na automatyzacja tego procesu. Dotyczy to g³ównie
 sytuacji, w których mamy do czynienia z dwustronn¹ wymian¹ danych. W momencie
-gdy taka sychronizacja doprowadzi³a by do utraty danych, które zosta³y
+gdy taka sychronizacja doprowadzi³aby do utraty danych, które zosta³y
 wprowadzone przez ró¿nych u¿ytkowników w tym samym okresie czasu, stosuje siê
 replikacjê z konfliktami. Polega ona na tworzeniu dodatkowych wpisów w bazie
 danych, które informuj¹ o powstaniu konfliktu. Pozwalaj¹ one na dokonanie
-wyboru, o tym które dane chcemy pozostawiæ, a które s¹ zbêdne.
+wyboru, które dane chcemy pozostawiæ, a które s¹ zbêdne.
 %  - obecnoœæ wielu platform
 %- wysokie koszty (zwi¹zane z niezbêdnymi umiejêtnoœciami programistów)
 %- du¿o wy¿sza zawodnoœæ urz¹dzeñ i kana³ów komunikacyjnych
