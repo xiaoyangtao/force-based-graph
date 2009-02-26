@@ -48,7 +48,7 @@ Scenariusz alternatywny & \begin{tabular}{p{8cm}}
                             2a. Nie mo¿na pobraæ i wyœwietliæ ekranu.
                           \end{tabular}    \\ \hline
 Interfejs u¿ytkownika & U¿ytkownik widzi ekran przekazany z serwera i dalsze
-akcje na nim s¹ uzale¿nione od aplikacji serwerowej
+akcje na nim s¹ uzale¿nione od aplikacji serwerowej (PU 4)
 \\
 \hline
 
@@ -82,6 +82,33 @@ Scenariusz alternatywny 2 & \begin{tabular}{p{8cm}}
 Interfejs u¿ytkownika &  U¿ytkownik widzi ekran na którym mo¿e dodawaæ,
                       	  przegl¹daæ i edytowaæ serwery ekranów. U¿ytkownik mo¿e
                       	  zaznaczyæ aktywny serwer ekranów. \\ \hline
+
+\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{ | p{4cm} | p{9cm} | }
+	\hline
+ PU 4 & Dokonanie wyboru na ekranie przes³anym z serwera \\ \hline \hline
+Cel &  Celem jest wybranie jednej z dostêpnych akcji    \\ \hline
+Za³o¿enia & Aplikacja jest uruchomiona i pod³¹czona do serwera ekranów   \\
+\hline Wynik pozytywny & Uda³o siê dokonaæ wyboru spoœród oferowanych opcji 
+\\ \hline 
+Wynik negatywny & Nie uda³o siê wybraæ jednej z oferowanych opcji \\ \hline
+Trigger & U¿ytkownik wybiera z menu jedn¹ z oferowanych opcji \\ \hline 
+Scenariusz podstawowy & \begin{tabular}{p{8cm}}
+                      	  1. U¿ytkownik wybiera jedn¹ z oferowanych opcji \\
+                      	  2. Wybór jest przesy³any do serwera \\
+                      	  3. Serwer przesy³a kolejny ekran (PU 2) 
+                      	 \end{tabular}
+                       \\ \hline
+Scenariusz alternatywny & \begin{tabular}{p{8cm}}
+                            1a. U¿ytkownik nie podejmuje ¿adnej akcji przez
+                            zbyt d³ugi (okreœlony w konfiguracji) 
+                           czas \end{tabular}   \\ \hline
+Interfejs u¿ytkownika &  U¿ytkownik widzi dostêpne opcje i mo¿e wybraæ jedn¹ z
+ nich \\
+\hline
 
 \end{tabular}
 \end{center}
