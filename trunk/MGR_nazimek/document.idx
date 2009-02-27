@@ -1,42 +1,55 @@
 \indexentry{integracja|hyperpage}{2}
+\indexentry{pe\IeC {\l }nowarto\'sciowe \'srodowiska informatyczne|hyperpage}{3}
+\indexentry{systemy mobilne|hyperpage}{4}
 \indexentry{platforma integracyjna|hyperpage}{7}
 \indexentry{\'zr\'od\IeC {\l }o danych|hyperpage}{8}
-\indexentry{Symbian|hyperpage}{11}
+\indexentry{semantyka poj\k e\'c|hyperpage}{9}
+\indexentry{Symbian|hyperpage}{10}
 \indexentry{tr\'ojwarstwowa architektura|hyperpage}{11}
-\indexentry{analiza|hyperpage}{13}
-\indexentry{projektowanie|hyperpage}{13}
-\indexentry{programowanie|hyperpage}{13}
-\indexentry{emulator|hyperpage}{13}
-\indexentry{testowanie|hyperpage}{14}
-\indexentry{Bluetooth|hyperpage}{14}
-\indexentry{Wifi|hyperpage}{14}
-\indexentry{Sie\'c kom\'orkowa|hyperpage}{14}
-\indexentry{SMS|hyperpage}{15}
-\indexentry{Stacja dokuj\k aca|hyperpage}{15}
-\indexentry{koszty|hyperpage}{16}
-\indexentry{bezpiecze\'nstwo|hyperpage}{18}
-\indexentry{off-line|hyperpage}{21}
-\indexentry{pliki|hyperpage}{22}
-\indexentry{baza danych|hyperpage}{22}
-\indexentry{RPC|hyperpage}{23}
-\indexentry{wiadomo\'sci|hyperpage}{23}
-\indexentry{webserwisy|hyperpage}{25}
-\indexentry{wiadomo\'sci|hyperpage}{27}
-\indexentry{JMS|hyperpage}{29}
-\indexentry{Opera Mini|hyperpage}{35}
-\indexentry{Blackberry|hyperpage}{36}
-\indexentry{Opera Mobile|hyperpage}{37}
-\indexentry{Internet Explorer Mobile|hyperpage}{38}
-\indexentry{Safari|hyperpage}{39}
-\indexentry{projektowanie stron|hyperpage}{39}
-\indexentry{Generatory aplikacji|hyperpage}{42}
-\indexentry{Blackberry|hyperpage}{42}
-\indexentry{Netbeans|hyperpage}{44}
-\indexentry{Hibernate|hyperpage}{61}
-\indexentry{Spring|hyperpage}{61}
-\indexentry{JSF|hyperpage}{62}
-\indexentry{webserwisy|hyperpage}{62}
-\indexentry{Apache Axis|hyperpage}{62}
-\indexentry{XSLT|hyperpage}{62}
-\indexentry{Kuix|hyperpage}{64}
-\indexentry{CSS|hyperpage}{67}
+\indexentry{OTA|hyperpage}{12}
+\indexentry{analiza|hyperpage}{14}
+\indexentry{projektowanie|hyperpage}{15}
+\indexentry{programowanie|hyperpage}{15}
+\indexentry{emulator|hyperpage}{15}
+\indexentry{testowanie|hyperpage}{15}
+\indexentry{Bluetooth|hyperpage}{16}
+\indexentry{Wifi|hyperpage}{16}
+\indexentry{Sie\'c kom\'orkowa|hyperpage}{16}
+\indexentry{SMS|hyperpage}{17}
+\indexentry{Stacja dokuj\k aca|hyperpage}{17}
+\indexentry{koszty|hyperpage}{18}
+\indexentry{bezpiecze\'nstwo|hyperpage}{20}
+\indexentry{off-line|hyperpage}{22}
+\indexentry{Blackberry Sync Server|hyperpage}{23}
+\indexentry{pliki|hyperpage}{24}
+\indexentry{baza danych|hyperpage}{24}
+\indexentry{RPC|hyperpage}{25}
+\indexentry{wiadomo\'sci|hyperpage}{25}
+\indexentry{webserwisy|hyperpage}{27}
+\indexentry{wiadomo\'sci|hyperpage}{30}
+\indexentry{JMS|hyperpage}{31}
+\indexentry{przegl\k adarki mobilne|hyperpage}{36}
+\indexentry{przegl\k adarki mobilne!uproszczone|hyperpage}{37}
+\indexentry{Opera Mini|hyperpage}{37}
+\indexentry{Blackberry|hyperpage}{38}
+\indexentry{przegl\k adarki mobilne!pe\IeC {\l }ne|hyperpage}{39}
+\indexentry{Opera Mobile|hyperpage}{39}
+\indexentry{Internet Explorer Mobile|hyperpage}{40}
+\indexentry{Safari|hyperpage}{41}
+\indexentry{projektowanie stron|hyperpage}{41}
+\indexentry{Generatory aplikacji|hyperpage}{44}
+\indexentry{Blackberry|hyperpage}{44}
+\indexentry{Blackberry MDS|hyperpage}{44}
+\indexentry{BES|hyperpage}{45}
+\indexentry{Blackberry Enterprise Server|hyperpage}{45}
+\indexentry{MDS runtime|hyperpage}{45}
+\indexentry{Netbeans|hyperpage}{46}
+\indexentry{J2ME|hyperpage}{50}
+\indexentry{Hibernate|hyperpage}{63}
+\indexentry{Spring|hyperpage}{64}
+\indexentry{JSF|hyperpage}{64}
+\indexentry{webserwisy|hyperpage}{64}
+\indexentry{Apache Axis|hyperpage}{64}
+\indexentry{XSLT|hyperpage}{65}
+\indexentry{Kuix|hyperpage}{67}
+\indexentry{CSS|hyperpage}{69}
