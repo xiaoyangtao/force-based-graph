@@ -59,15 +59,82 @@ przedstawimy dziedziny, w których mo¿emy zaobserwowaæ najwiêksze ró¿nice:
   czy Visual Studio dla Windows Mobile)
   \item Dostêpnoœæ emulatorów. Mo¿liwoœæ ³atwego uruchamiania i testowania
   oprogramowania dla danej platformy mo¿e mieæ ogromny wp³yw na jej rynkowy
-  sukces. Kurde, i co jeszcze?;p
+  sukces. Nale¿y równie¿ zwróciæ uwagê na ró¿nice w budowie aplikacji w obrêbie
+  jednej platformy. Dobrym przyk³adem jest tu ogromna ró¿nica w czasie
+  potrzebnym na testowanie aplikacji zbudowanej w Blackberry MDS oraz zwyk³ej
+  aplikacji Java na Blackberry. Pierwsza z nich mo¿e byæ wczytywana na emulator
+  w czasie pracy urz¹dzenia i nie ma potrzeby jego restartu. Druga wymaga
+  ponownego uruchomienia emulatora, w celu odbudowy powi¹zañ pomiêdzy modu³ami.
+  W rezultacie tego mo¿na stwierdziæ, ¿e testowanie zmian wprowadzonych do
+  drugiej aplikacji polega na ci¹g³ym oczekiwaniu na uruchomienie siê emulatora urz¹dzenia. Przek³ada siê
+  to bezpoœrednio na czas potrzebny na zbudowanie takiej aplikacji.
   \item Wydajnoœæ. Chocia¿ w urz¹dzeniach mobilnych instalowane s¹ coraz
-  mocniejsze podzespo³y, to\ldots
-  \item Sposób instalacji
-  \item Bezpieczeñstwo
-  \item £atwoœæ administracji
-  \item Zgodnoœæ wstecz
-  \item Dostêpnoœæ w zintegrowanej us³udze
-  \item Koszt
+  mocniejsze podzespo³y, to nadal ustêpuj¹ one wydajnoœci komputerom
+  stacjonarnym. Dodatkowo nale¿y pamiêtaæ o tym, ¿e wydajnoœæ samych urz¹d
+ zeñ mobilnych jest bardzo zró¿nicowana, przez co ta sama aplikacja na jednym
+ modelu urz¹dzenia mo¿e dzia³aæ szybko, a na innym, niewiele starszym,
+ bardzo wolno. Dlatego zawsze nale¿y dbaæ o optymalnoœæ wykorzystywanych w
+ aplikacjach rozwi¹zañ.\ldots
+\index{OTA}
+  \item Sposób instalacji. Istniej¹ dwa podstawowe sposoby instalacji aplikacji
+  mobilnych. Pierwszy polega na wykorzystaniu kabla i bezpoœrednim pod³¹czeniu
+  urz¹dzenia do komputera, na którym znajduje siê wersja intalacyjna aplikacji.
+  Niestety to rozwi¹zanie jest bardzo k³opotliwe, a co wiêcej nie istniej¹
+  standardy z nim zwi¹zane. Ka¿dy producent tworzy swoj¹ aplikacjê, a czasami i
+  kabel, przez który obdywa siê instalacja. Drugie rozwi¹zanie jest du¿o
+  bardziej uniwersalne. Polega na instalacji aplikacji przy u¿yciu
+  standardowych protoko³ów internetowych. Nazywane jest OTA (Over-The-Air) i
+  wspieraj¹ je niemal wszystkie platformy. Spotykana jest jeszcze trzecia
+  metoda instalacji aplikacji, na któr¹ warto zwróciæ uwagê jeœli organizacja,
+  do której ma trafiæ aplikacja mobilna jest bardzo du¿a. Rozwi¹zanie to mo¿na
+  znaleŸæ w œrodowisku Blackberry. Polega ono na centralnym zarz¹dzaniu
+  aplikacjami zainstalowanymi na wszystkich urz¹dzeniach. Administrator nie
+  musi instalowaæ aplikacji u ka¿dego u¿ytkownika. Wystarczy, ¿e skopiuje
+  wersjê instalacyjn¹ programu do odpowiedniego katalogu na serwerze i w wyniku
+  automatycznej synchronizacji po paru godzinach na wszystkich urz¹dzeniach w
+  firmie pojawi siê ta aplikacja.
+  \item Bezpieczeñstwo. Rozwa¿aj¹c to zagadnienie nale¿y szczególnie zwróciæ
+  uwagê na rozwi¹zania wspieraj¹ce bezpieczeñstwo oferowane przez twórców
+  urz¹dzeñ. Wielu producentów wraz z urz¹dzeniami sprzedaje równie¿ œrodowsika
+  deweloperskie, które wspieraj¹ przezroczyst¹ obs³ugê bezpieczeñstwa.
+  Pozwalaj¹ na automatyczne szyfrowanie danych oraz zapewniaj¹ pe³ne
+  uwierzytelnianie u¿ytkowników mobilnych. Takie podejœcie pozwala znacznie
+  obni¿yæ koszty produkcji aplikacji mobilnej. Dotyczy to szczególnie œrodowisk,
+  w których jest to kluczowe zagadnienie(na przyk³ad obs³uga transakcji w
+  banku).
+  \item £atwoœæ administracji. Wraz z urz¹dzeniami mobilnymi powinne byæ
+  dostarczane œrodowisko, które pozwala na zautomatyzowanie dzia³añ
+  administracyjnych. Bez wsparcia dla administracji rozwi¹zania mobilne by³yby
+  praktycznie bezu¿yteczne dla bardzo du¿ych przedsiêbiorstw. Ich brak
+  generowa³by ogromne koszty. Pojawi³o by siê te¿ niebezpieczeñstwo utraty
+  kontroli nad prawid³owym wykorzystaniem tych urz¹dzeñ przez pracowników
+  firmy.
+  \item Zgodnoœæ wstecz, która decyduje o koszcie utrzymania rozwi¹zañ
+  opracowanych pod dan¹ platformê. Za przyk³ad mo¿e pos³u¿yæ tu platforma
+  Blackberry. Jej twórcy maj¹ powa¿ne problemy z utrzymaniem pe³nej zgodnoœci
+  wstecz. Czêœciowo wynika to z bardzo szybkiej adaptacji urz¹dzeñ do nowinek
+  technicznych pojawiaj¹cych siê na rynku. W wersji 4.2.1 œrodowiska pojawi³a
+  siê obs³uga nowego sposobu nawigacji przy u¿yciu trackball. Ze wzglêdu na to,
+  ¿e ten nowy sposób nawigacji nie by³ zgodny ze starym, twórcy API musieli
+  wprowadziæ bardzo szeroko id¹ce zmiany w œrodowisku. Niestety wykonane
+  zosta³o to Ÿle, przez co wszelkie aplikacje, które posiada³y
+  zaawansowan¹ obs³ugê nawigacji musia³y byæ przystosowywane do nowych urz¹dzeñ.
+  Dwa lata póŸniej, po wejœciu na rynek rozwi¹zañ opartych na ekranie dotykowym,
+  sytuacja siê powtórzy³a. Pojawi³ siê zupe³nie nowy interfejs oraz zupe³nie
+  nowe API, które wymaga³o przepisywania kodu obs³ugi interfejsu w aplikacjach
+  na nowo. Tak napisany kod nie mia³ prawa kompilowaæ siê w starych
+  œrodowiskach. Producenci byli wiêc zobligowani do utrzymywania wielu wersji
+  tej samej aplikacji.
+  \item Dostêpnoœæ w zintegrowanej us³udze mo¿e równie¿ mieæ wp³yw na wybór
+  danego rozwi¹zania. Jeœli producent urz¹dzeñ mobilnych w pakiecie oferuje
+  pe³ne wsparcie dla dewelopingu aplikacji oraz gwarantuje bezpieczeñstwo
+  danych, to mo¿e okazaæ siê ze warto zainwestowaæ w tak zintegrowany pakiet
+  us³ug, zamiast próbowaæ zaadoptowaæ rozwi¹zania ró¿nych
+  producentów.
+  \item Koszt. Ka¿de z powy¿szych zagadnieñ wp³ywa na koñcow¹ cenê rozwi¹zania
+  mobilnego. Dlatego nale¿y bardzo uwa¿nie dobieraæ urz¹dzenia oraz operatorów,
+  poniewa¿ koszty z nimi zwi¹zane nigdy koñcz¹ siê na zakupie
+  urz¹dzeñ oraz abonamencie.
 \end{itemize}
 
 \subsection{Wysokie koszty}
@@ -111,8 +178,9 @@ bez nich obejœæ. Je¿eli przyjrzymy siê ka¿dej z nich, bêdziemy mogli znaleŸæ pot
 
 \subsection{Kana³y komunikacyjne}
 Mo¿liwoœci po³¹czenia z urz¹dzeniami mobilnymi ró¿ni¹ siê zasadniczo od tych
-oferowanych przez klasyczne systemy. Z oferowanych przez urz¹dzenia znajduj¹ce
-siê na rynku mo¿emy wyró¿niæ:
+oferowanych przez klasyczne systemy. W celu omówienia zastosowañ ró¿nych
+rodzajów po³¹czeñ pos³u¿ymu siê przyk³adow¹ aplikacj¹ CRM.Z oferowanych przez
+urz¹dzenia znajduj¹ce siê na rynku rodzajów po³¹czeñ mo¿emy wyró¿niæ:
 \begin{itemize}
   \item \index{Bluetooth}Bluetooth - protokó³ komunikacyjny pozwalaj¹cy na
   ³atwe ³¹czenie urz¹dzeñ bezprzewodowych. Ma zasiêg od 1 do 100 metrów, w zale¿noœci od
@@ -121,18 +189,27 @@ siê na rynku mo¿emy wyró¿niæ:
   ograniczon¹ mobilnoœæ, mo¿e byæ stosowany jako protokó³ transmisyjny,
   przy za³o¿eniu, ¿e transmisja odbywa siê w ustalonym miejscu dostêpowym. 
   Bluetooth jest obecnie dostêpny w prawie wszystkich oferowanych telefonach
-  komórkowych, smartfonach i PDA.
+  komórkowych, smartfonach i PDA. Tego typu po³¹czenie mo¿e s³u¿yæ do szybkiej
+  i bezp³atnej wymiany œrednich iloœci danych pomiêdzy systemem Enterprise, a
+  przyk³adow¹ aplikacj¹ CRM. U¿ytkownik przed wyjœciem w teren mo¿e pobraæ
+  informacjê o klientach, których ma danego dnia odwiedziæ.
   \item \index{Wifi}Wifi - sieæ bezprzewodowa, zgodna ze standardem
   802.11a/b/g/n . Oferuje o wiele wiêksz¹ przepustowoœæ ni¿ Bluetooth (do
   300Mbps dla 802.11n), pozwalaj¹c na normalny dostêp do sieci komputerowej.
   Niestety, modu³ Wifi nie jest powszechnie dostêpny we wszystkich urz¹dzeniach. Podobnie jak Bluetooth, pozwala na
-  po³¹czenie tylko w zasiêgu punktu dostêpowego.
+  po³¹czenie tylko w zasiêgu punktu dostêpowego. Niestety ze wzglêdu na ma³¹
+  wydajnoœæ (wspomniana wczeœniej maksymalna szybkoœæ znacznie spada wraz ze
+  wzrostem pod³¹czonych urz¹dzeñ) nie jest to rozwi¹zanie spotykane wszêdzie.
+  Jeœli jednak jest mo¿liwe do wykorzystania mo¿e pos³u¿yæ do tych samych celów
+  co po³¹czenie Bluetooth(czyli synchronizacja danych w CRM). 
   \item \index{Sieæ komórkowa}Sieæ komórkowa - dostêpna we wszystkich telefonach
   komórkowych i du¿ej czêœci mobilnych organizerów oraz palmtopów. Pozwala na dostêp z doœæ
   dobr¹ przepustowoœci¹ w obrêbie du¿ych miast (do 7,2Mbps w technologii HSxPA,
   przy teoretycznie oferowanej 14,4Mbps). Ze wzglêdu na najlepsz¹ mobilnoœæ
   jest w³aœciwie jedynym wyborem, gdy chcemy mieæ mo¿liwoœæ
   komunikacji miêdzy urz¹dzeniem mobilnym i sieci¹ firmow¹ w ka¿dym miejscu.
+  Dla omawianej aplikacji CRM ten typ po³¹czenia jest najwa¿niejszy, gdy¿
+  umo¿liwia wysy³anie i odbieranie na bie¿¹co informacji o klientach.
   \item \index{SMS}SMS - choæ umieszczenie wiadomoœci tekstowych
   obok tak zaawansowanych protoko³ów, jak wymienione wczeœniej, mo¿e siê wydawaæ
   ma³o przekonuj¹ce, to musimy zwróciæ uwagê na ich zaletê:
@@ -142,7 +219,10 @@ siê na rynku mo¿emy wyró¿niæ:
   uwzglêdnione przez producentów oprogramowania, dziêki czemu z poziomu API mo¿emy wysy³aæ i
   odbieraæ wiadomoœci tekstowe (na przyk³ad na Windows Mobile), jak i korzystaæ
   z tej technologii w bardziej przezroczysty sposób, wykorzystuj¹c wiadomoœci,
-  o których mowa w nastêpnym rozdziale
+  o których mowa w nastêpnym rozdziale. W przypadku aplikacji CRM mo¿a pos³u¿yæ
+  siê tym kana³em komunikacji, gdy wszystkie inne zawiod¹, a u¿ytkownik musi
+  koniecznie pobraæ dane dotycz¹ce klienta, z którym chce siê natychmiast
+  skontaktowaæ.
   \item \index{Stacja dokuj¹ca}Stacje dokuj¹ce - wiele urz¹dzeñ mobilnych mo¿na
   pod³¹czyæ do komputera za pomoc¹ kabla lub specjalnej stacji dokuj¹cej. Jest to oczywiœcie
   rozwi¹zanie ma³o wygodne. Jednak jego zalet¹ jest najwiêksza spoœród
@@ -153,7 +233,9 @@ siê na rynku mo¿emy wyró¿niæ:
   mo¿e byæ bardzo czasoch³onne. W tej sytuacji dobrym
  rozwi¹zaniem mo¿e byæ pocz¹tkowe ³adowanie danych do urz¹dzenia za pomoc¹ stacji dokuj¹cej
   i uzupe³nianie ich w zale¿noœci od potrzeb np. przez Internet, dostêp do 
- kórego oferuj¹ nam operatorzy sieci komórkowych.
+ kórego oferuj¹ nam operatorzy sieci komórkowych. Tak¿e w przypadku
+ przyk³adowej aplikacji CRM ten kana³ komunikacji spe³nia tak¹ sam¹ rolê jak
+ wspomniany wczeœniej Bluetooth oraz Wifi.
 \end{itemize} 
 
 \indent Problemem, który siê pojawia podczas integrowania urz¹dzeñ mobilnych,
@@ -335,7 +417,28 @@ gdy taka sychronizacja doprowadzi³aby do utraty danych, które zosta³y
 wprowadzone przez ró¿nych u¿ytkowników w tym samym okresie czasu, stosuje siê
 replikacjê z konfliktami. Polega ona na tworzeniu dodatkowych wpisów w bazie
 danych, które informuj¹ o powstaniu konfliktu. Pozwalaj¹ one na dokonanie
-wyboru, które dane chcemy pozostawiæ, a które s¹ zbêdne.
+wyboru, które dane chcemy pozostawiæ, a które s¹ zbêdne.\\
+\indent
+\index{Blackberry Sync Server}
+Za przyk³ad mo¿e pos³u¿yæ próba mobilizacji dowolnej aplikacji stowrzonej w
+œrodowisku Lotus Notes. Œrodowisko to charakteryzuje siê zaawansowanymi
+mechanizami replikacji, do których u¿ytkownicy przyzwyczajeni s¹ od wielu lat.
+W efekcie jednym z pierwszych oczekiwañ jakie zg³osi typowy u¿ytkownik mobilnej
+wersji aplikacji jest dotêp off-line do danych oraz mo¿liwoœæ
+replikacji danych, które uleg³y zmianie. Spe³nienie tego wymagania jest
+zagadnieniem trudnym, poniewa¿ œrodowiska mobilne nie oferuj¹ obecnie
+pe³nego wsparcia dla replikacji danych. W obrêbie ró¿nych platform mobilnych
+istniej¹ rozwi¹zania dedykowane wspieraj¹ce synchronizacjê danych. Przyk³adem
+takiego rozwi¹zania jest Blackberry Sync Server (\cite{bbsync}). Jest to projekt
+wspierany przez firmê Research in Motion(w³aœciciela marki Blackberry). Twórcy
+aplikacji mobilnych mog¹ pos³u¿yæ siê nim do zapewnienia szybkiej i wydajnej
+synchronizacji danych pomiêdzy bazami takimi jak Lotus Notes, a urz¹dzeniami
+firmy Blackberry. Niestety rozwi¹zanie to jest dedykowane wy³¹cznie dla
+urz¹dzeñ RIM (Reseach in Motion) i nie ma mo¿liwoœæ przeniesienia go na inne
+œrodowiska. Oznacza to, ¿e jeœli chcemy wykorzystaæ ten projekt musimy mieæ
+pewnoœæ, ¿e w obrêbie firmy dzia³aj¹ urz¹dzenia tylko jednej firmy. W innym
+wypadku mo¿emy skazaæ siê na ogrome koszty, próbuj¹c stworzyæ podobne
+rozwi¹zanie dzia³aj¹ce pod innymi platformami.
 %  - obecnoœæ wielu platform
 %- wysokie koszty (zwi¹zane z niezbêdnymi umiejêtnoœciami programistów)
 %- du¿o wy¿sza zawodnoœæ urz¹dzeñ i kana³ów komunikacyjnych
