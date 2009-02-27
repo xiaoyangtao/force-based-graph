@@ -1,4 +1,4 @@
-\chapter{Szablon komunikacyjny}
+\chapter{Hybrydowe podejœcie do integracji mobilnej}
 
 Do zademonstrowania mo¿liwoœci komunikacyjnych pomiêdzy systemem stacjonarnym i
 mobilnym stworzyliœmy szablon, u³atwiaj¹cy tworzenie aplikacji, posiadaj¹cych
@@ -6,8 +6,8 @@ mobilny interfejs, z poziomu, z którego mo¿na sterowaæ aplikacj¹ serwerow¹.
 Rozwi¹zanie, które przyjêliœmy jest na tyle ogólne, ¿e umo¿liwia rozwi¹zanie
 kilku podobnych problemów, które przedstawimy dalej.
 \newline
-Ide¹ stoj¹c¹ za stworzeniem szablonu by³o po³¹czenie zalet, zapewnianych przez
-aplikacjê, zbudowan¹ w oparciu o model trójwarstwowy, z tymi typowymi
+Ide¹ stoj¹c¹ za stworzeniem szablonu by³o po³¹czenie zalet zapewnianych przez
+aplikacjê zbudowan¹ w oparciu o model trójwarstwowy, z tymi typowymi
 dla samodzielnej aplikacji. Stworzone rozwi¹zanie stanowi raczej pomys³, który
 mo¿na rozwijaæ i wykorzystywaæ do budowy bardziej skomplikowanych systemów.
 Dlatego te¿ mo¿liwoœci takiego podejœcia nie s¹ ograniczone przez stworzony
@@ -16,7 +16,7 @@ szablon.
 Szablon sk³ada siê z dwóch czêœci - mobilnej i serwerowej.
 U¿ytkownik mo¿e okreœliæ wygl¹d ekranu przesy³anego do urz¹dzenia mobilnego,
 który po stronie mobilnej interpretowany jest do postaci elementów interfejsu
-ciê¿kiego klienta, na przyk³ad pól tekstowych, wyboru czy rozwijanych list. 
+ klienta, na przyk³ad pól tekstowych, wyboru czy rozwijanych list. 
 Rozszerza to mo¿liwoœci aplikacji w stosunku do zwyk³ej strony internetowej o
 elementy niedostêpne w przypadku statycznej strony WWW, jak rysunki
 wektorowe, obs³uga przycisków urz¹dzenia, czy mo¿liwoœæ wyœwietlania strony
@@ -41,7 +41,7 @@ W typowym przypadku scenariusz u¿ycia aplikacji bêdzie wygl¹da³ nastêpuj¹co:
   ekran. U¿ytkownik wykonuje jedn¹ z dostêpnych na nim akcji, a informacja o
   tym jest przesy³ana do serwera. 
   \item Aplikacja mobilna pobiera kolejny ekran przygotowany przez serwer i
-  dalej postêpuje wed³ug powy¿szego schematu. W zwi¹zku z tym, ¿e to w³aœn
- ie serwer jest w ca³oœci odpowiedzialny za przygotowanie ekranu, to pojawia siê
+  dalej postêpuje wed³ug powy¿szego schematu. W zwi¹zku z tym, ¿e to w³aœnie
+  serwer jest w ca³oœci odpowiedzialny za przygotowanie ekranu, to pojawia siê
   mo¿liwoœæ kontrolowania ekranu i jego zachowania po stronie klienta w dowolny sposób.
 \end{itemize}
