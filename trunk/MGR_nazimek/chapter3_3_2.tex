@@ -1,8 +1,8 @@
 
 \subsection{Aplikacja mobilna}
 
-Cech¹, wyró¿niaj¹c¹ podejœcie prezentowane w niniejszej pracy od typowych
-rozwi¹zañ problemu integracji systemów enterprise, jest sposób generowania
+Cech¹ wyró¿niaj¹c¹ podejœcie prezentowane w niniejszej pracy od typowych
+rozwi¹zañ problemu integracji systemów enterprise jest sposób generowania
 interfejsu u¿ytkownika. W typowym podejœciu po stronie aplikacji mobilnej mamy
 do czynienia z raz zdefinowanym przez programistê uk³adem oraz wygl¹dem
 interfejsu graficznego. Wi¹¿e siê to bezpoœredno ze sposobem pisania aplikacji,
@@ -15,7 +15,7 @@ z potrzeby zapewnienia dostarczenia aktualnej wersji aplikacji do wszystkich
 klientów, posiadaj¹cych jej star¹ wersjê. Czêœciowo problem ten rozwi¹zuje
 podejœcie, anga¿uj¹ce cienkiego klienta w postaci mobilnej przegl¹darki
 internetowej. Zapewnia ono centralizacjê aplikacji, przez co wdro¿enie nowych
-wersji staje sie niemal automatyczne. Niestety, rozwi¹zanie tego typu jest
+wersji staje siê niemal automatyczne. Niestety, rozwi¹zanie tego typu jest
 czêsto niewystarczaj¹co elastyczne oraz posiada s³abo rozbudowany interfejs
 u¿ytkownika. 
 W niniejszej pracy wykorzystane zosta³o podejœcie poœrednie, bêd¹ce czymœ
@@ -80,9 +80,10 @@ reprezentuj¹cym dane wraz ze sposobem ich wizualizacji.
 
 \begin{verbatim}
 <screen title="helloworld">
-    <container style="layout:inlinelayout(false,fill); align: center">
-        <text text="Hello World!" />
-        <picture src="logo_community.png" />
+    <container 
+		style="layout:inlinelayout(false,fill); align: center">
+        	<text text="Hello World!" />
+        	<picture src="logo_community.png" />
     </container>
 </screen>
 \end{verbatim}
@@ -98,7 +99,8 @@ Powy¿szy plik xml jest wczytywany na pocz¹tku dzia³ania programu. S³u¿y do tego
 kod widoczny poni¿ej.
 
 \begin{verbatim}
-// Load the content from the XML file with Kuix.loadScreen static method
+// Load the content from the XML 
+// file with Kuix.loadScreen static method
 Screen screen = Kuix.loadScreen("helloworld.xml", null);
 
 // Set the application current screen  
@@ -146,9 +148,12 @@ By za³adowaæ do systemu plik CSS, znajudj¹cy siê w zasobach projektu, nale¿y
 u¿yæ statycznej metody loadCSS klasy Kuix:
 
 \begin{verbatim}
-// Load the stylesheet from the CSS-like file with Kuix.loadCss static method
-//  note: a stylesheet is not associated with a screen but with the midlet
-//  note 2 : by default '/css/' folder is use to find the 'helloworld.css' file
+// Load the stylesheet from the CSS-like file with 
+// Kuix.loadCss static method
+//  note: a stylesheet is not associated with 
+//		  a screen but with the midlet
+//  note 2: by default '/css/' folder is use 
+//			to find the 'helloworld.css' file
 Kuix.loadCss("helloworld.css");
 \end{verbatim}
 
@@ -196,7 +201,7 @@ Menu) widzimy na rysunku \ref{fig:kuix_helloworld2}
 \paragraph{Problemy}
 
 W chwili pisania niniejszej pracy œrodowisko Kuix by³o nowoœci¹ na rynku.
-Najbardziej aktualna wersja 1.01 posiada nadal du¿o wad i b³êdów. Z wykonanych
+Najbardziej aktualna wersja 1.01 zawiera nadal du¿o wad i b³êdów. Z wykonanych
 przez nas testów wynika, ¿e najwiêksze problemy zwi¹zane s¹ z pewnymi
 przek³amaniami graficznymi, które mo¿na spotkaæ na urz¹dzeniach mobilnych firmy
 Nokia. B³êdy te nie utrudnia³y pracy, a jedynie pozostawia³y wra¿enie
@@ -205,18 +210,15 @@ zostan¹ usuniête w nastêpnych wersjach.
 \newline
 Kolejnym powa¿nym problem zwi¹zanym ze szkieletem jest uboga dokumentacja
 techniczna. Dobrze i szczegó³owo wykonana jest jedynie dokumentacja w
-formie javadoc oraz kursy, wprowadzaj¹ce do tematyki. Niestety, na ich podstawie
+formie javadoc oraz kursy wprowadzaj¹ce do tematyki. Niestety, na ich podstawie
 mo¿na opanowaæ jedynie elementarne zasady pos³ugiwania siê œrodowiskiem. Jednak,
 dziêki dostêpnoœci kodu Ÿród³owego (Kuix jest w pe³ni otwarty), mo¿liwe jest
-zapoznanie siê z nieudokumentowanymi funkcjonalnoœciami oraz ewentualne
+zapoznanie siê z nieudokumentowanymi funkcjami oraz ewentualne
 wprowadzenie w³asnych poprawek.
 \newline
 Bardzo uci¹¿liwym problemem jest rozmiar skompilowanych bibliotek œrodowiska
-Kuix. Na chwilê obecn¹ jest to oko³o 250 kilobajtów. Wiele œrodowisk Javy,
-spotykanych na platformach mobilnych, posiada sta³e, nadane przez producenta
-ograniczenie rozmiaru pliku jar, jaki mo¿e za³adowaæ. Najczêœciej ograniczenie
-to oscyluje w okolicach 100-150 kilobajtów, przez co niemo¿liwe jest
-wykorzystanie Kuix na tych platformach. Problem ten dotyczy g³ównie rozwi¹zañ konsumenckich,
-gdy¿ w rozwi¹zaniach mobilnych dla biznesu ograniczenia s¹ du¿o wy¿sze lub
-mo¿liwe jest dzielenie programu na biblioteki(takie rozwi¹zanie mo¿na znaleŸæ na
+Kuix. Na chwilê obecn¹ jest to oko³o 250 kilobajtów. Niestety wiele urz¹dzeñ,
+w które zosta³a wbudowana wirtualna maszyna Java, ogranicza dopuszczalny
+rozmiar plików jar. Najczêœciej ograniczenie to oscyluje w okolicach 100-150 kilobajtów,
+przez co niemo¿liwe jest wykorzystanie Kuix na tych platformach. Problem ten dotyczy g³ównie rozwi¹zañ konsumenckich, gdy¿ w rozwi¹zaniach mobilnych dla biznesu ograniczenia s¹ du¿o wy¿sze lub mo¿liwe jest dzielenie programu na biblioteki(takie rozwi¹zanie mo¿na znaleŸæ na
 platformie Blackberry).

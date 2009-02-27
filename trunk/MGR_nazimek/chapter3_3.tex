@@ -19,13 +19,13 @@ Jak widaæ, urz¹dzenia mobilne bêd¹ siê ³¹czy³y przez Internet do uruchomionego
 serwera aplikacyjnego. Ka¿de z nich wysy³a ¿¹danie pobrania ekranu, który jest
 dynamicznie przygotowywany w zale¿noœci od stanu aplikacji dla danego
 u¿ytkownika. Warto tu zwróciæ uwagê, ¿e szablon jest pomyœlany w³aœciwie
-wy³¹cznie dla urz¹dzeñ mobilnych - stosowane rozwi¹zania, s¹ albo niedostêpne,
+wy³¹cznie dla urz¹dzeñ mobilnych - stosowane rozwi¹zania s¹ albo niedostêpne,
 albo ma³o przydatne w przypadku komputerów stacjonarnych, o czym napiszemy
 w dalszej czêœci pracy. 
 \newline
 Podczas projektowania szablonu pojawi³y siê w¹tpliwoœci co do sposobu
 komunikacji pomiêdzy elementami systemu. Pocz¹tkowa i bardzo przekonuj¹ca
-koncepcja zak³ada³a wykorzystanie JMS - Java Messaging System, specyfikacji,
+koncepcja zak³ada³a wykorzystanie JMS - Java Messaging System specyfikacji
 umo¿liwaj¹cej przesy³anie wiadomoœci w Javie. Przemawia³ za tym szereg
 argumentów:
 \begin{itemize}
@@ -39,7 +39,7 @@ argumentów:
   serializacji i deserializacji danych.
 \end{itemize}
 Jak siê jednak okaza³o, istotne ograniczenia techniczne po stronie urz¹dzeñ
-mobilnych uniemo¿liwi³y skorzystanie z JMS. Jest to technologia, wymagaj¹ca
+mobilnych uniemo¿liwi³y skorzystanie z JMS. Jest to technologia wymagaj¹ca
 znacznych zasobów, niedostêpnych w specyfikacji Java Micro Edition - platformy,
 na której stworzyliœmy nasz szablon. Nie daje ona mo¿liwoœci bezpoœredniego
 pod³¹czenia do kana³u komunikacyjnego, co wymusza korzystanie z zewnêtrznych

@@ -17,10 +17,11 @@ nowych aplikacji.
 
 \index{Blackberry}
 \subsubsection{Generator dedykowany - Blackberry MDS}
+\index{Blackberry MDS}
 Blackberry MDS jest przyk³adem narzêdzia wyspecjalizowanego do tworzenia
 aplikacji tylko i wy³¹cznie na platformê jednego producenta. Rozwi¹zanie to
 opiera siê na integracji ma³ej aplikacji zainstalowanej na urz¹dzeniach
-klienckich (MDS Runtime) z us³ug¹ typu Web Service, dzia³aj¹c¹ na serwerze. 
+klienckich (MDS Runtime) z us³ug¹ typu Web Service dzia³aj¹c¹ na serwerze. 
 Dziêki niemu mo¿liwe jest tworzenie aplikacji, u¿ywaj¹c podejœcia opisowego.
 Zamiast pisaæ ca³¹ aplikacjê, u¿ywaj¹c jêzyka programowania wraz z
 bibliotekami, oferuj¹cymi interfejs u¿ytkownika, mo¿emy przy u¿yciu graficznego
@@ -40,6 +41,8 @@ aplikacji mobilnej poprzez standardow¹ technologiê Web Services.
     \label{fig:mds1}
 \end{figure} 
 
+\index{BES}
+\index{Blackberry Enterprise Server}
 
 Aplikacja MDS dla Blackberry jest to aplikacja typu rich-client, zbudowana na
 podstawie metadanych zdefiniowanych w jêzyku XML. Te metadane wraz z zasobami,
@@ -71,23 +74,24 @@ technologii push}
 \end{itemize}
 
 \paragraph{Blackberry MDS runtime}
+\index{MDS runtime}
 Po stronie urz¹dzenia mobilnego zainstalowany jest kontener aplikacji MDS.
 Zajmuje siê on instalacj¹, wyszukiwaniem oraz przegl¹daniem aplikacji MDS.
 Dostarcza równie¿ niezbêdne funkcjonalnoœci do tych aplikacji, takie jak
-interfejs u¿ytkownika, kontener danych oraz us³ugi komunikacyjne klient-server.
+interfejs u¿ytkownika, kontener danych oraz us³ugi komunikacyjne klient-serwer.
 \index{Netbeans}
 \subsubsection{Generator uniwersalny - Netbeans Mobile IDE}
 
 Drugim przyk³adem generatora aplikacji mobilnych jest Netbeans Mobility Pack
 oraz zwi¹zane z nim œrodowisko programistyczne Netbeans. W przeciwieñstwie do
 poprzedniego przyk³adu, to œrodowisko pozwala budowaæ uniwersalne aplikacje,
-które dzia³aj¹ na niemal¿e dowolnej platformie mobilnej, wspieraj¹cej J2ME.
+które dzia³aj¹ na niemal¿e dowolnej platformie mobilnej wspieraj¹cej J2ME.
 Rozpoczynaj¹c tworzenie aplikacji, natychmiast natykamy siê na udogodnienia
 przygotowane przez twórców Netbeans. Zamiast pisaæ setki linijek kodu Java,
 mo¿emy u¿yæ specjalnych narzêdzi generuj¹cych go dla nas. Do konfigurowania
 preferowanego przez nas zachowania aplikacji s³u¿¹ interaktywne diagramy
 przep³ywu sterowania pomiêdzy ekranami aplikacji oraz graficzne edytory
-interfejsu u¿ytkownika, pozwalaj¹ce na budowanie, z gotowych komponentów,
+interfejsu u¿ytkownika, pozwalaj¹ce na budowanie z gotowych komponentów
 ekranów naszej mobilnej aplikacji. Poni¿ej przedstawiony jest przyk³ad diagramu
 przep³ywu sterowania aplikacji typu Hello World.
 
@@ -105,9 +109,9 @@ Przyk³adowy diagram przep³ywu sk³ada siê z dwóch elementów - bloku,
 reprezentuj¹cego stan wyjœciowy aplikacji mobilnej (a jednoczeœnie stan koñcowy)
 oraz bloku, reprezentuj¹cego g³ówny i jedyny ekran. Elementy te po³¹czone s¹
 dwiema strza³kami, które przedstawiaj¹ przep³yw seterowania. Strza³ka skierowna w
-stronê formy ma swój pocz¹tek w zdarzeniu Started. Jest to zdarzenie, wywo³ywane
+stronê formy ma swój pocz¹tek w zdarzeniu Started. Jest to zdarzenie wywo³ywane
 w momencie uruchomienia aplikacji. Dziêki takiej konfiguracji, natychmiast po
-inicjalizacji, aplikacja przechodzi do ekranu g³ównego. Strza³ka w drug¹ stronê,
+inicjalizacji aplikacja przechodzi do ekranu g³ównego. Strza³ka w drug¹ stronê
 podpiêta jest do komendy exitCommand. Wyzwala ona zamkniêcie aplikacji (jej
 drugi koniec wskazuje blok wyjœciowy).
 Ekran g³ówny zosta³ zaprojektowany tak, by wyœwietliæ napis oraz komendê,

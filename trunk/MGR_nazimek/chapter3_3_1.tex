@@ -30,20 +30,20 @@ podwójnym dostêpem (widokiem) do danych.
     \label{fig:pool_arch2}
 \end{figure}
 
-Przedstawmy teraz poszczególne warstwy systemu, wraz z przyjêtymi w nich
+Przedstawmy teraz poszczególne warstwy systemu wraz z przyjêtymi w nich
 za³o¿eniami.
 
 \paragraph{Serwer}
 Aplikacja serwerowa jest uruchamiana na kontenerze Apache Tomcat 6.0.
 
 \paragraph{Baza danych}
-W oparciu o przedstawione wczeœniej za³o¿enia stworzony zosta³ prosty schemat
+W oparciu o przedstawione wczeœniej za³o¿enia stworzony zosta³ schemat
 bazy danych widoczny na rysunku \ref{fig:pool_db}.
 
 
 \begin{figure}[htb]
     \begin{center}
-    \includegraphics[angle=0,scale=0.7]{img/pool_schema_o.png}
+    \includegraphics[angle=0,scale=0.8]{img/pool_schema_o.png}
     \end{center}
     \caption{Schemat koncepcyjny bazy danych czêœci serwerowej szablonu
     integracyjnego}
@@ -60,10 +60,13 @@ bazy danych widoczny na rysunku \ref{fig:pool_db}.
 \end{figure}
 
 
-Choæ wydaje siê, ¿e ogranicza to dzia³anie systemu do mo¿liwoœci wyboru
-odpowiedzi z dostêpnej listy, to jednak schemat bez problemu mo¿na rozbudowaæ o
-dodatkowe pola, które pozwol¹ na podawanie wolnych (nieograniczonych dostêpn¹
-list¹ wyboru) odpowiedzi.
+Schemat koncepcyjny(rysunek \ref{fig:pool_db}) jest tylko przyk³adem, który ma
+byæ podstaw¹ do prezentacji mo¿liwoœci szkieltu Kuix. Konstrukcja tego schematu mo¿e byæ
+dowolna. Kluczowym zagadnieniem jest transformacja danych zawartych w systemie
+na XML, który reprezentuje interfejs widoczny na urz¹dzeniu. Kuix jest na
+tyle elastyczny, ¿e mo¿liwe jest pod³¹czenie do niego dowolnego Ÿród³a danych,
+które mo¿e generowaæ XML (w szczególnoœci nie musi to byæ baza relacyjna -
+mo¿na na przyk³ad pod³¹czyæ bazê obiektow¹ Lotus Notes).
 \newline
 Na postawie schematu koncepcyjnego stworzony zosta³ schemat fizyczny bazy
 danych widoczny na rysunku \ref{fig:pool_db2}.
@@ -79,8 +82,8 @@ pisania zapytañ SQL.
 
 \index{Spring}
 \paragraph{Spring Framework}
-Spring jest zestawem narzêdzi, u³atwiaj¹cym tworzenie aplikacji. Pozwala on,
-miêdzy innymi, na deklaratywne zarz¹dzanie transakcjami, zarz¹dzanie
+Spring jest zestawem narzêdzi u³atwiaj¹cym tworzenie aplikacji. Pozwala on
+miêdzy innymi na deklaratywne zarz¹dzanie transakcjami, zarz¹dzanie
 cyklem ¿ycia obiektów oraz zwalnia programistê z koniecznoœci pisania
  czêsto powtarzanego kodu przez dostarczenie odpowiednich szablonów. Dodatkowo,
  wymusza on pewien model programowania i sprawia, ¿e pisane aplikacje s¹
@@ -108,7 +111,7 @@ Javowych.
 Elementem wspomagaj¹cym w systemie jest transformata XSLT, wykonywana na
 odpowiedziach, przesy³anych do urz¹dzenia mobilnego. Jej celem jest utworzenie
 widoku dla urz¹dzenia mobilnego w sposób niezale¿ny od generowanej odpowiedzi.
-W wyniku wywo³ania procedury generuj¹cej ekran, tworzony jest XML, zawieraj¹cy
+W wyniku wywo³ania procedury generuj¹cej ekran tworzony jest XML zawieraj¹cy
 podstawowe informacje, a nastêpnie przetwarzany jest on w opisany sposób,
 dziêki czemu odpowiedŸ mo¿na dowolnie modyfikowaæ bez zmiany kodu aplikacji.
 
