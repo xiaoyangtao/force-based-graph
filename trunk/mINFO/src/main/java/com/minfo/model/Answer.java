@@ -48,16 +48,6 @@ public class Answer implements Serializable {
 	}
 	
 	
-	public String toString() {
-		StringBuffer sb = new StringBuffer();
-		sb.append("\nAnswer[");
-		sb.append("id="+id+";");
-		sb.append("answer="+answer);
-		sb.append("]");
-		return sb.toString();
-		
-	}
-
 	public Pool getPool() {
 		return pool;
 	}
@@ -72,6 +62,27 @@ public class Answer implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	/**
+	 * Constructs a <code>String</code> with all attributes
+	 * in name = value format.
+	 *
+	 * @return a <code>String</code> representation 
+	 * of this object.
+	 */
+	public String toString()
+	{
+	    final String TAB = "    ";
+	    
+	    String retValue = "";
+	    
+	    retValue = "Answer ( "
+	        + "id = " + this.id + TAB
+	        + "answer = " + this.answer + TAB
+	        + " )";
+	
+	    return retValue;
 	}
 	
 }

@@ -63,16 +63,6 @@ public class Pool implements Serializable {
 
 	}
 
-	public String toString() {
-		StringBuffer sb = new StringBuffer();
-		sb.append("\nPool[");
-		sb.append("id=" + id + ";");
-		sb.append("question=" + question + ";");
-		sb.append("Answers:" + answers + "]");
-		return sb.toString();
-
-	}
-
 	public List<Answer> getAnswers() {
 		return answers;
 	}
@@ -99,6 +89,28 @@ public class Pool implements Serializable {
 	
 	public String getQuestionShort() {
 		return question.substring(0, 30)+"...";
+	}
+
+	/**
+	 * Constructs a <code>String</code> with all attributes
+	 * in name = value format.
+	 *
+	 * @return a <code>String</code> representation 
+	 * of this object.
+	 */
+	public String toString()
+	{
+	    final String TAB = "    ";
+	    
+	    String retValue = "";
+	    
+	    retValue = "Pool ( "
+	        + "id = " + this.id + TAB
+	        + "question = " + this.question + TAB
+	        + "tags = " + this.tags + TAB
+	        + " )";
+	
+	    return retValue;
 	}
 
 

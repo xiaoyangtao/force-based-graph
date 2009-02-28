@@ -74,14 +74,32 @@ public class User implements Serializable {
 	}
 	
 	
-	public String toString() {
-		return "[User:id="+id+";username="+username+";password="+password+"]";
-	}
 	public List<Pool> getUserDisplayedPools() {
 		return userDisplayedPools;
 	}
 	public void setUserDisplayedPools(List<Pool> userDisplayedPools) {
 		this.userDisplayedPools = userDisplayedPools;
+	}
+	/**
+	 * Constructs a <code>String</code> with all attributes
+	 * in name = value format.
+	 *
+	 * @return a <code>String</code> representation 
+	 * of this object.
+	 */
+	public String toString()
+	{
+	    final String TAB = "    ";
+	    
+	    String retValue = "";
+	    
+	    retValue = "User ( "
+	        + "id = " + this.id + TAB
+	        + "username = " + this.username + TAB
+	        + "password = " + this.password + TAB
+	        + " )";
+	
+	    return retValue;
 	}
 	
 	
