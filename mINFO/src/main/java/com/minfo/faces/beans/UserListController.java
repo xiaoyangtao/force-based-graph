@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 
+import com.minfo.cewolf.beans.UserPrefsDatasetProducer;
 import com.minfo.cewolf.beans.UserStatsDatasetProducer;
 import com.minfo.common.StringUtil;
 import com.minfo.mgr.UserManager;
@@ -21,6 +22,7 @@ public class UserListController {
     UserManager userManager;
     User currentUser;
     UserStatsDatasetProducer userStatsDatasetProducer;
+    UserPrefsDatasetProducer userPrefsDatasetProducer;
     /**
      * default empty constructor
      */
@@ -86,6 +88,10 @@ public class UserListController {
 		((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().
 				getRequest()).getSession().setAttribute( "pageViews", getUserStatsDatasetProducer() );
 		
+		((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().
+				getRequest()).getSession().setAttribute( "pieChart", getUserPrefsDatasetProducer() );
+		
+		
 		return "displayInfo";
 	}
 	
@@ -100,6 +106,15 @@ public class UserListController {
 		userStatsDatasetProducer.setUserStatsMap(userManager.getUserStatsMap(currentUser.getId()));
 		
 		return userStatsDatasetProducer;
+	}
+	
+	public UserPrefsDatasetProducer getUserPrefsDatasetProducer() {
+		if(userPrefsDatasetProducer==null) {
+			userPrefsDatasetProducer = new UserPrefsDatasetProducer();
+		}
+		userPrefsDatasetProducer.setUserPrefs(userManager.getUserPrefs(currentUser.getId()));
+		
+		return userPrefsDatasetProducer;
 	}
 	
     public String editUser() {

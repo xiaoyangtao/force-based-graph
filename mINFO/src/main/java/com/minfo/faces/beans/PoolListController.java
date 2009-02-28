@@ -138,6 +138,7 @@ public class PoolListController {
 	}
 
 	public Pool getCurrentPool() {
+		log.debug("enter getCurrentPool");
 		return currentPool;
 	}
 
