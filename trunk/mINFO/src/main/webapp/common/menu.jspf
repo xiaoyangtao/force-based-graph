@@ -17,7 +17,7 @@
 		<div class="menulines"></div>
 		<a class="<%=activeMap.get("listTags") %>" href="/mINFO/tag/listTags.faces"><span><fmt:message key="tags"/></span></a>
 		<div class="menulines"></div>
-		<a href="#"><span></span></a>
+		<a class="<%=activeMap.get("test") %>" href="/mINFO/test/test.faces"><span>.</span></a>
 		<div class="menulines"></div>
 	</div>
 	
