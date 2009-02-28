@@ -62,7 +62,11 @@ public class UserHibernateDAO extends HibernateDaoSupport implements UserDAO {
 	}
 
 	public void setPrefs(List<UserPrefs> prefs) {
-		getHibernateTemplate().saveOrUpdateAll(prefs);
+		for(UserPrefs p:prefs) {
+			log.debug("saving:"+p);
+			getHibernateTemplate().merge(p);
+		}
+		
 	}
 
 }
