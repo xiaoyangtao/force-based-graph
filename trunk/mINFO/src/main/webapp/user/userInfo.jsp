@@ -49,29 +49,34 @@
 		<div id="sidebar">
 
 
-		<div class="sidebarheader"><%--h:dataTable var="item"
-			value="#{user.userStats}">
-			<h:column>
-				<h:outputText value="#{item.tag}" />
-			</h:column>
-			<h:column>
-				<h:outputText value="#{item.answer}" />
-			</h:column>
-			<h:column>
-				<h:outputText value="#{item.percent}" />
-			</h:column>
-		</h:dataTable--%> <%--jsp:useBean id="pageViews" 
-			class="com.minfo.cewolf.beans.UserStatsDatasetProducer" /--%> <cewolf:chart
-			background="WEB-INF/img/white.png" id="line"
+		<div class="sidebarheader">
+		
+		<cewolf:chart
+			background="WEB-INF/img/white.png" id="userstats"
 			title="Preferencje użytkownika" type="horizontalbar3d"
 			xaxislabel="kategorie" yaxislabel="głosy">
+			
 			<cewolf:data>
 				<cewolf:producer id="pageViews" />
 			</cewolf:data>
-			<cewolf:chartpostprocessor id="pageViews"/>
+			<cewolf:chartpostprocessor id="pageViews" />
+
+		</cewolf:chart> <cewolf:img chartid="userstats" renderer="/cewolf" width="270"
+			height="400" style="background-color:white" /> 
 			
-		</cewolf:chart> <cewolf:img chartid="line" renderer="/cewolf" width="270"
-			height="400" style="background-color:white" /></div>
+		<Br><br>
+		<cewolf:chart background="WEB-INF/img/white.png" 
+			id="pieChart" title="Struktura informacji" type="pie">
+			<cewolf:data>
+				<cewolf:producer id="pieChart" />
+			</cewolf:data>
+		</cewolf:chart> 
+		
+		<cewolf:img chartid="pieChart" renderer="/cewolf" width="270"
+			height="300">
+		</cewolf:img>
+		
+		</div>
 		</div>
 
 		</div>
