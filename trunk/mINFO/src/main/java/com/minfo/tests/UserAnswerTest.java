@@ -1,5 +1,6 @@
 package com.minfo.tests;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -11,11 +12,14 @@ import org.springframework.orm.hibernate3.SessionFactoryUtils;
 import org.springframework.orm.hibernate3.SessionHolder;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
+import com.minfo.dao.TagDAO;
 import com.minfo.mgr.PoolManager;
 import com.minfo.mgr.UserManager;
 import com.minfo.model.Answer;
 import com.minfo.model.Pool;
+import com.minfo.model.Tag;
 import com.minfo.model.User;
+import com.minfo.model.UserPrefs;
 
 public class UserAnswerTest {
 
@@ -40,6 +44,7 @@ public class UserAnswerTest {
 			
 			PoolManager poolManager = (PoolManager)ctx.getBean("poolManager");
 			UserManager userManager = (UserManager)ctx.getBean("userManager");
+			TagDAO tagDAO = (TagDAO)ctx.getBean("tagDAO");
 			
 		//	System.out.println(" ======= POOLS ========");
 		//	List<Pool> pools = poolManager.getPool();
@@ -50,11 +55,7 @@ public class UserAnswerTest {
 	//		System.out.println(" ======= USERS ========");
 //			List<User> users = userManager.getUser();
 //			System.out.println(users);
-			
-			User user = userManager.getUser(new Long(14));
-		//	System.out.println(user);
-			userManager.updatePrefs(user);
-			
+		
 			
 			//System.out.println("Answers:"+user.getUserAnswers());
 		//	userManager.updateUser(user);
