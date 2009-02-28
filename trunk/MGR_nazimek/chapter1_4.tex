@@ -5,7 +5,7 @@ informatycznych i ka¿dy z nich odpowiada jakiemuœ etapowi rozwoju (np.
 istnienie plików jako podstawowych struktur przechowuj¹cych dane na d³ugo przed
 pojawieniem siê baz danych). Mimo to, ka¿dy z nich ci¹gle znajduje swoje
 zastosowanie, gdy okazuje siê, ¿e nie wszystkie mechanizmy s¹ jednakowo
-dostêpne, lub, gdy bardziej skomplikowane technologie wprowadzaj¹ zbyt du¿y
+dostêpne lub, gdy bardziej skomplikowane technologie wprowadzaj¹ zbyt du¿y
 narzut. Autorzy \cite{Entpatterns} wyró¿niaj¹ nastêpuj¹ce podejœcia do
 integracji:
 
@@ -22,11 +22,11 @@ docelowa bêdzie go mog³a ewentualnie odrzuciæ.
 \index{baza danych}  
 \paragraph{Wspólna baza danych}- dwie aplikacje dzia³aj¹ na jednej bazie
 danych. W momencie, gdy obie korzystaj¹ z tych samych danych, to nie ma potrzeby
-ich duplikacji. Dodatkowo, przez ograniczenia wymuszone przez bazê, musimy
+ich duplikacji. Dodatkowo, przez ograniczenia wymuszone przez bazê musimy
 je zapisywaæ w œciœle okreœlonym formacie, przestrzegaj¹c typów i wiêzów
 integralnoœci. Niestety, trudno jest tak¹ bazê zaprojektowaæ. Gdybyœmy
 nawet stworzyli dwie takie aplikacje, które wspó³pracuj¹ z jedn¹ baz¹ danych,
-to w wypadku, gdybyœmy chcieli do³¹czyæ kolejn¹, wspó³pracuj¹c¹ aplikacjê,
+to w wypadku, gdybyœmy chcieli do³¹czyæ kolejn¹ wspó³pracuj¹c¹ aplikacjê,
 mog³oby siê to wi¹zaæ z koniecznoœci¹ przemodelowania bazy danych. Dodatkowo,
 zmiana danych w bazie nie zawsze wystarczy. Mo¿emy sobie wyobraziæ sytuacjê,
 w której zmiana wysokoœci pensji niesie za sob¹ koniecznoœæ wykonania
@@ -69,7 +69,7 @@ celu nale¿y rozwa¿yæ nastêpuj¹ce zagadnienia:
   wybór metody integracji wp³ywa na ich spe³nienie?
 \end{itemize} 
 
-Rozwa¿aj¹c te kwestie mo¿emy stwierdziæ, ¿e u¿ytkownik, szczególnie gdy jest
+Rozwa¿aj¹c te kwestie, mo¿emy stwierdziæ, ¿e u¿ytkownik, szczególnie gdy jest
 przyzwyczajony do pracy w klasycznym œrodowisku informatycznym, oczekuje, ¿e
 komunikacja bêdzie siê odbywa³a jak najszybciej, bez uci¹¿liwych okresów
 oczekiwania. Dodatkowo, oczywistymi wymaganiami s¹ bezpieczeñstwo i niezawodnoœæ komunikacji.
@@ -83,20 +83,20 @@ w przypadku ³¹cznoœci bezprzewodowej, utrata po³¹czenia jest czymœ, czego mo¿emy
 siê spodziewaæ.\\
 \indent
 Zacznijmy od ograniczenia wyboru do technologii, z których mo¿emy skorzystaæ w
-œrodowisku mobilnym. Na samym pocz¹tku musimy wyeliminowaæ transfer plików,
+œrodowisku mobilnym. Na samym pocz¹tku musimy wyeliminowaæ transfer plików
 jako metodê, która wymaga spe³nienia jednego z warunków: dostêp do wspólnego
 systemu plików lub obs³uga prostego protoko³u przesy³ania plików (np. FTP).
 Pierwsza mo¿liwoœæ jest trudna do zagwarantowania ze wzglêdu na brak
 wsparcia powszechnie stosowanych systemów plików we wszystkich urz¹dzeniach
 mobilnych (chocia¿ s¹ wyj¹tki, np. FAT), a tak¿e mo¿liwe przerwy w komunikacji,
 o których wspominaliœmy wczeœniej. Drugie rozwi¹zanie - obs³uga uniwersalnego
-protoko³u przesy³ania plików, nie jest powszechnie wspierana, poza tym, tak¿e tu
-pojawia siê problem zawodnej komunikacji. \\
+protoko³u przesy³ania plików - nie jest powszechnie wspierana. Poza tym, tak¿e
+tu pojawia siê problem zawodnej komunikacji. \\
 \indent
 Wspólna baza danych równie¿ jest rozwi¹zaniem, którego nie mo¿emy wzi¹æ
 pod uwagê. G³ówn¹ przeszkod¹ jest brak uniwersalnego sposobu pod³¹czenia do
-bazy, dzia³aj¹cej w klasycznym systemie. Du¿e ograniczenia platformy mobilnej nie
-pozwalaj¹ na uruchomienie sterowników do baz danych, przeznaczonych dla
+bazy dzia³aj¹cej w klasycznym systemie. Du¿e ograniczenia platformy mobilnej nie
+pozwalaj¹ na uruchomienie sterowników do baz danych przeznaczonych dla
 klasycznych systemów. Dodatkowo, ich rozmiar nierzadko przekracza rozmiar
 mobilnych aplikacji. Jednak¿e, nawet gdyby uda³o siê stworzyæ sterowniki,
 które pozwoli³yby na dostêp do bazy danych z poziomu urz¹dzenia mobilnego, ponownie
@@ -115,7 +115,7 @@ akceptacj¹ jako standardu komunikacji odrêbnych systemów. Ich wyj¹tkowa si³a
 le¿y w zastosowaniu kilku powszechnych technologii internetowych, takich jak
 protokó³ HTTP czy jêzyk XML. Daje to nam gwarancjê, ¿e nie ma znaczenia, w
 jakiej technologii i w jakim systemie pracuje dana aplikacja komunikuj¹ca siê
-za pomoc¹ Web Services. Trzy fundamentalne elementy, wchodz¹ce w sk³ad tej
+za pomoc¹ Web Services. Trzy fundamentalne elementy, które wchodz¹ w sk³ad tej
 techlogii mo¿na zobaczyæ na poni¿szym rysunku.
 
 \begin{figure}[htb]
@@ -142,7 +142,7 @@ pojemnoœciowy, zwi¹zany z budow¹ samych wiadomoœci. W innych metodach treœæ
 wiadomoœci przesy³ana jest w zoptymalizownej postaci kodu binarnego i nie
 posiada zwykle ¿adnych metadanych (co zwykle prowadzi do problemów z komunikacj¹
 pomiêdzy ró¿nymi platformami). W przypadku Web Services, wiadomoœci przesy³ane
-s¹ w kopercie, zbudowanej na bazie XML, która zawiera du¿o nadmiernych
+s¹ w kopercie zbudowanej na bazie XML, która zawiera du¿o nadmiernych
 informacji. Powoduje to, ¿e przy przesy³aniu wiadomœci ³¹cze dodatkowo zostaje
 obci¹¿one tymi nadmiarowymi danymi. Co wiêcej, po stronie odbiorcy nale¿y
 przeprowadziæ rozbiór gramatyczny otrzymanego komunikatu. Zwiêksza to
@@ -150,7 +150,7 @@ zapotrzebowanie na moc obliczeniow¹. Mo¿e to mieæ kluczowe znaczenie w
 przypadku urz¹dzeñ mobilnych, które czêsto dysponuj¹ bardzo ograniczonymi
 zasobami mocy obliczeniowej oraz przepustowoœci. Szczególnym przypadkiem s¹
 u¿ytkownicy, którzy posiadaj¹ niezrycza³towany dostêp do sieci i p³ac¹ ró¿ne
-stawki w zale¿noœci od iloœci przes³anych danych. W tym wypadku narzut
+stawki, w zale¿noœci od iloœci przes³anych danych. W tym wypadku narzut
 pojemnoœciowy Web Services mo¿na w sposób bezpoœredni przeliczyæ na koszty,
 jakie generuje on dla ca³ej organizacji.
 \newline
@@ -188,13 +188,13 @@ jest doœæ prosta do zaimplementowania, stawia jednak przed programist¹ szereg
 problemów,
 które musi on samodzielnie rozwi¹zaæ. Jest to przede wszystkim brak gwarancji
 dostarczenia komunikatu. Dodatkowo, samodzielnie nale¿y obs³u¿yæ b³êdy
-transmisji, mo¿liwe przerwy i koniecznoœæ ponownego nawi¹zania po³¹czenia. nie
+transmisji, mo¿liwe przerwy i koniecznoœæ ponownego nawi¹zania po³¹czenia. Nie
 implikuje to potrzeby uruchamiania brokera wiadomoœci, który jest dodatkowym
-elementem, zwiêkszaj¹cym skomplikowanie systemu. Jednak w sytuacji gdy w
-przedsiêbiorstwie dzia³a ju¿ broker, obs³uguj¹cy kilka aplikacji, do³¹czenie
+elementem zwiêkszaj¹cym skomplikowanie systemu. Jednak w sytuacji, gdy w
+przedsiêbiorstwie dzia³a ju¿ broker obs³uguj¹cy kilka aplikacji, do³¹czenie
 komponentu mobilnego mo¿e byæ dobrym rozwi¹zaniem. Zastosowanie wiadomoœci do 
 integracji urz¹dzeñ mobilnych niesie ze sob¹ wszelkie konsekwencje tej metody 
-integracji znane z integracji klasycznych systemów informatycznych:
+integracji, znane z integracji klasycznych systemów informatycznych:
 
 \begin{itemize}
   \item Oddzielenie nadawcy wiadomoœci od jej odbiorcy. Pozwala to na wysy³anie
@@ -202,7 +202,7 @@ integracji znane z integracji klasycznych systemów informatycznych:
   (na przyk³ad ze wzglêdu na brak po³¹czenia).
   \item Gwarancja dostarczenia. Z jednej strony, umieszczenie wiadomoœci w
   kanale komunikacyjnym gwarantuje, ¿e odbiorca odbierze j¹ wtedy, gdy bêdzie pobiera³ przeznaczone
-  dla niego wiadomoœci. Z drugiej strony, w przypadku niepowodzenia, jest o
+  dla niego wiadomoœci. Z drugiej strony, w przypadku niepowodzenia jest o
   tym fakcie od razu informowany.
   \item Skalowalnoœæ. Wiadomoœci pozwalaj¹ na lepsze wykorzystanie
   zasobów serwerów. Aplikacje bêd¹ce odbiorcami wiadomoœci mog¹ je odbieraæ w
@@ -220,7 +220,7 @@ integracji znane z integracji klasycznych systemów informatycznych:
   przesy³anych wiadomoœci. Pod³¹czenie do kana³u publish-subscribe pozwala na
   ³atwe wysy³anie wiadomoœci do wielu odbiorców.
 \end{itemize}
-Nie jest to, oczywiœcie, technologia pozbawiona wad. To, co musimy wzi¹æ pod
+Nie jest to technologia pozbawiona wad. To, co musimy wzi¹æ pod
 uwagê, to istnienie wspomnianego ju¿ brokera wiadomoœci. Dodatkowo,
 wszystkie wspomniane wczeœniej mo¿liwoœci maj¹ swój koszt, jakim jest wiêkszy rozmiar
 aplikacji mobilnej, wynikaj¹cy z koniecznoœci skorzystania z dodatkowych
@@ -229,10 +229,10 @@ Zwiêksza on jednak rozmiary aplikacji mobilnej w stopniu, który mo¿e nie
 pozwoliæ na jej uruchomienie na prostszych urz¹dzeniach.\\
 \indent
 \index{JMS}
-W przeciwieñstwie do Web serwisów, nie wykszta³ci³ siê jeden, uniwersalny
+W przeciwieñstwie do Web serwisów, nie wykszta³ci³ siê jeden uniwersalny
 standard przesy³ania wiadomoœci. W ramach platformy J2ME naturalnym
-rozwi¹zaniem jest JMS, pochodz¹cy z Javy Enterprise. Jednak inne platformy, jak
-Windows Mobile, maj¹ swoje w³asne rozwi¹zania. Warto zwróciæ uwagê na
+rozwi¹zaniem jest JMS, który pochodzi z Javy Enterprise. Jednak inne
+platformy, jak Windows Mobile, maj¹ swoje w³asne rozwi¹zania. Warto zwróciæ uwagê na
 fakt, ¿e stosowanie wiadomoœci umo¿liwia zmianê najni¿szej warstwy
 komunikacyjnej pomiêdzy urz¹dzeniami. O ile w przypadku Web serwisów oczywistym
 wyborem jest po³¹czenie z internetem, o tyle wiadomoœci mog¹ byæ przesy³ane
@@ -278,7 +278,7 @@ pracy, zdecydowaliœmy siê na wykorzystanie Web serwisów z kilku powodów:
  poznanie problemów, z którymi nale¿y siê liczyæ, integruj¹c aplikacjê
  mobiln¹.
   \item Wykorzystanie powszechnie dostêpnego pakietu kJORAM (bezp³atnej
-  implementacji JMS, dostêpnej tak¿e dla urz¹dzeñ mobilnych) oznacza³o, tak
+  implementacji JMS, dostêpnej tak¿e dla urz¹dzeñ mobilnych) oznacza³o tak
   naprawdê wykorzystanie Web serwisów, które zosta³y odpowiednio obudowane
   przez twórców szablonu.
   \item Tworzony przez nas szablon komunikacyjny musia³ dzia³aæ z jak
