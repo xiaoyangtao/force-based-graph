@@ -48,7 +48,7 @@ public class PoolHibernateDAO extends HibernateDaoSupport implements PoolDAO {
 	public List<Pool> getPool() {
 		log.debug("enter getPool");
 		List<Pool> poolList = getHibernateTemplate().find("from Pool");
-		log.debug("poolList = "+poolList);
+//		log.debug("poolList = "+poolList);
 		
 		return poolList;
 	}
