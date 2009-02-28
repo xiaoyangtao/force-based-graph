@@ -30,4 +30,26 @@ public class UserStats {
 	public void setPercent(double percent) {
 		this.percent = percent;
 	}
+	/**
+	 * Constructs a <code>String</code> with all attributes
+	 * in name = value format.
+	 *
+	 * @return a <code>String</code> representation 
+	 * of this object.
+	 */
+	public String toString()
+	{
+	    final String TAB = "    ";
+	    
+	    String retValue = "";
+	    
+	    retValue = "UserStats ( "
+	        + "answer = " + this.answer + TAB
+	        + "tag = " + this.tag + TAB
+	        + "percent = " + this.percent + TAB
+	        + "count = " + this.count + TAB
+	        + " )";
+	
+	    return retValue;
+	}
 }

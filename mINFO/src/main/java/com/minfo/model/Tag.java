@@ -46,9 +46,25 @@ public class Tag implements Serializable {
 	public void setPoolsForTag(List<Answer> poolsForTag) {
 		this.poolsForTag = poolsForTag;
 	}
-
-	public String toString() {
-		return "[Tag: id="+id+";name="+name+"]";
+	/**
+	 * Constructs a <code>String</code> with all attributes
+	 * in name = value format.
+	 *
+	 * @return a <code>String</code> representation 
+	 * of this object.
+	 */
+	public String toString()
+	{
+	    final String TAB = "    ";
+	    
+	    String retValue = "";
+	    
+	    retValue = "Tag ( "
+	        + "id = " + this.id + TAB
+	        + "name = " + this.name + TAB
+	        + " )";
+	
+	    return retValue;
 	}
 	
 

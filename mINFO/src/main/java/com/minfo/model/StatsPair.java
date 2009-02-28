@@ -38,6 +38,26 @@ public class StatsPair {
 		hash = 31 * hash + (null == this.answer ? 0 : this.answer.hashCode());
 		return hash;
 	}
+	/**
+	 * Constructs a <code>String</code> with all attributes
+	 * in name = value format.
+	 *
+	 * @return a <code>String</code> representation 
+	 * of this object.
+	 */
+	public String toString()
+	{
+	    final String TAB = "    ";
+	    
+	    String retValue = "";
+	    
+	    retValue = "StatsPair ( "
+	        + "tag = " + this.tag + TAB
+	        + "answer = " + this.answer + TAB
+	        + " )";
+	
+	    return retValue;
+	}
 	
 	
 }	
