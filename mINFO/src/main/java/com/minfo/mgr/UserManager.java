@@ -60,7 +60,7 @@ public class UserManager {
 		
 		Map<StatsPair, Integer> result = new HashMap<StatsPair, Integer>();
 		User u = userDAO.getUser(userId);
-		updatePrefs(u);
+		
 		List<Answer> userAnswers = u.getUserAnswers();
 		for (Answer a : userAnswers) {
 			for (Tag t : a.getPool().getTags()) {
@@ -73,22 +73,61 @@ public class UserManager {
 				result.put(sp, count);
 			}
 		}
+		
 		return result;
 		
 	}
 	
-	public void updatePrefs(User user) {
-		Tag t = tagDAO.getTag(new Long(2));
+	public List<UserPrefs> getUserPrefs(Long userId) {
+		User u = userDAO.getUser(userId);
+		ArrayList<UserPrefs> al = updatePrefs(u);
+		return al;
+	}
+	
+	
+	public ArrayList<UserPrefs> updatePrefs(User user) {
 		
-		UserPrefs up = new UserPrefs();
-		up.setUser(user);
-		up.setTag(t);
-		up.setPart(new Double(0.97));
+		List<Answer> userAnswers = user.getUserAnswers();
+		Map<String,Long> countForTag = new HashMap<String,Long>();
 		
+		List<Tag> allTags = tagDAO.getTag();
+		
+		for(Tag t:allTags) {
+			countForTag.put(t.getName(), 1L);
+		}
+		
+		for (Answer a : userAnswers) {
+			for (Tag t : a.getPool().getTags()) {
+				StatsPair sp = new StatsPair(t.getName(),a.getAnswer());
+				Long count = countForTag.get(t.getName());
+				if("TAK".equals(a.getAnswer())) {
+					count++;
+				}
+				else
+				{
+					count--;
+				}
+				if(count==0) {
+					count=1L;
+				}
+				countForTag.put(t.getName(), count);
+			}
+		}
+		
+		Double totalCount=0d;
+		for(Tag t:allTags) {
+			totalCount+=countForTag.get(t.getName());
+		}
 		ArrayList<UserPrefs> al = new ArrayList<UserPrefs>();
-		al.add(up);
-		
+		for(Tag t:allTags) {
+			UserPrefs up = new UserPrefs();
+			up.setPart(new Double(countForTag.get(t.getName()))/totalCount);
+			up.setTag(t);
+			up.setUser(user);
+			al.add(up);
+		}
 		userDAO.setPrefs(al);
+		return al;
 	}
 	
 
