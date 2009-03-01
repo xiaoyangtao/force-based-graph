@@ -25,7 +25,7 @@ danych. W momencie, gdy obie korzystaj¹ z tych samych danych, to nie ma potrzeby
 ich duplikacji. Dodatkowo, przez ograniczenia wymuszone przez bazê musimy
 je zapisywaæ w œciœle okreœlonym formacie, przestrzegaj¹c typów i wiêzów
 integralnoœci. Niestety, trudno jest tak¹ bazê zaprojektowaæ. Gdybyœmy
-nawet stworzyli dwie takie aplikacje, które wspó³pracuj¹ z jedn¹ baz¹ danych,
+nawet stworzyli dwie aplikacje wspó³pracuj¹ce z jedn¹ baz¹ danych,
 to w wypadku, gdybyœmy chcieli do³¹czyæ kolejn¹ wspó³pracuj¹c¹ aplikacjê,
 mog³oby siê to wi¹zaæ z koniecznoœci¹ przemodelowania bazy danych. Dodatkowo,
 zmiana danych w bazie nie zawsze wystarczy. Mo¿emy sobie wyobraziæ sytuacjê,
@@ -84,7 +84,7 @@ siê spodziewaæ.\\
 \indent
 Zacznijmy od ograniczenia wyboru do technologii, z których mo¿emy skorzystaæ w
 œrodowisku mobilnym. Na samym pocz¹tku musimy wyeliminowaæ transfer plików
-jako metodê, która wymaga spe³nienia jednego z warunków: dostêp do wspólnego
+jako metodê wymagaj¹c¹ spe³nienia jednego z warunków: dostêp do wspólnego
 systemu plików lub obs³uga prostego protoko³u przesy³ania plików (np. FTP).
 Pierwsza mo¿liwoœæ jest trudna do zagwarantowania ze wzglêdu na brak
 wsparcia powszechnie stosowanych systemów plików we wszystkich urz¹dzeniach
@@ -98,10 +98,9 @@ pod uwagê. G³ówn¹ przeszkod¹ jest brak uniwersalnego sposobu pod³¹czenia do
 bazy dzia³aj¹cej w klasycznym systemie. Du¿e ograniczenia platformy mobilnej nie
 pozwalaj¹ na uruchomienie sterowników do baz danych przeznaczonych dla
 klasycznych systemów. Dodatkowo, ich rozmiar nierzadko przekracza rozmiar
-mobilnych aplikacji. Jednak¿e, nawet gdyby uda³o siê stworzyæ sterowniki,
-które pozwoli³yby na dostêp do bazy danych z poziomu urz¹dzenia mobilnego, ponownie
-spotkalibyœmy siê z problemem zawodnej komunikacji.\\
-Okazuje siê, ¿e dwie godne rozwa¿enia metody stanowi¹, z jednej strony,
+mobilnych aplikacji. Jednak¿e, nawet gdyby uda³o siê stworzyæ sterowniki
+pozwalaj¹ce na dostêp do bazy danych z poziomu urz¹dzenia mobilnego, ponownie
+spotkalibyœmy siê z problemem zawodnej komunikacji.\\ Okazuje siê, ¿e dwie godne rozwa¿enia metody stanowi¹, z jednej strony,
 wiadomoœci,a z drugiej - Web serwisy, bêd¹ce jednym ze sposobów zdalnego
 wywo³ywania procedur.
 
@@ -115,8 +114,8 @@ akceptacj¹ jako standardu komunikacji odrêbnych systemów. Ich wyj¹tkowa si³a
 le¿y w zastosowaniu kilku powszechnych technologii internetowych, takich jak
 protokó³ HTTP czy jêzyk XML. Daje to nam gwarancjê, ¿e nie ma znaczenia, w
 jakiej technologii i w jakim systemie pracuje dana aplikacja komunikuj¹ca siê
-za pomoc¹ Web Services. Trzy fundamentalne elementy, które wchodz¹ w sk³ad tej
-techlogii mo¿na zobaczyæ na poni¿szym rysunku.
+za pomoc¹ Web Services. Trzy fundamentalne elementy wchodz¹ce w sk³ad tej
+technologii mo¿na zobaczyæ na poni¿szym rysunku.
 
 \begin{figure}[htb]
     \begin{center}
@@ -173,7 +172,7 @@ Technologia Web Services jest godna rozwa¿enia przy wyborze sposobu komunikacji
 w integracji mobilnej. Istniej¹ bardzo dobre implementacje, takie jak kSoap,
 które dzia³aj¹ praktycznie na ka¿dej platformie wspieraj¹cej wirtualn¹ maszynê
 Java. Pozosta³e platformy, takie jak Blackberry czy WMD (Windows Mobile Device),
-równie¿ posiadaj¹ stosowne biblioteki, które pozwalaj¹ w bardzo prosty sposób
+równie¿ posiadaj¹ stosowne biblioteki pozwalaj¹ce w bardzo prosty sposób
 pod³¹czyæ siê do istniej¹cej infrastuktury. Znane s¹ komercyjne rozwi¹zania
 integracyjne, takie jak Mobile Data Service na platformie Blackberry, które
 potrafi¹ automatycznie generowaæ kod, wywo³uj¹cy procedury na podstawie podanego
@@ -241,13 +240,6 @@ funkcjonowanie aplikacji bez utrzymywania sta³ego po³¹czenia z internetem,
 które w przypadku ograniczonej ³¹cznoœci jest mocno utrudnione. 
 
 
-% Istnieje kilku dostawców
-% rozwi¹zañ opartych o wiadomoœci z których najpopularniejsze to IBM MQ Everyplace
-% oraz iBus//Mobile.
-% \subparagraph{IBM MQ Everyplace}
-% \subparagraph{iBus//Mobile}
-
-
 \indent
 Na pytanie, która metoda: wiadomoœci czy Web serwisy, jest lepsza, nie ma
 jednoznacznej odpowiedzi. Wszystko zale¿y od oczekiwañ u¿ytkownika, od
@@ -261,7 +253,7 @@ siê, ¿e przed podjêciem decyzji warto zadaæ sobie nastêpuj¹ce pytania:
   porozumiewaj¹ siê ze sob¹ za pomoc¹ brokera wiadomoœci? W takim wypadku,
   wykorzystanie wiadomoœci jest naturalnym rozwi¹zaniem, pozwalaj¹cym na
   dointegrowanie urz¹dzeñ mobilnych do sieci korporacyjnej.
-  \item Czy bierzemy pod uwagê znaczne wydatki, które wynikaj¹ z wykorzystania
+  \item Czy bierzemy pod uwagê znaczne wydatki wynikaj¹ce z wykorzystania
   kosztownych, komercyjnych brokerów wiadomoœci? Wykorzystanie Web serwisów
   pozwala na znaczne obni¿enie kosztów wynikaj¹cych z obecnoœci wielu
   bezp³atnych platform opartych na otwartych standardach.

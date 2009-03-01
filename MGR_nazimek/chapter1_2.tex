@@ -4,7 +4,7 @@ Integracja aplikacji w przedsiêbiorstwach czêsto nie jest prostym zadaniem.
 Mimo ¿e w niemal ka¿dej du¿ej firmie zachodzi potrzeba integracji i powsta³o
 ju¿ wiele opracowañ na ten temat, nikt nie przedstawi³ kompletnej listy
 problemów, które nale¿a³oby rozwa¿yæ podczas integrowania systemów. Dodatkowo,
-wyzwania, które stawia integracja, wykraczaj¹ nie tylko poza techniczne
+wyzwania stawiane przez integracjê wykraczaj¹ nie tylko poza techniczne
 rozwa¿ania, ale tak¿e rozci¹gaj¹ siê na procedury biznesowe. Tak jak ju¿
 wspominaliœmy, przedstawienie kompletnej listy takich problemów nie jest
 mo¿liwe ze wzglêdu na koniecznoœæ dokonania analizy ka¿dego z przypadków. Mimo to spróbujemy
@@ -12,13 +12,14 @@ przedstawiæ te najbardziej typowe w wiêkszoœci opisane w \cite{Entpatterns},
 które koniecznie trzeba wzi¹æ pod uwagê:
 
 \subsection{Wyzwania techniczne}
+
   
 \paragraph{Ograniczony dostêp do integrowanych aplikacji.}
 Czêsto okazuje siê, ¿e integrowane aplikacje to istniej¹ce od dawna systemy,
 które nie doœæ, ¿e nie daj¹ mo¿liwoœci zmian w Ÿród³ach, to dodatkowo
 udostêpniaj¹ mocno ograniczony interfejs zewnêtrzny. W takiej sytuacji
 programiœci musz¹ niekiedy uciekaæ siê do stosowania niskopoziomowych
-modyfikacji (np. na bazie danych, której u¿ywa aplikacja) czy w ostatecznoœci
+modyfikacji (np. na bazie danych u¿ywanej przez aplikacjê) czy w ostatecznoœci
 do dekompilacji jej modu³ów.
 
 
@@ -49,10 +50,9 @@ bezproblemowo dzia³aæ bardzo d³ugo, wrêcz przezroczyœcie dla wszystkich a¿ do
 wyst¹pienia pierwszego problemu lub potrzeby wprowadzenia modyfikacji. 
 Wtedy w³aœnie od osób odpowiedzialnych za platformê integracyjn¹ wymaga siê
 wprowadzenia w niej modyfikacji lub usuniêcia b³êdów. Poniewa¿ platforma
- jest najczêœciej centralnym punktem komunikacyjnym, który
-obs³uguje wiele systemów,to za ka¿dym razem, gdy dochodzi do zmian w jednym z
-nich mo¿e (choæ oczywiœcie, nie musi) zajœæ potrzeba zmian w platformie
-integracyjnej. Takie ryzyko nie istnieje, je¿eli integrujemy ze sob¹ wy³¹cznie
+ jest najczêœciej centralnym punktem komunikacyjnym obs³uguj¹cym wiele
+ systemów, to za ka¿dym razem, gdy dochodzi do zmian w jednym z nich, mo¿e (choæ
+ oczywiœcie, nie musi) zajœæ potrzeba zmian w platformie integracyjnej. Takie ryzyko nie istnieje, je¿eli integrujemy ze sob¹ wy³¹cznie
 systemy, które maj¹ ze sob¹ wspó³pracowaæ (z pominiêciem punktu centralnego). W
 takiej sytuacji to administratorzy ka¿dego z integrowanych systemów wspó³pracuj¹ ze sob¹.
 Oczywiœcie, to platforma integracyjna jest rozwi¹zaniem bardziej elastycznym,
@@ -62,15 +62,15 @@ ale jej utrzymanie bez w¹tpienia stanowi du¿e obci¹¿enie dla dzia³u IT.
 \paragraph{Ró¿norodnoœæ Ÿróde³ danych.} Niekiedy pojawia siê potrzeba
 integrowania danych pochodz¹cych z ró¿nych, czasami bardzo nietypowych
 Ÿróde³. 
-Przyk³ad mo¿e stanowiæ wypowiedŸ Hans-Joachim Poppa, szefa Deutsches Zentrum
+Przyk³ad mo¿e stanowiæ wypowiedŸ Hansa-Joachima Poppa, szefa Deutsches Zentrum
 für Luft- und Raumfahrt (Niemieckie Centrum Lotnictwa). W \cite{computerwoche}
-opisuje on jak pojawi³o siê rozporz¹dzenie nak³adaj¹ce koniecznoœæ
+opisuje on, jak pojawi³o siê rozporz¹dzenie nak³adaj¹ce koniecznoœæ
 gromadzenia w uporz¹dkowany sposób wszystkich danych zwi¹zanych z prowadzonymi projektami
-naukowymi. Jak mówi, by³o to trudniejsze ni¿ mog³oby siê wydawaæ. W czasie
+naukowymi. Jak mówi, by³o to trudniejsze, ni¿ mog³oby siê wydawaæ. W czasie
 realizacji projektu naturalne by³o przesy³anie informacji za pomoc¹ poczty
 elektronicznej, jak i organizacja spotkañ, na których powstawa³y notatki. Nie s¹
 to uporz¹dkowane sposoby przesy³ania informacji, wiêc gdy rozporz¹dzenie wesz³o
-w ¿ycie wprowadzi³o koniecznoœæ uporz¹dkowania i (co jeszcze trudniejsze)
+w ¿ycie, wprowadzi³o koniecznoœæ uporz¹dkowania i (co jeszcze trudniejsze)
 zlokalizowania danych, rozproszonych miêdzy komputery u¿ytkowników.
 
 \subsection{Wyzwania biznesowe}
@@ -109,10 +109,10 @@ WyobraŸmy sobie system nawigacji satelitarnej na urz¹dzeniu mobilnym po³¹czony z
 bankiem map. Dane otrzymywane z odbiornika GPS s¹ wspó³rzêdnymi geograficznymi w pewnym uk³adzie
 odniesienia. Uk³adów odniesienia jest na œwiecie kilkaset i s³u¿¹ one uzyskaniu
 jak najwiêkszej dok³adnoœci w danym obszarze. Przyk³adowo, wg \cite{omapach} w
-Polsce u¿ywany jest uk³ad Pu³kowo 42. Je¿eli w odbiorniku GPS
-ustawimy uk³ad odniesienia na najpopularniejszy WGS84, to pracuj¹c z mapami w
-uk³adzie Pu³kowo 42 otrzymamy niedok³adnoœæ rzêdu 6'', czyli oko³o 120m. Choæ
-wiêc u¿ywamy wspó³rzêdnych geograficznych do okreœlenia po³o¿enia na mapie i w
+Polsce u¿ywane s¹ uk³ady Pu³kowo 1942, PUWG 1992 i PUWG 2000. Je¿eli w
+odbiorniku GPS ustawimy uk³ad odniesienia na najpopularniejszy WGS84, to pracuj¹c z mapami w
+uk³adzie Pu³kowo 42 otrzymamy niedok³adnoœæ w odwzorowaniu rzêdu 6'', czyli
+oko³o 120m. Choæ wiêc u¿ywamy wspó³rzêdnych geograficznych do okreœlenia po³o¿enia na mapie i w
 terenie, to rozbie¿noœci, o ile nie uwzglêdnimy uk³adu odniesienia, mog¹ byæ
 bardzo znaczne.\\
 \indent
