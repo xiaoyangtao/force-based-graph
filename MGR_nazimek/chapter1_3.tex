@@ -9,7 +9,7 @@ rozwi¹zania integracyjnego.
 
 \subsection{Ró¿norodnoœæ platform}
 
-Pierwszym problemem, który mo¿emy zauwa¿yæ, jest ró¿norodnoœæ mobilnych
+Pierwszym zauwa¿alnym problemem jest ró¿norodnoœæ mobilnych
 platform. Istnieje wiele niekompatybilnych ze sob¹ rozwi¹zañ, pochodz¹cych od
 ró¿nych producentów. Je¿eli spojrzymy na platformy, na których budowane s¹
 klasyczne systemy korporacyjne, mo¿emy ograniczyæ je do Javy Suna oraz
@@ -82,7 +82,7 @@ przedstawimy dziedziny, w których mo¿emy zaobserwowaæ najwiêksze ró¿nice:
   urz¹dzenia do komputera, na którym znajduje siê wersja instalacyjna aplikacji.
   Niestety to rozwi¹zanie jest bardzo k³opotliwe, a co wiêcej nie istniej¹
   standardy z nim zwi¹zane. Ka¿dy producent tworzy swoj¹ aplikacjê, a czasami i
-  kabel, przez który odbywa siê instalacja. Drugie rozwi¹zanie jest du¿o
+  kabel s³u¿¹cy do instalacji. Drugie rozwi¹zanie jest du¿o
   bardziej uniwersalne. Polega na instalacji aplikacji przy u¿yciu
   standardowych protoko³ów internetowych. Nazywane jest OTA (Over-The-Air) i
   wspieraj¹ je niemal wszystkie platformy. Spotykana jest jeszcze trzecia
@@ -96,7 +96,7 @@ przedstawimy dziedziny, w których mo¿emy zaobserwowaæ najwiêksze ró¿nice:
   \item Bezpieczeñstwo. Rozwa¿aj¹c to zagadnienie, nale¿y szczególnie zwróciæ
   uwagê na rozwi¹zania wspieraj¹ce bezpieczeñstwo oferowane przez twórców
   urz¹dzeñ. Wielu producentów wraz z urz¹dzeniami sprzedaje równie¿ œrodowiska
-  deweloperskie, które wspieraj¹ przezroczyst¹ obs³ugê bezpieczeñstwa.
+  deweloperskie wspieraj¹ce przezroczyst¹ obs³ugê bezpieczeñstwa.
   Pozwalaj¹ na automatyczne szyfrowanie danych oraz zapewniaj¹ pe³ne
   uwierzytelnianie u¿ytkowników mobilnych. Takie podejœcie pozwala znacznie
   obni¿yæ koszty produkcji aplikacji mobilnej. Dotyczy to szczególnie œrodowisk,
@@ -109,7 +109,7 @@ przedstawimy dziedziny, w których mo¿emy zaobserwowaæ najwiêksze ró¿nice:
   generowa³by ogromne koszty. Pojawi³o by siê te¿ niebezpieczeñstwo utraty
   kontroli nad prawid³owym wykorzystaniem tych urz¹dzeñ przez pracowników
   firmy.
-  \item Zgodnoœæ wstecz, która decyduje o koszcie utrzymania rozwi¹zañ
+  \item Zgodnoœæ wstecz decyduj¹ca o koszcie utrzymania rozwi¹zañ
   opracowanych pod dan¹ platformê. Za przyk³ad mo¿e pos³u¿yæ tu platforma
   Blackberry. Jej twórcy maj¹ powa¿ne problemy z utrzymaniem pe³nej zgodnoœci
   wstecz. Czêœciowo wynika to z bardzo szybkiej adaptacji urz¹dzeñ do nowinek
@@ -117,10 +117,9 @@ przedstawimy dziedziny, w których mo¿emy zaobserwowaæ najwiêksze ró¿nice:
   siê obs³uga nowego sposobu nawigacji przy u¿yciu trackball. Ze wzglêdu na to,
   ¿e ten nowy sposób nawigacji nie by³ zgodny ze starym, twórcy API musieli
   wprowadziæ bardzo szeroko id¹ce zmiany w œrodowisku. Niestety, zosta³o
-  to Ÿle wykonane, przez co wszelkie aplikacje, które
-  posiada³y zaawansowan¹ obs³ugê nawigacji, musia³y byæ przystosowywane do
-  nowych urz¹dzeñ. Dwa lata póŸniej, po wejœciu na rynek rozwi¹zañ opartych na ekranie dotykowym,
-  sytuacja siê powtórzy³a. Pojawi³ siê zupe³nie nowy interfejs oraz zupe³nie
+  to Ÿle wykonane, przez co wszelkie aplikacje pozwalaj¹ce na zaawansowan¹
+   nawigacjê musia³y byæ przystosowywane do nowych urz¹dzeñ. Dwa lata
+   póŸniej, po wejœciu na rynek rozwi¹zañ opartych na ekranie dotykowym, sytuacja siê powtórzy³a. Pojawi³ siê zupe³nie nowy interfejs oraz zupe³nie
   nowe API, które wymaga³o przepisywania kodu obs³ugi interfejsu w aplikacjach
   na nowo. Tak napisany kod nie mia³ prawa kompilowaæ siê w starych
   œrodowiskach. Producenci byli wiêc zobligowani do utrzymywania wielu wersji
@@ -212,9 +211,10 @@ urz¹dzenia znajduj¹ce siê na rynku rodzajów po³¹czeñ mo¿emy wyró¿niæ:
   obok tak zaawansowanych protoko³ów, jak wymienione wczeœniej, mo¿e siê wydawaæ
   ma³o przekonuj¹ce, to musimy zwróciæ uwagê na ich zaletê:
   dzia³aj¹ nawet wtedy, gdy dostêp do sieci komórkowej jest mocno ograniczony. W
-  oparciu o wiadomoœci tekstowe mo¿na przesy³aæ ma³e porcje informacji, które w
-  wybranych zastosowaniach mog¹ siê okazaæ wystarczaj¹ce. Zosta³o to
-  uwzglêdnione przez producentów oprogramowania, dziêki czemu z poziomu API mo¿emy wysy³aæ i
+  oparciu o wiadomoœci tekstowe mo¿na przesy³aæ ma³e porcje informacji. 
+  Okazuje siê, ¿e w niektórych zastosowaniach mog¹ siê one okazaæ
+  wystarczaj¹ce. Zosta³o to uwzglêdnione przez producentów oprogramowania, 
+  dziêki czemu z poziomu API mo¿emy wysy³aæ i
   odbieraæ wiadomoœci tekstowe (na przyk³ad na Windows Mobile), jak i korzystaæ
   z tej technologii w bardziej przezroczysty sposób, wykorzystuj¹c wiadomoœci,
   o których mowa w nastêpnym rozdziale. W przypadku aplikacji CRM mo¿na pos³u¿yæ
@@ -270,12 +270,12 @@ musimy pamiêtaæ o:
 
 
 \subsection{Ograniczone zasoby}
-Urz¹dzenia mobilne s¹ zaprojektowane z uwzglêdnieniem kompromisu, który
-trzeba zawrzeæ pomiêdzy ich rozmiarami, wydajnoœci¹ oraz czasem pracy na
-baterii. Ró¿nicê widaæ ju¿ pomiêdzy komputerem stacjonarnym, a laptopem. W tej
-samej cenie otrzymujemy laptopa, który jest znacznie wolniejszy od zwyk³ego
-komputera, ale oferuje mobilnoœæ, której tamten nie posiada. Zasobami, o
-których trzeba pamiêtaæ w przypadku urz¹dzenia mobilnego s¹:
+Urz¹dzenia mobilne s¹ zaprojektowane z uwzglêdnieniem kompromisu zawartego
+miêdzy ich rozmiarami, wydajnoœci¹ oraz czasem pracy na baterii. Ró¿nicê widaæ
+ju¿ pomiêdzy komputerem stacjonarnym, a laptopem.
+ W tej samej cenie otrzymujemy laptopa, który jest znacznie wolniejszy od zwyk³ego
+komputera, ale oferuje du¿o lepsz¹ mobilnoœæ. Zasobami
+wymagaj¹cymi szczególnej uwagi s¹:
 \begin{itemize}
   \item Mo¿liwoœci przetwarzania. Choæ procesory, montowane w przenoœnych
   urz¹dzeniach kilka lat temu, z powodzeniem mog³yby byæ stosowane w komputerach
@@ -345,8 +345,7 @@ stosowalnoœci w nowym kontekœcie. Mo¿e siê okazaæ, ¿e zakaz wynoszenia danych
 straci sens z powodu zewnêtrznego dostêpu uzyskanego przez pracowników.
 Przedstawienie listy regu³, które nale¿a³oby do³¹czyæ do stosowanej obecnie
 polityki nie jest mo¿liwe, bowiem w znacznym stopniu zale¿y ona od
-funkcjonalnoœci, któr¹ chcemy udostêpniæ mobilnym u¿ytkownikom, jak te¿
-od stosowanych w tym celu technologii. Wa¿na jest jednak œwiadomoœæ potrzeby
+udostêpnianej mobilnym u¿ytkownikom funkcjonalnoœci. Wa¿na jest jednak œwiadomoœæ potrzeby
 przeanalizowania istniej¹cej polityki pod tym k¹tem.
 
 \paragraph{Czynnik ludzki}
@@ -372,7 +371,7 @@ W zale¿noœci od tego, czy integrujemy istniej¹ce ju¿ aplikacje, czy te¿ dopiero
 piszemy aplikacjê mobiln¹, musimy rozwa¿yæ bezpieczeñstwo integracji z
 istniej¹cym ju¿ systemem. Istnieje zagro¿enie, ¿e integrowana aplikacja mobilna
 posiada luki w bezpieczeñstwie (przyk³adowo zapis danych w jawnej postaci na
-lokalnym noœniku), które powoduj¹, ¿e do³¹czenie jej do dzia³aj¹cego systemu
+lokalnym noœniku) powoduj¹ce, ¿e do³¹czenie jej do dzia³aj¹cego systemu
 informatycznego zwiêkszy ryzyko ujawnienia poufnych danych.
 
 \paragraph{Systemy operacyjne}
@@ -380,12 +379,12 @@ Systemy operacyjne stosowane w urz¹dzeniach mobilnych staj¹ siê coraz bardziej
 skomplikowane wraz ze wzrostem funkcjonalnoœci, które nale¿y obs³u¿yæ. Pierwsze
 telefony s³u¿y³y w³aœciwie wy³¹cznie do wykonywania po³¹czeñ, dlatego te¿
 nie rozwa¿ano mo¿liwoœci przenoszenia siê pomiêdzy nimi wirusów. Wspó³czesne smartfony
-posiadaj¹ wielow¹tkowe systemy operacyjne, procesory, które s¹ szybsze od tych,
+posiadaj¹ wielow¹tkowe systemy operacyjne, procesory szybsze od tych,
 stosowanych parê lat temu w komputerach stacjonarnych, a dodatkowo obs³uguj¹ kilka
 sposobów komunikacji bezprzewodowej. W zwi¹zku z tym, kwesti¹ czasu by³o powstanie
-pierwszych wirusów atakuj¹cych tego typu urz¹dzenia. Poza z³oœliwymi programami,
-g³ównym zadaniem których by³o unieruchomienie zainfekowanych telefonów (np.
-wirus Skulls dla systemu Symbian), o wiele wiêksze zagro¿enie stanowiæ bêd¹
+pierwszych wirusów atakuj¹cych tego typu urz¹dzenia. Poza z³oœliwymi
+programami, których g³ównym zadaniem by³o unieruchomienie zainfekowanych
+telefonów (np. wirus Skulls dla systemu Symbian), o wiele wiêksze zagro¿enie stanowiæ bêd¹
 wirusy stworzone w celu wykradania danych z urz¹dzenia mobilnego.
 W zwi¹zku z powy¿szym, du¿e zró¿nicowanie mobilnych platform, bêd¹ce
 przeszkod¹ dla twórców aplikacji, utrudniaj¹ce tworzenie uniwersalnych
@@ -430,11 +429,11 @@ sytuacji, w których mamy do czynienia z dwustronn¹ wymian¹ danych. W momencie,
 gdy taka sychronizacja doprowadzi³aby do utraty danych wprowadzonych przez
 ró¿nych u¿ytkowników w tym samym okresie czasu, stosuje siê replikacjê z konfliktami.
  Polega ona na tworzeniu dodatkowych wpisów w bazie
-danych, które informuj¹ o powstaniu konfliktu. Na podstawie tych wpisów
+danych informuj¹cych o powstaniu konfliktu. Na podstawie tych wpisów
 decydujemy, które dane chcemy pozostawiæ, a które s¹ zbêdne.\\
 \indent
 \index{Blackberry Sync Server}
-Za przyk³ad mo¿e pos³u¿yæ próba mobilizacji dowolnej aplikacji stowrzonej w
+Za przyk³ad mo¿e pos³u¿yæ próba mobilizacji dowolnej aplikacji stworzonej w
 œrodowisku Lotus Notes. Œrodowisko to charakteryzuje siê zaawansowanymi
 mechanizami replikacji, do których u¿ytkownicy przyzwyczajeni s¹ od wielu lat.
 W efekcie, jednym z pierwszych oczekiwañ, jakie zg³osi typowy u¿ytkownik
