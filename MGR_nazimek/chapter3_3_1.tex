@@ -3,10 +3,10 @@
 \subsection{Aplikacja serwerowa}
 
 Przedstawimy teraz architekturê czêœci serwerowej, komponenty, z których siê
-sk³ada i technologie, które wykorzystuj¹.
+sk³ada oraz wykorzystywane technologie.
 \newline
 Aby zrozumieæ projekt ca³ego systemu, wprowadŸmy pewne pojêcia w naszym
-systemie, z których wynikaj¹ dalsze rozwi¹zania: 
+systemie. Wynikaj¹ z nich dalsze rozwi¹zania: 
 \begin{itemize}
   \item \emph{Ankieta} - treœæ, dla której istniej¹ dostêpne zdefiniowane
   odpowiedzi.
@@ -60,12 +60,12 @@ bazy danych widoczny na rysunku \ref{fig:pool_db}.
 \end{figure}
 
 
-Schemat koncepcyjny(rysunek \ref{fig:pool_db}) jest tylko przyk³adem, który ma
-byæ podstaw¹ do prezentacji mo¿liwoœci szkieltu Kuix. Konstrukcja tego schematu mo¿e byæ
-dowolna. Kluczowym zagadnieniem jest transformacja danych zawartych w systemie
-na XML, który reprezentuje interfejs widoczny na urz¹dzeniu. Kuix jest na
-tyle elastyczny, ¿e mo¿liwe jest pod³¹czenie do niego dowolnego Ÿród³a danych,
-które mo¿e generowaæ XML (w szczególnoœci nie musi to byæ baza relacyjna -
+Schemat koncepcyjny(rysunek \ref{fig:pool_db}) jest tylko przyk³adem. Stanowi
+podstawê do prezentacji mo¿liwoœci szkieltu Kuix. Konstrukcja tego schematu mo¿e
+byæ dowolna. Kluczowym zagadnieniem jest transformacja danych zawartych w systemie
+na XML reprezentuj¹cy interfejs widoczny na urz¹dzeniu. Kuix jest na
+tyle elastyczny, ¿e mo¿liwe jest pod³¹czenie do niego dowolnego Ÿród³a danych
+generuj¹cego XML (w szczególnoœci nie musi to byæ baza relacyjna -
 mo¿na na przyk³ad pod³¹czyæ bazê obiektow¹ Lotus Notes).
 \newline
 Na postawie schematu koncepcyjnego stworzony zosta³ schemat fizyczny bazy
@@ -93,7 +93,7 @@ cyklem ¿ycia obiektów oraz zwalnia programistê z koniecznoœci pisania
  
 \index{JSF}
 \paragraph{Apache Myfaces} 
-Myfaces jest implementacj¹ specyfikacji Java Server Faces, która pozwala na
+Myfaces jest implementacj¹ specyfikacji Java Server Faces pozwalaj¹c¹ na
 wygodne tworzenie widoku aplikacji. W naszym przypadku interfejsem bêdzie
 dynamicznie generowana strona WWW, choæ specyfikacja JSF nie wprowadza takiego
 ograniczenia. Warstwa ta bêdzie s³u¿y³a do administrowania systemem,
@@ -101,8 +101,8 @@ przegl¹dania podjêtych decyzji i zarz¹dzania ankietami i u¿ytkownikami.
 \index{webserwisy}
 \index{Apache Axis}
 \paragraph{Apache Axis2}
-Axis2 to kontener webserwisów, który odpowiada za odbieranie zdalnych wywo³añ
-procedur i przekazywanie ich do odpowiednich obiektów, które je wykonuj¹.
+Axis2 to kontener webserwisów odpowiadaj¹cy za odbieranie zdalnych wywo³añ
+procedur i przekazywanie ich do mog¹cych je wykonaæ obiektów.
 Zwalnia programistê z koniecznoœci samodzielnego przetwarzania XML w
 ¿¹daniach, umo¿liwia te¿ automatyczn¹ serializacjê i deserializacjê obiektów
 Javowych. 
