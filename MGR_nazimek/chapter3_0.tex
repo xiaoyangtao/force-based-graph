@@ -1,7 +1,7 @@
 \chapter{Hybrydowe podejœcie do integracji mobilnej}
 
 W poprzednim rozdziale zaprezentowaliœmy sposoby tworzenia mobilnych aplikacji.
-W ramach niniejszej pracy chcemy zaprezentowaæ nowe i nie stosowane dot¹d
+W ramach niniejszej pracy chcemy zaprezentowaæ nowe i~nie stosowane dot¹d
 podejœcie. Po³¹czyliœmy w nim zalety zapewniane przez aplikacjê zbudowan¹ w
 oparciu o model trójwarstwowy, z tymi typowymi dla samodzielnej aplikacji. 
 W czêœci implementacyjnej naszej pracy  stworzyliœmy szablon, u³atwiaj¹cy
@@ -10,7 +10,7 @@ z poziomu którego mo¿na sterowaæ aplikacj¹ serwerow¹.
 Stworzone rozwi¹zanie stanowi raczej pomys³. Mo¿na go rozwijaæ i
 wykorzystywaæ do budowy bardziej skomplikowanych systemów. 
 \newline
-Szablon sk³ada siê z dwóch czêœci - mobilnej i serwerowej.
+Szablon sk³ada siê z dwóch czêœci - mobilnej i~serwerowej.
 U¿ytkownik mo¿e okreœliæ wygl¹d ekranu przesy³anego do urz¹dzenia mobilnego za
 pomoc¹ jêzyka XML. Po stronie mobilnej kod XML jest interpretowany do postaci
 elementów interfejsu klienta, na przyk³ad pól tekstowych, wyboru czy rozwijanych list. 
@@ -34,11 +34,11 @@ W typowym przypadku scenariusz u¿ycia aplikacji bêdzie wygl¹da³ nastêpuj¹co:
   \item Tworzymy nowy 'ekran' na serwerze. Oznacza to okreœlenie wygl¹du i
   zachowania aplikacji w formacie XML. Okreœlamy dostêpne dla
   danego ekranu akcje. 
-  \item Aplikacja mobilna ³¹czy siê z serwerem i pobiera przygotowany dla niej
+  \item Aplikacja mobilna ³¹czy siê z serwerem i~pobiera przygotowany dla niej
   ekran. U¿ytkownik wykonuje jedn¹ z dostêpnych na nim akcji, a informacja o
   tym jest przesy³ana do serwera. 
   \item Aplikacja mobilna pobiera kolejny ekran przygotowany przez serwer i
   dalej postêpuje wed³ug powy¿szego schematu. W zwi¹zku z tym, ¿e to w³aœnie
   serwer jest w ca³oœci odpowiedzialny za przygotowanie ekranu, to pojawia siê
-  mo¿liwoœæ kontrolowania ekranu i jego zachowania po stronie klienta w dowolny sposób.
+  mo¿liwoœæ kontrolowania ekranu i~jego zachowania po stronie klienta w dowolny sposób.
 \end{itemize}

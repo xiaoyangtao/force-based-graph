@@ -1,7 +1,7 @@
  \section{Istniej¹ce podejœcia do integracji}
 Istnieje kilka powszechnie znanych sposobów integracji, które maj¹ swoje mocne i
 s³abe strony. Mo¿na zauwa¿yæ, ¿e pojawia³y siê one wraz z rozwojem systemów
-informatycznych i ka¿dy z nich odpowiada jakiemuœ etapowi rozwoju (np.
+informatycznych i~ka¿dy z nich odpowiada jakiemuœ etapowi rozwoju (np.
 istnienie plików jako podstawowych struktur przechowuj¹cych dane na d³ugo przed
 pojawieniem siê baz danych). Mimo to, ka¿dy z nich ci¹gle znajduje swoje
 zastosowanie, gdy okazuje siê, ¿e nie wszystkie mechanizmy s¹ jednakowo
@@ -11,7 +11,7 @@ integracji:
 
 \index{pliki}
 \paragraph{Transfer plików}- jedna aplikacja zapisuje plik w okreœlonym
-formacie w ustalonym miejscu, nastêpnie druga go odczytuje i przetwarza. Zalet¹
+formacie w ustalonym miejscu, nastêpnie druga go odczytuje i~przetwarza. Zalet¹
 takiego rozwi¹zania jest jego dostêpnoœæ - prawie zawsze bêdziemy mieli
 dostêp do systemu plików. Poza tym nie musimy wiedzieæ, jak dzia³a
 aplikacja. Jedyne, co powinniœmy zrobiæ, to dostarczyæ plik we w³aœciwym
@@ -23,7 +23,7 @@ docelowa bêdzie go mog³a ewentualnie odrzuciæ.
 \paragraph{Wspólna baza danych}- dwie aplikacje dzia³aj¹ na jednej bazie
 danych. W momencie, gdy obie korzystaj¹ z tych samych danych, to nie ma potrzeby
 ich duplikacji. Dodatkowo, przez ograniczenia wymuszone przez bazê musimy
-je zapisywaæ w œciœle okreœlonym formacie, przestrzegaj¹c typów i wiêzów
+je zapisywaæ w œciœle okreœlonym formacie, przestrzegaj¹c typów i~wiêzów
 integralnoœci. Niestety, trudno jest tak¹ bazê zaprojektowaæ. Gdybyœmy
 nawet stworzyli dwie aplikacje wspó³pracuj¹ce z jedn¹ baz¹ danych,
 to w wypadku, gdybyœmy chcieli do³¹czyæ kolejn¹ wspó³pracuj¹c¹ aplikacjê,
@@ -65,14 +65,14 @@ celu nale¿y rozwa¿yæ nastêpuj¹ce zagadnienia:
 
 \begin{itemize}
   \item Jakie mechanizmy s¹ dostêpne w obu œrodowiskach?
-  \item Jakie s¹ oczekiwania u¿ytkowników co do zintegrowanych systemów i jak
+  \item Jakie s¹ oczekiwania u¿ytkowników co do zintegrowanych systemów i~jak
   wybór metody integracji wp³ywa na ich spe³nienie?
 \end{itemize} 
 
 Rozwa¿aj¹c te kwestie, mo¿emy stwierdziæ, ¿e u¿ytkownik, szczególnie gdy jest
 przyzwyczajony do pracy w klasycznym œrodowisku informatycznym, oczekuje, ¿e
 komunikacja bêdzie siê odbywa³a jak najszybciej, bez uci¹¿liwych okresów
-oczekiwania. Dodatkowo, oczywistymi wymaganiami s¹ bezpieczeñstwo i niezawodnoœæ komunikacji.
+oczekiwania. Dodatkowo, oczywistymi wymaganiami s¹ bezpieczeñstwo i~niezawodnoœæ komunikacji.
 Z drugiej strony musimy pamiêtaæ, ¿e warunki, w jakich mo¿emy komunikowaæ siê z
 urz¹dzeniem przenoœnym, s¹ dalekie od doskona³ych.
 To sprawia, ¿e komunikacjê nale¿y tak zaprojektowaæ, aby przerwy by³y jak
@@ -109,11 +109,11 @@ wywo³ywania procedur).
 Pomimo, i¿ istnieje kilka ró¿nych standardów RPC, Web
 serwisy s¹ jedynym praktycznie stosowanym w przypadku integracji mobilnej.
 Jest to bezpoœrednio zwi¹zane z du¿¹ niezale¿noœci¹ od platformy, jak¹
-gwarantuje zastosowanie protoko³u SOAP oraz popularnoœci¹ i powszechn¹
+gwarantuje zastosowanie protoko³u SOAP oraz popularnoœci¹ i~powszechn¹
 akceptacj¹ jako standardu komunikacji odrêbnych systemów. Ich wyj¹tkowa si³a
 le¿y w zastosowaniu kilku powszechnych technologii internetowych, takich jak
 protokó³ HTTP czy jêzyk XML. Daje to nam gwarancjê, ¿e nie ma znaczenia, w
-jakiej technologii i w jakim systemie pracuje dana aplikacja komunikuj¹ca siê
+jakiej technologii i~w jakim systemie pracuje dana aplikacja komunikuj¹ca siê
 za pomoc¹ Web Services. Trzy fundamentalne elementy wchodz¹ce w sk³ad tej
 technologii mo¿na zobaczyæ na rysunku \ref{fig:safaribrowser}.
 
@@ -138,7 +138,7 @@ Integration). Pozwala ona na dynamiczne odnajdowanie innych us³ug Web.
 \newline
 Najwiêksz¹ wad¹ tego rozwi¹zania jest pewien narzut wydajnoœciowy oraz
 pojemnoœciowy, zwi¹zany z budow¹ samych wiadomoœci. W innych metodach treœæ
-wiadomoœci przesy³ana jest w zoptymalizowanej postaci kodu binarnego i nie
+wiadomoœci przesy³ana jest w zoptymalizowanej postaci kodu binarnego i~nie
 posiada zwykle ¿adnych metadanych (co zwykle prowadzi do problemów z komunikacj¹
 pomiêdzy ró¿nymi platformami). W przypadku Web Services wiadomoœci przesy³ane
 s¹ w kopercie zbudowanej na bazie XML, która zawiera du¿o nadmiernych
@@ -148,7 +148,7 @@ przeprowadziæ rozbiór gramatyczny otrzymanego komunikatu. Zwiêksza to
 zapotrzebowanie na moc obliczeniow¹. Mo¿e to mieæ kluczowe znaczenie w
 przypadku urz¹dzeñ mobilnych, które czêsto dysponuj¹ bardzo ograniczonymi
 zasobami mocy obliczeniowej oraz przepustowoœci. Szczególnym przypadkiem s¹
-u¿ytkownicy, którzy posiadaj¹ niezrycza³towany dostêp do sieci i p³ac¹ ró¿ne
+u¿ytkownicy, którzy posiadaj¹ niezrycza³towany dostêp do sieci i~p³ac¹ ró¿ne
 stawki, w zale¿noœci od iloœci przes³anych danych. W tym wypadku narzut
 pojemnoœciowy Web Services mo¿na w sposób bezpoœredni przeliczyæ na koszty,
 jakie generuje on dla ca³ej organizacji.
@@ -160,9 +160,9 @@ ten zawiera specyfikacjê, opisuj¹c¹ metody wymuszania integralnoœci oraz
 poufnoœci przesy³anych danych. Pozwala na do³¹czanie do wiadomoœci SOAP
 podpisów oraz nag³ówków zwi¹zanych z szyfrowaniem danych. Wspiera tak¿e
 formaty certyfikacyjne, takie jak X.509. Protokó³ dzia³a w warstwie
-aplikacyjnej i zosta³ tak zaprojektowany, by zapewniæ bezpieczeñstwo od koñca do koñca (end-to-end
+aplikacyjnej i~zosta³ tak zaprojektowany, by zapewniæ bezpieczeñstwo od koñca do koñca (end-to-end
 security). Niestety, w obecnej chwili protokó³ ten nie zosta³ zaimplementowany
-na urz¹dzeniach mobilnych i na pewno w najbli¿szym czasie nie stanie siê na
+na urz¹dzeniach mobilnych i~na pewno w najbli¿szym czasie nie stanie siê na
 nich standardem. Ograniczeniem s¹ tu typowe dla tych urz¹dzeñ problemy z
 wydajnoœci¹. Alternatywnym rozwi¹zaniem problemu bezpieczeñstwa jest pos³u¿enie
 siê zabezpieczeniami na poziomie warstwy transportowej (TLS), takimi jak https.
@@ -187,7 +187,7 @@ jest doœæ prosta do zaimplementowania, stawia jednak przed programist¹ szereg
 problemów,
 które musi on samodzielnie rozwi¹zaæ. Jest to przede wszystkim brak gwarancji
 dostarczenia komunikatu. Dodatkowo, samodzielnie nale¿y obs³u¿yæ b³êdy
-transmisji, mo¿liwe przerwy i koniecznoœæ ponownego nawi¹zania po³¹czenia. Nie
+transmisji, mo¿liwe przerwy i~koniecznoœæ ponownego nawi¹zania po³¹czenia. Nie
 implikuje to potrzeby uruchamiania brokera wiadomoœci, który jest dodatkowym
 elementem zwiêkszaj¹cym skomplikowanie systemu. Jednak w sytuacji, gdy w
 przedsiêbiorstwie dzia³a ju¿ broker obs³uguj¹cy kilka aplikacji, do³¹czenie
@@ -213,9 +213,9 @@ integracji, znane z integracji klasycznych systemów informatycznych:
   Pozwala to na obs³u¿enie najpilniejszych wiadomoœci przed innymi (co nie jest
   mo¿liwe bez dodatkowych ingerencji w przypadku Web serwisów).
   \item Mo¿liwoœæ stosowania wzorców integracyjnych. Droga wiadomoœci pomiêdzy
-  nadawc¹ i odbiorc¹ mo¿e byæ zmieniana w deklaratywny sposób (pomagaj¹ tu
+  nadawc¹ i~odbiorc¹ mo¿e byæ zmieniana w deklaratywny sposób (pomagaj¹ tu
   specjalne pakiety integracyjne, np. Apache Camel), co pozwala na dodatkowe
-  przetwarzanie, konwertowanie, zmienianie kolejnoœci i inne modyfikacje
+  przetwarzanie, konwertowanie, zmienianie kolejnoœci i~inne modyfikacje
   przesy³anych wiadomoœci. Pod³¹czenie do kana³u publish-subscribe pozwala na
   ³atwe wysy³anie wiadomoœci do wielu odbiorców.
 \end{itemize}
@@ -235,7 +235,7 @@ platformy, jak Windows Mobile, maj¹ swoje w³asne rozwi¹zania. Warto zwróciæ uwag
 fakt, ¿e stosowanie wiadomoœci umo¿liwia zmianê najni¿szej warstwy
 komunikacyjnej pomiêdzy urz¹dzeniami. O ile w przypadku Web serwisów oczywistym
 wyborem jest po³¹czenie z internetem, o tyle wiadomoœci mog¹ byæ przesy³ane
-zarówno w ten sposób, jak i za pomoc¹ SMS. Pozwala to na
+zarówno w ten sposób, jak i~za pomoc¹ SMS. Pozwala to na
 funkcjonowanie aplikacji bez utrzymywania sta³ego po³¹czenia z internetem,
 które w przypadku ograniczonej ³¹cznoœci jest mocno utrudnione. 
 
@@ -248,7 +248,7 @@ siê, ¿e przed podjêciem decyzji warto zadaæ sobie nastêpuj¹ce pytania:
 \begin{itemize}
   \item Czy potrzebujemy gwarancji dostarczenia komunikatu, czy te¿ jest to
   system, w którym nie jest to kluczowe? Web serwisy nie zapewniaj¹ tej
-  funkcjonalnoœci i w razie potrzeby musimy j¹ sami zaimplementowaæ.
+  funkcjonalnoœci i~w razie potrzeby musimy j¹ sami zaimplementowaæ.
   \item Czy integrujemy system mobilny z istniej¹cymi ju¿ systemami, które
   porozumiewaj¹ siê ze sob¹ za pomoc¹ brokera wiadomoœci? W takim wypadku,
   wykorzystanie wiadomoœci jest naturalnym rozwi¹zaniem, pozwalaj¹cym na

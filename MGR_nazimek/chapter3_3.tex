@@ -9,7 +9,7 @@ implementacyjnych, zaprezentujemy koncepcjê ca³ego systemu.
     \begin{center}
     \includegraphics[angle=0,scale=0.7]{img/diag1.png}
     \end{center}
-    \caption{Komunikacja miêdzy urz¹dzeniami mobilnymi i systemem enterprise}
+    \caption{Komunikacja miêdzy urz¹dzeniami mobilnymi i~systemem enterprise}
     \label{fig:pool_arch}
 \end{figure}
 
@@ -24,7 +24,7 @@ albo ma³o przydatne w przypadku komputerów stacjonarnych, o czym napiszemy
 w dalszej czêœci pracy. 
 \newline
 Podczas projektowania szablonu pojawi³y siê w¹tpliwoœci co do sposobu
-komunikacji pomiêdzy elementami systemu. Pocz¹tkowa i bardzo przekonuj¹ca
+komunikacji pomiêdzy elementami systemu. Pocz¹tkowa i~bardzo przekonuj¹ca
 koncepcja zak³ada³a wykorzystanie JMS - Java Messaging System specyfikacji
 umo¿liwiaj¹cej przesy³anie wiadomoœci w Javie. Przemawia³ za tym szereg
 argumentów:
@@ -36,7 +36,7 @@ argumentów:
   element poœrednicz¹cy, jakim jest serwer wiadomoœci.
   \item £atwoœæ implementacji - przesy³ane wiadomoœci mog¹ zawieraæ
   zserializowane obiekty, co zdejmuje z programisty obowi¹zek samodzielnej
-  serializacji i deserializacji danych.
+  serializacji i~deserializacji danych.
 \end{itemize}
 Jak siê jednak okaza³o, istotne ograniczenia techniczne po stronie urz¹dzeñ
 mobilnych uniemo¿liwi³y skorzystanie z JMS. Jest to technologia wymagaj¹ca
@@ -45,9 +45,9 @@ na której stworzyliœmy nasz szablon. Nie daje ona mo¿liwoœci bezpoœredniego
 pod³¹czenia do kana³u komunikacyjnego, co wymusza korzystanie z zewnêtrznych
 bibliotek. Jednak nawet wtedy okazuje siê, ¿e takie biblioteki korzystaj¹ z
 Web Serwisów jako technologii poœrednicz¹cej w komunikacji. Podobnie,
-automatyczna serializacja i deserializacja w takiej sytuacji nie jest jeszcze
+automatyczna serializacja i~deserializacja w takiej sytuacji nie jest jeszcze
 wspierana. 
 \newline
 Z tych powodów zdecydowaliœmy siê na wykorzystanie Web serwisów jako warstwy
-komunikacyjnej i samodzielne rozwi¹zanie generowanych przez nie problemów.
+komunikacyjnej i~samodzielne rozwi¹zanie generowanych przez nie problemów.
 
