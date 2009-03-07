@@ -44,7 +44,7 @@ spe³niaj¹cych okreœlonych za³o¿eñ. Wywo³anie zdalnej procedury po odpowiednim
 skonfigurowaniu ca³ego systemu nie powinno siê ró¿niæ od wywo³ania procedury w
 obrêbie tej samej aplikacji. Pomimo wygody takiego rozwi¹zania, stwarza ono
 pewne niebezpieczeñstwo. Programista nieœwiadomy narzutu stwarzanego przez
-zdalne wywo³anie procedur mo¿e wywo³ywaæ je z równ¹ bezstrosk¹ niczym
+zdalne wywo³anie procedur mo¿e wywo³ywaæ je z równ¹ beztrosk¹ niczym
 procedury lokalne. Grozi to powolnym dzia³aniem systemu, je¿eli wywo³ania bêd¹
 siê odbywa³y za poœrednictwem wolnego kana³u komunikacyjnego.
 \index{wiadomoœci}
@@ -138,11 +138,11 @@ Integration). Pozwala ona na dynamiczne odnajdowanie innych us³ug Web.
 \newline
 Najwiêksz¹ wad¹ tego rozwi¹zania jest pewien narzut wydajnoœciowy oraz
 pojemnoœciowy, zwi¹zany z budow¹ samych wiadomoœci. W innych metodach treœæ
-wiadomoœci przesy³ana jest w zoptymalizownej postaci kodu binarnego i nie
+wiadomoœci przesy³ana jest w zoptymalizowanej postaci kodu binarnego i nie
 posiada zwykle ¿adnych metadanych (co zwykle prowadzi do problemów z komunikacj¹
 pomiêdzy ró¿nymi platformami). W przypadku Web Services, wiadomoœci przesy³ane
 s¹ w kopercie zbudowanej na bazie XML, która zawiera du¿o nadmiernych
-informacji. Powoduje to, ¿e przy przesy³aniu wiadomœci ³¹cze dodatkowo zostaje
+informacji. Powoduje to, ¿e przy przesy³aniu wiadomoœci ³¹cze dodatkowo zostaje
 obci¹¿one tymi nadmiarowymi danymi. Co wiêcej, po stronie odbiorcy nale¿y
 przeprowadziæ rozbiór gramatyczny otrzymanego komunikatu. Zwiêksza to
 zapotrzebowanie na moc obliczeniow¹. Mo¿e to mieæ kluczowe znaczenie w
@@ -173,12 +173,12 @@ w integracji mobilnej. Istniej¹ bardzo dobre implementacje, takie jak kSoap,
 które dzia³aj¹ praktycznie na ka¿dej platformie wspieraj¹cej wirtualn¹ maszynê
 Java. Pozosta³e platformy, takie jak Blackberry czy WMD (Windows Mobile Device),
 równie¿ posiadaj¹ stosowne biblioteki pozwalaj¹ce w bardzo prosty sposób
-pod³¹czyæ siê do istniej¹cej infrastuktury. Znane s¹ komercyjne rozwi¹zania
+pod³¹czyæ siê do istniej¹cej infrastruktury. Znane s¹ komercyjne rozwi¹zania
 integracyjne, takie jak Mobile Data Service na platformie Blackberry, które
 potrafi¹ automatycznie generowaæ kod, wywo³uj¹cy procedury na podstawie podanego
 im wczeœniej schematu WSDL. Jeœli kluczowym nie jest optymalne wykorzystanie
-³¹cza, czy te¿ gwarancja dostaczenia, to jest to technologia, której u¿ycie jest
-zalecane przy integracji mobilnej, czy te¿ jakiejkolwiek innej integracji w
+³¹cza, czy te¿ gwarancja dostarczenia, to jest to technologia, której u¿ycie
+jest zalecane przy integracji mobilnej, czy te¿ jakiejkolwiek innej integracji w
 œrodowisku Enterprise.
 \index{wiadomoœci}
 \paragraph{Wiadomoœci w œrodowisku mobilnym} 
