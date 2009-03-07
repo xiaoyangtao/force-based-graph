@@ -4,8 +4,8 @@
 Cech¹ wyró¿niaj¹c¹ podejœcie prezentowane w niniejszej pracy od typowych
 rozwi¹zañ problemu integracji systemów enterprise jest sposób generowania
 interfejsu u¿ytkownika. W typowym podejœciu po stronie aplikacji mobilnej mamy
-do czynienia z raz zdefinowanym przez programistê uk³adem oraz wygl¹dem
-interfejsu graficznego. Wi¹¿e siê to bezpoœredno ze sposobem pisania aplikacji,
+do czynienia z raz zdefiniowanym przez programistê uk³adem oraz wygl¹dem
+interfejsu graficznego. Wi¹¿e siê to bezpoœrednio ze sposobem pisania aplikacji,
 w którym programista ma do dyspozycji gotowe komponenty UI, które musz¹ zostaæ
 odpowiednio oprogramowane i wkompilowane w koñcow¹ wersjê aplikacji mobilnej.
 To powoduje, ¿e jakiekolwiek zmiany w interfejsie s¹ mo¿liwe tylko i wy³¹cznie
@@ -26,9 +26,9 @@ W odró¿nieniu od typowej aplikacji dostêpnej na urz¹dzeniach mobilnych, nasza
 aplikacja nie posiada zdefiniowanego z góry interfejsu u¿ytkownika. Za
 wyj¹tkiem g³ównego ekranu, wszystkie pozosta³e s¹ generowane na podstawie
 danych, przesy³anych z serwera. System zachowuje siê analogicznie do
-przegl¹darki internetowej - redeneruje znaczniki interfejsu u¿ytkownika. W
+przegl¹darki internetowej - renderuje znaczniki interfejsu u¿ytkownika. W
 odró¿nieniu od rozwi¹zañ opartych na przegl¹darce, mamy mo¿liwoœæ zmian w
-kodzie Ÿród³owym aplikacji redeneruj¹cej, dziêki czemu, w zale¿noœci od
+kodzie Ÿród³owym aplikacji renderuj¹cej, dziêki czemu, w zale¿noœci od
 potrzeby, mo¿emy dostosowywaæ zachowanie programu do wymagañ u¿ytkownika. Nasza
 aplikacja nie jest ograniczona przez niemodyfikowaln¹ przegl¹darkê internetow¹.
 \index{Kuix}
@@ -108,13 +108,13 @@ screen.setCurrent();
 \end{verbatim}
 
 Jak widaæ z za³¹czonego przyk³adu, budowanie elementów interfejsu oraz ich
-wczytywanie jest bardzo proste i w pewnien sposób przypomina tworzenie
+wczytywanie jest bardzo proste i w pewien sposób przypomina tworzenie
 interfejsu u¿ytkownika dla stron wyœwietlanych w przegl¹darkach inernetowych.
 \index{CSS}
 \paragraph{CSS, a Kuix}
 Charakterystycznym elementem zapo¿yczonym przez Kuix z technologii
 internetowych jest sposób nadawania po¿¹danego wygl¹du elementom aplikacji.
-S³u¿¹ do tego kaskadowe arkusze stylów (Cascading Style Sheets). W przyk³¹dzie
+S³u¿¹ do tego kaskadowe arkusze stylów (Cascading Style Sheets). W przyk³adzie
 z poprzedniego paragrafu plik helloworld.css wygl¹da nastêpuj¹co :
 
 \begin{verbatim}
@@ -144,7 +144,7 @@ Do ka¿dego elementu interfejsu, takiego jak ekran, czy pulpit (screen, desktop)
 mamy przypisane odpowiednie selektory. Na przyk³ad, by nadaæ styl paskowi
 tytu³owemu ekranu, u¿ywamy selektora screenTopbar.
 
-By za³adowaæ do systemu plik CSS, znajudj¹cy siê w zasobach projektu, nale¿y
+By za³adowaæ do systemu plik CSS, znajduj¹cy siê w zasobach projektu, nale¿y
 u¿yæ statycznej metody loadCSS klasy Kuix:
 
 \begin{verbatim}
