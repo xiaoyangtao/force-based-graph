@@ -106,15 +106,15 @@ numer konta bankowego. Natomiast w innym mo¿e to byæ wewnêtrzny numer
 konta w korporacji, czy te¿ konto u¿ytkownika. 
 Innym, pokrewnym problemem jest ró¿ny format zapisu tych samych danych.
 WyobraŸmy sobie system nawigacji satelitarnej na urz¹dzeniu mobilnym po³¹czony z
-bankiem map. Dane otrzymywane z odbiornika GPS s¹ wspó³rzêdnymi geograficznymi w pewnym uk³adzie
-odniesienia. Uk³adów odniesienia jest na œwiecie kilkaset i~s³u¿¹ one uzyskaniu
-jak najwiêkszej dok³adnoœci w danym obszarze. Przyk³adowo, wg \cite{omapach} w
-Polsce u¿ywane s¹ uk³ady Pu³kowo 1942, PUWG 1992 i~PUWG 2000. Je¿eli w
-odbiorniku GPS ustawimy uk³ad odniesienia na najpopularniejszy WGS84, to pracuj¹c z mapami w
-uk³adzie Pu³kowo 42 otrzymamy niedok³adnoœæ w odwzorowaniu rzêdu 6'', czyli
-oko³o 120m. Choæ wiêc u¿ywamy wspó³rzêdnych geograficznych do okreœlenia po³o¿enia na mapie i~w
-terenie, to rozbie¿noœci, o ile nie uwzglêdnimy uk³adu odniesienia, mog¹ byæ
-bardzo znaczne.\\
+bankiem map. Dane otrzymujemy z odbiornika w wybranym lub zdefiniowanym w odbiorniku
+  uk³adzie wspó³rzêdnych, najczêœciej w odwzorowaniu WGS84. Otrzymywane
+  wspó³rzêdne s¹ pokazywane na mapie najczêœciej adoptowanej jako ilustracja graficzna 
+  przemieszczania siê wskaŸnika GPS. W tym miejscu pojawia siê problem identyfikacji 
+  dok³adnoœci prezentowanych wyników.
+Wspó³rzêdne na mapie nie s¹ skorelowane z wystarczaj¹c¹ dok³adnoœci¹ w stosunku do
+ faktycznego po³o¿enia. Np.: w terenie stoimy na skrzy¿owaniu dróg, 
+ a z mapy wynika, ¿e do skrzy¿owania jest 120 m.
+  Wynika to z ró¿nych uk³adów wspó³rzêdnych mapy i wyników GPS.\\
 \indent
 W zwi¹zku z tym, istotn¹ rolê w integracji odgrywa nie tylko znalezienie
 wspólnych pojêæ, ale tak¿e sprawdzenie, czy pochodz¹ z tej samej dziedziny, a
